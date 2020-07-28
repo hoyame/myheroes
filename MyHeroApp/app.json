@@ -21,6 +21,10 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.myhero.myhero",
+      "versionCode": 1
+    },
     "web": {
       "favicon": "./assets/images/favicon.png"
     }
