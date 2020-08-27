@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { StyleSheet, Image } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { Text, View } from '../components/Themed';
-
 import EditScreenInfo from '../components/EditScreenInfo';
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faBars, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 
 const styles = StyleSheet.create({
   header: {
     position: 'absolute',
     top: 50
   },
-
   container: {
     flex: 1,
     alignItems: 'center',
@@ -46,7 +45,12 @@ const TabOneScreen = () => {
           borderRadius: 50,
           backgroundColor: '#eff1fe'
         }}>
-        
+          <FontAwesomeIcon icon={faAlignLeft} style={{
+            height: 80,
+            width: 80,
+            marginTop: 16.5,
+            marginLeft: 16.5
+          }} />
         </View>
       </View>
     );
@@ -55,7 +59,14 @@ const TabOneScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <Text style={styles.title}>Tab One</Text>
+      <View style={{
+        height: 100,
+        width: 100,
+        backgroundColor: 'red'
+      }}>
+
+
+      </View>
     </View>
   );
 }
