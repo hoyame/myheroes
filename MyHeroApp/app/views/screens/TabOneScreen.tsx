@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Image, TouchableHighlight } from 'react-native';
-import { Text, View } from '../components/Themed';
-import EditScreenInfo from '../components/EditScreenInfo';
+import { Text, View } from '../../core/components/Themed';
+import EditScreenInfo from '../../core/components/EditScreenInfo';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
