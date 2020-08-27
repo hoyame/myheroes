@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, TouchableHighlight } from 'react-native';
 import { Text, View } from '../components/Themed';
 import EditScreenInfo from '../components/EditScreenInfo';
 
@@ -16,16 +16,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    //marginTop: -100,
-    fontSize: 20,
-    fontWeight: 'bold',
+  button: {
+    height: 100,
+    width: 340,
+    backgroundColor: 'red',
+    borderRadius: 7,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+
+
+  
 });
 
 const TabOneScreen = () => {
@@ -52,6 +51,14 @@ const TabOneScreen = () => {
             marginLeft: 16.5
           }} />
         </View>
+
+        <Text style={{
+          fontSize: 30,
+          marginTop: 35,
+          marginLeft: 7.5
+        }}>
+          Bonjour Hoyame :)
+        </Text>
       </View>
     );
   }
@@ -59,14 +66,27 @@ const TabOneScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <View style={{
-        height: 100,
-        width: 100,
-        backgroundColor: 'red'
-      }}>
 
+      <TouchableHighlight
+        activeOpacity={0.8}
+        onPress={() => null}
+      >
+          <View style={{
+            height: 100,
+            width: 340,
+            backgroundColor: 'red',
+            borderRadius: 7
+          }}>
+              <Text style={{
+                fontSize: 40
+              }}>
+                Besoin d'aide ?
+              </Text>
 
-      </View>
+          </View>
+      </TouchableHighlight>
+
+      
     </View>
   );
 }
