@@ -13,12 +13,14 @@ namespace MyHeroApi.Controllers
     public class UsersControllers
     {
         [HttpPost("api/users/register")]
-        public void SetData(UsersRegister data) {
+        public void SetData(Users data) {
             using (var db = new WriteDB()) {
-                db.Add(new UsersRegister { 
+                string hashed = BCrypt.HashPassword(data.password, BCrypt.GenerateSalt(12));
+
+                db.Add(new Users { 
                     pseudo = data.pseudo,
                     email = data.email,
-                    password = data.password 
+                    password = hashed 
                 });
 
                 db.SaveChanges();
@@ -27,9 +29,13 @@ namespace MyHeroApi.Controllers
 
         [HttpPost("api/users/login")]
 
-        public bool VerifLogin(UserLogin data) {
-            using (var db = new WriteDB()) {               
-                return db.Users.Any(u => u.email == data.email && u.password == data.password);
+        public bool VerifLogin(Users data) {
+            using (var db = new WriteDB()) {         
+                return (
+                    db.Users.Where(u => u.email == data.email).ToList().Any(u => BCrypt.CheckPassword(data.password, u.password))
+                );
+
+
             }
         }
     }
