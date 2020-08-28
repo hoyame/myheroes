@@ -1,26 +1,20 @@
-
+/*
 using System;
 using System.Linq;
 
-namespace MyHeroApi
+namespace EFGetStarted
 {
-    class DBEvents
+    class Program
     {
-        public void Save()
+        static void DBEvents()
         {
             using (var db = new WriteDB())
             {
                 // Create
                 Console.WriteLine("Inserting a new blog");
-                db.Add(new users { pseudo = "hoyame" });
+                db.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
                 db.SaveChanges();
 
-            }
-        }
-    }
-}
-
-/* 
                 // Read
                 Console.WriteLine("Querying for a blog");
                 var blog = db.Blogs
@@ -42,4 +36,8 @@ namespace MyHeroApi
                 Console.WriteLine("Delete the blog");
                 db.Remove(blog);
                 db.SaveChanges();
-            */
+            }
+        }
+    }
+}
+*/
