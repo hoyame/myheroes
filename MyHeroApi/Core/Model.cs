@@ -7,7 +7,7 @@ namespace MyHeroApi.DB
 {
     public class WriteDB : DbContext
     {
-        public DbSet<users> Users { get; set; }
+        public DbSet<UsersRegister> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseMySQL("server=localhost;database=myhero;user=root;password=");
     }
