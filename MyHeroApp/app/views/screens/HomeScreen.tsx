@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   
 });
 
-const TabOneScreen = () => {
+const HomeScreen = () => {
   const Header = () => {
     return (
       <View style={styles.header}>
@@ -91,4 +91,4 @@ const TabOneScreen = () => {
   );
 }
 
-export default TabOneScreen;
+export default HomeScreen;
