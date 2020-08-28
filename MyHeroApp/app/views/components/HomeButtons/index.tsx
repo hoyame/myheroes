@@ -8,9 +8,14 @@ import { faBars, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 interface IHomeButton {
     color: string;
     name: string;
+    fontSize: number;
+    fontAwesome: any;
+    marginTopText?: number;
 }
 
 const HomeButtonComponent = (props: IHomeButton) => {
+    const marginTopText = props.marginTopText || 30
+
     return (
         <TouchableHighlight
         activeOpacity={0.8}
@@ -33,12 +38,15 @@ const HomeButtonComponent = (props: IHomeButton) => {
                 marginTop: 25,
                 marginLeft: 35,
             }}>
+              <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{
+                margin: 12
+              }} ></FontAwesomeIcon>
 
             </View>
 
             <Text style={{
-                fontSize: 22.5,
-                marginTop: 30,
+                fontSize: props.fontSize,
+                marginTop: marginTopText,
                 textAlign: 'center',
                 justifyContent: 'center',
                 alignItems: 'center',
