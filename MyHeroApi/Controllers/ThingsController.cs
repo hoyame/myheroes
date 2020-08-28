@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using demo_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace demo_api.Controllers
+namespace MyHeroApi.Controllers
 {
     [ApiController]
     public class ThingsController
@@ -11,7 +11,7 @@ namespace demo_api.Controllers
         public List<string> GetAll()
         {
             return new List<string> {
-                "a", "b", "c"
+                "a", "b", "c", "zbbj"
             };
         }
 
