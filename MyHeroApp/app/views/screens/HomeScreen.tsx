@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
   }
 });
 
@@ -23,8 +22,22 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <HeaderComponent />
 
-      <View>
-        <HomeButtonComponent />
+      <View style={{
+        marginTop: 200,
+        display: 'flex',
+        flexDirection: 'row',
+      }}>
+        <HomeButtonComponent color="#47d382" name="Zboub" />
+        <HomeButtonComponent color="#fec11c" name="Zboub" />
+      </View>
+
+      <View style={{
+        marginTop: 15,
+        display: 'flex',
+        flexDirection: 'row',
+      }}>
+        <HomeButtonComponent color="#00cce0" name="Zboub" />
+        <HomeButtonComponent color="#f074b2" name="Zboub" />
       </View>
     </View>
   );
