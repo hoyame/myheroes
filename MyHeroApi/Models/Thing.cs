@@ -1,4 +1,4 @@
-namespace demo_api.Models
+namespace MyHeroApi.Models
 {
     public class Thing
     {

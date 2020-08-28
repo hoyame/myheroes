@@ -14389,7 +14389,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "demo_api",
+  "RootNamespace": "MyHeroApi",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

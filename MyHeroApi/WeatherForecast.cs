@@ -1,6 +1,6 @@
 using System;
 
-namespace demo_api
+namespace MyHeroApi
 {
     public class WeatherForecast
     {

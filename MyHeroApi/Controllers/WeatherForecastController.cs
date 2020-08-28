@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace demo_api.Controllers
+namespace MyHeroApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

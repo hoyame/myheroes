@@ -1,5 +1,7 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
-using demo_api.Models;
+using MyHeroApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyHeroApi.Controllers
@@ -7,6 +9,7 @@ namespace MyHeroApi.Controllers
     [ApiController]
     public class ThingsController
     {
+
         [HttpGet("api/test")]
         public List<string> GetAll()
         {
@@ -29,7 +32,22 @@ namespace MyHeroApi.Controllers
 
         private string SayHello(Person person)
         {
-            return $"Hello, {person.Firstname} {person.Lastname}";
+            SavePseudo("hoyame");
+
+            return (
+                $"Hello, {person.Firstname} {person.Lastname}"
+            );
+        }
+
+        private void SavePseudo(String pseudo) {
+            using (var db = new WriteDB())
+            {
+                // Create
+                Console.WriteLine("Inserting a new blog");
+                db.Add(new users { pseudo = pseudo });
+                db.SaveChanges();
+
+            }
         }
     }
 }
