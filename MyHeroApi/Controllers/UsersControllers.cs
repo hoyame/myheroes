@@ -34,8 +34,6 @@ namespace MyHeroApi.Controllers
                 return (
                     db.Users.Where(u => u.email == data.email).ToList().Any(u => BCrypt.CheckPassword(data.password, u.password))
                 );
-
-
             }
         }
     }
