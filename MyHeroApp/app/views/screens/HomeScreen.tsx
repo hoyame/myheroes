@@ -8,6 +8,7 @@ import HomeButtonComponent from '../components/HomeButtons';
 
 import { faExclamationCircle, faUser, faMapSigns, faSmile } from '@fortawesome/free-solid-svg-icons'
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,8 +17,45 @@ const styles = StyleSheet.create({
   }
 });
 
-const HomeScreen = () => {
+interface IAlert {
+  color: string;
+  title: string;
+}
 
+const HomeScreen = () => {
+  const AlertProps = (props: IAlert) => {
+    return (
+      <View style={{
+        marginLeft: 10,
+        marginTop: 40,
+        width: 95,
+        height: 120,
+        borderRadius: 7.5
+      }}>
+        
+        <View style={{
+          height: 60,
+          width: 60,
+          borderRadius: 50,
+          opacity: 1,
+          marginTop: 15,
+          marginLeft: 17.5,
+          backgroundColor: props.color
+        }}>
+          <FontAwesomeIcon icon={faExclamationCircle} size={35} style={{
+            margin: 12
+          }}></FontAwesomeIcon>
+        </View>
+
+        <Text style={{
+            color: props.color,
+            fontSize: 20,
+            marginTop: 10,
+            textAlign: "center"
+        }}>{props.title}</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -28,18 +66,50 @@ const HomeScreen = () => {
         display: 'flex',
         flexDirection: 'row',
       }}>
-        <HomeButtonComponent fontAwesome={faExclamationCircle} color="#47d382" name="Alertes" fontSize={22.5} />
-        <HomeButtonComponent fontAwesome={faSmile} color="#fec11c" name="Avis" fontSize={22.5} />
+        <View style={{
+          height: 180,
+          width: 325,
+          backgroundColor: "#1E1B18",
+          borderRadius: 7,
+          margin: 10
+        }}>
+          <Text style={{
+            color: "white",
+            fontSize: 25,
+            textAlign: "center",
+            marginTop: 10,
+            marginBottom: -30
+          }}>Lancer une alerte</Text>
+
+          <View style={{
+            display: "flex",
+            backgroundColor: "transparent",
+            flexDirection: "row"
+          }}>
+            <AlertProps color="#da0000" title="Grave" />
+            <AlertProps color="#ff8a00" title="Moyen" />
+            <AlertProps color="#ffc7b8" title="Faible" />
+          </View>
+
+        </View>
+
       </View>
 
-      <View style={{
-        marginTop: 15,
-        display: 'flex',
-        flexDirection: 'row',
-      }}>
-        <HomeButtonComponent fontAwesome={faMapSigns} color="#00cce0" name="Carte" fontSize={22.5} />
-        <HomeButtonComponent fontAwesome={faUserCircle} color="#893ddc" marginTopText={15} name="Mon    Compte" fontSize={22.5} />
-      </View>
+      <MapView
+       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+       style={{
+         height: 220,
+         width: 320,
+         borderRadius: 10
+       }}
+       region={{
+         latitude: 37.78825,
+         longitude: -122.4324,
+         latitudeDelta: 0.015,
+         longitudeDelta: 0.0121,
+       }}
+     >
+     </MapView>
     </View>
   );
 }
