@@ -42,7 +42,7 @@ const HeaderComponent = () => {
           marginTop: 35,
           marginLeft: 7.5
         }}>
-          Bonjour Hoyame :)
+          Bonjour Hoyame
         </Text>
       </View>
     );
