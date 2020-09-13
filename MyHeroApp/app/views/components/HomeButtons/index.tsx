@@ -18,9 +18,9 @@ const HomeButtonComponent = (props: IHomeButton) => {
 
     return (
         <TouchableHighlight
-        activeOpacity={0.8}
-        onPress={() => null}
-      >
+          activeOpacity={0.8}
+          onPress={() => null}
+        >
           <View style={{
             height: 170,
             width: 130,
@@ -40,7 +40,7 @@ const HomeButtonComponent = (props: IHomeButton) => {
             }}>
               <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{
                 margin: 12
-              }} ></FontAwesomeIcon>
+              }}></FontAwesomeIcon>
 
             </View>
 
