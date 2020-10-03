@@ -2,8 +2,8 @@ describe('Example test file', () => {
 
   it('Should run tests', () => {
 
-    const projectName = 'MyHero';
-    expect(projectName).toBe('MyHero');
+    const projectName = 'tsboilerplate';
+    expect(projectName).toBe('tsboilerplate');
   });
 
 });
