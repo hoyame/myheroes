@@ -1,31 +1,4 @@
 {
-  "expo": {
-    "name": "MyHero",
-    "slug": "MyHero",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./app/assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./app/assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname",
-      "buildNumber": "1.0.0"
-    },
-    "android": {
-      "package": "com.myhero.myhero",
-      "versionCode": 1
-    }
-  }
+  "name": "MyHeroApp",
+  "displayName": "MyHeroApp"
 }
