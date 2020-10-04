@@ -11,6 +11,8 @@ import NavbarComponent from './components/Navbar/navbar';
 import HomeScreen from './views/Home/home';
 import AlertScreen from './views/Alerts/alerts';
 import NavScreen from './views/Nav/nav';
+import MapScreen from './views/Map/map';
+import AccountScreen from './views/Account/account';
 
 const styles = StyleSheet.create({
   flex: {
@@ -32,7 +34,9 @@ export default class App extends React.Component {
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-            <Stack.Screen name="Details" component={AlertScreen} />
+            <Stack.Screen name="Alert" component={AlertScreen} />
+            <Stack.Screen name="Map" component={MapScreen} />
+            <Stack.Screen name="Account" component={AccountScreen} />
             <Stack.Screen name="Nav" component={NavScreen} />
 
           </Stack.Navigator>
