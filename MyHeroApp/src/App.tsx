@@ -1,21 +1,6 @@
 import 'es6-symbol/implement';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { ErrorBoundary } from './ErrorBoundary';
-
-export default class App extends React.Component {
-
-  public render() {
-
-    return (
-      <ErrorBoundary>
-        <View style={styles.flex}>
-          <Text>Hello World</Text>
-        </View>
-      </ErrorBoundary >
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   flex: {
@@ -24,3 +9,15 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 });
+
+export default class App extends React.Component {
+  public render() {
+    return (
+      <View style={styles.flex}>
+        <Text style={{
+          fontSize: 40
+        }}>Hello World</Text>
+      </View>
+    );
+  }
+}
