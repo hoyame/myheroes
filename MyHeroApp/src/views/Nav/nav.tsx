@@ -67,9 +67,9 @@ const NavScreen = ({ navigation }) => {
                 marginTop: 35
             }}>
                 <PropsNav onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
-                <PropsNav onClick={() => navigation.navigate('Carte')} title="Carte" description="Carte avec les alertes" />
-                <PropsNav onClick={() => navigation.navigate('Alertes')} title="Alertes" description="Listes des alertes" />
-                <PropsNav onClick={() => navigation.navigate('Compte')} title="Compte" description="Mon Compte" />
+                <PropsNav onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
+                <PropsNav onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
+                <PropsNav onClick={() => navigation.navigate('Account')} title="Compte" description="Mon Compte" />
             </View>
         </View>
     );
