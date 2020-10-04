@@ -6,14 +6,16 @@ import { Dimensions } from "react-native";
 
 interface IHeader {
     navigation: any;
+    map?: boolean
 }
 
 const HeaderComponent = (props: IHeader) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
-
+    const map = props.map || false
+    
     return (
         <View style={{
-            padding: 35
+            padding: 35,
         }}>
             <View style={{
                 display: "flex",
@@ -63,11 +65,6 @@ const HeaderComponent = (props: IHeader) => {
                     />
                 </TouchableHighlight>   
             </View>
-
-            <Text style={{
-                marginTop: 35,
-                fontSize: 30
-            }}>Bonjour Hoyame</Text>
         </View>
 
     );

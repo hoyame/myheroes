@@ -5,13 +5,9 @@ import HeaderComponent from 'src/components/Header/header';
 const MapScreen = ({ navigation }) => {
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent map={true} navigation={navigation} />
 
-            <Text style={{
-                fontSize: 35
-            }}>Map</Text>
-        
-            <Text onPress={() => navigation.navigate('Home')}>go home</Text>
+  
         </>
     );
 }
