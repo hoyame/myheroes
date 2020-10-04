@@ -91,11 +91,6 @@
       "yarn tslint"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && yarn run tsc"
-    }
-  },
   "jest": {
     "preset": "react-native",
     "transform": {

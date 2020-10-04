@@ -19,9 +19,6 @@ const HeaderComponent = (props: IHeader) => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                //marginTop: 35,
-                //marginLeft: 35,
-                //marginRight: 35,
                 width: screenWidth
             }}>
                 <TouchableHighlight
@@ -30,7 +27,7 @@ const HeaderComponent = (props: IHeader) => {
                     }}
 
                     activeOpacity={0.5}
-                    underlayColor="#898989"
+                    underlayColor="#bebebe"
                     onPress={() => props.navigation.navigate('Nav')}
                 >
                 
