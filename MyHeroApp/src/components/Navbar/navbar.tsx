@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, View } from "react-native";
+import { Dimensions, TouchableOpacity, View } from "react-native";
 
 
 const NavbarComponent = () => {
@@ -8,14 +8,49 @@ const NavbarComponent = () => {
     return (
         <View style={{
             position: 'absolute',
-            bottom: 0,
-
-            backgroundColor: "red",
+            backgroundColor: "#E1E1E1",
+            width: screenWidth,
             height: 65,
-            width: screenWidth
+            bottom: 0,
+            display: "flex",
+            flexDirection: "row"
         }}>
 
+            <TouchableOpacity onPress={() => null}>
+                <View style={{
+                    height: 60,
+                    width: 60,
+                    marginLeft: 10,
+                    backgroundColor: "red"
+                }}>
 
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => null}>
+                <View style={{
+                    height: 60,
+                    width: 60,
+                    marginLeft: 10,
+                    backgroundColor: "red"
+                }}>
+
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => null}>
+                <View style={{
+                    height: 60,
+                    width: 60,
+                    marginLeft: 10,
+                    backgroundColor: "red"
+                }}>
+
+                </View>
+            </TouchableOpacity>
+
+
+            
         </View>
     );
 }

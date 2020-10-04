@@ -1,6 +1,8 @@
 import 'es6-symbol/implement';
 import React from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { View as DefaultView } from 'react-native';
+
 import HeaderComponent from './components/Header/header';
 import NavbarComponent from './components/Navbar/navbar';
 
@@ -19,15 +21,11 @@ export default class App extends React.Component {
     const screenHeight = Math.round(Dimensions.get('window').height);
 
     return (
-      <View style={{
-        height: screenHeight,
-        width: screenWidth,
-        backgroundColor: 'black'
-      }}>
+      <>
         <HeaderComponent />
 
         <NavbarComponent />
-      </View>
+      </>
     );
   }
 }
