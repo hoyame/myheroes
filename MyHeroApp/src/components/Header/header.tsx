@@ -48,7 +48,7 @@ const HeaderComponent = (props: IHeader) => {
 
                     activeOpacity={0.5}
                     underlayColor="#DDDDDD"
-                    onPress={() => null}
+                    onPress={() => props.navigation.navigate('Account')}
                 >                
                     <Image
                         style={{

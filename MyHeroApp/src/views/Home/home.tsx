@@ -3,6 +3,8 @@ import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from 'src/components/Header/header';
 import NavbarComponent from 'src/components/Navbar/navbar';
 
+//import Exclamation from '../../assets/exclamation-circle-solid.svg'
+
 const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const screenHeight = Math.round(Dimensions.get('window').height - 260);
@@ -38,6 +40,7 @@ const HomeScreen = ({ navigation }) => {
                             backgroundColor: props.colorComponent,
                             borderRadius: 50,
                         }}>
+
                         </View>
 
                         <Text style={{
