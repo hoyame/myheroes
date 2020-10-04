@@ -2,9 +2,15 @@ import 'es6-symbol/implement';
 import React from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import { View as DefaultView } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import HeaderComponent from './components/Header/header';
 import NavbarComponent from './components/Navbar/navbar';
+import HomeScreen from './views/Home/home';
+import AlertScreen from './views/Alerts/alerts';
+import NavScreen from './views/Nav/nav';
 
 const styles = StyleSheet.create({
   flex: {
@@ -19,12 +25,19 @@ export default class App extends React.Component {
   public render() {
     const screenWidth = Math.round(Dimensions.get('window').width);
     const screenHeight = Math.round(Dimensions.get('window').height);
+    const Stack = createStackNavigator();
 
     return (
       <>
-        <HeaderComponent />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
+            <Stack.Screen name="Details" component={AlertScreen} />
+            <Stack.Screen name="Nav" component={NavScreen} />
 
-        <NavbarComponent />
+          </Stack.Navigator>
+        </NavigationContainer>
+
       </>
     );
   }

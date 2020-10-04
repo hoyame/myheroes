@@ -48,8 +48,6 @@ const NavbarComponent = () => {
 
                 </View>
             </TouchableOpacity>
-
-
             
         </View>
     );

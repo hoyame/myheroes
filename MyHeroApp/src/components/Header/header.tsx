@@ -4,7 +4,11 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, TouchableOpacity, Image } from 'react-native';
 import { Dimensions } from "react-native";
 
-const HeaderComponent = () => {
+interface IHeader {
+    navigation: any;
+}
+
+const HeaderComponent = (props: IHeader) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
     return (
@@ -27,7 +31,7 @@ const HeaderComponent = () => {
 
                     activeOpacity={0.5}
                     underlayColor="#898989"
-                    onPress={() => null}
+                    onPress={() => props.navigation.navigate('Nav')}
                 >
                 
                     <View style={{
