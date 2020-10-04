@@ -1,4 +1,4 @@
-package com.tsboilerplate;
+package com.myheroapp;
 
 import android.app.Application;
 import android.content.Context;

@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "tsboilerplate-tvOS.app"
-               BlueprintName = "tsboilerplate-tvOS"
-               ReferencedContainer = "container:tsboilerplate.xcodeproj">
+               BuildableName = "myheroapp-tvOS.app"
+               BlueprintName = "myheroapp-tvOS"
+               ReferencedContainer = "container:myheroapp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "tsboilerplate-tvOSTests.xctest"
-               BlueprintName = "tsboilerplate-tvOSTests"
-               ReferencedContainer = "container:tsboilerplate.xcodeproj">
+               BuildableName = "myheroapp-tvOSTests.xctest"
+               BlueprintName = "myheroapp-tvOSTests"
+               ReferencedContainer = "container:myheroapp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "tsboilerplate-tvOSTests.xctest"
-               BlueprintName = "tsboilerplate-tvOSTests"
-               ReferencedContainer = "container:tsboilerplate.xcodeproj">
+               BuildableName = "myheroapp-tvOSTests.xctest"
+               BlueprintName = "myheroapp-tvOSTests"
+               ReferencedContainer = "container:myheroapp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "tsboilerplate-tvOS.app"
-            BlueprintName = "tsboilerplate-tvOS"
-            ReferencedContainer = "container:tsboilerplate.xcodeproj">
+            BuildableName = "myheroapp-tvOS.app"
+            BlueprintName = "myheroapp-tvOS"
+            ReferencedContainer = "container:myheroapp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "tsboilerplate-tvOS.app"
-            BlueprintName = "tsboilerplate-tvOS"
-            ReferencedContainer = "container:tsboilerplate.xcodeproj">
+            BuildableName = "myheroapp-tvOS.app"
+            BlueprintName = "myheroapp-tvOS"
+            ReferencedContainer = "container:myheroapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "tsboilerplate-tvOS.app"
-            BlueprintName = "tsboilerplate-tvOS"
-            ReferencedContainer = "container:tsboilerplate.xcodeproj">
+            BuildableName = "myheroapp-tvOS.app"
+            BlueprintName = "myheroapp-tvOS"
+            ReferencedContainer = "container:myheroapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

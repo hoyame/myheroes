@@ -1,4 +1,4 @@
-package com.tsboilerplate;
+package com.myheroapp;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "tsboilerplate";
+    return "myheroapp";
   }
 }
