@@ -54,7 +54,6 @@ const HeaderComponent = () => {
                             height: 65,
                             width: 65,
                             borderRadius: 50,
-                            //backgroundColor: "red"
                         }}
 
                         source={{
