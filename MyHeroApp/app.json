@@ -19,8 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "supportsTablet": false,
+      "bundleIdentifier": "com.myhero.myhero",
       "buildNumber": "1.0.0"
     },
     "android": {
