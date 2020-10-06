@@ -50,6 +50,7 @@ export default class MapScreen extends Component {
             <>
               <MapView
                   showsUserLocation={true}
+		  followsUserLocation={true}
 
                   style={{
                       height: screenHeight,

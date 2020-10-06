@@ -4,7 +4,8 @@ import HeaderComponent from '../../components/Header/header';
 import NavbarComponent from '../../components/Navbar/navbar';
 import { faExclamationCircle, faUser, faMapSigns, faSmile } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+
 
 
 const HomeScreen = ({ navigation }) => {
@@ -136,6 +137,7 @@ const HomeScreen = ({ navigation }) => {
                     }}>
                         <MapView
                             showsUserLocation={true}
+           	            followsUserLocation={true}
 
                             style={{
                                 height: 170,
