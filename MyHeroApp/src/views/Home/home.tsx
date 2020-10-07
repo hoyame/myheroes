@@ -5,7 +5,6 @@ import NavbarComponent from '../../components/Navbar/navbar';
 import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import MapComponent from '../Map/minimap';
 
 
 
@@ -146,7 +145,23 @@ const HomeScreen = ({ navigation }) => {
                         width: screenWidth,
                         backgroundColor: '#e1e1e1',
                     }}>
+                        <MapView
+                            showsUserLocation={true}
+           	            followsUserLocation={true}
 
+                            style={{
+                                height: 170,
+                                width: screenWidth,
+                                borderRadius: 10
+                            }}
+                            region={{
+                                latitude: 37.78825,
+                                longitude: -122.4324,
+                                latitudeDelta: 0.015,
+                                longitudeDelta: 0.0121,
+                            }}
+                            >
+                        </MapView>
                     </View>
                 </TouchableOpacity>
             </View>

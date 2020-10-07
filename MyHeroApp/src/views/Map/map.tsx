@@ -11,7 +11,6 @@ export default class MapScreen extends Component {
       latitude: 0,
       longitude: 0,
       errorMessage: '',
-      etat: false
     };
   
     _getLocationAsync = async () => {
@@ -35,22 +34,23 @@ export default class MapScreen extends Component {
         const screenHeight = Math.round(Dimensions.get('window').height);
 
         this._getLocationAsync();
+        let text = 'Waiting..';
         let latitudeS = 0;
         let longitudeS = 0;
 
         if (this.state.errorMessage) {
-      
+          text = this.state.errorMessage;
         } else if (this.state.location) {
-          this.setState({ etat: true });
+          text = JSON.stringify(this.state.location);
           latitudeS = parseFloat(JSON.stringify(this.state.latitude).replace(/,/g, ''));
           longitudeS = parseFloat(JSON.stringify(this.state.longitude).replace(/,/g, ''));
         }
-
+      
         return (
             <>
               <MapView
                   showsUserLocation={true}
-		              followsUserLocation={true}
+		  followsUserLocation={true}
 
                   style={{
                       height: screenHeight,
