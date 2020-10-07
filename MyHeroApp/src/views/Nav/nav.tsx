@@ -1,3 +1,6 @@
+import { faBell, faComments, faHome, faMapSigns, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 
@@ -7,7 +10,8 @@ const NavScreen = ({ navigation }) => {
     interface IPropsNav {
         title: string;
         description: string;
-        onClick?: any
+        onClick?: any;
+        fontAwesome?: any;
     }
 
     const PropsNav = (props: IPropsNav) => {
@@ -27,11 +31,13 @@ const NavScreen = ({ navigation }) => {
                         width: 55,
                         margin: 7.5,
                         borderRadius: 7.5,
-                        backgroundColor: "#efefef",
-                        justifyContent: 'center',
-                        alignItems: "center"
+                        //backgroundColor: "#434343",
+                        justifyContent: "center",
+                        alignItems: "center",
                     }}>
-
+                        { props.fontAwesome && 
+                            <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{color: "#434343"}} />
+                        }
                     </View>
 
                     <View style={{
@@ -57,19 +63,46 @@ const NavScreen = ({ navigation }) => {
             marginTop: 15
         }}>
 
-            <Text style={{
-                fontSize: 35
-            }}>Pages</Text>
+            <View style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+            }}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                    <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
+                </TouchableOpacity>
 
-            <Text onPress={() => navigation.navigate('Home')}>Listes des pages disponibles</Text>
+                <View>   
+                    <Text style={{
+                        fontSize: 35,
+                    }}>Pages</Text>
+
+                    <Text onPress={() => navigation.navigate('Home')}>Listes des pages disponibles</Text>
+                </View>
+            </View>
         
             <View style={{
-                marginTop: 35
-            }}>
-                <PropsNav onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
-                <PropsNav onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
-                <PropsNav onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
-                <PropsNav onClick={() => navigation.navigate('Account')} title="Compte" description="Mon Compte" />
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+
+                
+            }}>              
+                <View style={{
+                    marginTop: 35
+                }}>
+                    <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
+                    <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
+                    <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
+                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
+                </View>
+
+                <View style={{
+                    marginTop: 50
+                }}>
+                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Account')} title="Compte" description="Mon Compte" />
+                    
+                </View>
             </View>
         </View>
     );
