@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import NavbarComponent from '../../components/Navbar/navbar';
-import { faExclamationCircle, faUser, faMapSigns, faSmile } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import MapComponent from '../Map/minimap';
@@ -42,12 +42,12 @@ const HomeScreen = ({ navigation }) => {
                             margin: 5,
                             height: 55,
                             width: 55,
-                            opacity: 0.20,
+                            opacity: 0.40,
                             backgroundColor: props.colorComponent,
                             borderRadius: 50,
                         }}>
                             <FontAwesomeIcon icon={faExclamationCircle} size={40} style={{
-                              margin: 7.5
+                                margin: 7.5,
                             }}></FontAwesomeIcon>
                         </View>
 
@@ -69,7 +69,9 @@ const HomeScreen = ({ navigation }) => {
 
     interface IAlertComponent {
         title: string;
-        logo?: any
+        logo?: any;
+        color?: string;
+        fontAwesome?: any;
     }
 
     const AlertComponent = (props: IAlertComponent) => {
@@ -82,20 +84,28 @@ const HomeScreen = ({ navigation }) => {
                     width: screenWidth,
                     backgroundColor: '#e1e1e1',
                     display: "flex",
+                    //justifyContent: "center",
+                    alignItems: "center",
                     flexDirection: "row"
                 }}>
                     <View style={{
+                        justifyContent: "center",
+                        alignItems: "center",
                         height: 45, 
                         width: 45,
                         margin: 10,
                         borderRadius: 50,
-                        backgroundColor: "red"
+                        opacity: 0.5,
+                        //backgroundColor: props.color
                     }}>
+                        { props.fontAwesome && 
+                            <FontAwesomeIcon icon={props.fontAwesome} size={25} fill={props.color} />
+                        }
+
                     </View>
 
                     <Text style={{
                         fontSize: 20,
-                        lineHeight: 65,
                         textAlign: "center"
                     }}>{props.title}</Text>
                 </View>
@@ -125,8 +135,8 @@ const HomeScreen = ({ navigation }) => {
                     <AlertProps title="Faible" color="#ffd100" colorComponent="#860258" description="(Perdu, nuisance, autre...)" />
                 </View>
 
-                <AlertComponent title="Gestes de premier secours" />
-                <AlertComponent title="Numeros d'urgence" />
+                <AlertComponent fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
+                <AlertComponent fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
 
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
                     <View style={{
@@ -136,7 +146,7 @@ const HomeScreen = ({ navigation }) => {
                         width: screenWidth,
                         backgroundColor: '#e1e1e1',
                     }}>
-                        <MapComponent />
+
                     </View>
                 </TouchableOpacity>
             </View>
