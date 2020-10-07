@@ -5,6 +5,7 @@ import NavbarComponent from '../../components/Navbar/navbar';
 import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapComponent from '../Map/service';
 
 
 
@@ -98,7 +99,7 @@ const HomeScreen = ({ navigation }) => {
                         //backgroundColor: props.color
                     }}>
                         { props.fontAwesome && 
-                            <FontAwesomeIcon icon={props.fontAwesome} size={25} fill={props.color} />
+                            <FontAwesomeIcon icon={props.fontAwesome} size={30} fill={props.color} />
                         }
 
                     </View>
@@ -136,7 +137,6 @@ const HomeScreen = ({ navigation }) => {
 
                 <AlertComponent fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
                 <AlertComponent fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
-
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
                     <View style={{
                         height: 170,
@@ -145,23 +145,7 @@ const HomeScreen = ({ navigation }) => {
                         width: screenWidth,
                         backgroundColor: '#e1e1e1',
                     }}>
-                        <MapView
-                            showsUserLocation={true}
-           	            followsUserLocation={true}
-
-                            style={{
-                                height: 170,
-                                width: screenWidth,
-                                borderRadius: 10
-                            }}
-                            region={{
-                                latitude: 37.78825,
-                                longitude: -122.4324,
-                                latitudeDelta: 0.015,
-                                longitudeDelta: 0.0121,
-                            }}
-                            >
-                        </MapView>
+                        <MapComponent height={170} width={screenWidth} />
                     </View>
                 </TouchableOpacity>
             </View>
