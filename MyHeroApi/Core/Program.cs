@@ -21,6 +21,7 @@ namespace MyHeroApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }
+            );
     }
 }
