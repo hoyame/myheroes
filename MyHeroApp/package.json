@@ -12,6 +12,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@99xt/first-born": "^1.1.8",
     "@expo/vector-icons": "^10.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
@@ -38,6 +39,7 @@
     "react-native-geolocation-service": "^5.0.0",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-maps": "0.27.1",
+    "react-native-paper": "^4.2.0",
     "react-native-safe-area-context": "~3.0.7",
     "react-native-sass-transformer": "^1.4.0",
     "react-native-screens": "~2.9.0",
