@@ -6,15 +6,42 @@ using MyHeroApi;
 using MyHeroApi.DB;
 using MyHeroApi.Models;
 using MyHeroApi.Migrations;
+using MyHeroApi.Data;
+
+/*
+    {
+        "id": 1,
+        "source": "hoyame",
+        "longitude": 684,
+        "latitude": 4246,
+        "description": "zboub en feu"
+    }
+*/
 
 namespace MyHeroApi.Controllers
 {
     [ApiController]
     public class AlertControllers {
-        [HttpPost("api/alert/send_alert")]
+        
+        [HttpPost("api/alert/add")]
+        public List<AlertStruct> PostAlert(AlertStruct data) {
+            AlertData.AddAlert(data);
 
-        public void PostAlert(Alerts data) {
+            return AlertData.Alerts;
+        }
 
+        [HttpPost("api/alert/delete")]
+
+        public List<AlertStruct> DeleteAlert(AlertStruct data) {
+            AlertData.DeleteAlert(data.id);
+
+            return AlertData.Alerts;
+        }
+
+        [HttpPost("api/alert/get")]
+
+        public List<AlertStruct> ReturnAlert(AlertStruct alerts) {
+            return AlertData.Alerts;
         }
     }
 }

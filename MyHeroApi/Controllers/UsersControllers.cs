@@ -13,7 +13,7 @@ namespace MyHeroApi.Controllers
     public class UsersControllers
     {
         [HttpPost("api/users/register")]
-        public void SetData(Users data) {
+        public bool SetData(Users data) {
             using (var db = new WriteDB()) {
                 string hashed = BCrypt.HashPassword(data.password, BCrypt.GenerateSalt(12));
 
@@ -24,6 +24,8 @@ namespace MyHeroApi.Controllers
                 });
 
                 db.SaveChanges();
+
+                return true;
             }
         }
 

@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using System.Collections.Generic;
+using System.Collections.Generic;   
 using Microsoft.AspNetCore.Mvc;
 using MyHeroApi;
 using MyHeroApi.DB;
@@ -9,8 +9,9 @@ using MyHeroApi.Migrations;
 
 namespace MyHeroApi.Data
 {
-    public struct AlertStruct
+    public class AlertStruct
     {
+        public int id { get; set; }
         public string source { get; set; }
         public int longitude { get; set; }
         public int latitude { get; set; }
@@ -18,6 +19,22 @@ namespace MyHeroApi.Data
     }   
 
     public class AlertData {
-        AlertStruct a1 = new AlertStruct("", 1, 1, "");
+        public static List<AlertStruct> Alerts = new List<AlertStruct>();
+
+        public static List<AlertStruct> AddAlert(AlertStruct data) {
+            Alerts.Add(new AlertStruct() { id = (Alerts.Count + 1), source = data.source, longitude = data.longitude, latitude = data.latitude, description = data.description });
+            
+            return Alerts;
+        }
+
+        public static List<AlertStruct> DeleteAlert(int id) {
+            Alerts.RemoveAt(id);
+           
+            return Alerts;
+        }
+   
+        public static List<AlertStruct> ReturnAlerts() {
+            return Alerts;
+        }
     }
 }
