@@ -9,7 +9,6 @@ namespace MyHeroApi.Models
         public class data { 
             public int star { get; set; }
             public int xp { get; set; }
-
         }
     }
 }
