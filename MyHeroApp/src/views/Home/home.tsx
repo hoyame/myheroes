@@ -6,6 +6,9 @@ import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, f
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import MapComponent from '../Map/service';
+import Users from '../../User';
+import Service from '../../Service';
+import axios, { AxiosInstance } from 'axios';
 
 
 
@@ -20,12 +23,46 @@ const HomeScreen = ({ navigation }) => {
         colorComponent?: string
     }
 
+    const fetchApiCall = async () => {
+        try {
+            let res = await fetch('http://localhost:5000/api/users/register', {
+                method: 'POST',
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pseudo: 'datapseudo',
+                    email: 'dataemai',
+                    password: 'datapassword'
+                }),
+            });
+            
+            res = await res.json();
+            console.log(res)
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    const postApi = () => {
+        fetch('https://localhost:5001/api/users/register', {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                pseudo: 'datapseudo',
+                email: 'dataemai',
+                password: 'datapassword'
+            })
+        });
+    }
+
     const AlertProps = (props: IAlertProps) => {
         const pHeight = (screenHeight - 20)
         const pWidth = (screenWidth / 3 - 10)
 
         return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => fetchApiCall()}>
                 <View style={{
                     height: pHeight,
                     width: pWidth,

@@ -1,5 +1,5 @@
 import 'es6-symbol/implement';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import { View as DefaultView } from 'react-native';
 import 'react-native-gesture-handler';
@@ -13,6 +13,7 @@ import AlertScreen from './views/Alerts/alerts';
 import NavScreen from './views/Nav/nav';
 import MapScreen from './views/Map/map';
 import AccountScreen from './views/Account/account';
+import Service from './Service';
 
 const styles = StyleSheet.create({
   flex: {
@@ -22,30 +23,33 @@ const styles = StyleSheet.create({
   },
 });
 
+const App = () => {
+  const screenWidth = Math.round(Dimensions.get('window').width);
+  const screenHeight = Math.round(Dimensions.get('window').height);
+  const Stack = createStackNavigator();
 
-export default class App extends React.Component {
-  public render() {
-    const screenWidth = Math.round(Dimensions.get('window').width);
-    const screenHeight = Math.round(Dimensions.get('window').height);
-    const Stack = createStackNavigator();
+  useEffect(() => {
+		Service.initialize();
+  }, []);
+  
+  return (
+    <>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
+          <Stack.Screen name="Alert" component={AlertScreen} />
+          <Stack.Screen name="Map" component={MapScreen} />
+          <Stack.Screen name="Account" component={AccountScreen} />
+          <Stack.Screen name="Nav" component={NavScreen} />
 
-    return (
-      <>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-            <Stack.Screen name="Alert" component={AlertScreen} />
-            <Stack.Screen name="Map" component={MapScreen} />
-            <Stack.Screen name="Account" component={AccountScreen} />
-            <Stack.Screen name="Nav" component={NavScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
 
-          </Stack.Navigator>
-        </NavigationContainer>
-
-      </>
-    );
-  }
+    </>
+  );
 }
+
+export default App;
 
 /* 
 

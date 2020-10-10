@@ -8,13 +8,13 @@ export default abstract class Service {
 	public static instance: AxiosInstance;
 
 	public static initialize() {
-		if (this.notInitialized == true) return;
+		if (!this.notInitialized) return;
 
 		this.instance = axios.create();
 		this.instance.defaults.timeout = 5000;
-		this.instance.defaults.baseURL = 'https://localhost:5001/';
+		this.instance.defaults.baseURL = `https://localhost:5001/`;
 
-        this.notInitialized = false
+		delete this.notInitialized;
     }
 
 	public static post(eventName: string, payload: any = {}): Promise<Response> {

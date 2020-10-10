@@ -10,7 +10,7 @@ class IAlerts {
 }
 
 export default abstract class Alerts {
-    public static AlertsData: IAlerts;
+    public static AlertsData = {};
 
 
     public static SendAlert(data: IAlerts) {
@@ -35,8 +35,8 @@ export default abstract class Alerts {
     }
 
     public static GetAlerts(data: IAlerts) {
-        let resJson = Service.get('api/alert/get');
+        this.AlertsData = Service.get('api/alert/get');
 
-        return resJson;
+        return this.AlertsData;
     }
 }
