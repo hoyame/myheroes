@@ -38,7 +38,7 @@ namespace MyHeroApi.Controllers
             return AlertData.Alerts;
         }
 
-        [HttpPost("api/alert/get")]
+        [HttpGet("api/alert/get")]
 
         public List<AlertStruct> ReturnAlert(AlertStruct alerts) {
             return AlertData.Alerts;

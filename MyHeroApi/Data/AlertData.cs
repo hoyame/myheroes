@@ -13,6 +13,7 @@ namespace MyHeroApi.Data
     {
         public int id { get; set; }
         public string source { get; set; }
+        public int level { get; set; }
         public int longitude { get; set; }
         public int latitude { get; set; }
         public string description { get; set; }
@@ -22,7 +23,7 @@ namespace MyHeroApi.Data
         public static List<AlertStruct> Alerts = new List<AlertStruct>();
 
         public static List<AlertStruct> AddAlert(AlertStruct data) {
-            Alerts.Add(new AlertStruct() { id = (Alerts.Count + 1), source = data.source, longitude = data.longitude, latitude = data.latitude, description = data.description });
+            Alerts.Add(new AlertStruct() { id = (Alerts.Count + 1), source = data.source, level = data.level, longitude = data.longitude, latitude = data.latitude, description = data.description });
             
             return Alerts;
         }
