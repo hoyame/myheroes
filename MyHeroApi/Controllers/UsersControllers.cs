@@ -6,9 +6,11 @@ using MyHeroApi;
 using MyHeroApi.DB;
 using MyHeroApi.Models;
 using MyHeroApi.Migrations;
+using Microsoft.AspNetCore.Cors;
 
 namespace MyHeroApi.Controllers
 {
+    [EnableCors] 
     [ApiController]
     public class UsersControllers
     {

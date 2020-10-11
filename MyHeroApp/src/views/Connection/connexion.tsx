@@ -22,7 +22,7 @@ const STYLES = StyleSheet.create({
 });
   
 
-const AccountScreen = ({ navigation }) => {
+const ConnexionScreen = ({ navigation }) => {
     const [state, setState] = useState({
         name: '',
         mail: '',
@@ -101,4 +101,4 @@ const AccountScreen = ({ navigation }) => {
     );
 }
 
-export default AccountScreen;
+export default ConnexionScreen;

@@ -7,6 +7,7 @@ using MyHeroApi.DB;
 using MyHeroApi.Models;
 using MyHeroApi.Migrations;
 using MyHeroApi.Data;
+using Microsoft.AspNetCore.Cors;
 
 /*
     {
@@ -20,7 +21,9 @@ using MyHeroApi.Data;
 
 namespace MyHeroApi.Controllers
 {
+    [EnableCors] 
     [ApiController]
+
     public class AlertControllers {
         
         [HttpPost("api/alert/add")]

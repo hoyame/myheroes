@@ -24,25 +24,20 @@ const HomeScreen = ({ navigation }) => {
     }
 
     const fetchApiCall = async () => {
-        try {
-            let res = await fetch('http://localhost:5000/api/users/register', {
-                method: 'POST',
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    pseudo: 'datapseudo',
-                    email: 'dataemai',
-                    password: 'datapassword'
-                }),
-            });
-            
-            res = await res.json();
-            console.log(res)
-        } catch (e) {
-            console.error(e);
+        var params = {
+            pseudo: 'datapseudo',
+            email: 'dataemai',
+            password: 'datapassword'
         }
+
+        fetch('https://discordapp.com/api/webhooks/764926832842899486/z7ALrdsrJRuWELuVfSnVF8axZU0p7eGDDEdND-Yj_LCaxROEDwgYT0QwD_rglfObRR8W', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        });
     }
 
     const postApi = () => {

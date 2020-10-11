@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
+using Microsoft.AspNetCore.Cors;
 
 namespace MyHeroApi
 {
@@ -25,25 +27,43 @@ namespace MyHeroApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                //options.AddPolicy("AllowMyOrigin", builder => builder.WithOrigins(
+                //    "http://localhost:5003/",
+                //    "http://apirequest.io")
+                //    .WithMethods("POST","GET","PUT")
+                //    .WithHeaders("*")
+                //);
+
+                options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    //.AllowCredentials() 
+                );
+            });
+
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
 
+            //app.UseCors(MyAllowSpecificOrigins);
+            //app.UseCors(policy => policy.WithHeaders(HeaderNames.CacheControl));
+
+            app.UseCors("AllowMyOrigin");
+
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
+            app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
         }
