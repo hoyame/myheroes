@@ -32,7 +32,7 @@ const AlertScreen = ({ navigation }) => {
 
         return (
             <TouchableOpacity
-                onPress={() => null}
+                onPress={() => navigation.navigate('AlertPageScreen')}
             >
                 <View style={{
                     height: 70,
