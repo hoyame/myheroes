@@ -62,9 +62,11 @@ const ConnexionScreen = ({ navigation }) => {
                         flexDirection: 'row'
                     }}>
                         <Text>Vous n'avez pas de compte ?</Text>
-                        <Text style={{
-                            color: "#6d9bff"
-                        }}> S'inscrire</Text>
+                        <TouchableOpacity>
+                            <Text style={{
+                                color: "#6d9bff"
+                            }}> S'inscrire</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <TouchableOpacity>
