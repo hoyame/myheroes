@@ -8,4 +8,11 @@ namespace MyHeroApi.Models
         public int star { get; set; }
         public int xp { get; set; }
     }
+
+    public class UserData {
+        public int id { get; set; }
+        public string user { get; set; }
+        public int rate { get; set; }
+        public string description { get; set; }
+    }
 }
