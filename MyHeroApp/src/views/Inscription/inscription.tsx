@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
 import HeaderComponent from '../../components/Header/header';
+import InputComponent from '../../components/Input/input';
+import { faArrowAltCircleLeft, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -32,67 +34,61 @@ const InscriptionScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
-
             <View style={{
-                paddingLeft: 35,
-                paddingRight: 35,
-                paddingBottom: 35
+                display: 'flex',
+                flex: 1,
+                alignSelf: 'center',
+                justifyContent: 'center',
+                alignItems: 'center'
             }}>
                 <Text style={{
                     fontSize: 35,
                     textAlign: 'center',
+                    marginBottom: 10
+                }}>Inscription</Text>
+                
+                <Text style={{
                     marginBottom: 20
-                }}>Connexion</Text>
+                }}>Créer son compte</Text>
+
 
                 <View style={{
                     marginTop: 15,
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="Pseudo"
-                        onChangeText={text => setState({...state, name: text})}
-                        value={state.name}
-                    />
-
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="E-Mail"
-                        onChangeText={text => setState({...state, mail: text})}
-                        value={state.mail}
-                    />
-
-                    
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="Mot de passe"
-                        onChangeText={text => setState({...state, password: text})}
-                        value={state.password}
-                    />
-
-                    
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="Confirmer le mot de passe"
-                        onChangeText={text => setState({...state, cPassword: text})}
-                        value={state.cPassword}
-                    />
+                    <InputComponent name="Pseudo" placeholder="Pseudo" value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
+                    <InputComponent name="E-Mail" placeholder="E-Mail" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                    <InputComponent name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                    <InputComponent name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+                
+                    <View style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginBottom: 15,
+                        flexDirection: 'row'
+                    }}>
+                        <Text>Vous avez un compte ?</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('Connexion')}>
+                            <Text style={{
+                                color: "#6d9bff"
+                            }}> Se connecter</Text>
+                        </TouchableOpacity>
+                    </View>
 
                     <TouchableOpacity>
                         <View style={{
                             height: 60, 
                             width: screenWidth,
                             borderRadius: 7.5,
-                            marginTop: 10,
+                            marginTop: 5,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#e1e1e1'           
+                            backgroundColor: '#6d9bff'           
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>Sauvegarder</Text>
+                            }}>S'inscrire</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
