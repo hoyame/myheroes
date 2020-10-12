@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
 import HeaderComponent from '../../components/Header/header';
-import InputComponent from '../../components/Input/input';
-import { faArrowAltCircleLeft, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -24,7 +22,7 @@ const STYLES = StyleSheet.create({
 });
   
 
-const ConnexionScreen = ({ navigation }) => {
+const InscriptionScreen = ({ navigation }) => {
     const [state, setState] = useState({
         name: '',
         mail: '',
@@ -34,12 +32,12 @@ const ConnexionScreen = ({ navigation }) => {
 
     return (
         <>
+            <HeaderComponent navigation={navigation} />
+
             <View style={{
-                display: 'flex',
-                flex: 1,
-                alignSelf: 'center',
-                justifyContent: 'center',
-                alignItems: 'center'
+                paddingLeft: 35,
+                paddingRight: 35,
+                paddingBottom: 35
             }}>
                 <Text style={{
                     fontSize: 35,
@@ -52,35 +50,49 @@ const ConnexionScreen = ({ navigation }) => {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <InputComponent name="E-Mail" placeholder="E-Mail" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                    <InputComponent name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                
-                    <View style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        marginBottom: 15,
-                        flexDirection: 'row'
-                    }}>
-                        <Text>Vous n'avez pas de compte ?</Text>
-                        <Text style={{
-                            color: "#6d9bff"
-                        }}> S'inscrire</Text>
-                    </View>
+                    <TextInput
+                        style={STYLES.INPUT}
+                        placeholder="Pseudo"
+                        onChangeText={text => setState({...state, name: text})}
+                        value={state.name}
+                    />
+
+                    <TextInput
+                        style={STYLES.INPUT}
+                        placeholder="E-Mail"
+                        onChangeText={text => setState({...state, mail: text})}
+                        value={state.mail}
+                    />
+
+                    
+                    <TextInput
+                        style={STYLES.INPUT}
+                        placeholder="Mot de passe"
+                        onChangeText={text => setState({...state, password: text})}
+                        value={state.password}
+                    />
+
+                    
+                    <TextInput
+                        style={STYLES.INPUT}
+                        placeholder="Confirmer le mot de passe"
+                        onChangeText={text => setState({...state, cPassword: text})}
+                        value={state.cPassword}
+                    />
 
                     <TouchableOpacity>
                         <View style={{
                             height: 60, 
                             width: screenWidth,
                             borderRadius: 7.5,
-                            marginTop: 5,
-                            marginBottom: 20,
+                            marginTop: 10,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#6d9bff'           
+                            backgroundColor: '#e1e1e1'           
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>Connexion</Text>
+                            }}>Sauvegarder</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -89,4 +101,4 @@ const ConnexionScreen = ({ navigation }) => {
     );
 }
 
-export default ConnexionScreen;
+export default InscriptionScreen;

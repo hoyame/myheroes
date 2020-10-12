@@ -62,7 +62,6 @@ const NavScreen = ({ navigation }) => {
             padding: 35,
             marginTop: 15
         }}>
-
             <View style={{
                 display: "flex",
                 flexDirection: "row",
@@ -74,7 +73,7 @@ const NavScreen = ({ navigation }) => {
 
                 <View>   
                     <Text style={{
-                        fontSize: 35,
+                        fontSize: 35
                     }}>Pages</Text>
 
                     <Text onPress={() => navigation.navigate('Home')}>Listes des pages disponibles</Text>
@@ -84,9 +83,7 @@ const NavScreen = ({ navigation }) => {
             <View style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
-
-                
+                justifyContent: "center"
             }}>              
                 <View style={{
                     marginTop: 35
@@ -100,8 +97,7 @@ const NavScreen = ({ navigation }) => {
                 <View style={{
                     marginTop: 50
                 }}>
-                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Account')} title="Compte" description="Mon Compte" />
-                    
+                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Account')} title="Compte" description="Mon Compte" />   
                 </View>
             </View>
         </View>

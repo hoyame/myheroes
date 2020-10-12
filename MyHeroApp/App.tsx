@@ -12,6 +12,7 @@ import AlertScreen from './src/views/Alerts/alerts';
 import NavScreen from './src/views/Nav/nav';
 import MapScreen from './src/views/Map/map';
 import AccountScreen from './src/views/Account/account';
+import ConnexionScreen from './src/views/Connection/connexion';
 
 const styles = StyleSheet.create({
   flex: {
@@ -35,7 +36,7 @@ export default class App extends React.Component {
             <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
             <Stack.Screen name="Alert" component={AlertScreen} />
             <Stack.Screen name="Map" component={MapScreen} />
-            <Stack.Screen name="Account" component={AccountScreen} />
+            <Stack.Screen name="Account" component={ConnexionScreen} />
             <Stack.Screen name="Nav" component={NavScreen} />
 
           </Stack.Navigator>
