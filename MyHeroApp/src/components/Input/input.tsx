@@ -56,7 +56,7 @@ const InputComponent = (props: IInput) => {
                 <View style={{
                     justifyContent: "center",
                 }}>
-                    <Text>{props.name}</Text>
+                    <Text style={{ color: "#6d9bff" }}>{props.name}</Text>
     
                     <TextInput
                         style={{
