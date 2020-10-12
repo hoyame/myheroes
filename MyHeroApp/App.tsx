@@ -4,6 +4,9 @@ import { View as DefaultView } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
+import * as firebase from 'firebase';
 
 import HeaderComponent from './src/components/Header/header';
 import NavbarComponent from './src/components/Navbar/navbar';
@@ -24,8 +27,36 @@ const styles = StyleSheet.create({
   },
 });
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCH29QA_5aTnTKjEZguPNjtQXfwmwxrbFU",
+  //authDomain: "project-id.firebaseapp.com",
+  databaseURL: "https://myhero-291513.firebaseio.com",
+  projectId: "myhero-291513",
+  storageBucket: "myhero-291513.appspot.com",
+  messagingSenderId: "sender-id",
+  appId: "app-id",
+  measurementId: "G-measurement-id"
+};
+
 
 export default class App extends React.Component {
+  public async registerForPushNotification() {
+    const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+  
+    if (status !== "granted") {
+      alert("No notification permission")
+      return;
+    }
+
+    let token = await Notifications.getExpoPushTokenAsync();
+    console.log(token)
+  }
+
+  componentDidMount() {
+    firebase.initializeApp(firebaseConfig);
+    this.registerForPushNotification();
+  }
+
   public render() {
     const screenWidth = Math.round(Dimensions.get('window').width);
     const screenHeight = Math.round(Dimensions.get('window').height);

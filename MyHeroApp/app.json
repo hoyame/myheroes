@@ -29,6 +29,7 @@
       "buildNumber": "1.0.0"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "package": "com.myhero.myhero",
       "versionCode": 1
     }
