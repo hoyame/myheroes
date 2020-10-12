@@ -44,8 +44,12 @@ const ConnexionScreen = ({ navigation }) => {
                 <Text style={{
                     fontSize: 35,
                     textAlign: 'center',
-                    marginBottom: 20
+                    marginBottom: 10
                 }}>Connexion</Text>
+                
+                <Text style={{
+                    marginBottom: 20
+                }}>Se connecter son compte</Text>
 
                 <View style={{
                     marginTop: 15,
@@ -62,7 +66,7 @@ const ConnexionScreen = ({ navigation }) => {
                         flexDirection: 'row'
                     }}>
                         <Text>Vous n'avez pas de compte ?</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Inscription')}>
                             <Text style={{
                                 color: "#6d9bff"
                             }}> S'inscrire</Text>
@@ -75,7 +79,6 @@ const ConnexionScreen = ({ navigation }) => {
                             width: screenWidth,
                             borderRadius: 7.5,
                             marginTop: 5,
-                            marginBottom: 20,
                             justifyContent: "center",
                             alignItems: "center",
                             backgroundColor: '#6d9bff'           
