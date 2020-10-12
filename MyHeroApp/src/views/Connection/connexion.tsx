@@ -82,7 +82,7 @@ const ConnexionScreen = ({ navigation }) => {
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>Connexion</Text>
+                            }}>Se connecter</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
