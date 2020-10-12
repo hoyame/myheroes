@@ -61,6 +61,7 @@ const HomeScreen = ({ navigation }) => {
                     marginRight: 5,
                     backgroundColor: props.color,
                     borderRadius: 7.5,
+                    alignItems: "center",
                     padding: 10
                 }}>
                     <View style={{
@@ -74,10 +75,10 @@ const HomeScreen = ({ navigation }) => {
                             opacity: 0.40,
                             backgroundColor: props.colorComponent,
                             borderRadius: 50,
+                            justifyContent: "center",
+                            alignItems: "center"
                         }}>
-                            <FontAwesomeIcon icon={faExclamationCircle} size={40} style={{
-                                margin: 7.5,
-                            }}></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faExclamationCircle} size={40}></FontAwesomeIcon>
                         </View>
 
                         <Text style={{
