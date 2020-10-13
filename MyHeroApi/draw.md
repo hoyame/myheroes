@@ -11,7 +11,7 @@ si click alerte:
     receveur: page info alerte
         si prise: 
             envoyeur: 
-                - envoie le get le profil de la personne qui propose de l'aider (nom, avis, etoiles, xp) a partir de l'id
+                - notif: envoie le get le profil de la personne qui propose de l'aider (nom, avis, etoiles, xp) a partir de l'id
 
                 choixs: 
                     si accepter: envoie la pos au receveur et (si possible, envoie l'iteneraire)
