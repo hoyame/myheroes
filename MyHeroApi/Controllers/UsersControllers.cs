@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Cors;
 
 namespace MyHeroApi.Controllers
 {
-    [EnableCors] 
     [ApiController]
     public class UsersControllers
     {
