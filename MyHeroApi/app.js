@@ -34,9 +34,9 @@ app.get('/', (req, res, next) => {
 	}
 });
 
-const taskRoute = require('./routes/taskRoute');
+const alertRoute = require('./routes/alertRoute');
 const userRoute = require('./routes/userRoute');
-app.use([taskRoute, userRoute]); // you can add more routes in this array
+app.use([alertRoute, userRoute]); // you can add more routes in this array
 
 //404 error
 app.get('*', function (req, res) {
