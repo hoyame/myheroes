@@ -10,93 +10,23 @@ const jwt = require('jsonwebtoken');
 module.exports.signUp = (req, res, next) => {
 	const email = req.body.email;
 
-	// encrypt password
-	var salt = bcrypt.genSaltSync(10);
-	var hash = bcrypt.hashSync(req.body.password, salt);
-	const password = hash;
+	let salt = bcrypt.genSaltSync(10);
+	let hash = bcrypt.hashSync(req.body.password, salt);
 
+	const password = hash;
 	const token = crypto.randomBytes(16).toString('hex');
 
-	var sql = `INSERT INTO users(email, password, token) 
-              VALUES(?, ?, ?)`;
+	let sql = `INSERT INTO users(email, password, token) VALUES(?, ?, ?)`;
 
 	con.query(sql, [email, password, token], function (err, result) {
-		if (err) {
-			return next(err);
-		}
-
-		// Send the email
-		var transporter = nodemailer.createTransport({
-			host: process.env.MAIL_HOST,
-			port: process.env.MAIL_POST,
-			auth: {
-				user: process.env.MAIL_AUTH_USER,
-				pass: process.env.MAIL_AUTH_PASS,
+		return res.json({
+			status: 'success',
+			result: {
+				affectedRows: result.affectedRows,
+				insertId: result.insertId,
 			},
 		});
-		var verificationLink = `${process.env.CLIENT_URL}/signup-verify/?token=${token}`;
-
-		var mailOptions = {
-			from: process.env.MAIL_FROM,
-			to: email,
-			subject: 'Thank you for signing up',
-			html: `Congratulations!<br/><br/>
-        You have successfully signed up. Please click the link below to verify your account:<br/>
-        <a href="${verificationLink}" target="_blank">Verify email</a><br/><br/>
-        Thank you.`,
-		};
-		transporter.sendMail(mailOptions, (err) => {
-			if (err) {
-				return next(err);
-			}
-			return res.json({
-				status: 'success',
-				result: {
-					affectedRows: result.affectedRows,
-					insertId: result.insertId,
-				},
-			});
-		});
 	});
-};
-
-// Verify Signup Link
-module.exports.signUpVerify = (req, res, next) => {
-	const token = req.params.token;
-	if (token) {
-		let query = `SELECT * FROM users WHERE token=? AND is_verified='0'`;
-		con.query(query, [token], (err, result, fields) => {
-			if (err) {
-				return next(err);
-			}
-
-			if (result.length > 0) {
-				// update record to remove token and set status as verified
-				con.query(
-					`UPDATE users set token='', is_verified='1' WHERE id=?`,
-					[result[0].id],
-					(errUpdate, resultUpdate, fieldsUpdate) => {
-						if (errUpdate) {
-							next(errUpdate);
-							return;
-						}
-						return res.json({
-							status: 'success',
-							result: result,
-						});
-					}
-				);
-			} else {
-				let err = new Error('Invalid token provided or user already verified');
-				err.field = 'token';
-				return next(err);
-			}
-		});
-	} else {
-		let err = new Error('Token not available');
-		err.field = 'token';
-		return next(err);
-	}
 };
 
 // Login
@@ -104,7 +34,7 @@ module.exports.login = (req, res, next) => {
 	const email = req.body.email;
 	const password = req.body.password;
 
-	let query = `SELECT * FROM users WHERE email=? AND is_verified='1'`;
+	let query = `SELECT * FROM users WHERE email=?`;
 	con.query(query, [email], (err, result, fields) => {
 		if (err) {
 			return next(err);
@@ -123,10 +53,7 @@ module.exports.login = (req, res, next) => {
 						bio: user.bio,
 					};
 					return res.json({
-						user: userData,
-						token: jwt.sign(userData, process.env.AUTH_SECRET, {
-							expiresIn: '2h',
-						}), // Expires in 2 Hour
+						user: userData
 					});
 				} else {
 					let err = new Error('Invalid email or password entered');
@@ -176,9 +103,7 @@ module.exports.updateProfile = (req, res, next) => {
 		var bio = req.body.bio;
 		var email = req.body.email;
 
-		let query = `UPDATE users 
-									SET first_name=?, last_name=?, bio=?, email=?, date_updated=NOW()  
-									WHERE id=?`;
+		let query = `UPDATE users SET first_name=?, last_name=?, bio=?, email=?, date_updated=NOW() WHERE id=?`;
 		con.query(
 			query,
 			[first_name, last_name, bio, email, id],
