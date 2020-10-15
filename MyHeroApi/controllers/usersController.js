@@ -8,17 +8,15 @@ const jwt = require('jsonwebtoken');
 
 // SignUp
 module.exports.signUp = (req, res, next) => {
+	const pseudo = req.body.pseudo;
 	const email = req.body.email;
-
 	let salt = bcrypt.genSaltSync(10);
 	let hash = bcrypt.hashSync(req.body.password, salt);
-
 	const password = hash;
-	const token = crypto.randomBytes(16).toString('hex');
 
-	let sql = `INSERT INTO users(email, password, token) VALUES(?, ?, ?)`;
+	let sql = `INSERT INTO users(pseudo, email, password) VALUES(?, ?, ?)`;
 
-	con.query(sql, [email, password, token], function (err, result) {
+	con.query(sql, [pseudo, email, password], function (err, result) {
 		return res.json({
 			status: 'success',
 			result: {
@@ -50,7 +48,6 @@ module.exports.login = (req, res, next) => {
 						email: user.email,
 						first_name: user.first_name,
 						last_name: user.last_name,
-						bio: user.bio,
 					};
 					return res.json({
 						user: userData
@@ -100,13 +97,12 @@ module.exports.updateProfile = (req, res, next) => {
 	if (id) {
 		var first_name = req.body.first_name;
 		var last_name = req.body.last_name;
-		var bio = req.body.bio;
 		var email = req.body.email;
 
-		let query = `UPDATE users SET first_name=?, last_name=?, bio=?, email=?, date_updated=NOW() WHERE id=?`;
+		let query = `UPDATE users SET first_name=?, last_name=?, email=?, date_updated=NOW() WHERE id=?`;
 		con.query(
 			query,
-			[first_name, last_name, bio, email, id],
+			[first_name, last_name, email, id],
 			(err, result, fields) => {
 				if (err) {
 					return next(err);
@@ -196,6 +192,26 @@ module.exports.forgotPassword = (req, res, next) => {
 				status: 'success',
 				result: result,
 			});
+		});
+	});
+};
+
+
+// add commentaire / rate
+module.exports.addRate = (req, res, next) => {
+	const user = req.body.user;
+	const rate = req.body.rate;
+	const description = req.body.description;
+	
+	let sql = `INSERT INTO users_data(user, rate, description) VALUES(?, ?, ?)`;
+
+	con.query(sql, [user, rate, description], function (err, result) {
+		return res.json({
+			status: 'success',
+			result: {
+				affectedRows: result.affectedRows,
+				insertId: result.insertId,
+			},
 		});
 	});
 };

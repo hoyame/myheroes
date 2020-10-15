@@ -123,7 +123,6 @@ module.exports.authenticateToken = (req, res, next) => {
 let schemaUpdateProfile = yup.object().shape({
 	first_name: yup.string().required('Please enter first name'),
 	last_name: yup.string().required('Please enter last name'),
-	bio: yup.string(),
 	email: yup
 		.string()
 		.required()
@@ -141,7 +140,6 @@ module.exports.validationUpdateProfile = (req, res, next) => {
 			{
 				first_name: req.body.first_name,
 				last_name: req.body.last_name,
-				bio: req.body.bio,
 				email: req.body.email,
 			},
 			{ abortEarly: false }

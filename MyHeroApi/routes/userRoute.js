@@ -53,5 +53,7 @@ router.post(
 	usersController.resetPassword
 ); // reset to new password
 
+router.post('/user/add_rate', usersController.addRate); // reset to new password
+
 
 module.exports = router;
