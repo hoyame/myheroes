@@ -2,6 +2,7 @@ let AlertsData = []
 
 module.exports.addAlert = (req, res, next) => {
     const model = {
+        id: AlertsData.length + 1,
         source: req.body.source,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
@@ -14,5 +15,10 @@ module.exports.addAlert = (req, res, next) => {
 }
 
 module.exports.returnAlerts = (req, res, next) => {
-    res.send(false);
+    res.send(AlertsData);
+}
+
+module.exports.returnAlertsLenght = (req, res, next) => {
+    let lenght = AlertsData.length
+    res.send(lenght.toString());
 }
