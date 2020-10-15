@@ -24,7 +24,7 @@ router.post(
 	[validationSignup, isUserExistsSignup],
 	usersController.signUp
 ); // sends verification link to user
-router.get('/user/signup/verify/:token', usersController.signUpVerify); // verify user link when clicked
+
 router.post('/user/login', [validateLogin], usersController.login);
 router.get('/user', [authenticateToken], usersController.getLoggedInUser); // get logged in user
 router.post(
@@ -52,5 +52,6 @@ router.post(
 	[validationResetPassword, isResetTokenValid],
 	usersController.resetPassword
 ); // reset to new password
+
 
 module.exports = router;
