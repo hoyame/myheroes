@@ -3,10 +3,29 @@ import React, { Component } from "react";
 import { Platform, View, Text, Dimensions } from "react-native";
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 
 export default class MapComponent extends Component<{height: number; width: number}> {
+    AlertData = [
+      {
+        source: "hoyame",
+        coordinate: {
+          latitude: 45.684866,
+          longitude: 5.9096452,
+        },
+        description: ""
+      },
+      {
+        source: "hoyame",
+        coordinate: {
+          latitude: 45.6912912,
+          longitude: 5.9070146,
+        },
+        description: ""
+      }
+    ];
+
     state = {
       location: null,
       latitude: 0,
@@ -50,22 +69,30 @@ export default class MapComponent extends Component<{height: number; width: numb
         return (
             <>
               <MapView
-                  showsUserLocation={true}
-		              followsUserLocation={true}
+                showsUserLocation={true}
+		            followsUserLocation={true}
 
-                  style={{
-                      height: this.props.height,
-                      width: this.props.width,
-                      borderRadius: 10
-                  }}
+                style={{
+                    height: this.props.height,
+                    width: this.props.width,
+                    borderRadius: 10
+                }}
 
-                  region={{
-                      latitude: latitudeS,
-                      longitude: longitudeS,
-                      latitudeDelta: 0.015,
-                      longitudeDelta: 0.0121,
-                  }}
-                >
+                region={{
+                    latitude: latitudeS,
+                    longitude: longitudeS,
+                    latitudeDelta: 0.015,
+                    longitudeDelta: 0.0121,
+                }}
+              >
+                  {this.AlertData.map((marker, index) => (
+                    <Marker
+                      key={index}
+                      coordinate={marker.coordinate}
+                      title={"marker.description"}
+                      description={marker.description}
+                    />
+                  ))}
               </MapView>
             </>
         );
