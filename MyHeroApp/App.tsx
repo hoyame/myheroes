@@ -18,6 +18,7 @@ import AccountScreen from './src/views/Account/account';
 import ConnexionScreen from './src/views/Connection/connexion';
 import InscriptionScreen from './src/views/Inscription/inscription';
 import AlertPageScreen from './src/views/Alerts/alert_page';
+import CreateAlertScreen from './src/views/Alerts/create_alert';
 
 const styles = StyleSheet.create({
   flex: {
@@ -37,7 +38,6 @@ const firebaseConfig = {
   appId: "app-id",
   measurementId: "G-measurement-id"
 };
-
 
 export default class App extends React.Component {
   public async registerForPushNotification() {
@@ -69,6 +69,7 @@ export default class App extends React.Component {
             <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
             <Stack.Screen name="Alert" component={AlertScreen} />
             <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
+            <Stack.Screen name="CreateAlertScreen" component={CreateAlertScreen} />
             <Stack.Screen name="Map" component={MapScreen} />
             <Stack.Screen name="Account" component={AccountScreen} />
             <Stack.Screen name="Connexion" component={ConnexionScreen} />
