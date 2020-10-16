@@ -6,28 +6,7 @@ import { StyleSheet, View, Text, Dimensions, TextInput } from "react-native"
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
-const STYLES = StyleSheet.create({
-    ROW: {
-      display: "flex",
-      flexDirection: "row"
-    },
 
-    INPUT: {
-        display: "flex",
-        flexDirection: "row",
-        height: 65, 
-        width: screenWidth,
-        borderColor: 'gray', 
-        borderWidth: 1,
-        borderRadius: 10,
-        marginBottom: 15,
-        //paddingLeft: 20
-    },
-
-    ICON: {
-        color: "#6d9bff"
-    }
-});
 
 
 interface IInput {
@@ -36,10 +15,36 @@ interface IInput {
     onChange: any;
     placeholder: string;
     icon: any;
+    height?: number;
 }
 
 
 const InputComponent = (props: IInput) => {
+    const height = props.height || 65
+
+    const STYLES = StyleSheet.create({
+        ROW: {
+          display: "flex",
+          flexDirection: "row"
+        },
+    
+        INPUT: {
+            display: "flex",
+            flexDirection: "row",
+            height: height, 
+            width: screenWidth,
+            borderColor: 'gray', 
+            borderWidth: 1,
+            borderRadius: 10,
+            marginBottom: 15,
+            //paddingLeft: 20
+        },
+    
+        ICON: {
+            color: "#6d9bff"
+        }
+    });
+
     return (
         <>
             <View style={STYLES.INPUT}>
