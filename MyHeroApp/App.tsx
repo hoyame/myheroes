@@ -53,8 +53,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    firebase.initializeApp(firebaseConfig);
-    this.registerForPushNotification();
+    try {
+      firebase.initializeApp(firebaseConfig);
+      this.registerForPushNotification();
+    } catch {
+      return null;
+    }
   }
 
   public render() {
