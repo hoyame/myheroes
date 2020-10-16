@@ -34,19 +34,23 @@ export default class MapComponent extends Component<{height: number; width: numb
     };
   
     _getLocationAsync = async () => {
-      let { status } = await Permissions.askAsync(Permissions.LOCATION);
-      if (status !== 'granted') {
-        this.setState({
-          errorMessage: 'Permission to access location was denied',
-        });
+      try {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+          this.setState({
+            errorMessage: 'Permission to access location was denied',
+          });
+        }
+    
+        let location = await Location.getCurrentPositionAsync({});
+        let latitude = await (await Location.getCurrentPositionAsync({})).coords.latitude;
+        let longitude = await (await Location.getCurrentPositionAsync({})).coords.longitude;
+        this.setState({ location });
+        this.setState({ latitude });
+        this.setState({ longitude });
+      } catch {
+        return null;
       }
-  
-      let location = await Location.getCurrentPositionAsync({});
-      let latitude = await (await Location.getCurrentPositionAsync({})).coords.latitude;
-      let longitude = await (await Location.getCurrentPositionAsync({})).coords.longitude;
-      this.setState({ location });
-      this.setState({ latitude });
-      this.setState({ longitude });
     };
   
     render() {
