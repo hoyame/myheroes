@@ -196,7 +196,6 @@ module.exports.forgotPassword = (req, res, next) => {
 	});
 };
 
-
 // add commentaire / rate
 module.exports.addRate = (req, res, next) => {
 	const user = req.body.user;
