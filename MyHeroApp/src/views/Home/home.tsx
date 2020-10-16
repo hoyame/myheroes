@@ -54,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
         const pWidth = (screenWidth / 3 - 10)
 
         return (
-            <TouchableOpacity onPress={() => fetchApiCall()}>
+            <TouchableOpacity onPress={() => navigation.navigate("CreateAlertScreen")}>
                 <View style={{
                     height: pHeight,
                     width: pWidth,
