@@ -65,6 +65,7 @@ const InputComponent = (props: IInput) => {
                     <TextInput
                         style={{
                             fontSize: 20,
+                            width: screenWidth - 75
                         }}
                         multiline={true} 
                         //numberOfLines={} 
