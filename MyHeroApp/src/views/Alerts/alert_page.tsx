@@ -9,6 +9,7 @@ const AlertPageScreen = ({ navigation }) => {
         return (
             <View style={{
                 height: 100,
+                marginBottom: 10,
                 borderRadius: 8,
                 display: "flex",
                 flexDirection: 'row',
@@ -68,10 +69,12 @@ const AlertPageScreen = ({ navigation }) => {
                 <AlertInformationProps />
 
                 <View style={{
-                    
-                }}>
-
-                </View>
+                    height: 60,
+                    borderRadius: 8,
+                    display: "flex",
+                    flexDirection: 'row',
+                    backgroundColor: "#d80000"
+                }}></View>
 
                 <View style={{
                     marginTop: 15

@@ -49,7 +49,6 @@ export default class App extends React.Component {
     }
 
     let token = await Notifications.getExpoPushTokenAsync();
-    console.log(token)
   }
 
   componentDidMount() {
