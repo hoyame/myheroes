@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Platform } from 'react-native';
 import { View as DefaultView } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -52,12 +52,18 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    try {
-      firebase.initializeApp(firebaseConfig);
-      this.registerForPushNotification();
-    } catch {
+    if (Platform.OS == "ios") {
       return null;
+    } else {
+      try {
+        firebase.initializeApp(firebaseConfig);
+        this.registerForPushNotification();
+      } catch {
+        return null;
+      }
     }
+
+
   }
 
   public render() {
