@@ -1,6 +1,6 @@
 import { Constants } from "expo";
 import React, { Component } from "react";
-import { Platform, View, Text, Dimensions } from "react-native";
+import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import MapView, { Marker } from "react-native-maps";
@@ -27,6 +27,7 @@ export default class MapComponent extends Component<{height: number; width: numb
     ];
 
     state = {
+      state: false,
       location: null,
       latitude: 0,
       longitude: 0,
@@ -48,16 +49,20 @@ export default class MapComponent extends Component<{height: number; width: numb
         this.setState({ location });
         this.setState({ latitude });
         this.setState({ longitude });
+        this.setState({ state: true })
       } catch {
         return null;
       }
     };
   
+    componentDidMount() {
+      this._getLocationAsync();
+    }
+
     render() {
         //const screenWidth = Math.round(Dimensions.get('window').width);
         //const screenHeight = Math.round(Dimensions.get('window').height);
 
-        this._getLocationAsync();
         let text = 'Waiting..';
         let latitudeS = 0;
         let longitudeS = 0;
@@ -68,6 +73,19 @@ export default class MapComponent extends Component<{height: number; width: numb
           text = JSON.stringify(this.state.location);
           latitudeS = parseFloat(JSON.stringify(this.state.latitude).replace(/,/g, ''));
           longitudeS = parseFloat(JSON.stringify(this.state.longitude).replace(/,/g, ''));
+        }
+
+        if (this.state.state == false) {
+          return (
+            <View style={{
+              display: "flex",
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
+              <ActivityIndicator size="large" color="#6d9bff" />
+            </View> 
+          )
         }
       
         return (

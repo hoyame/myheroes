@@ -73,8 +73,29 @@ const AlertPageScreen = ({ navigation }) => {
                     borderRadius: 8,
                     display: "flex",
                     flexDirection: 'row',
-                    backgroundColor: "#d80000"
-                }}></View>
+                    backgroundColor: '#e1e1e1',
+                }}>
+                    
+                </View>
+
+                <View style={{
+                    marginTop: 15
+                }}>
+                    <Text style={{
+                        fontSize: 20,
+                        marginBottom: 10
+                    }}>
+                        Etoiles: 
+                    </Text>
+
+                    <Text style={{
+                        color: "#262626",
+                        fontSize: 15,
+                    }}>
+                        Je me fais suivre par une voiture, depuis 1h, 
+                        ils ont armée et je suis dans la campagne.
+                    </Text>
+                </View>
 
                 <View style={{
                     marginTop: 15

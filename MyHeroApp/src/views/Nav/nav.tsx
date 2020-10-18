@@ -97,7 +97,7 @@ const NavScreen = ({ navigation }) => {
                 <View style={{
                     marginTop: 50
                 }}>
-                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Account')} title="Compte" description="Mon Compte" />   
+                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Connexion')} title="Compte" description="Mon Compte" />   
                 </View>
             </View>
         </View>
