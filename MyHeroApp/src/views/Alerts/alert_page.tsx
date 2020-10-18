@@ -2,9 +2,12 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 
 const AlertPageScreen = ({ navigation }) => {
+    const screenWidth = Math.round(Dimensions.get('window').width - 70);
+
     const AlertInformationProps = () => {
         return (
             <View style={{
@@ -66,39 +69,21 @@ const AlertPageScreen = ({ navigation }) => {
                     marginBottom: 20
                 }}>ID de l'alerte: 1541161</Text>
 
-                <AlertInformationProps />
-
                 <View style={{
-                    height: 60,
-                    borderRadius: 8,
-                    display: "flex",
-                    flexDirection: 'row',
-                    backgroundColor: '#e1e1e1',
+                    marginBottom: 10,
                 }}>
-                    
+                    <AlertInformationProps />
                 </View>
 
                 <View style={{
-                    marginTop: 15
+                    marginBottom: 10,
                 }}>
-                    <Text style={{
-                        fontSize: 20,
-                        marginBottom: 10
-                    }}>
-                        Etoiles: 
-                    </Text>
-
-                    <Text style={{
-                        color: "#262626",
-                        fontSize: 15,
-                    }}>
-                        Je me fais suivre par une voiture, depuis 1h, 
-                        ils ont armée et je suis dans la campagne.
-                    </Text>
+                    <AccountStats />
                 </View>
 
                 <View style={{
-                    marginTop: 15
+                    marginTop: 15,
+                    marginBottom: 20
                 }}>
                     <Text style={{
                         fontSize: 20,
@@ -115,6 +100,21 @@ const AlertPageScreen = ({ navigation }) => {
                         ils ont armée et je suis dans la campagne.
                     </Text>
                 </View>
+
+                <TouchableOpacity>
+                    <View style={{
+                        height: 60, 
+                        width: screenWidth,
+                        borderRadius: 7.5,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "#e1e1e1"
+                    }}>
+                        <Text style={{
+                            fontSize: 25
+                        }}>Prendre l'alerte</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         </>
     );
