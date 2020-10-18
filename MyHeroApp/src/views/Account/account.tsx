@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
+import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
@@ -50,51 +51,8 @@ const AccountScreen = ({ navigation }) => {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="Pseudo"
-                        onChangeText={text => setState({...state, name: text})}
-                        value={state.name}
-                    />
 
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="E-Mail"
-                        onChangeText={text => setState({...state, mail: text})}
-                        value={state.mail}
-                    />
-
-                    
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="Mot de passe"
-                        onChangeText={text => setState({...state, password: text})}
-                        value={state.password}
-                    />
-
-                    
-                    <TextInput
-                        style={STYLES.INPUT}
-                        placeholder="Confirmer le mot de passe"
-                        onChangeText={text => setState({...state, cPassword: text})}
-                        value={state.cPassword}
-                    />
-
-                    <TouchableOpacity>
-                        <View style={{
-                            height: 60, 
-                            width: screenWidth,
-                            borderRadius: 7.5,
-                            marginTop: 10,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: '#e1e1e1'           
-                        }}>
-                            <Text style={{
-                                fontSize: 25
-                            }}>Sauvegarder</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <AccountStats />
                 </View>
             </View>
         </>
