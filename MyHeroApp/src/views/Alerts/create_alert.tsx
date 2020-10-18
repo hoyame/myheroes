@@ -90,11 +90,10 @@ const CreateAlertScreen = ({ navigation }) => {
                                     borderRadius: 8,
                                     padding: 10,
                                     justifyContent: "center",
-                                    backgroundColor: "#d80000"
+                                    backgroundColor: "#e1e1e1"
                                 }}>
                                     <Text style={{
                                         textAlign: "center",
-                                        color: "#fff",
                                         fontSize: 25      
                                     }}>Lancer l'alerte</Text>
                                 </View>
