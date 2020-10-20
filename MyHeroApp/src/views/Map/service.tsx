@@ -1,12 +1,108 @@
 import { Constants } from "expo";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import MapView, { Marker } from "react-native-maps";
+import { useReduxState } from "../../data/store";
+
+interface IMap {
+  height: number;
+  width: number;
+}
+
+const MapComponent = (props: IMap) => {
+  const latitude = useReduxState(state => state.location.latitude);
+  const longitude = useReduxState(state => state.location.longitude);
+  const localisation = useReduxState(state => state.location.localisation);
+  const state = useReduxState(state => state.location.state);
+
+  const service = {
+    latitude: latitude,
+    longitude: longitude,
+    localisation: localisation,
+    state: state
+  }
 
 
-export default class MapComponent extends Component<{height: number; width: number}> {
+  let AlertData = [
+    {
+      source: "hoyame",
+      coordinate: {
+        latitude: 45.684866,
+        longitude: 5.9096452,
+      },
+      description: ""
+    },
+    {
+      source: "hoyame",
+      coordinate: {
+        latitude: 45.6912912,
+        longitude: 5.9070146,
+      },
+      description: ""
+    }
+  ];
+
+  let text = 'Waiting..';
+  let latitudeS = 0;
+  let longitudeS = 0;
+
+  if (state) {
+    latitudeS = parseFloat(JSON.stringify(latitude).replace(/,/g, ''));
+    longitudeS = parseFloat(JSON.stringify(longitude).replace(/,/g, ''));
+  }
+
+  if (state == false) {
+    return (
+      <View style={{
+        display: "flex",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        <ActivityIndicator size="large" color="#6d9bff" />
+      </View> 
+    )
+  }
+
+  return (
+      <>
+        <MapView
+          showsUserLocation={true}
+          followsUserLocation={true}
+
+          style={{
+              height: props.height,
+              width: props.width,
+              borderRadius: 10
+          }}
+
+          region={{
+              latitude: latitudeS,
+              longitude: longitudeS,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+          }}
+        >
+            {AlertData.map((marker, index) => (
+              <Marker
+                key={index}
+                coordinate={marker.coordinate}
+                title={"marker.description"}
+                description={marker.description}
+              />
+            ))}
+        </MapView>
+      </>
+  );
+}
+
+export default MapComponent;
+
+/*
+
+export default class MapComponents extends Component<{height: number; width: number}> {
     AlertData = [
       {
         source: "hoyame",
@@ -46,10 +142,10 @@ export default class MapComponent extends Component<{height: number; width: numb
         let location = await Location.getCurrentPositionAsync({});
         let latitude = await (await Location.getCurrentPositionAsync({})).coords.latitude;
         let longitude = await (await Location.getCurrentPositionAsync({})).coords.longitude;
-        this.setState({ location });
-        this.setState({ latitude });
-        this.setState({ longitude });
-        this.setState({ state: true })
+        //this.setState({ location });
+        //this.setState({ latitude });
+        //this.setState({ longitude });
+        //this.setState({ state: true })
       } catch {
         return null;
       }
@@ -63,6 +159,7 @@ export default class MapComponent extends Component<{height: number; width: numb
         //const screenWidth = Math.round(Dimensions.get('window').width);
         //const screenHeight = Math.round(Dimensions.get('window').height);
 
+  
         let text = 'Waiting..';
         let latitudeS = 0;
         let longitudeS = 0;
@@ -120,3 +217,5 @@ export default class MapComponent extends Component<{height: number; width: numb
         );
     }
   }
+
+  */
