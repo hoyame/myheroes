@@ -14,16 +14,7 @@ interface IMap {
 const MapComponent = (props: IMap) => {
   const latitude = useReduxState(state => state.location.latitude);
   const longitude = useReduxState(state => state.location.longitude);
-  const localisation = useReduxState(state => state.location.localisation);
   const state = useReduxState(state => state.location.state);
-
-  const service = {
-    latitude: latitude,
-    longitude: longitude,
-    localisation: localisation,
-    state: state
-  }
-
 
   let AlertData = [
     {
@@ -49,8 +40,8 @@ const MapComponent = (props: IMap) => {
   let longitudeS = 0;
 
   if (state) {
-    latitudeS = parseFloat(JSON.stringify(latitude).replace(/,/g, ''));
-    longitudeS = parseFloat(JSON.stringify(longitude).replace(/,/g, ''));
+    latitudeS = latitude;
+    longitudeS = longitude;
   }
 
   if (state == false) {
