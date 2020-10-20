@@ -1,3 +1,4 @@
+/*
 import { Constants } from "expo";
 import React, { Component } from "react";
 import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
@@ -120,3 +121,4 @@ export default class MapComponent extends Component<{height: number; width: numb
         );
     }
   }
+*/
