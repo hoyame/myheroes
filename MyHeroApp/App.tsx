@@ -1,134 +1,42 @@
-import React from 'react';
-import { StyleSheet, View, Text, Dimensions, Platform } from 'react-native';
-import { View as DefaultView } from 'react-native';
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Notifications } from 'expo';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
-import * as firebase from 'firebase';
-import { Provider, useDispatch } from 'react-redux';
-
-import HeaderComponent from './src/components/Header/header';
-import NavbarComponent from './src/components/Navbar/navbar';
-import HomeScreen from './src/views/Home/home';
-import AlertScreen from './src/views/Alerts/alerts';
-import NavScreen from './src/views/Nav/nav';
-import MapScreen from './src/views/Map/map';
-import AccountScreen from './src/views/Account/account';
-import ConnexionScreen from './src/views/Connection/connexion';
-import InscriptionScreen from './src/views/Inscription/inscription';
-import AlertPageScreen from './src/views/Alerts/alert_page';
-import CreateAlertScreen from './src/views/Alerts/create_alert';
+import React, { useEffect } from 'react';
+import { Platform, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
 import store from './src/data/store';
-import { setLocalisation } from './src/data/actions/localisation';
+import Controller from './Controller';
+import firebase from 'firebase';
+import { MyHeroService } from './src/Service';
 
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-});
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCH29QA_5aTnTKjEZguPNjtQXfwmwxrbFU",
-  //authDomain: "project-id.firebaseapp.com",
-  databaseURL: "https://myhero-291513.firebaseio.com",
-  projectId: "myhero-291513",
-  storageBucket: "myhero-291513.appspot.com",
-  messagingSenderId: "sender-id",
-  appId: "app-id",
-  measurementId: "G-measurement-id"
-};
-
-
-const updateReduxState = (latitudeS: number, longitudeS: number, localisation: boolean, state: boolean) => {
+const App = () => {
   
-}
-
-export default class App extends React.Component {
-  public async registerForPushNotification() {
-    const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-  
-    if (status !== "granted") {
-      alert("No notification permission")
-      return;
-    }
-
-    let token = await Notifications.getExpoPushTokenAsync();
-  }
-
-  public async _getLocationAsync() {
-    try {
-      let { status } = await Permissions.askAsync(Permissions.LOCATION);
-
-      if (status !== 'granted') {
-        return
-      }
-  
-      let latitude = await (await Location.getCurrentPositionAsync({})).coords.latitude;
-      let longitude = await (await Location.getCurrentPositionAsync({})).coords.longitude;
-
-      const latitudeS = parseFloat(JSON.stringify(latitude).replace(/,/g, ''));
-      const longitudeS = parseFloat(JSON.stringify(longitude).replace(/,/g, ''));
-
-      //dispatch(setLocalisation({ latitude: latitudeS, longitude: longitudeS, localisation: true, state: true }))
-      //updateReduxState(latitudeS, longitudeS, true, true)
-    } catch {
-      return null;
-    }
+  const firebaseConfig = {
+    apiKey: "AIzaSyCH29QA_5aTnTKjEZguPNjtQXfwmwxrbFU",
+    //authDomain: "project-id.firebaseapp.com",
+    databaseURL: "https://myhero-291513.firebaseio.com",
+    projectId: "myhero-291513",
+    storageBucket: "myhero-291513.appspot.com",
+    messagingSenderId: "sender-id",
+    appId: "app-id",
+    measurementId: "G-measurement-id"
   };
 
-  componentDidMount() {
+  useEffect(() => {
     if (Platform.OS == "ios") {
-      this._getLocationAsync();
-
+      return
     } else {
       try {
         firebase.initializeApp(firebaseConfig);
-        this._getLocationAsync();
-        this.registerForPushNotification();
       } catch {
-        return null;
+        return
       }
     }
-  }
+  })
 
-  public render() {
-    const screenWidth = Math.round(Dimensions.get('window').width);
-    const screenHeight = Math.round(Dimensions.get('window').height);
-    const Stack = createStackNavigator();
 
-    return (
-      <>
-        <Provider store={store}>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-              <Stack.Screen name="Alert" component={AlertScreen} />
-              <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
-              <Stack.Screen name="CreateAlertScreen" component={CreateAlertScreen} />
-              <Stack.Screen name="Map" component={MapScreen} />
-              <Stack.Screen name="Account" component={AccountScreen} />
-              <Stack.Screen name="Connexion" component={ConnexionScreen} />
-              <Stack.Screen name="Inscription" component={InscriptionScreen} />
-              <Stack.Screen name="Nav" component={NavScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Provider>
-      </>
-    );
-  }
+  return (
+    <Provider store={store}>
+      <Controller />
+    </Provider>
+  );
 }
 
-/* 
-
-<View style={styles.flex}>
-        <Text style={{
-          fontSize: 40
-        }}>Hello World</Text>
-      </View>
-
-*/
+export default App;
