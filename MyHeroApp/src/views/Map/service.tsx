@@ -5,8 +5,6 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import MapView, { Marker } from "react-native-maps";
 import { useReduxState } from "../../data/store";
-import { useDispatch } from "react-redux";
-import { setLocalisation } from "../../data/actions/localisation";
 
 interface IMap {
   height: number;
@@ -19,8 +17,6 @@ const MapComponent = (props: IMap) => {
   const localisation = useReduxState(state => state.location.localisation);
   const state = useReduxState(state => state.location.state);
 
-  const dispatch = useDispatch();
-  
   const service = {
     latitude: latitude,
     longitude: longitude,
@@ -57,9 +53,6 @@ const MapComponent = (props: IMap) => {
     longitudeS = parseFloat(JSON.stringify(longitude).replace(/,/g, ''));
   }
 
-  dispatch(setLocalisation({ latitude: 1, longitude: longitudeS, localisation: true, state: true }))
-
-  
   if (state == false) {
     return (
       <View style={{
