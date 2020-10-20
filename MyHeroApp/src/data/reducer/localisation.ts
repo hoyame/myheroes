@@ -32,8 +32,8 @@ const LocalisationReducer = (state = initialState, action: ILocalisationAction) 
 const initialState: IPosition = {
     latitude: 45.684866,
     longitude: 5.9096452,
-    state: true,
-    localisation: true
+    state: false,
+    localisation: false
 }
 
 export default LocalisationReducer;

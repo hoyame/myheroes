@@ -5,9 +5,10 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Notifications } from 'expo';
+import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import * as firebase from 'firebase';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 
 import HeaderComponent from './src/components/Header/header';
 import NavbarComponent from './src/components/Navbar/navbar';
@@ -21,6 +22,7 @@ import InscriptionScreen from './src/views/Inscription/inscription';
 import AlertPageScreen from './src/views/Alerts/alert_page';
 import CreateAlertScreen from './src/views/Alerts/create_alert';
 import store from './src/data/store';
+import { setLocalisation } from './src/data/actions/localisation';
 
 const styles = StyleSheet.create({
   flex: {
@@ -41,6 +43,11 @@ const firebaseConfig = {
   measurementId: "G-measurement-id"
 };
 
+
+const updateReduxState = (latitudeS: number, longitudeS: number, localisation: boolean, state: boolean) => {
+  
+}
+
 export default class App extends React.Component {
   public async registerForPushNotification() {
     const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
@@ -53,19 +60,40 @@ export default class App extends React.Component {
     let token = await Notifications.getExpoPushTokenAsync();
   }
 
+  public async _getLocationAsync() {
+    try {
+      let { status } = await Permissions.askAsync(Permissions.LOCATION);
+
+      if (status !== 'granted') {
+        return
+      }
+  
+      let latitude = await (await Location.getCurrentPositionAsync({})).coords.latitude;
+      let longitude = await (await Location.getCurrentPositionAsync({})).coords.longitude;
+
+      const latitudeS = parseFloat(JSON.stringify(latitude).replace(/,/g, ''));
+      const longitudeS = parseFloat(JSON.stringify(longitude).replace(/,/g, ''));
+
+      //dispatch(setLocalisation({ latitude: latitudeS, longitude: longitudeS, localisation: true, state: true }))
+      //updateReduxState(latitudeS, longitudeS, true, true)
+    } catch {
+      return null;
+    }
+  };
+
   componentDidMount() {
     if (Platform.OS == "ios") {
-      return null;
+      this._getLocationAsync();
+
     } else {
       try {
         firebase.initializeApp(firebaseConfig);
+        this._getLocationAsync();
         this.registerForPushNotification();
       } catch {
         return null;
       }
     }
-
-
   }
 
   public render() {
