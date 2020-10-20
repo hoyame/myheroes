@@ -129,7 +129,7 @@ const HomeScreen = ({ navigation }) => {
                         //backgroundColor: props.color
                     }}>
                         { props.fontAwesome && 
-                            <FontAwesomeIcon icon={props.fontAwesome} size={30} fill={props.color} />
+                            <FontAwesomeIcon icon={props.fontAwesome} size={30} style={{ color: props.color }} />
                         }
 
                     </View>
