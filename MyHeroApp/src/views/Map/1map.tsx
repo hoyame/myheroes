@@ -1,8 +1,8 @@
+/*
 import React, { useState } from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import MapView from 'react-native-maps';
 import HeaderComponent from '../../components/Header/header';
-import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import getLocationAsync from './service';
 
@@ -74,3 +74,5 @@ const MapScreen = ({ navigation }) => {
 }
 
 export default MapScreen;
+
+*/
