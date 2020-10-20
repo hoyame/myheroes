@@ -1,7 +1,6 @@
 import { Constants } from "expo";
 import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
-import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import MapView, { Marker } from "react-native-maps";
 import { useReduxState } from "../../data/store";
