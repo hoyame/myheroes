@@ -21,10 +21,13 @@ const App = () => {
 
   useEffect(() => {
     if (Platform.OS == "ios") {
+      MyHeroService.getLocalisation();
+      console.log("longitudeS");
       return
     } else {
       try {
         firebase.initializeApp(firebaseConfig);
+        MyHeroService.getLocalisation();
       } catch {
         return
       }

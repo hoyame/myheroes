@@ -53,15 +53,21 @@ const Controller = () => {
   const dispatch = useDispatch();
 
   let tokenNotifAndroid;
-  let localisationData;
+  let localisationData = false;
+  
+  const zboub = () => {
+      return true;
+  }
 
   useEffect(() => {
     tokenNotifAndroid = MyHeroService.getNotificationToken();
-    localisationData = MyHeroService.getLocalisation();
 
-    if (localisationData.latitude !== undefined && localisationData.longitude !== undefined) {
-        dispatch(setLocalisation({ latitude: localisationData.latitude, longitude: localisationData.longitude, localisation: true, state: true }))
-    }
+    setTimeout(() => {
+        if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
+            dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
+        }
+    }, 5000)
+    
   });
 
   return (
@@ -81,7 +87,6 @@ const Controller = () => {
       </NavigationContainer>
     </>
   );
-  
 }
 
 export default Controller;
