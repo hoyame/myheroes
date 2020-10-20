@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as firebase from 'firebase';
+import { Provider } from 'react-redux';
 
 import HeaderComponent from './src/components/Header/header';
 import NavbarComponent from './src/components/Navbar/navbar';
@@ -19,6 +20,7 @@ import ConnexionScreen from './src/views/Connection/connexion';
 import InscriptionScreen from './src/views/Inscription/inscription';
 import AlertPageScreen from './src/views/Alerts/alert_page';
 import CreateAlertScreen from './src/views/Alerts/create_alert';
+import store from './src/data/store';
 
 const styles = StyleSheet.create({
   flex: {
@@ -73,20 +75,21 @@ export default class App extends React.Component {
 
     return (
       <>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-            <Stack.Screen name="Alert" component={AlertScreen} />
-            <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
-            <Stack.Screen name="CreateAlertScreen" component={CreateAlertScreen} />
-            <Stack.Screen name="Map" component={MapScreen} />
-            <Stack.Screen name="Account" component={AccountScreen} />
-            <Stack.Screen name="Connexion" component={ConnexionScreen} />
-            <Stack.Screen name="Inscription" component={InscriptionScreen} />
-            <Stack.Screen name="Nav" component={NavScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-
+        <Provider store={store}>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
+              <Stack.Screen name="Alert" component={AlertScreen} />
+              <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
+              <Stack.Screen name="CreateAlertScreen" component={CreateAlertScreen} />
+              <Stack.Screen name="Map" component={MapScreen} />
+              <Stack.Screen name="Account" component={AccountScreen} />
+              <Stack.Screen name="Connexion" component={ConnexionScreen} />
+              <Stack.Screen name="Inscription" component={InscriptionScreen} />
+              <Stack.Screen name="Nav" component={NavScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </Provider>
       </>
     );
   }
