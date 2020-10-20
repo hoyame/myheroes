@@ -1,7 +1,6 @@
 import { Constants } from "expo";
 import React, { Component } from "react";
 import { Platform, View, Text, Dimensions } from "react-native";
-import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import MapView from "react-native-maps";
 import MapComponent from "./service";
