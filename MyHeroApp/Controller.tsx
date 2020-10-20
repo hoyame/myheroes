@@ -5,7 +5,6 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Notifications } from 'expo';
-import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import * as firebase from 'firebase';
 import { Provider, useDispatch } from 'react-redux';
@@ -55,10 +54,6 @@ const Controller = () => {
   let tokenNotifAndroid;
   let localisationData = false;
   
-  const zboub = () => {
-      return true;
-  }
-
   useEffect(() => {
     tokenNotifAndroid = MyHeroService.getNotificationToken();
 
@@ -67,7 +62,6 @@ const Controller = () => {
             dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
         }
     }, 5000)
-    
   });
 
   return (
