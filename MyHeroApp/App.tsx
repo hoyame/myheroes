@@ -42,4 +42,6 @@ const App = () => {
   );
 }
 
+MyHeroService.taskManager();
+
 export default App;
