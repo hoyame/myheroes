@@ -18,11 +18,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+
     "ios": {
       "infoPlist": {
-        "NSAppTransportSecurity" : {
-          "NSAllowsArbitraryLoads" : true
-        }
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
       },
       "supportsTablet": false,
       "bundleIdentifier": "com.myhero.myhero",
