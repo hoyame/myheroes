@@ -4,10 +4,8 @@ import HeaderComponent from '../../components/Header/header';
 import NavbarComponent from '../../components/Navbar/navbar';
 import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import MapComponent from '../Map/service';
 import Users from '../../User';
-import axios, { AxiosInstance } from 'axios';
 
 const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
