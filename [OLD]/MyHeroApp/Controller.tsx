@@ -61,7 +61,7 @@ const Controller = () => {
         if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
             dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
         }
-    }, 50000)
+    }, 5000)
   });
 
   return (
