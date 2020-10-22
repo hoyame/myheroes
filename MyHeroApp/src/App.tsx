@@ -8,9 +8,7 @@ import { MyHeroService } from '../o-src/Service';
 const App = () => {
 
   return (
-    <Provider store={store}>
       <Controller />
-    </Provider>
   );
 }
 
