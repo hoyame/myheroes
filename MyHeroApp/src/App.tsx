@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import { Platform, StyleSheet } from 'react-native';
-import { Provider } from 'react-redux';
-import store from '../o-src/data/store';
+import React from 'react';
+import { Platform, StyleSheet } from 'react-native';;
 import Controller from './Controller';
-import { MyHeroService } from '../o-src/Service';
 
 const App = () => {
 
