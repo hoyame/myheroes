@@ -4,11 +4,25 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import 'react-native-gesture-handler';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+      <MapView
+       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+       style={{
+        height: 400,
+        width: 250,
+       }}
+       region={{
+         latitude: 37.78825,
+         longitude: -122.4324,
+         latitudeDelta: 0.015,
+         longitudeDelta: 0.0121,
+       }}
+     >
+     </MapView>
     </View>
   );
 }
