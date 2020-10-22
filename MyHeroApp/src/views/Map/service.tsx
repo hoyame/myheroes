@@ -1,8 +1,5 @@
-import { Constants } from "expo";
 import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
-import * as Permissions from 'expo-permissions';
-import MapView, { Marker } from "react-native-maps";
 import { useReduxState } from "../../data/store";
 
 interface IMap {
@@ -58,6 +55,14 @@ const MapComponent = (props: IMap) => {
 
   return (
       <>
+        <Text>zfoizfn</Text>
+      </>
+  );
+}
+
+export default MapComponent;
+
+/*
         <MapView
           showsUserLocation={true}
           followsUserLocation={true}
@@ -84,11 +89,7 @@ const MapComponent = (props: IMap) => {
               />
             ))}
         </MapView>
-      </>
-  );
-}
-
-export default MapComponent;
+*/
 
 /*
 
