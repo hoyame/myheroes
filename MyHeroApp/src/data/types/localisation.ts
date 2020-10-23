@@ -7,5 +7,4 @@ export interface IPosition {
     longitude: number;
     localisation: boolean;
     state: boolean;
-
 }

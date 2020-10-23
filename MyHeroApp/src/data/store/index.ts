@@ -2,9 +2,10 @@ import { createStore, combineReducers } from 'redux';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 import LocalisationReducer from '../reducer/localisation';
-
+import AlertReducer from '../reducer/alerts';
 
 const reducers = combineReducers({
+    alerts: AlertReducer,
     location: LocalisationReducer,
 });
 
