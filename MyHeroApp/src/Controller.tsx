@@ -16,12 +16,24 @@ import ConnexionScreen from './views/Connection/connexion';
 import InscriptionScreen from './views/Inscription/inscription';
 import AlertPageScreen from './views/Alerts/alert_page';
 import CreateAlertScreen from './views/Alerts/create_alert';
+import { setLocalisation } from './data/actions/localisation';
+import { MyHeroService } from './Service';
+import { useDispatch } from 'react-redux';
 
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height);
   const Stack = createStackNavigator();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+        if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
+            dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
+        }
+    }, 5000)
+  });
   
   return (
     <>
