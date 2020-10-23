@@ -1,3 +1,7 @@
+import Geolocation from '@react-native-community/geolocation';
+import { PermissionsAndroid } from 'react-native';
+
+
 export abstract class MyHeroService {
     public static latitude = 0;
     public static longitude = 0;
@@ -7,32 +11,39 @@ export abstract class MyHeroService {
     }
 
     public static async getLocalisation() {
+      Geolocation.getCurrentPosition(
+        (position) => {
+            let currentLatitude = parseFloat(JSON.stringify(position.coords.latitude).replace(/,/g, ''));
+            let currentLongitude = parseFloat(JSON.stringify(position.coords.longitude).replace(/,/g, ''));
 
-      //try {
-      //  let { status } = await Permissions.askAsync(Permissions.LOCATION);
-      //
-      //  if (status !== 'granted') {
-      //    console.log("marche pô")
-      //    return
-      //  }
-      //  
-      //  let location = await Location.getCurrentPositionAsync({});
-      //  //let latitudeA = await (await Location.getCurrentPositionAsync({ enableHighAccuracy: false })).coords.latitude;
-      //  //let longitudeA = await (await Location.getCurrentPositionAsync({ enableHighAccuracy: false })).coords.longitude;
-      //
-      //  let latitudeS = parseFloat(JSON.stringify(location.coords.latitude).replace(/,/g, ''));
-      //  let longitudeS = parseFloat(JSON.stringify(location.coords.longitude).replace(/,/g, ''));
-      //
-      //  this.latitude = latitudeS;
-      //  this.longitude = longitudeS;
-      //
-      //  console.log("this.latitude");
-      //  console.log(this.latitude);
-      //  console.log(this.longitude);
-      //} catch (err) {
-      //  console.log("log", err)
-      //  console.error("log", err)
-      //}
+            this.latitude = currentLongitude;
+            this.longitude = currentLatitude;
+
+            console.log(this.longitude);
+            console.log(this.latitude);
+         }, 
+         
+         (error) => console.error(error.message), { 
+            enableHighAccuracy: false, timeout: 20000
+         }
+      );
+    }
+
+    public static async requestLocationPermission() {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+        )
+        
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log("You can use locations ")
+          this.getLocalisation();
+        } else {
+          console.log("Location permission denied")
+        }
+      } catch (err) {
+        console.warn(err)
+      }
     }
 
     public static async getNotificationToken() {
