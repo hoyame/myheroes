@@ -1,49 +1,43 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, Dimensions, Platform } from 'react-native';
+import { Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 import 'react-native-gesture-handler';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <MapView
-       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-       style={{
-        height: 400,
-        width: 250,
-       }}
-       region={{
-         latitude: 37.78825,
-         longitude: -122.4324,
-         latitudeDelta: 0.015,
-         longitudeDelta: 0.0121,
-       }}
-     >
-     </MapView>
-     <FontAwesomeIcon icon={ faCoffee } />
+import HeaderComponent from './components/Header/header';
+import NavbarComponent from './components/Navbar/navbar';
+import HomeScreen from './views/Home/home';
+import AlertScreen from './views/Alerts/alerts';
+import NavScreen from './views/Nav/nav';
+import MapScreen from './views/Map/map';
+import AccountScreen from './views/Account/account';
+import ConnexionScreen from './views/Connection/connexion';
+import InscriptionScreen from './views/Inscription/inscription';
+import AlertPageScreen from './views/Alerts/alert_page';
+import CreateAlertScreen from './views/Alerts/create_alert';
 
-    </View>
-  );
-}
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height);
   const Stack = createStackNavigator();
-
   
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
+            <Stack.Screen name="Alert" component={AlertScreen} />
+            <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
+            <Stack.Screen name="CreateAlertScreen" component={CreateAlertScreen} />
+            <Stack.Screen name="Map" component={MapScreen} />
+            <Stack.Screen name="Account" component={AccountScreen} />
+            <Stack.Screen name="Connexion" component={ConnexionScreen} />
+            <Stack.Screen name="Inscription" component={InscriptionScreen} />
+            <Stack.Screen name="Nav" component={NavScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
     </>
   );
 }
