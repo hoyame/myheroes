@@ -16,6 +16,8 @@ target 'MyHeroApp' do
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
+  pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
+
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
