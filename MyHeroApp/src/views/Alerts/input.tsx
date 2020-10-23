@@ -66,7 +66,6 @@ const InputComponent = (props: IInput) => {
                         marginBottom: -8,
                         color: "#6d9bff" 
                         }}>{props.name}</Text>
-    
                     <TextInput
                         style={{
                             fontSize: 20,

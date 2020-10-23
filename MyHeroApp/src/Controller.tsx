@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { setLocalisation } from './data/actions/localisation';
+import { MyHeroService } from './Service';
+import { useDispatch } from 'react-redux';
 
 import 'react-native-gesture-handler';
 
@@ -16,10 +19,7 @@ import ConnexionScreen from './views/Connection/connexion';
 import InscriptionScreen from './views/Inscription/inscription';
 import AlertPageScreen from './views/Alerts/alert_page';
 import CreateAlertScreen from './views/Alerts/create_alert';
-import { setLocalisation } from './data/actions/localisation';
-import { MyHeroService } from './Service';
-import { useDispatch } from 'react-redux';
-
+import { SenderAcceptAlertPage, HelperAcceptAlertPage } from './views/Alerts/accept_alert';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -48,6 +48,8 @@ const Controller = () => {
             <Stack.Screen name="Connexion" component={ConnexionScreen} />
             <Stack.Screen name="Inscription" component={InscriptionScreen} />
             <Stack.Screen name="Nav" component={NavScreen} />
+            <Stack.Screen name="SenderAcceptAlertPage" component={SenderAcceptAlertPage} />
+            <Stack.Screen name="HelperAcceptAlertPage" component={HelperAcceptAlertPage} />
           </Stack.Navigator>
         </NavigationContainer>
     </>
