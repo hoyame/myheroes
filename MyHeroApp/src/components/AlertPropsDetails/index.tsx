@@ -32,7 +32,7 @@ const AlertInformationProps = (props: IAlertInformation) => {
 
     return (
         <View style={{
-            height: 100,
+            height: 90,
             marginBottom: 10,
             borderRadius: 8,
             display: "flex",
@@ -40,8 +40,8 @@ const AlertInformationProps = (props: IAlertInformation) => {
             backgroundColor: color
         }}>
             <View style={{
-                height: 100,
-                width: 100,
+                height: 90,
+                width: 90,
                 borderRadius: 100,
                 opacity: 0.40,
                 justifyContent: "center",
@@ -56,11 +56,6 @@ const AlertInformationProps = (props: IAlertInformation) => {
                 <Text style={{
                     fontSize: 25
                 }}>{title}</Text>
-
-                <Text style={{
-                    color: "#262626",
-                    fontSize: 15
-                }}>A {props.distance}km sur Chambery</Text>
 
                 <Text style={{
                     color: "#262626",
