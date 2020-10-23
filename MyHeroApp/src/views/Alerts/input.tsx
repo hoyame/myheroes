@@ -60,7 +60,12 @@ const InputComponent = (props: IInput) => {
                     marginTop: 10
                     //justifyContent: "center",
                 }}>
-                    <Text style={{ color: "#6d9bff" }}>{props.name}</Text>
+                    <Text style={{ 
+                        marginLeft: 5,
+                        marginTop: 3,
+                        marginBottom: -8,
+                        color: "#6d9bff" 
+                        }}>{props.name}</Text>
     
                     <TextInput
                         style={{
