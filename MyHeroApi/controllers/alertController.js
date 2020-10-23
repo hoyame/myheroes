@@ -3,6 +3,7 @@ let AlertsData = []
 module.exports.addAlert = (req, res, next) => {
     const model = {
         id: AlertsData.length + 1,
+        level: req.body.level,
         source: req.body.source,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
