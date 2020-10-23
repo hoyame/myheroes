@@ -3,10 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react"
 import { StyleSheet, View, Text, Dimensions, TextInput } from "react-native"
 
-
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
-
-
 
 
 interface IInput {
@@ -17,7 +14,6 @@ interface IInput {
     icon: any;
     height?: number;
 }
-
 
 const InputComponent = (props: IInput) => {
     const height = props.height || 65
@@ -59,9 +55,14 @@ const InputComponent = (props: IInput) => {
                 </View>
 
                 <View style={{
-                    justifyContent: "center",
+                    //justifyContent: "center",
                 }}>
-                    <Text style={{ color: "#6d9bff" }}>{props.name}</Text>
+                    <Text style={{ 
+                        color: "#6d9bff",
+                        marginLeft: 5,
+                        marginTop: 3,
+                        marginBottom: -8
+                    }}>{props.name}</Text>
     
                     <TextInput
                         style={{
