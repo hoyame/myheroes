@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { useReduxState } from "../../data/store";
 
 interface IMap {
@@ -12,6 +12,7 @@ const MapComponent = (props: IMap) => {
   const latitude = useReduxState(state => state.location.latitude);
   const longitude = useReduxState(state => state.location.longitude);
   const state = useReduxState(state => state.location.state);
+ 
 
   let AlertData = [
     {
@@ -59,6 +60,7 @@ const MapComponent = (props: IMap) => {
         <MapView
           showsUserLocation={true}
           followsUserLocation={true}
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
 
           style={{
               height: props.height,
