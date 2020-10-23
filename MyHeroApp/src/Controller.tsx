@@ -20,6 +20,8 @@ import InscriptionScreen from './views/Inscription/inscription';
 import AlertPageScreen from './views/Alerts/alert_page';
 import CreateAlertScreen from './views/Alerts/create_alert';
 import { SenderAcceptAlertPage, HelperAcceptAlertPage } from './views/Alerts/accept_alert';
+import GDPSPage from './views/GDPS/index';
+import NDUPage from './views/NDU/index'
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -50,6 +52,8 @@ const Controller = () => {
             <Stack.Screen name="Nav" component={NavScreen} />
             <Stack.Screen name="SenderAcceptAlertPage" component={SenderAcceptAlertPage} />
             <Stack.Screen name="HelperAcceptAlertPage" component={HelperAcceptAlertPage} />
+            <Stack.Screen name="NDU" component={NDUPage} />
+            <Stack.Screen name="GDPS" component={GDPSPage} />
           </Stack.Navigator>
         </NavigationContainer>
     </>
