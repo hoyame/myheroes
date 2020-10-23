@@ -17,7 +17,7 @@ const HeaderComponent = (props: IHeader) => {
     
     return (
         <View style={{
-            marginTop: 20,
+            //marginTop: 20,
             padding: 35,
         }}>
             <View style={{
