@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Dimensions, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 import 'react-native-gesture-handler';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 function HomeScreen() {
   return (
@@ -23,6 +25,8 @@ function HomeScreen() {
        }}
      >
      </MapView>
+     <FontAwesomeIcon icon={ faCoffee } />
+
     </View>
   );
 }
