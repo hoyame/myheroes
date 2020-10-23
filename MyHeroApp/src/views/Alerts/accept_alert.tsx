@@ -112,8 +112,10 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     <AlertInformationProps level={2} sender="Hoyame" avatar="" distance="510" />
                 </View>
 
+                
+
                 <View style={{
-                    height: 220,
+                    height: 180,
                     borderRadius: 10,
                     marginBottom: 10,
                     width: screenWidth,
@@ -143,7 +145,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         <Text style={{
                             textAlign: "center",
                             fontSize: 22      
-                        }}>Lancer l'iteneraire</Text>
+                        }}>Lancer l'itineraire</Text>
                     </View>
                 </TouchableOpacity>
             </View>
