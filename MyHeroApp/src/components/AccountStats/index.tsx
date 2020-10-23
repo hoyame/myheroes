@@ -107,11 +107,11 @@ const AccountStats = (props: IAccount) => {
     return (
         <>
             <View style={{
-                padding: 20,
+                padding: 15,
                 display: "flex",
                 flexDirection: "row",
                 width: screenWidth,
-                height: 120,
+                height: 110,
                 borderRadius: 10,
                 backgroundColor: "#e1e1e1"
             }}>
