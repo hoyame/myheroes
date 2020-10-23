@@ -6,25 +6,23 @@ export abstract class MyHeroService {
     public static latitude = 0;
     public static longitude = 0;
 
-    public static taskManager() {
-      //TaskManager.defineTask("getLocalisation", this.getLocalisation)
-    }
-
     public static async getLocalisation() {
       Geolocation.getCurrentPosition(
         (position) => {
             let currentLatitude = parseFloat(JSON.stringify(position.coords.latitude).replace(/,/g, ''));
             let currentLongitude = parseFloat(JSON.stringify(position.coords.longitude).replace(/,/g, ''));
 
-            this.latitude = currentLongitude;
-            this.longitude = currentLatitude;
+            this.latitude = currentLatitude;
+            this.longitude = currentLongitude;
 
             console.log(this.longitude);
             console.log(this.latitude);
          }, 
          
-         (error) => console.error(error.message), { 
-            enableHighAccuracy: false, timeout: 20000
+         (error) => console.error(error.message), 
+         
+         { 
+            
          }
       );
     }
@@ -47,16 +45,7 @@ export abstract class MyHeroService {
     }
 
     public static async getNotificationToken() {
-      //const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      //
-      //if (status !== "granted") {
-      //  alert("No notification permission")
-      //  return;
-      //}
-      //
-      //let token = await Notifications.getExpoPushTokenAsync();
-      //
-      //return token;
+
     }
 
 }
