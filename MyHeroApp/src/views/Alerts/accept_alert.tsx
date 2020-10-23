@@ -40,7 +40,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 paddingLeft: 35,
                 paddingRight: 35,
             }}>
-                <AccountStats />
+                <AccountStats name="hoyame" xp="5132" rate={3} img="https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png" />
                 
                 <View style={styles.checkboxContainer}>
                     <CheckBox
@@ -103,7 +103,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 <View style={{
                     marginBottom: 10
                 }}>
-                    <AccountStats />
+                    <AccountStats name="jibril" xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
                 </View>
 
                 <View style={{

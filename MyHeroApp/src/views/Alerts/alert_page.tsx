@@ -34,7 +34,7 @@ const AlertPageScreen = ({ navigation }) => {
                 <View style={{
                     marginBottom: 10,
                 }}>
-                    <AccountStats />
+                    <AccountStats name="jibril" xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
                 </View>
                 
                 <View style={{

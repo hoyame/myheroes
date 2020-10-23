@@ -52,7 +52,7 @@ const AccountScreen = ({ navigation }) => {
                     flexDirection: "column"
                 }}>
 
-                    <AccountStats />
+                    <AccountStats name="hoyame" xp="5132" rate={3} img="https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png" />
                 </View>
             </View>
         </>

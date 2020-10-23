@@ -2,10 +2,16 @@ import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
 
+interface IAccount {
+    name: string;
+    xp: string;
+    rate: number;
+    img: string
+}
 
-const AccountStats = () => {
+const AccountStats = (props: IAccount) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
     interface IStars {
@@ -122,15 +128,22 @@ const AccountStats = () => {
                         
                         borderRadius: 50,
                         borderColor: "#6d9bff",
-                        borderWidth: 5,
-
-                        justifyContent: "center"
+                        borderWidth: 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }}>
-                        <Text style={{
-                            color: "#6d9bff",
-                            textAlign: "center",
-                            fontSize: 38
-                        }}>20</Text>
+                        <Image
+                            style={{
+                                height: 73,
+                                width: 73,
+                                borderRadius: 50,
+                            }}
+                        
+                            source={{
+                                uri: props.img,
+                            }}
+                        />
                     </View>
                 </View>
 
@@ -139,18 +152,18 @@ const AccountStats = () => {
                         //color: "#6d9bff",
                         marginBottom: 2,
                         fontSize: 20
-                    }}>Hoyame</Text>
+                    }}>{props.name}</Text>
 
                     <Text style={{
                         color: "#778899",
                         marginBottom: 5,
                         fontSize: 12
                     }}>
-                        1651651 XP
+                        {props.xp} XP
                     </Text>
 
                     <View>
-                        {ReturnStars({rate: 1}) }
+                        {ReturnStars({rate: props.rate}) }
                     </View>
                 </View>
             </View>
