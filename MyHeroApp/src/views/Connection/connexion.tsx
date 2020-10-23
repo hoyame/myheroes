@@ -49,7 +49,7 @@ const ConnexionScreen = ({ navigation }) => {
                 
                 <Text style={{
                     marginBottom: 20
-                }}>Se connecter son compte</Text>
+                }}>Se connecter a son compte</Text>
 
                 <View style={{
                     marginTop: 15,
