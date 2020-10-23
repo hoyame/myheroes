@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, ActivityIndicator } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import { useReduxState } from "../../data/store";
 
 interface IMap {
@@ -55,7 +56,32 @@ const MapComponent = (props: IMap) => {
 
   return (
       <>
-        <Text>zfoizfn</Text>
+        <MapView
+          showsUserLocation={true}
+          followsUserLocation={true}
+
+          style={{
+              height: props.height,
+              width: props.width,
+              borderRadius: 10
+          }}
+
+          region={{
+              latitude: latitudeS,
+              longitude: longitudeS,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+          }}
+        >
+            {AlertData.map((marker, index) => (
+              <Marker
+                key={index}
+                coordinate={marker.coordinate}
+                title={"marker.description"}
+                description={marker.description}
+              />
+            ))}
+        </MapView>
       </>
   );
 }
