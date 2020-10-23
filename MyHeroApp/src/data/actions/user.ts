@@ -1,0 +1,202 @@
+import { IAlert } from '../types/alerts';
+import { 
+    SET_NAME, 
+    SET_RATE, 
+    SET_IMAGE, 
+    SET_XP, 
+    SET_STATUS_SEND, 
+    SET_STATUS_HELP, 
+    SET_SEND_ALERT_DATA,
+    SET_HELP_ALERT_DATA, 
+    SET_CACHE_CREATE_ALERT_LEVEL, 
+    SET_CACHE_SHOW_ALERT,
+    IUser, 
+    IUserSend,
+    IUserHelp
+} from '../types/user';
+
+////////////////////////////////////////////////////
+
+export interface ISetName {
+    type: typeof SET_NAME;
+    payload: {
+        name: string;
+    }
+}
+
+export const setName = (data: string) => ({
+    type: SET_NAME,
+    payload: {
+        name: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetRate {
+    type: typeof SET_RATE;
+    payload: {
+        rate: number;
+    }
+}
+
+export const setRate = (data: number) => ({
+    type: SET_RATE,
+    payload: {
+        rate: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetImage {
+    type: typeof SET_IMAGE;
+    payload: {
+        image: string;
+    }
+}
+
+export const setImage = (data: string) => ({
+    type: SET_IMAGE,
+    payload: {
+        image: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetXp {
+    type: typeof SET_XP;
+    payload: {
+        xp: number;
+    }
+}
+
+export const setXp = (data: number) => ({
+    type: SET_XP,
+    payload: {
+        xp: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+/* 
+
+export interface ISetStatusSend {
+    type: typeof SET_STATUS_SEND;
+    payload: {
+        statusSend: boolean
+    }
+}
+
+export const setStatusSend = (data: boolean) => ({
+    type: SET_STATUS_SEND,
+    payload: {
+        statusSend: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetStatusHelp {
+    type: typeof SET_STATUS_HELP;
+    payload: {
+        statusHelp: boolean
+    }
+}
+
+export const setStatusHelp = (data: boolean) => ({
+    type: SET_STATUS_HELP,
+    payload: {
+        statusHelp: data
+    }
+})
+
+*/
+
+////////////////////////////////////////////////////
+
+export interface ISetSendAlertData {
+    type: typeof SET_SEND_ALERT_DATA;
+    payload: {
+        send: IUserSend
+    }
+}
+
+export const setSendAlertData = (data: IUserSend) => ({
+    type: SET_SEND_ALERT_DATA,
+    payload: {
+        send: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetHelpAlertData {
+    type: typeof SET_HELP_ALERT_DATA;
+    payload: {
+        help: IUserHelp
+    }
+}
+
+export const setHelpAlertData = (data: IUserHelp) => ({
+    type: SET_HELP_ALERT_DATA,
+    payload: {
+        help: data
+    }
+})
+
+
+////////////////////////////////////////////////////
+
+export interface ISetCacheCreateAlertLevel {
+    type: typeof SET_CACHE_CREATE_ALERT_LEVEL;
+    payload: {
+        cache: {
+            createAlertLevel: number
+        }
+    }
+}
+
+export const setCacheCreateAlertLevel = (data: number) => ({
+    type: SET_CACHE_CREATE_ALERT_LEVEL,
+    payload: {
+        cache: {
+            createAlertLevel: data
+        }
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetCacheShowAlert {
+    type: typeof SET_CACHE_SHOW_ALERT;
+    payload: {
+        cache: {
+            showAlert: IAlert
+        }
+    }
+}
+
+export const setCacheShowAlert = (data: IAlert) => ({
+    type: SET_CACHE_SHOW_ALERT,
+    payload: {
+        cache: {
+            showAlert: data
+        }
+    }
+})
+
+export type IUserActions = 
+    ISetName | 
+    ISetRate | 
+    ISetImage |
+    ISetXp |
+    ISetStatusSend |
+    ISetStatusHelp |
+    ISetSendAlertData |
+    ISetHelpAlertData |
+    ISetCacheCreateAlertLevel |
+    ISetCacheShowAlert
+;
