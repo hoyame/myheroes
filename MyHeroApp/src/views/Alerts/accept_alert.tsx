@@ -112,10 +112,30 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     <AlertInformationProps level={2} sender="Hoyame" avatar="" distance="510" />
                 </View>
 
-                
+                <View style={{
+                    marginBottom: 0
+                }}>
+                    <Text style={{
+                        fontSize: 20,
+                        color: "#000000",
+                        marginBottom: 0
+                    }}>
+                        Description: 
+                    </Text>
+
+                    <Text style={{
+                        color: "#262626",
+                        fontSize: 15,
+                        marginBottom: 10
+                    }}>
+                        Je me fais suivre par une voiture, depuis 1h, 
+                        ils ont armée et je suis dans la campagne.
+                    </Text>
+                </View>
+
 
                 <View style={{
-                    height: 180,
+                    height: 160,
                     borderRadius: 10,
                     marginBottom: 10,
                     width: screenWidth,
