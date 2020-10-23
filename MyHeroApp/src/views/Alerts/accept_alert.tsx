@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity
 import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 import CheckBox from '@react-native-community/checkbox';
+import AlertInformationProps from '../../components/AlertPropsDetails';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -95,6 +96,57 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
         <>
             <HeaderComponent navigation={navigation} />
 
+            <View style={{
+                paddingLeft: 35,
+                paddingRight: 35,
+            }}>
+                <View style={{
+                    marginBottom: 10
+                }}>
+                    <AccountStats />
+                </View>
+
+                <View style={{
+                    //marginBottom: 10
+                }}>
+                    <AlertInformationProps level={2} sender="Hoyame" avatar="" distance="510" />
+                </View>
+
+                <View style={{
+                    height: 220,
+                    borderRadius: 10,
+                    marginBottom: 10,
+                    width: screenWidth,
+                    backgroundColor: '#e1e1e1',
+                    display: "flex",
+                    justifyContent: "center"
+                }}>
+                    <Text style={{
+                        color: "#6d9bff",
+                        fontSize: 30,
+                        marginBottom: 10,
+                        textAlign: "center"
+                    }}>Aperçu Camera</Text>
+
+                    <ActivityIndicator size="large" color="#6d9bff" />
+                </View>
+
+                <TouchableOpacity>
+                    <View style={{
+                        height: 60,
+                        marginBottom: 15,
+                        borderRadius: 8,
+                        padding: 10,
+                        justifyContent: "center",
+                        backgroundColor: "#e1e1e1"
+                    }}>
+                        <Text style={{
+                            textAlign: "center",
+                            fontSize: 22      
+                        }}>Lancer l'iteneraire</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
         </>
     );
 }
