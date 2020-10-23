@@ -163,8 +163,8 @@ const HomeScreen = ({ navigation }) => {
                     <AlertProps title="Faible" color="#ffd100" colorComponent="#860258" description="(Perdu, nuisance, autre...)" />
                 </View>
 
-                <AlertComponent fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
-                <AlertComponent fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
+                <AlertComponent  fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
+                <AlertComponent  fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
                 
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
                     <View style={{
