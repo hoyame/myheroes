@@ -45,8 +45,7 @@ export interface IUser {
 
     help: IUserHelp,
 
-    cache: {
-        createAlertLevel: number;
-        showAlert: IAlert;
-    }
+    createAlertLevel: number;
+    showAlert: IAlert;
+    
 }
