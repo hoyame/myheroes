@@ -2,20 +2,30 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import { useDispatch } from 'react-redux';
 import HeaderComponent from '../../components/Header/header';
+import { setCacheShowAlert } from '../../data/actions/user';
+import { useReduxState } from '../../data/store';
 
 const AlertScreen = ({ navigation }) => {
-    interface IAlertProps {
-        alertLevel: number;
-        distance: string;
-        city: string;
+    const screenWidth = Math.round(Dimensions.get('window').width - 70);
+    const alerts = useReduxState(state => state.alerts.list);
+
+    interface IAlert {
+        id?: number;
+        level: number;
+        source: string;
+        latitude: number;
+        longitude: number;
+        description: string;
+        onClick: any;
     }
 
-    const AlertProps = (props: IAlertProps) => {
+    const AlertProps: React.FC<IAlert> = (props: IAlert) => {
         let color = "#ffd100";
         let levelName = "Faible";
 
-        switch (props.alertLevel) {
+        switch (props.level) {
             case 1: 
                 color = "#ffd100";
                 levelName = "Faible";
@@ -32,11 +42,11 @@ const AlertScreen = ({ navigation }) => {
 
         return (
             <TouchableOpacity
-                onPress={() => navigation.navigate('AlertPageScreen')}
+                onPress={props.onClick}
             >
                 <View style={{
                     height: 70,
-                    //width: 320,
+                    width: screenWidth - 8,
                     backgroundColor: '#e1e1e1',
                     borderRadius: 7.5,
                     display: 'flex',
@@ -72,11 +82,22 @@ const AlertScreen = ({ navigation }) => {
                             marginTop: 5,
                             marginLeft: 10,
                             color: "#94958B"
-                        }}>A {props.distance}km sur {props.city}</Text>
+                        }}>Par {props.source}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
         );
+    }
+
+    const dispatch = useDispatch();
+
+    const returnAlerts = (nav: any) => {
+        return alerts.map((v, k) => {
+            return <AlertProps key={k} {...v} onClick={() => {
+                dispatch(setCacheShowAlert(v))
+                nav.navigate('AlertPageScreen')
+            }} />
+        })
     }
     
     return (
@@ -94,16 +115,7 @@ const AlertScreen = ({ navigation }) => {
                 }}>Alertes</Text>
 
                 <ScrollView>
-                    <AlertProps alertLevel={3} distance="20" city="Chambery" />
-                    <AlertProps alertLevel={2} distance="0.25" city="Aix-Les-Bains" />
-                    <AlertProps alertLevel={2} distance="0.10" city="Gresy-sur-aix" />
-                    <AlertProps alertLevel={3} distance="80" city="Lyon" />
-                    <AlertProps alertLevel={1} distance="0.05" city="Drumettaz-Clarafond" />
-                    <AlertProps alertLevel={3} distance="20" city="Chambery" />
-                    <AlertProps alertLevel={2} distance="0.25" city="Aix-Les-Bains" />
-                    <AlertProps alertLevel={2} distance="0.10" city="Gresy-sur-aix" />
-                    <AlertProps alertLevel={3} distance="80" city="Lyon" />
-                    <AlertProps alertLevel={1} distance="0.05" city="Drumettaz-Clarafond" />
+                    {returnAlerts(navigation)}
                 </ScrollView>
             </View>
         </>
