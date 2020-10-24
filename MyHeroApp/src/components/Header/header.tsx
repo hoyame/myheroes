@@ -220,7 +220,7 @@ const HeaderComponent = (props: IHeader) => {
 
     return (
         <View style={ 
-            Math.round(Dimensions.get('window').width - 70) < 2650 ? {
+            Dimensions.get('window').height > 695 ? {
                 marginTop: 50,
                 padding: 35,
             } : {
