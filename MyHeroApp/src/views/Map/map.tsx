@@ -9,7 +9,7 @@ const MapScreen = ({ navigation }) => {
 
   return (
     <View>
-      <MapComponent height={screenHeight} width={screenWidth} />
+      <MapComponent nav={navigation} height={screenHeight} width={screenWidth} />
       <HeaderComponent navigation={navigation} />
     </View>
   );
