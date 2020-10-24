@@ -8,7 +8,7 @@ export interface IAlertState {
     list: IAlert[];
 }
 
-const AlertReducer = (state = initialState, action: IAlertsAction) => {
+const AlertReducer = (state = initialState, action: IAlertsAction): IAlertState => {
     switch (action.type) {
         case ADD_ALERT: 
             return { 
@@ -17,12 +17,7 @@ const AlertReducer = (state = initialState, action: IAlertsAction) => {
             };
         case GET_ALERTS: 
             return state;
-        case UPDATE_ALERTS: 
-            return {
-                ...state, 
-                list: action.payload
-            }
-        default: return null;
+        default: return state;
     }
 }
 
