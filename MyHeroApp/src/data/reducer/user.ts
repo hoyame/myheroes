@@ -64,7 +64,7 @@ const UserReducer = (state = initialState, action: IUserActions): IUser => {
 }
 
 const initialState: IUser = {
-    name: 'd',
+    name: '',
     rate: 0,
     image: '',
     xp: 0,
