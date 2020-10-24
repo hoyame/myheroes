@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
 import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
+import { useReduxState } from '../../data/store';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -24,12 +25,16 @@ const STYLES = StyleSheet.create({
   
 
 const AccountScreen = ({ navigation }) => {
+    const name = useReduxState(state => state.user.name);
+    const rate = useReduxState(state => state.user.rate);
+    const img = useReduxState(state => state.user.image);
+    const xp = useReduxState(state => state.user.xp);
+    
     const [state, setState] = useState({
         name: '',
         mail: '',
         password: '',
         cPassword: '',
-
     })
 
     return (
@@ -52,7 +57,7 @@ const AccountScreen = ({ navigation }) => {
                     flexDirection: "column"
                 }}>
 
-                    <AccountStats name="hoyame" xp="5132" rate={3} img="https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png" />
+                    <AccountStats name={name} xp={xp} rate={rate} img={img} />
                 </View>
             </View>
         </>
