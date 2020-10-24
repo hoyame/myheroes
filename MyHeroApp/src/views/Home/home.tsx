@@ -14,9 +14,10 @@ import { setCacheCreateAlertLevel, setName } from '../../data/actions/user';
 const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const screenHeight = Math.round(Dimensions.get('window').height / 4);
-
-    const statusHelp = useReduxState(state => state.user.statusHelp);
-    const statusSend = useReduxState(state => state.user.statusSend);
+    
+    const alertDataHelp = useReduxState(state => state.user.showAlert);
+    const statusHelp = useReduxState(state => state.user.help.status);
+    const statusSend = useReduxState(state => state.user.send.status);
 
     interface IAlertProps {
         title?: string;
@@ -250,7 +251,7 @@ const HomeScreen = ({ navigation }) => {
                                         <Text style={{
                                             color: 'white',
                                             marginLeft: 5
-                                        }}>Jibril</Text>
+                                        }}>{alertDataHelp.source}</Text>
                                     </View>
 
                                     <View style={{
@@ -265,7 +266,7 @@ const HomeScreen = ({ navigation }) => {
                                         <Text style={{
                                             color: 'white',
                                             marginLeft: 5
-                                        }}>Suivi par une personne en voiture voiture</Text>
+                                        }}>{alertDataHelp.description}</Text>
                                     </View>
                                 </View>
                             </View>  
