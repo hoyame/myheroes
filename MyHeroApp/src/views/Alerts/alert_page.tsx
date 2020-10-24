@@ -5,12 +5,12 @@ import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, Vie
 import AccountStats from '../../components/AccountStats';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import HeaderComponent from '../../components/Header/header';
+import { useReduxState } from '../../data/store';
 
 const AlertPageScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
-
+    const alertData = useReduxState(state => state.user.showAlert);
     
-
     return (
         <>
             <HeaderComponent navigation={navigation} />
@@ -28,19 +28,18 @@ const AlertPageScreen = ({ navigation }) => {
                 <Text style={{
                     fontSize: 15,
                     marginBottom: 20
-                }}>ID de l'alerte: 1541161</Text>
-
+                }}>ID de l'alerte: {alertData.id}</Text>
 
                 <View style={{
                     marginBottom: 10,
                 }}>
-                    <AccountStats name="jibril" xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
+                    <AccountStats name={alertData.source} xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
                 </View>
                 
                 <View style={{
                     marginBottom: 10,
                 }}>
-                    <AlertInformationProps level={1} sender="Hoyame" avatar="" distance="510" />
+                    <AlertInformationProps level={alertData.level} sender={alertData.source} avatar="" distance="510" />
                 </View>
 
                 <View style={{
@@ -58,8 +57,7 @@ const AlertPageScreen = ({ navigation }) => {
                         fontSize: 15,
                         marginBottom: 10
                     }}>
-                        Je me fais suivre par une voiture, depuis 1h, 
-                        ils ont armée et je suis dans la campagne.
+                        {alertData.description}
                     </Text>
                 </View>
 
