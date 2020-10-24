@@ -2,14 +2,18 @@ import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import NavbarComponent from '../../components/Navbar/navbar';
-import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
-import Users from '../../User';
+import { useReduxState } from '../../data/store';
+import { MaterialIndicator, DotIndicator, PulseIndicator } from 'react-native-indicators';
 
 const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const screenHeight = Math.round(Dimensions.get('window').height / 4);
+
+    const statusHelp = useReduxState(state => state.user.statusHelp);
+    const statusSend = useReduxState(state => state.user.statusSend);
 
     interface IAlertProps {
         title?: string;
@@ -129,7 +133,6 @@ const HomeScreen = ({ navigation }) => {
                         { props.fontAwesome && 
                             <FontAwesomeIcon icon={props.fontAwesome} size={30} style={{ color: props.color }} />
                         }
-
                     </View>
 
                     <Text style={{
@@ -142,7 +145,9 @@ const HomeScreen = ({ navigation }) => {
     }
 
     return (
-        <>
+        <View style={{
+  
+        }}>
             <HeaderComponent navigation={navigation} />
 
             <View style={{
@@ -158,9 +163,138 @@ const HomeScreen = ({ navigation }) => {
                     display: 'flex',
                     flexDirection: 'row'
                 }}>
-                    <AlertProps title="Grave" color="#d80000" colorComponent="#860258" description="(Accident, agression, malaise...)" />
-                    <AlertProps title="Moyen" color="#ff9600" colorComponent="#860258" description="(En panne, coincé, vol...)" />
-                    <AlertProps title="Faible" color="#ffd100" colorComponent="#860258" description="(Perdu, nuisance, autre...)" />
+                    {   statusHelp == false && statusSend == false &&
+                        <>
+                            <AlertProps title="Grave" color="#d80000" colorComponent="#860258" description="(Accident, agression, malaise...)" />
+                            <AlertProps title="Moyen" color="#ff9600" colorComponent="#860258" description="(En panne, coincé, vol...)" />
+                            <AlertProps title="Faible" color="#ffd100" colorComponent="#860258" description="(Perdu, nuisance, autre...)" />
+                        </>   
+                    }
+
+                    { statusHelp == true &&
+                        <TouchableOpacity onPress={() => navigation.navigate("HelperAcceptAlertPage")}>
+                            <View style={{
+                                padding: 5,
+                                height: screenHeight - 20,
+                                width: screenWidth - 20,
+                                borderRadius: 10,
+
+                                backgroundColor: '#1f7ceb'
+                            }}>
+                                <View style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+
+                                    margin: 10
+                                }}>
+                                    <PulseIndicator color='white' />
+
+                                    <Text style={{
+                                        marginTop: 6,
+                                        marginLeft: 5,
+                                        color: 'white',
+                                        fontSize: 20
+                                    }}>Alerte en cours</Text>
+                                </View>
+
+                                <View style={{
+                                    marginLeft: 30
+                                }}>
+                                    <View style={{
+                                        marginBottom: 10,
+                                        display: "flex",
+                                        flexDirection: "row"
+                                    }}>
+                                        <FontAwesomeIcon icon={faUser} style={{
+                                            color: 'white'
+                                        }} />
+
+                                        <Text style={{
+                                            color: 'white',
+                                            marginLeft: 5
+                                        }}>Jibril</Text>
+                                    </View>
+
+                                    <View style={{
+                                        width: 220,
+                                        display: "flex",
+                                        flexDirection: "row"
+                                    }}>
+                                        <FontAwesomeIcon icon={faFileAlt} style={{
+                                            color: 'white'
+                                        }} />
+
+                                        <Text style={{
+                                            color: 'white',
+                                            marginLeft: 5
+                                        }}>Suivi par une personne en voiture voiture</Text>
+                                    </View>
+                                </View>
+                            </View>  
+                        </TouchableOpacity>
+                    }
+
+                    { statusSend == true &&
+                        <TouchableOpacity onPress={() => navigation.navigate("SenderAcceptAlertPage")}>
+                            <View style={{
+                                padding: 5,
+                                height: screenHeight - 20,
+                                width: screenWidth - 20,
+                                borderRadius: 10,
+                                backgroundColor: '#ff7f00'
+                            }}>
+                                <View style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+
+                                    margin: 10
+                                }}>
+                                    <PulseIndicator color='white' />
+
+                                    <Text style={{
+                                        marginTop: 6,
+                                        marginLeft: 5,
+                                        color: 'white',
+                                        fontSize: 20
+                                    }}>Votre alerte en cours</Text>
+                                    </View>
+
+                                <View style={{
+                                    marginLeft: 30
+                                }}>
+                                    <View style={{
+                                        marginBottom: 10,
+                                        display: "flex",
+                                        flexDirection: "row"
+                                    }}>
+                                        <FontAwesomeIcon icon={faUser} style={{
+                                            color: 'white'
+                                        }} />
+
+                                        <Text style={{
+                                            color: 'white',
+                                            marginLeft: 5
+                                        }}>En attente d'un hero</Text>
+                                    </View>
+
+                                    <View style={{
+                                        width: 220,
+                                        display: "flex",
+                                        flexDirection: "row"
+                                    }}>
+                                        <FontAwesomeIcon icon={faQuestionCircle} style={{
+                                            color: 'white'
+                                        }} />
+
+                                        <Text style={{
+                                            color: 'white',
+                                            marginLeft: 5
+                                        }}>En attente d'un hero</Text>
+                                    </View>
+                                </View>
+                            </View>  
+                        </TouchableOpacity>
+                    }
                 </View>
 
                 <AlertComponent  fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
@@ -178,7 +312,7 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
             </View>
-        </>
+        </View>
     );
 }
 
