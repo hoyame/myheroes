@@ -150,13 +150,13 @@ const HeaderComponent = (props: IHeader) => {
 
                     <View style={{
                         height: 65,
-                        width: 190,
+                        width: 175,
                         display: "flex",
                         flexDirection: "row",
                         borderTopRightRadius: 10,
                         borderBottomRightRadius: 10,
-                        borderTopLeftRadius: 10,
-                        borderBottomStartRadius: 10,
+                        borderTopLeftRadius: 50,
+                        borderBottomStartRadius: 50,
                         backgroundColor: "#DDDDDD",
                     }}>
                         <View style={{
@@ -168,8 +168,8 @@ const HeaderComponent = (props: IHeader) => {
                         }}>
                             <Image
                                 style={{
-                                    height: 50,
-                                    width: 50,
+                                    height: 55,
+                                    width: 55,
                                     borderRadius: 50,
                                 }}
 
@@ -183,7 +183,7 @@ const HeaderComponent = (props: IHeader) => {
                             display: "flex",
                             justifyContent: "center",
 
-                            marginLeft: 15
+                            marginLeft: 12
                         }}>
                             <Text style={{
                                 //color: "#6d9bff",
