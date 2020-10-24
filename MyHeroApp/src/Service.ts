@@ -1,6 +1,5 @@
 import Geolocation from '@react-native-community/geolocation';
-import { PermissionsAndroid } from 'react-native';
-
+import { PermissionsAndroid, Platform } from 'react-native';
 
 export abstract class MyHeroService {
     public static latitude = 0;
@@ -26,19 +25,24 @@ export abstract class MyHeroService {
     }
 
     public static async requestLocationPermission() {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-        )
-        
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log("You can use locations ")
-          this.getLocalisation();
-        } else {
-          console.log("Location permission denied")
+      if (Platform.OS == 'android') {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+          )
+          
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log("You can use locations ")
+            this.getLocalisation();
+          } else {
+            console.log("Location permission denied")
+          }
+        } catch (err) {
+          console.warn(err)
         }
-      } catch (err) {
-        console.warn(err)
+      } else {
+        Geolocation.requestAuthorization()
+        this.getLocalisation();
       }
     }
 
