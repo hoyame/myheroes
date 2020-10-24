@@ -8,9 +8,9 @@ import { PulseIndicator } from 'react-native-indicators';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
-    const statusHelp = useReduxState(state => state.user.statusHelp);
-    const statusSend = useReduxState(state => state.user.statusSend);
-    
+    const statusHelp = useReduxState(state => state.user.help.status);
+    const statusSend = useReduxState(state => state.user.send.status);
+
     interface IPropsNav {
         title: string;
         description: string;
