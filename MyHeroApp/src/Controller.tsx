@@ -42,6 +42,8 @@ const Controller = () => {
     }, 5000)
 
     setTimeout(() => {
+      console.log(Dimensions.get('window').height)
+      console.log(Dimensions.get('window').width)
       dispatch(setName('Hoyame'))
       dispatch(setRate(3))
       dispatch(setXp(160))
