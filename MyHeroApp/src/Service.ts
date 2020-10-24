@@ -17,13 +17,11 @@ export abstract class MyHeroService {
 
             console.log(this.longitude);
             console.log(this.latitude);
-         }, 
-         
-         (error) => console.error(error.message), 
-         
-         { 
-            
-         }
+        }, 
+        
+        (error) => console.error(error.message), 
+        
+        {}
       );
     }
 
