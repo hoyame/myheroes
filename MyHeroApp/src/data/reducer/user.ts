@@ -17,7 +17,7 @@ import {
 } from '../types/user';
 
 
-const UserReducer = (state = initialState, action: IUserActions) => {
+const UserReducer = (state = initialState, action: IUserActions): IUser => {
     switch (action.type) {
         case SET_NAME: 
             return { 
@@ -51,20 +51,20 @@ const UserReducer = (state = initialState, action: IUserActions) => {
             }; 
         case SET_CACHE_CREATE_ALERT_LEVEL: 
             return { 
-                ...state.cache, 
-                createAlertLevel: action.payload.cache.createAlertLevel 
+                ...state, 
+                createAlertLevel: action.payload.createAlertLevel 
             }; 
         case SET_CACHE_SHOW_ALERT: 
             return { 
-                ...state.cache, 
-                showAlert: action.payload.cache.showAlert 
+                ...state, 
+                showAlert: action.payload.showAlert 
             };   
         default: return state;
     }
 }
 
 const initialState: IUser = {
-    name: '',
+    name: 'd',
     rate: 0,
     image: '',
     xp: 0,
@@ -84,10 +84,9 @@ const initialState: IUser = {
         data: {}
     },
 
-    cache: {
-        createAlertLevel: 0,
-        showAlert: {},
-    }
+    createAlertLevel: 0,
+    showAlert: {},
+    
 }
 
 export default UserReducer;
