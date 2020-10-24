@@ -21,13 +21,11 @@ export const SET_CACHE_SHOW_ALERT = "SET_CACHE_SHOW_ALERT";
 
 
 export interface IUserSend {
-    id: number;
     status: boolean;
     data: IAlert
 }
 
 export interface IUserHelp {
-    id: number;
     status: boolean;
     data: IAlert
 }
@@ -42,7 +40,6 @@ export interface IUser {
     statusHelp: boolean;
 
     send: IUserSend,
-
     help: IUserHelp,
 
     createAlertLevel: number;
