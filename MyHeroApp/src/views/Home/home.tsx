@@ -349,14 +349,12 @@ const HomeScreen = ({ navigation }) => {
                         <MapComponent nav={navigation} height={170} width={screenWidth} />
                     </View>
                 </TouchableOpacity>
-
-                          
-                {  Math.round(Dimensions.get('window').width - 70) < 2650 &&
+ 
+                {  Dimensions.get('window').height > 695 &&
                     <>
                         <AlertComponent onClick={() => navigation.navigate('Alert')} fontAwesome={faPhoneAlt} color="#d80000" title="Listes des alertes" />
                     </>
                 }
-
             </View>
         </View>
     );
