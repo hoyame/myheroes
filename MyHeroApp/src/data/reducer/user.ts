@@ -70,7 +70,7 @@ const initialState: IUser = {
     xp: 0,
 
     statusSend: false,
-    statusHelp: false,
+    statusHelp: true,
     
     send: {
         id: 0,

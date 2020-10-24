@@ -213,7 +213,7 @@ const HomeScreen = ({ navigation }) => {
                         <TouchableOpacity onPress={() => navigation.navigate("HelperAcceptAlertPage")}>
                             <View style={{
                                 padding: 5,
-                                height: screenHeight - 20,
+                                height: 165,
                                 width: screenWidth - 20,
                                 borderRadius: 10,
 
@@ -254,7 +254,7 @@ const HomeScreen = ({ navigation }) => {
                                     </View>
 
                                     <View style={{
-                                        width: 220,
+                                        width: screenWidth - 80,
                                         display: "flex",
                                         flexDirection: "row"
                                     }}>
@@ -276,7 +276,7 @@ const HomeScreen = ({ navigation }) => {
                         <TouchableOpacity onPress={() => navigation.navigate("SenderAcceptAlertPage")}>
                             <View style={{
                                 padding: 5,
-                                height: screenHeight - 20,
+                                height: 165,
                                 width: screenWidth - 20,
                                 borderRadius: 10,
                                 backgroundColor: '#ff7f00'

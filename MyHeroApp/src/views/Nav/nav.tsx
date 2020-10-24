@@ -111,10 +111,15 @@ const NavScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={{
-            padding: 35,
-            marginTop: 15
-        }}>
+        <View style={ 
+            Math.round(Dimensions.get('window').width - 70) < 2650 ? {
+                marginTop: 50,
+                padding: 35,
+            } : {
+                marginTop: 15,
+                padding: 35,
+            }
+        }>
             <View style={{
                 display: "flex",
                 flexDirection: "row",

@@ -61,9 +61,15 @@ const Controller = () => {
             <Text style={{
                 color: "#6d9bff",
                 fontSize: 30,
+                textAlign: "center"
+            }}>Initialisation de</Text>
+
+            <Text style={{
+                color: "#6d9bff",
+                fontSize: 30,
                 marginBottom: 30,
                 textAlign: "center"
-            }}>Initialisation de MyHeroServices</Text>
+            }}>MyHeroServices</Text> 
               <WaveIndicator color='#6d9bff' size={40} />
         </View>
     );

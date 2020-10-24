@@ -1,7 +1,7 @@
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react"
-import { StyleSheet, View, Text, Dimensions, TextInput } from "react-native"
+import { StyleSheet, View, Text, Dimensions, TextInput, Platform } from "react-native"
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -57,11 +57,16 @@ const InputComponent = (props: IInput) => {
                 <View style={{
                     //justifyContent: "center",
                 }}>
-                    <Text style={{ 
+                    <Text style={ Platform.OS == "android" ? { 
                         color: "#6d9bff",
                         marginLeft: 5,
                         marginTop: 3,
                         marginBottom: -8
+                    } : { 
+                        color: "#6d9bff",
+                        marginLeft: 1,
+                        marginTop: 3,
+                        marginBottom: 1
                     }}>{props.name}</Text>
     
                     <TextInput
