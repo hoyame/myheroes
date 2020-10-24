@@ -124,7 +124,7 @@ const HeaderComponent = (props: IHeader) => {
         return (
             <>
                 <View style={{
-                    //marginTop: 20,
+                    marginTop: 20,
                     padding: 35,
                 }}>
                     <View style={{
@@ -219,10 +219,14 @@ const HeaderComponent = (props: IHeader) => {
     }
 
     return (
-        <View style={{
-            //marginTop: 20,
-            padding: 35,
-        }}>
+        <View style={ 
+            Math.round(Dimensions.get('window').width - 70) < 2650 ? {
+                marginTop: 50,
+                padding: 35,
+            } : {
+                padding: 35,
+            }
+        }>
             <View style={{
                 display: "flex",
                 flexDirection: "row",
