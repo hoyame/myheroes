@@ -9,6 +9,7 @@ import { useReduxState } from '../../data/store';
 import { MaterialIndicator, DotIndicator, PulseIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setCacheCreateAlertLevel, setName } from '../../data/actions/user';
+//import SosSVG from '../../assets/sos.svg'
 
 const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
@@ -61,7 +62,7 @@ const HomeScreen = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={props.onClick}>
                 <View style={{
-                    height: pHeight,
+                    height: 165,
                     width: pWidth,
                     marginRight: 5,
                     backgroundColor: props.color,
@@ -71,7 +72,9 @@ const HomeScreen = ({ navigation }) => {
                 }}>
                     <View style={{
                         display: 'flex',
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }}>
                         <View style={{
                             margin: 5,
@@ -80,6 +83,7 @@ const HomeScreen = ({ navigation }) => {
                             opacity: 0.40,
                             backgroundColor: props.colorComponent,
                             borderRadius: 50,
+                            //display: 'flex',
                             justifyContent: "center",
                             alignItems: "center"
                         }}>
@@ -107,11 +111,12 @@ const HomeScreen = ({ navigation }) => {
         logo?: any;
         color?: string;
         fontAwesome?: any;
+        onClick?: any;
     }
 
     const AlertComponent = (props: IAlertComponent) => {
         return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.onClick}>
                 <View style={{
                     height: 65,
                     borderRadius: 10,
@@ -149,7 +154,9 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={{
-  
+            display: "flex",
+            flex: 1,
+            justifyContent: 'center',
         }}>
             <HeaderComponent navigation={navigation} />
 
@@ -158,7 +165,7 @@ const HomeScreen = ({ navigation }) => {
             }}>
 
                 <View style={{
-                    height: screenHeight,
+                    height: 185,
                     width: screenWidth,
                     backgroundColor: '#e1e1e1',
                     borderRadius: 10,
@@ -331,7 +338,7 @@ const HomeScreen = ({ navigation }) => {
 
                 <AlertComponent  fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
                 <AlertComponent  fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
-                
+      
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
                     <View style={{
                         height: 170,
@@ -343,6 +350,14 @@ const HomeScreen = ({ navigation }) => {
                         <MapComponent nav={navigation} height={170} width={screenWidth} />
                     </View>
                 </TouchableOpacity>
+
+                          
+                {  Math.round(Dimensions.get('window').width - 70) < 2650 &&
+                    <>
+                        <AlertComponent onClick={() => navigation.navigate('Alert')} fontAwesome={faPhoneAlt} color="#d80000" title="Listes des alertes" />
+                    </>
+                }
+
             </View>
         </View>
     );
