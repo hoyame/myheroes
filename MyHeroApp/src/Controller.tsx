@@ -24,6 +24,7 @@ import GDPSPage from './views/GDPS/index';
 import NDUPage from './views/NDU/index'
 import { useReduxState } from './data/store';
 import { setImage, setName, setRate, setXp } from './data/actions/user';
+import { WaveIndicator } from 'react-native-indicators';
 
 
 const Controller = () => {
@@ -63,10 +64,8 @@ const Controller = () => {
                 marginBottom: 30,
                 textAlign: "center"
             }}>Initialisation de MyHeroServices</Text>
-
-            <ActivityIndicator size="large" color="#6d9bff" />
+              <WaveIndicator color='#6d9bff' size={40} />
         </View>
-      
     );
   }
   
