@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity, Linking } from 'react-native';
 import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 import CheckBox from '@react-native-community/checkbox';
 import AlertInformationProps from '../../components/AlertPropsDetails';
+import { useReduxState } from '../../data/store';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
   
 export const SenderAcceptAlertPage = ({ navigation }) => {
     const [isSelected, setSelection] = useState(false);
+    const alerts = useReduxState(state => state.user.send);
 
     return (
         <>
@@ -92,6 +94,8 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
 }
 
 export const HelperAcceptAlertPage = ({ navigation }) => {
+    const alerts = useReduxState(state => state.user.help);
+
     return (
         <>
             <HeaderComponent navigation={navigation} />
@@ -103,13 +107,13 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 <View style={{
                     marginBottom: 10
                 }}>
-                    <AccountStats name="jibril" xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
+                    <AccountStats name={alerts.data.source} xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
                 </View>
 
                 <View style={{
                     //marginBottom: 10
                 }}>
-                    <AlertInformationProps level={2} sender="Hoyame" avatar="" distance="510" />
+                    <AlertInformationProps level={alerts.data.level} sender={alerts.data.source} avatar="" distance="510" />
                 </View>
 
                 <View style={{
@@ -128,8 +132,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         fontSize: 15,
                         marginBottom: 10
                     }}>
-                        Je me fais suivre par une voiture, depuis 1h, 
-                        ils ont armée et je suis dans la campagne.
+                        {alerts.data.description}
                     </Text>
                 </View>
 
@@ -153,7 +156,8 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     <ActivityIndicator size="large" color="#6d9bff" />
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)
+}>
                     <View style={{
                         height: 60,
                         marginBottom: 15,
@@ -171,4 +175,6 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
             </View>
         </>
     );
+
+    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 }
