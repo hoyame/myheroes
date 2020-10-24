@@ -6,7 +6,7 @@ import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
 
 interface IAccount {
     name: string;
-    xp: string;
+    xp: string | number;
     rate: number;
     img: string
 }
