@@ -2,15 +2,18 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import { useDispatch } from 'react-redux';
 import AccountStats from '../../components/AccountStats';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import HeaderComponent from '../../components/Header/header';
+import { setHelpAlertData, setSendAlertData, setStatusHelp } from '../../data/actions/user';
 import { useReduxState } from '../../data/store';
 
 const AlertPageScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const alertData = useReduxState(state => state.user.showAlert);
-    
+    const dispatch = useDispatch();
+
     return (
         <>
             <HeaderComponent navigation={navigation} />
@@ -61,7 +64,10 @@ const AlertPageScreen = ({ navigation }) => {
                     </Text>
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    dispatch(setHelpAlertData({status: true, data: alertData}))              
+                    navigation.navigate('HelperAcceptAlertPage')  
+                }}>
                     <View style={{
                         height: 60, 
                         width: screenWidth,
