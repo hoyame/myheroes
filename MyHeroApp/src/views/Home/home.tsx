@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
 import { MaterialIndicator, DotIndicator, PulseIndicator } from 'react-native-indicators';
+import { useDispatch } from 'react-redux';
+import { setCacheCreateAlertLevel, setName } from '../../data/actions/user';
 
 const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
@@ -19,7 +21,8 @@ const HomeScreen = ({ navigation }) => {
         title?: string;
         color?: string;
         description?: string;
-        colorComponent?: string
+        colorComponent?: string;
+        onClick: any;
     }
 
     const fetchApiCall = async () => {
@@ -56,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
         const pWidth = (screenWidth / 3 - 10)
 
         return (
-            <TouchableOpacity onPress={() => navigation.navigate("CreateAlertScreen")}>
+            <TouchableOpacity onPress={props.onClick}>
                 <View style={{
                     height: pHeight,
                     width: pWidth,
@@ -116,7 +119,6 @@ const HomeScreen = ({ navigation }) => {
                     width: screenWidth,
                     backgroundColor: '#e1e1e1',
                     display: "flex",
-                    //justifyContent: "center",
                     alignItems: "center",
                     flexDirection: "row"
                 }}>
@@ -128,7 +130,6 @@ const HomeScreen = ({ navigation }) => {
                         margin: 10,
                         borderRadius: 50,
                         opacity: 0.5,
-                        //backgroundColor: props.color
                     }}>
                         { props.fontAwesome && 
                             <FontAwesomeIcon icon={props.fontAwesome} size={30} style={{ color: props.color }} />
@@ -143,6 +144,8 @@ const HomeScreen = ({ navigation }) => {
             </TouchableOpacity>
         );
     }
+    
+    const dispatch = useDispatch();
 
     return (
         <View style={{
@@ -165,9 +168,38 @@ const HomeScreen = ({ navigation }) => {
                 }}>
                     {   statusHelp == false && statusSend == false &&
                         <>
-                            <AlertProps title="Grave" color="#d80000" colorComponent="#860258" description="(Accident, agression, malaise...)" />
-                            <AlertProps title="Moyen" color="#ff9600" colorComponent="#860258" description="(En panne, coincé, vol...)" />
-                            <AlertProps title="Faible" color="#ffd100" colorComponent="#860258" description="(Perdu, nuisance, autre...)" />
+                            <AlertProps 
+                                onClick={() => {
+                                    dispatch(setCacheCreateAlertLevel(3))
+                                    navigation.navigate("CreateAlertScreen")
+                                }}
+                                title="Grave" 
+                                color="#d80000" 
+                                colorComponent="#860258" 
+                                description="(Accident, agression, malaise...)" 
+                            />
+
+                            <AlertProps 
+                                onClick={() => {
+                                    dispatch(setCacheCreateAlertLevel(2))
+                                    navigation.navigate("CreateAlertScreen")
+                                }}
+                                title="Moyen" 
+                                color="#ff9600" 
+                                colorComponent="#860258" 
+                                description="(En panne, coincé, vol...)" 
+                            />
+
+                            <AlertProps 
+                                onClick={() => {
+                                    dispatch(setCacheCreateAlertLevel(1))
+                                    navigation.navigate("CreateAlertScreen")
+                                }}
+                                title="Faible" 
+                                color="#ffd100" 
+                                colorComponent="#860258" 
+                                description="(Perdu, nuisance, autre...)" 
+                            />
                         </>   
                     }
 
@@ -315,11 +347,5 @@ const HomeScreen = ({ navigation }) => {
         </View>
     );
 }
-
-/*
-<AlertProps title="Grave" color="#d80000" colorComponent="#860258" />
-<AlertProps title="Moyen" color="#ff9600" colorComponent="#860258" />
-<AlertProps title="Faible" color="#ffd100" colorComponent="#860258" />
-*/
 
 export default HomeScreen;
