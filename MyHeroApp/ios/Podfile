@@ -18,6 +18,10 @@ target 'MyHeroApp' do
 
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
+  pod 'GoogleMaps', '4.0.0'
+  
+  pod 'GooglePlaces', '4.0.0'
+  
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
