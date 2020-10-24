@@ -6,9 +6,9 @@ import AlertReducer from '../reducer/alerts';
 import UserReducer from '../reducer/user';
 
 const reducers = combineReducers({
-    user: UserReducer,
     alerts: AlertReducer,
     location: LocalisationReducer,
+    user: UserReducer,
 });
 
 const store = createStore(reducers);
