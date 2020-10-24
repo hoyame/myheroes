@@ -69,7 +69,7 @@ const initialState: IUser = {
     image: '',
     xp: 0,
 
-    statusSend: true,
+    statusSend: false,
     statusHelp: false,
     
     send: {
