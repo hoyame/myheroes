@@ -1,15 +1,61 @@
 import { faEnvelope, faExclamationCircle, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { Dimensions, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Dimensions, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/header';
+import { useReduxState } from '../../data/store';
 import InputComponent from './input';
+import { WaveIndicator } from 'react-native-indicators';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
         description: ""
     })
 
+    const statusHelp = useReduxState(state => state.user.createAlertLevel);
+
+    if (statusHelp == 0) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 30,
+                    marginBottom: 30,
+                    textAlign: "center"
+                }}>Chargement</Text>
+                    <WaveIndicator color='#6d9bff' size={40} />
+            </View>
+        );
+    }
+
+    let color = '#ffd100';
+    let name = 'Faible'
+    let description = ''
+
+    switch (statusHelp) {
+        case 1: 
+            color = '#ffd100'
+            name = 'Faible'
+            description = "(Perdu, nuisance, autre...)" 
+            break
+        case 2: 
+            color = '#ff9600'
+            name = 'Moyen'
+            description = "(En panne, coincé, vol...)" 
+            break
+        case 3: 
+            color = '#d80000'
+            name = 'Grave'
+            description = "(Accident, agression, malaise...)" 
+            break
+        default: break
+    }
+ 
     return (
         <>
             <HeaderComponent navigation={navigation} />
@@ -37,7 +83,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                 borderRadius: 8,
                                 display: "flex",
                                 flexDirection: 'row',
-                                backgroundColor: "#d80000"
+                                backgroundColor: color
                             }}>
                                 <View style={{
                                     height: 100,
@@ -55,12 +101,12 @@ const CreateAlertScreen = ({ navigation }) => {
                                 }}>
                                     <Text style={{
                                         fontSize: 25
-                                    }}>Alerte Grave</Text>
+                                    }}>Alerte {name}</Text>
 
                                     <Text style={{
                                         color: "#262626",
                                         fontSize: 12
-                                    }}>(Accident, agression, malaise...)</Text>
+                                    }}>{description}</Text>
                                 </View>
                             </View>
                                 
