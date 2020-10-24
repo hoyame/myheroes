@@ -153,18 +153,14 @@ export const setHelpAlertData = (data: IUserHelp) => ({
 export interface ISetCacheCreateAlertLevel {
     type: typeof SET_CACHE_CREATE_ALERT_LEVEL;
     payload: {
-        cache: {
-            createAlertLevel: number
-        }
+        createAlertLevel: number
     }
 }
 
 export const setCacheCreateAlertLevel = (data: number) => ({
     type: SET_CACHE_CREATE_ALERT_LEVEL,
     payload: {
-        cache: {
-            createAlertLevel: data
-        }
+        createAlertLevel: data
     }
 })
 
@@ -173,18 +169,14 @@ export const setCacheCreateAlertLevel = (data: number) => ({
 export interface ISetCacheShowAlert {
     type: typeof SET_CACHE_SHOW_ALERT;
     payload: {
-        cache: {
-            showAlert: IAlert
-        }
+        showAlert: IAlert
     }
 }
 
 export const setCacheShowAlert = (data: IAlert) => ({
     type: SET_CACHE_SHOW_ALERT,
     payload: {
-        cache: {
-            showAlert: data
-        }
+        showAlert: data
     }
 })
 
@@ -193,8 +185,6 @@ export type IUserActions =
     ISetRate | 
     ISetImage |
     ISetXp |
-    ISetStatusSend |
-    ISetStatusHelp |
     ISetSendAlertData |
     ISetHelpAlertData |
     ISetCacheCreateAlertLevel |
