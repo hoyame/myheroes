@@ -13,19 +13,23 @@ interface IAlertInformation {
 const AlertInformationProps = (props: IAlertInformation) => {
     let color = "#ffd100";
     let title = "Faible";
+    let description = '';
 
     switch (props.level) {
         case 1: 
             color = "#ffd100" 
             title = "Faible"
+            description = "(Perdu, nuisance, autre...)" 
             break;
         case 2: 
             color = "#ff9600" 
             title = "Moyen"
+            description = "(En panne, coincé, vol...)" 
             break 
         case 3:
             color = "#d80000" 
             title = "Grave"
+            description = "(Accident, agression, malaise...)" 
             break 
         default: break
     }
@@ -60,7 +64,7 @@ const AlertInformationProps = (props: IAlertInformation) => {
                 <Text style={{
                     color: "#262626",
                     fontSize: 15
-                }}>De Hoyame</Text>
+                }}>{description}</Text>
             </View>
         </View>
     );
