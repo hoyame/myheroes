@@ -81,7 +81,7 @@ export const setXp = (data: number) => ({
 
 ////////////////////////////////////////////////////
 
-/* 
+
 
 export interface ISetStatusSend {
     type: typeof SET_STATUS_SEND;
@@ -102,18 +102,18 @@ export const setStatusSend = (data: boolean) => ({
 export interface ISetStatusHelp {
     type: typeof SET_STATUS_HELP;
     payload: {
-        statusHelp: boolean
+        status: boolean
     }
 }
 
 export const setStatusHelp = (data: boolean) => ({
     type: SET_STATUS_HELP,
     payload: {
-        statusHelp: data
+        status: data
     }
 })
 
-*/
+
 
 ////////////////////////////////////////////////////
 
@@ -186,6 +186,8 @@ export type IUserActions =
     ISetImage |
     ISetXp |
     ISetSendAlertData |
+    ISetStatusHelp |
+    ISetStatusSend |
     ISetHelpAlertData |
     ISetCacheCreateAlertLevel |
     ISetCacheShowAlert
