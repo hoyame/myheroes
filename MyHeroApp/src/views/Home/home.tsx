@@ -340,7 +340,7 @@ const HomeScreen = ({ navigation }) => {
                         width: screenWidth,
                         backgroundColor: '#e1e1e1',
                     }}>
-                        <MapComponent height={170} width={screenWidth} />
+                        <MapComponent nav={navigation} height={170} width={screenWidth} />
                     </View>
                 </TouchableOpacity>
             </View>
