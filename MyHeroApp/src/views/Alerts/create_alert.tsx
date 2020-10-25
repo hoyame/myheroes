@@ -6,15 +6,21 @@ import HeaderComponent from '../../components/Header/header';
 import { useReduxState } from '../../data/store';
 import InputComponent from './input';
 import { WaveIndicator } from 'react-native-indicators';
+import { useDispatch } from 'react-redux';
+import { setSendAlertData } from '../../data/actions/user';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
         description: ""
     })
 
-    const statusHelp = useReduxState(state => state.user.createAlertLevel);
+    const alertLevelSe = useReduxState(state => state.user.createAlertLevel);
+    const nameSe = useReduxState(state => state.user.name);
+    const latitude = useReduxState(state => state.location.latitude);
+    const longitude = useReduxState(state => state.location.longitude);
+    const dispatch = useDispatch();
 
-    if (statusHelp == 0) {
+    if (alertLevelSe == 0) {
         return (
             <View style={{
                 display: "flex",
@@ -28,7 +34,8 @@ const CreateAlertScreen = ({ navigation }) => {
                     marginBottom: 30,
                     textAlign: "center"
                 }}>Chargement</Text>
-                    <WaveIndicator color='#6d9bff' size={40} />
+                    
+                <WaveIndicator color='#6d9bff' size={40} />
             </View>
         );
     }
@@ -37,7 +44,7 @@ const CreateAlertScreen = ({ navigation }) => {
     let name = 'Faible'
     let description = ''
 
-    switch (statusHelp) {
+    switch (alertLevelSe) {
         case 1: 
             color = '#ffd100'
             name = 'Faible'
@@ -83,17 +90,17 @@ const CreateAlertScreen = ({ navigation }) => {
                                 borderRadius: 8,
                                 display: "flex",
                                 flexDirection: 'row',
-                                backgroundColor: color
+                                backgroundColor: "#e1e1e1"
                             }}>
                                 <View style={{
                                     height: 100,
                                     width: 100,
                                     borderRadius: 100,
-                                    opacity: 0.40,
+                                    opacity: 0.60,
                                     justifyContent: "center",
                                     alignItems: "center"
                                 }}>
-                                    <FontAwesomeIcon icon={faExclamationCircle} size={55}></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faExclamationCircle} size={55} style={{ color: color }}></FontAwesomeIcon>
                                 </View>
 
                                 <View style={{
@@ -129,7 +136,17 @@ const CreateAlertScreen = ({ navigation }) => {
                                 <InputComponent height={150} name="Description" placeholder="Description de l'alerte" value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
                             </View>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                navigation.navigate('SenderAcceptAlertPage') 
+                                dispatch(setSendAlertData({ status: true, data: {
+                                    level: alertLevelSe,
+                                    source: nameSe,
+                                    latitude: latitude,
+                                    longitude: longitude,    
+                                    description: state.description
+                                } })) 
+
+                            }} >
                                 <View style={{
                                     height: 60,
                                     marginBottom: 15,
