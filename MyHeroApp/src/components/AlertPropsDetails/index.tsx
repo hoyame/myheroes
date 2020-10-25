@@ -41,17 +41,17 @@ const AlertInformationProps = (props: IAlertInformation) => {
             borderRadius: 8,
             display: "flex",
             flexDirection: 'row',
-            backgroundColor: color
+            backgroundColor: '#e1e1e1',
         }}>
             <View style={{
                 height: 90,
                 width: 90,
                 borderRadius: 100,
-                opacity: 0.40,
+                opacity: 0.60,
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <FontAwesomeIcon icon={faExclamationCircle} size={55}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faExclamationCircle} size={55} style={{color: color}}></FontAwesomeIcon>
             </View>
 
             <View style={{
