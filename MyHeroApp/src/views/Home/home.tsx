@@ -16,6 +16,7 @@ const HomeScreen = ({ navigation }) => {
     const screenHeight = Math.round(Dimensions.get('window').height / 4);
     
     const alertDataHelp = useReduxState(state => state.user.showAlert);
+    const alertDataSend = useReduxState(state => state.user.send);
     const statusHelp = useReduxState(state => state.user.help.status);
     const statusSend = useReduxState(state => state.user.send.status);
 
@@ -313,11 +314,12 @@ const HomeScreen = ({ navigation }) => {
                                         <Text style={{
                                             color: 'white',
                                             marginLeft: 5
-                                        }}>En attente d'un hero</Text>
+                                        }}>.......</Text>
                                     </View>
 
                                     <View style={{
-                                        width: 220,
+                                        marginBottom: 10,
+                                        width: screenWidth - 80,
                                         display: "flex",
                                         flexDirection: "row"
                                     }}>
@@ -328,7 +330,22 @@ const HomeScreen = ({ navigation }) => {
                                         <Text style={{
                                             color: 'white',
                                             marginLeft: 5
-                                        }}>En attente d'un hero</Text>
+                                        }}>En attente</Text>
+                                    </View>
+
+                                    <View style={{
+                                        width: screenWidth - 80,
+                                        display: "flex",
+                                        flexDirection: "row"
+                                    }}>
+                                        <FontAwesomeIcon icon={faFileAlt} style={{
+                                            color: 'white'
+                                        }} />
+
+                                        <Text style={{
+                                            color: 'white',
+                                            marginLeft: 5
+                                        }}>{alertDataSend.data.description}</Text>
                                     </View>
                                 </View>
                             </View>  
