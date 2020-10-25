@@ -4,6 +4,9 @@ import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { useReduxState } from "../../data/store";
 import { useDispatch } from 'react-redux';
 import { setCacheShowAlert } from "../../data/actions/user";
+import { setLocalisation } from "../../data/actions/localisation";
+import { MyHeroService } from "../../Service";
+import { WaveIndicator } from 'react-native-indicators';
 
 interface IMap {
   height: number;
@@ -17,6 +20,7 @@ const MapComponent = (props: IMap) => {
   const state = useReduxState(state => state.location.state);
   const alerts = useReduxState(state => state.alerts.list);
   const dispatch = useDispatch();
+  const screenWidth = Math.round(Dimensions.get('window').width);
 
   let text = 'Waiting..';
   let latitudeS = 0;
@@ -28,19 +32,42 @@ const MapComponent = (props: IMap) => {
   }
 
   if (state == false) {
+    setTimeout(() => {
+      if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
+          dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
+      }
+  }, 5500)
+
+  }
+
+  if (state == false) {
     return (
       <View style={{
+        height: props.height,
+        width: props.width,
         display: "flex",
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        alignItems: "center"
       }}>
-        <ActivityIndicator size="large" color="#6d9bff" />
+        <Text style={{
+            color: "#6d9bff",
+            fontSize: 20,
+            textAlign: "center"
+        }}>Initialisation de</Text>
+
+        <Text style={{
+            color: "#6d9bff",
+            fontSize: 20,
+            marginBottom: 10,
+            textAlign: "center"
+        }}>MyHeroService.Localisation</Text> 
+        
+        <WaveIndicator color='#6d9bff' size={35} />
       </View> 
     )
   }
 
-  
   const returnAlerts = () => {
     return alerts.map((v, k) => {
         return (
@@ -59,7 +86,7 @@ const MapComponent = (props: IMap) => {
           />
         );
     })
-}
+  }
 
   return (
       <>
