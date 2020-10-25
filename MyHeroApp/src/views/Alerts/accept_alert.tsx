@@ -5,6 +5,8 @@ import HeaderComponent from '../../components/Header/header';
 import CheckBox from '@react-native-community/checkbox';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
+import { setHelpAlertData } from '../../data/actions/user';
+import { useDispatch } from 'react-redux';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -95,6 +97,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
 
 export const HelperAcceptAlertPage = ({ navigation }) => {
     const alerts = useReduxState(state => state.user.help);
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -120,25 +123,19 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     marginBottom: 0
                 }}>
                     <Text style={{
-                        fontSize: 20,
+                        fontSize: 16,
                         color: "#000000",
-                        marginBottom: 0
-                    }}>
-                        Description: 
-                    </Text>
-
-                    <Text style={{
-                        color: "#262626",
-                        fontSize: 15,
                         marginBottom: 10
                     }}>
-                        {alerts.data.description}
+                        Description: {alerts.data.description}
                     </Text>
+
+              
                 </View>
 
 
                 <View style={{
-                    height: 160,
+                    height: 140,
                     borderRadius: 10,
                     marginBottom: 10,
                     width: screenWidth,
@@ -156,11 +153,10 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     <ActivityIndicator size="large" color="#6d9bff" />
                 </View>
 
-                <TouchableOpacity onPress={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)
-}>
+                <TouchableOpacity onPress={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)}>
                     <View style={{
-                        height: 60,
-                        marginBottom: 15,
+                        height: 50,
+                        marginBottom: 10,
                         borderRadius: 8,
                         padding: 10,
                         justifyContent: "center",
@@ -170,6 +166,32 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                             textAlign: "center",
                             fontSize: 22      
                         }}>Lancer l'itineraire</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => {
+                    dispatch(setHelpAlertData({status: false, data: {
+                        id: 0,
+                        level: 0,
+                        source: "",
+                        latitude: 0,
+                        longitude: 0,    
+                        description: ""
+                    }}))              
+                    navigation.navigate('Home')  
+                }}>
+                    <View style={{
+                        height: 50,
+                        marginBottom: 10,
+                        borderRadius: 8,
+                        padding: 10,
+                        justifyContent: "center",
+                        backgroundColor: "#e1e1e1"
+                    }}>
+                        <Text style={{
+                            textAlign: "center",
+                            fontSize: 22      
+                        }}>Abbandoner l'alerte</Text>
                     </View>
                 </TouchableOpacity>
             </View>
