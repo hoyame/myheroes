@@ -3,6 +3,7 @@ import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpaci
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import Users from '../../User';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -29,8 +30,15 @@ const ConnexionScreen = ({ navigation }) => {
         name: '',
         mail: '',
         password: '',
-        cPassword: ''
     })
+
+    const onPress = () => {
+        Users.Login({
+            pseudo: state.mail,
+            email: state.mail,
+            password: state.password,
+        })
+    }
 
     return (
         <>
@@ -56,7 +64,7 @@ const ConnexionScreen = ({ navigation }) => {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <InputComponent name="E-Mail" placeholder="E-Mail" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                    <InputComponent name="Identifiant" placeholder="Identifiant" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
                     <InputComponent name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                 
                     <View style={{
@@ -73,7 +81,7 @@ const ConnexionScreen = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => onPress()}>
                         <View style={{
                             height: 60, 
                             width: screenWidth,
