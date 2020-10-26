@@ -25,6 +25,8 @@ import NDUPage from './views/NDU/index'
 import { useReduxState } from './data/store';
 import { setImage, setName, setRate, setXp } from './data/actions/user';
 import { WaveIndicator } from 'react-native-indicators';
+import AsyncStorage from '@react-native-community/async-storage';
+import { useState } from 'react';
 
 
 const Controller = () => {
@@ -33,8 +35,26 @@ const Controller = () => {
   const Stack = createStackNavigator();
   const dispatch = useDispatch();
   const userInformation = useReduxState(state => state.user.name);
+  let isNewUser: boolean = true
+  const [nameA, setAName] = useState('');
+  const [mailA, setAMail] = useState('');
+
+  const _retrieveData = async () => {
+    try {
+      let AName = await AsyncStorage.getItem('@name');
+      let AMail = await AsyncStorage.getItem('@mail');
+
+      if (typeof AName == "string") { setAName(AName) }
+      if (typeof AMail == "string") { setAMail(AMail) }     
+
+    } catch (error) {
+      console.log("error", error)
+    }
+  }; 
 
   useEffect(() => {
+    _retrieveData();
+
     setTimeout(() => {
         if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
             dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
@@ -42,14 +62,14 @@ const Controller = () => {
     }, 5000)
 
     setTimeout(() => {
-      dispatch(setName('Hoyame'))
+      dispatch(setName(nameA))
       dispatch(setRate(3))
       dispatch(setXp(160))
       dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png'))
-  }, 2000)
+    }, 2500)
   });
 
-  if (userInformation == "") {
+  if (nameA !== '' && mailA !== '' && userInformation == "") {
     return (
         <View style={{
             width: screenWidth,
@@ -69,16 +89,16 @@ const Controller = () => {
                 fontSize: 30,
                 marginBottom: 30,
                 textAlign: "center"
-            }}>MyHeroServices</Text> 
+            }}>MyHeroServices</Text>
               <WaveIndicator color='#6d9bff' size={40} />
         </View>
     );
   }
-  
+
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName={nameA == "" ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Alert" component={AlertScreen} />
             <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
