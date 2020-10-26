@@ -4,6 +4,8 @@ import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Users from '../../User';
+import AsyncStorage from '@react-native-community/async-storage';
+import { WaveIndicator } from 'react-native-indicators';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -26,21 +28,95 @@ const STYLES = StyleSheet.create({
   
 
 const InscriptionScreen = ({ navigation }) => {
+    const [status, setStatus] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorM, setErrorM] = useState(false)
+    const [errorU, setErrorU] = useState(false)
+
     const [state, setState] = useState({
         name: '',
         mail: '',
         password: '',
         cPassword: ''
     })
+    
+    const _storeData = async () => {
+        try {
+            await AsyncStorage.setItem('@name', state.name)
+            await AsyncStorage.setItem('@mail', state.mail)
+        } catch (error) {
+            console.log("error", error)
+        }
+    };
 
     const onPress = () => {
-        if (state.password === state.cPassword) {
-            Users.Register({
-                pseudo: state.name,
-                email: state.mail,
-                password: state.password
-            })
+        setStatus(true);
+
+        if (state.password === state.cPassword && state.name !== "" && state.mail !== "") {
+            if (state.password !== "" && state.cPassword !== "") {
+                Users.Register({
+                    pseudo: state.name,
+                    email: state.mail,
+                    password: state.password
+                }, (res: any) => {
+                    if (res == 200) {
+                        setTimeout(() => {
+                            _storeData();
+                            navigation.navigate('Home');
+                        }, 2500)
+                    } else {
+                        setTimeout(() => {
+                            setStatus(false);
+                            setErrorU(true);
+                        }, 3000)
+                    }
+                })
+            } else {
+                setTimeout(() => {
+                    setStatus(false);
+                    setError(true);
+                }, 3000) 
+            }
+        } else {
+            setTimeout(() => {
+                setStatus(false);
+                setErrorM(true);
+            }, 3000)
         }
+    }
+
+    const Ze = () => {
+        return (
+            <>
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 30,                    
+                    marginBottom: 10,
+                    textAlign: "center"
+                }}>Bienvenue sur MyHero</Text>
+      
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 25,
+                    marginBottom: 30,
+                    textAlign: "center"
+                }}>Inscription en cours</Text>
+            </>
+        );
+    }
+
+    if (status == true) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Ze />
+                <WaveIndicator color='#6d9bff' size={40} />
+            </View>
+        );
     }
 
     return (
@@ -76,7 +152,7 @@ const InscriptionScreen = ({ navigation }) => {
                     <View style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        marginBottom: 15,
+                        marginBottom: 7.5,
                         flexDirection: 'row'
                     }}>
                         <Text>Vous avez un compte ?</Text>
@@ -86,6 +162,10 @@ const InscriptionScreen = ({ navigation }) => {
                             }}> Se connecter</Text>
                         </TouchableOpacity>
                     </View>
+
+                    {error && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>Les deux mot de passe ne correspondent pas</Text>}
+                    {errorM && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>Les formulaires n'ont pas été remplis correctement</Text>}
+                    {errorU && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>Une erreur inconnue est survenue, veuillez ressayer plus tard</Text>}
 
                     <TouchableOpacity onPress={() => onPress()}>
                         <View style={{
