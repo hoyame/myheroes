@@ -5,7 +5,7 @@ import HeaderComponent from '../../components/Header/header';
 import CheckBox from '@react-native-community/checkbox';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
-import { setHelpAlertData } from '../../data/actions/user';
+import { setHelpAlertData, setSendAlertData } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import MyHeroAlerts from '../../Alerts';
 
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
 export const SenderAcceptAlertPage = ({ navigation }) => {
     const [isSelected, setSelection] = useState(false);
     const alerts = useReduxState(state => state.user.send);
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -77,7 +78,15 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 </View>
 
                 <TouchableOpacity onPress={() => {
-                    MyHeroAlerts.SendAlert({
+                    dispatch(setSendAlertData({status: false, data: {
+                        id: 0,
+                        level: 0,
+                        source: "",
+                        latitude: 0,
+                        longitude: 0,    
+                        description: ""
+                    }}))
+                    MyHeroAlerts.DeleteAlert({
                         level: alerts.data.level,
                         source: alerts.data.source,
                         latitude: alerts.data.latitude,
@@ -123,9 +132,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     <AccountStats name={alerts.data.source} xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
                 </View>
 
-                <View style={{
-                    //marginBottom: 10
-                }}>
+                <View>
                     <AlertInformationProps level={alerts.data.level} sender={alerts.data.source} avatar="" distance="510" />
                 </View>
 
@@ -139,10 +146,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     }}>
                         Description: {alerts.data.description}
                     </Text>
-
-              
                 </View>
-
 
                 <View style={{
                     height: 140,
