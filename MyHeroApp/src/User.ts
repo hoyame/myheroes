@@ -11,7 +11,7 @@ interface IUser {
 
 
 export default abstract class Users {
-    public static Register(data: IUser) {
+    public static Register(data: IUser, cb: any) {
         var params = {
             pseudo: data.pseudo,
             email: data.email,
@@ -30,6 +30,8 @@ export default abstract class Users {
         fetch('http://146.59.227.90:3333/user/signup', req)
             .then(function(res) {
                 console.log(res);
+
+                cb(res.status);
             })
 
             .catch(function(err) {
@@ -38,7 +40,7 @@ export default abstract class Users {
         ;
     }
 
-    public static Login(data: IUser) {
+    public static Login(data: IUser, cb: any) {
         var params = {
             pseudo: data.pseudo,
             email: data.email,
@@ -56,7 +58,9 @@ export default abstract class Users {
     
         fetch('http://146.59.227.90:3333/user/login', req)
             .then(function(res) {
-                console.log(res);
+                console.log(res.status)
+
+                cb(res.status);
             })
 
             .catch(function(err) {
