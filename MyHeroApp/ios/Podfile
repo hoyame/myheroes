@@ -22,6 +22,8 @@ target 'MyHeroApp' do
   
   pod 'GooglePlaces', '4.0.0'
   
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
