@@ -22,40 +22,7 @@ const AlertReducer = (state = initialState, action: IAlertsAction): IAlertState 
 }
 
 const initialState: IAlertState = {
-    list: [
-        {   
-            id: 1,
-            level: 1,
-            source: "Hoyame",
-            latitude: 45.684866,
-            longitude: 5.9096452,    
-            description: "Arrive pas a se reveiller"
-        },
-        {
-            id: 2,
-            level: 3,
-            source: "Jibril",
-            latitude: 45.6945534,
-            longitude: 5.9058787,
-            description: "Agression"
-        },
-        {
-            id: 3,
-            level: 2,
-            source: "Ademo",
-            latitude: 45.6940966,
-            longitude: 5.8894133,
-            description: "Maison prend feu"
-        },
-        {
-            id: 4,
-            level: 1,
-            source: "Kiruu",
-            latitude: 45.6914931,
-            longitude: 5.9029322,
-            description: "Panne d'essence"
-        }
-    ]
+    list: []
 }
 
 export default AlertReducer;
