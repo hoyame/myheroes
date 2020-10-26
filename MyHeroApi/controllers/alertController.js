@@ -1,5 +1,6 @@
 let AlertsData = []
 
+
 module.exports.addAlert = (req, res, next) => {
     const model = {
         id: AlertsData.length + 1,
@@ -16,6 +17,7 @@ module.exports.addAlert = (req, res, next) => {
 }
 
 module.exports.returnAlerts = (req, res, next) => {
+
     res.send(AlertsData);
 }
 
