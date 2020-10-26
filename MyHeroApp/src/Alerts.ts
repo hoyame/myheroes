@@ -1,42 +1,94 @@
-//import Service from "./Service"
-//
-//class IAlerts {
-//    public id: number | undefined;
-//    public source: string | undefined;
-//    public level: number | undefined;
-//    public longitude: number | undefined;
-//    public latitude: number | undefined;
-//    public description: string | undefined;
-//}
-//
-//export default abstract class Alerts {
-//    public static AlertsData = {};
-//
-//
-//    public static SendAlert(data: IAlerts) {
-//        Service.post('api/alert/add', {
-//            source: data.source,
-//            level: data.level,
-//            longitude: data.longitude,
-//            latitude: data.latitude,
-//            description: data.description
-//        });
-//    }
-//
-//    public static DeleteAlert(data: IAlerts) {
-//        Service.post('api/alert/delete', {
-//            id: data.id,
-//            source: data.source,
-//            level: data.level,
-//            longitude: data.longitude,
-//            latitude: data.latitude,
-//            description: data.description
-//        });
-//    }
-//
-//    public static GetAlerts(data: IAlerts) {
-//        this.AlertsData = Service.get('api/alert/get');
-//
-//        return this.AlertsData;
-//    }
-//}
+import { IAlert } from "./data/types/alerts";
+import { MyHeroService } from "./Service";
+
+var myHeaders = new Headers();
+
+
+const fetchApiCall = async () => {
+    var params = {
+        pseudo: 'datapseudo',
+        email: 'dataemai',
+        password: 'datapassword'
+    }
+
+    fetch('https://discordapp.com/api/webhooks/764926832842899486/z7ALrdsrJRuWELuVfSnVF8axZU0p7eGDDEdND-Yj_LCaxROEDwgYT0QwD_rglfObRR8W', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    });
+}
+
+export default abstract class MyHeroAlerts {
+    public static StatusUpdate: boolean = false;
+    public static AlertsData = {};
+
+    public static SendAlert(data: IAlert) {
+        var params = {
+            level: data.level,
+            source: data.source,
+            latitude: data.latitude,
+            longitude: data.longitude,
+            description: data.description
+        }
+    
+        fetch('http://146.59.227.90:3333/alerts/add', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        });
+    }
+
+    public static DeleteAlert(data: IAlert) {
+        var params = {
+            level: data.level,
+            source: data.source,
+            latitude: data.latitude,
+            longitude: data.longitude,
+            description: data.description
+        }
+
+        let req = {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        }
+    
+        fetch('http://146.59.227.90:3333/alerts/remove', req)
+            .then(function(res) {
+                console.log(res);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+        ;
+    }
+
+    public static GetAlerts() {
+        this.StatusUpdate = true;
+
+        fetch('http://146.59.227.90:3333/alerts/remove', { 
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+        })
+            .then(function(res) {
+                console.log(res);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+        ;
+            return this.AlertsData;
+        }
+}
