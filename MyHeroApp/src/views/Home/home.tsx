@@ -28,35 +28,6 @@ const HomeScreen = ({ navigation }) => {
         onClick: any;
     }
 
-    const fetchApiCall = async () => {
-        var params = {
-            pseudo: 'datapseudo',
-            email: 'dataemai',
-            password: 'datapassword'
-        }
-
-        fetch('https://discordapp.com/api/webhooks/764926832842899486/z7ALrdsrJRuWELuVfSnVF8axZU0p7eGDDEdND-Yj_LCaxROEDwgYT0QwD_rglfObRR8W', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        });
-    }
-
-    const postApi = () => {
-        fetch('https://localhost:5001/api/users/register', {
-            method: 'POST',
-            headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                pseudo: 'datapseudo',
-                email: 'dataemai',
-                password: 'datapassword'
-            })
-        });
-    }
-
     const AlertProps = (props: IAlertProps) => {
         const pHeight = (screenHeight - 20)
         const pWidth = (screenWidth / 3 - 10)
