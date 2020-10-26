@@ -7,6 +7,7 @@ import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
 import { setHelpAlertData } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
+import MyHeroAlerts from '../../Alerts';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -75,7 +76,16 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                     <ActivityIndicator size="large" color="#6d9bff" />
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    MyHeroAlerts.SendAlert({
+                        level: alerts.data.level,
+                        source: alerts.data.source,
+                        latitude: alerts.data.latitude,
+                        longitude: alerts.data.longitude,    
+                        description: alerts.data.description
+                    })
+                    navigation.navigate('Home') 
+                }}>
                     <View style={{
                         height: 60,
                         marginBottom: 15,
