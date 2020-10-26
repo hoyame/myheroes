@@ -8,6 +8,7 @@ import InputComponent from './input';
 import { WaveIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setSendAlertData } from '../../data/actions/user';
+import MyHeroAlerts from '../../Alerts';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
@@ -137,6 +138,13 @@ const CreateAlertScreen = ({ navigation }) => {
                             </View>
 
                             <TouchableOpacity onPress={() => {
+                                MyHeroAlerts.SendAlert({
+                                    level: alertLevelSe,
+                                    source: nameSe,
+                                    latitude: latitude,
+                                    longitude: longitude,    
+                                    description: state.description
+                                })
                                 navigation.navigate('SenderAcceptAlertPage') 
                                 dispatch(setSendAlertData({ status: true, data: {
                                     level: alertLevelSe,
