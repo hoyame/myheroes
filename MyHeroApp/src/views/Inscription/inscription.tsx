@@ -3,6 +3,7 @@ import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpaci
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import Users from '../../User';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -32,6 +33,16 @@ const InscriptionScreen = ({ navigation }) => {
         cPassword: ''
     })
 
+    const onPress = () => {
+        if (state.password === state.cPassword) {
+            Users.Register({
+                pseudo: state.name,
+                email: state.mail,
+                password: state.password
+            })
+        }
+    }
+
     return (
         <>
             <View style={{
@@ -58,7 +69,7 @@ const InscriptionScreen = ({ navigation }) => {
                     flexDirection: "column"
                 }}>
                     <InputComponent name="Pseudo" placeholder="Pseudo" value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
-                    <InputComponent name="E-Mail" placeholder="E-Mail" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                    <InputComponent name="Identifiant" placeholder="Identifiant" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
                     <InputComponent name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                     <InputComponent name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
                 
@@ -76,7 +87,7 @@ const InscriptionScreen = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => onPress()}>
                         <View style={{
                             height: 60, 
                             width: screenWidth,
