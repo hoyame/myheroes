@@ -9,14 +9,12 @@ const App = () => {
   useEffect(() => {
     if (Platform.OS == "ios") {
       setTimeout(() => {
-        //MyHeroService.getLocalisation();
         MyHeroService.requestLocationPermission();
       }, 1000)
       return
     } else {
       try {
         setTimeout(() => {
-          //MyHeroService.getLocalisation();
           MyHeroService.requestLocationPermission();
         }, 1000)
       } catch {
