@@ -1,12 +1,14 @@
+import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import HeaderComponent from '../../components/Header/header';
 
 const GDPSPage = ({ navigation }) => {
     interface IPropsNav {
         title: string;
-        description: string;
+        description?: string;
         onClick?: any;
         fontAwesome?: any;
     }
@@ -15,39 +17,22 @@ const GDPSPage = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={props.onClick}>
                 <View style={{
-                    height: 70,
+                    height: 60,
                     //width: screenWidth - 70,
                     borderRadius: 10,
                     marginBottom: 15,
                     backgroundColor: '#E1E1E1',
                     display: 'flex',
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    alignItems: "center"
                 }}>
                     <View style={{
-                        height: 55,
-                        width: 55,
-                        margin: 7.5,
-                        borderRadius: 7.5,
-                        //backgroundColor: "#434343",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}>
-                        { props.fontAwesome && 
-                            <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{color: "#434343"}} />
-                        }
-                    </View>
-
-                    <View style={{
-                        paddingTop: 10
+                        paddingLeft: 15,
                     }}>
                         <Text style={{
                             fontSize: 24,
                             color: "#222222"
                         }}>{props.title}</Text>
-                        <Text style={{
-                            fontSize: 15,
-                            color: "#767676"
-                        }}>{props.description}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -56,21 +41,70 @@ const GDPSPage = ({ navigation }) => {
     
     return (
         <>
-            <HeaderComponent navigation={navigation} />
-        
+            <View style={ 
+                Dimensions.get('window').height > 695 ? {
+                    marginTop: 50,
+                    display: "flex", 
+                    paddingLeft: 35,
+                    paddingRight: 35,
+                    paddingBottom: 0,
+                } : {
+                    paddingLeft: 35,
+                    paddingRight: 35,
+                    paddingBottom: 0   
+                }
+            }>
+                <View style={{alignItems: "center"}}>
+                    <View style={{
+                        marginBottom: 25,
+                        justifyContent: "center",
+                        height: 40,
+                        width: 120,
+                        borderRadius: 10,
+                        backgroundColor: '#1d1d1d'
+                    }}>
+                        <Text style={{
+                            fontSize: 20,
+                            fontWeight: "700",
+                            textAlign: "center",
+                            color: '#ffffff'
+                        }}>MyHeroes</Text>
+                    </View>
+
+                </View>
+
+                <View style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                }}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                        <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
+                    </TouchableOpacity>
+
+                    <View>   
+                        <Text style={{
+                            fontSize: 25
+                        }}>Gestes de premier secours</Text>
+                    </View>
+                </View>
+            </View>
             <View style={{
-                paddingTop: 10,
                 padding: 35
             }}>
-                <Text style={{
-                    fontSize: 30,
-                    marginBottom: 20
-                }}>Gestes de premier secours</Text>
-
-                <PropsNav title="Zd" description="ddd"/>
-                <PropsNav title="Zd" description="ddd"/>
-                <PropsNav title="Zd" description="ddd"/>
-                <PropsNav title="Zd" description="ddd"/>
+                <ScrollView>
+                    <PropsNav title="Inconscience" />
+                    <PropsNav title="La position laterale de securité" />
+                    <PropsNav title="Le massage cardiaque" />
+                    <PropsNav title="Le défibrilateur automatisé" />
+                    <PropsNav title="Ettouffement adulte" />
+                    <PropsNav title="Ettouffement nourisson" />
+                    <PropsNav title="Saignement abondant" />
+                    <PropsNav title="Les brulures" />
+                    <PropsNav title="Traumatisme des os" />
+                    <PropsNav title="Noyade" />
+                    <PropsNav title="Le malaise" />
+                </ScrollView>
             </View>
         </> 
     );
