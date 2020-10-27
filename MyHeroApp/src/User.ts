@@ -68,4 +68,25 @@ export default abstract class Users {
             })
         ;        
     }
+
+    //public static setAvatar(data: any, cb: any) {
+    //    fetch("http://localhost:3000/api/upload", {
+    //        method: "POST",
+    //        body: JSON.stringify({
+    //            name: data.name,
+    //            type: data.type,
+    //            uri: data.uri
+    //        })
+    //    })
+    //    .then(response => response.json())
+    //    .then(response => {
+    //        console.log("upload succes", response);
+
+    //        
+    //    })
+    //    .catch(error => {
+    //        console.log("upload error", error);
+
+    //    });
+    //}
 }
