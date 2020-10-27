@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
+import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Platform } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Users from '../../User';
 import AsyncStorage from '@react-native-community/async-storage';
 import { WaveIndicator } from 'react-native-indicators';
+import ImagePicker from "react-native-image-picker";
+import { faAngry } from '@fortawesome/free-regular-svg-icons';
+
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -32,6 +35,11 @@ const InscriptionScreen = ({ navigation }) => {
     const [error, setError] = useState(false)
     const [errorM, setErrorM] = useState(false)
     const [errorU, setErrorU] = useState(false)
+    const [pictureS, setPictureS] = useState(false)
+    const [img, setImg] = useState({
+        uri: '',
+        type: ''
+    })
 
     const [state, setState] = useState({
         name: '',
@@ -40,6 +48,7 @@ const InscriptionScreen = ({ navigation }) => {
         cPassword: ''
     })
     
+
     const _storeData = async () => {
         try {
             await AsyncStorage.setItem('@name', state.name)
@@ -50,7 +59,9 @@ const InscriptionScreen = ({ navigation }) => {
     };
 
     const onPress = () => {
-        setStatus(true);
+        setPictureS(true);
+
+        setStatus(true)
 
         if (state.password === state.cPassword && state.name !== "" && state.mail !== "") {
             if (state.password !== "" && state.cPassword !== "") {
@@ -61,8 +72,7 @@ const InscriptionScreen = ({ navigation }) => {
                 }, (res: any) => {
                     if (res == 200) {
                         setTimeout(() => {
-                            _storeData();
-                            navigation.navigate('Home');
+                            setPictureS(true);
                         }, 2500)
                     } else {
                         setTimeout(() => {
@@ -115,6 +125,129 @@ const InscriptionScreen = ({ navigation }) => {
             }}>
                 <Ze />
                 <WaveIndicator color='#6d9bff' size={40} />
+            </View>
+        );
+    }
+
+
+    const onPictureAccept = () => {
+        _storeData();
+        navigation.navigate('Home');
+    }
+
+    
+    const createFormData = (photo: any, body: any) => {
+        const data = new FormData();
+    
+        data.append("photo", {
+            name: `${state.name}_picture`,
+            type: photo.type,
+            uri: Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
+        });
+    
+        Object.keys(body).forEach(key => {
+        data.append(key, body[key]);
+        });
+    
+        return data;
+    };
+
+    const handleChoosePhoto = () => {
+        const options = {
+            noData: true
+        };
+
+        ImagePicker.launchImageLibrary(options, response => {           
+            if (response.uri) {
+                setImg({...img, uri: response.uri})
+                setImg({...img, type: response.type || ''})
+            }
+        })
+    }
+
+    const handleUploadPhoto = () => {
+        fetch("http://146.59.227.90:3333/user/avatar", {
+          method: "POST",
+          body: createFormData(img, { userId: "123" })
+        })
+          .then(response => response.json())
+          .then(response => {
+            console.log("upload succes", response);
+        })
+          .catch(error => {
+            console.log("upload error", error);
+        });
+    };
+
+    const saveAvatar = () => {
+        if (img.uri !== '' && img.type !== '') {
+            handleUploadPhoto();
+        }
+    }
+
+    if (pictureS == true) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 30,                    
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>Bienvenue sur MyHero</Text>
+      
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 5,
+                    textAlign: "center"
+                }}>Pour continuer votre inscription</Text>
+
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>veuillez ajouter une photo</Text>
+
+                <Image 
+                    source={{uri: img.uri}}
+                    style={{
+                        height: 200,
+                        width: 200,
+                        borderRadius: 20,
+                        marginBottom: 20
+                    }}
+                />
+
+                <TouchableOpacity onPress={() => handleChoosePhoto()}>
+                    <Text style={{
+                        color: "#000000",
+                        fontSize: 20,
+                        marginBottom: 30,
+                        textAlign: "center"
+                    }}>Choisir une photo</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => saveAvatar()}>
+                        <View style={{
+                            height: 60, 
+                            width: screenWidth,
+                            borderRadius: 7.5,
+                            marginTop: 5,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#6d9bff'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25
+                            }}>Continuer</Text>
+                        </View>
+                    </TouchableOpacity>
             </View>
         );
     }
