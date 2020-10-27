@@ -17,6 +17,9 @@ const {
 
 const usersController = require('../controllers/usersController');
 
+import upload from '../utils/distance';
+
+
 router.post(
 	'/user/signup',
 	[validationSignup, isUserExistsSignup],
@@ -58,5 +61,6 @@ router.post(
 
 router.post('/user/add_rate', usersController.addRate); 
 
+router.post('/user/avatar', upload.array('photo', 3), usersController.uploadAvatar); 
 
 module.exports = router;
