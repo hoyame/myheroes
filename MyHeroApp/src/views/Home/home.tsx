@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import NavbarComponent from '../../components/Navbar/navbar';
-import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
@@ -128,7 +128,6 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View style={{
             display: "flex",
-
         }}>
             <HeaderComponent navigation={navigation} />
 
@@ -324,7 +323,7 @@ const HomeScreen = ({ navigation }) => {
                     }
                 </View>
 
-                <AlertComponent  fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
+                <AlertComponent onClick={() => navigation.navigate('GDPS')} fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
                 <AlertComponent  fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
       
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
@@ -341,7 +340,7 @@ const HomeScreen = ({ navigation }) => {
  
                 {  Dimensions.get('window').height > 695 &&
                     <>
-                        <AlertComponent onClick={() => navigation.navigate('Alert')} fontAwesome={faPhoneAlt} color="#d80000" title="Listes des alertes" />
+                        <AlertComponent onClick={() => navigation.navigate('Alert')} fontAwesome={faBell} color="#1f7ceb" title="Listes des alertes" />
                     </>
                 }
             </View>

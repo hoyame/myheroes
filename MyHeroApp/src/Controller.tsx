@@ -66,7 +66,7 @@ const Controller = () => {
     }, 5000)
 
     setTimeout(() => {
-      dispatch(setName(nameA))
+      dispatch(setName('Hoyame'))
       dispatch(setRate(3))
       dispatch(setXp(160))
       dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png')) 
@@ -102,7 +102,7 @@ const Controller = () => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={nameA == "" ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName={"Home"} screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Alert" component={AlertScreen} />
             <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />

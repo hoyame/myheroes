@@ -1,10 +1,11 @@
-import { faBell, faComments, faHome, faMapSigns, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faComments, faHome, faInfoCircle, faLock, faMapSigns, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { useReduxState } from '../../data/store';
 import { PulseIndicator } from 'react-native-indicators';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
@@ -114,12 +115,35 @@ const NavScreen = ({ navigation }) => {
         <View style={ 
             Dimensions.get('window').height > 695 ? {
                 marginTop: 50,
-                padding: 35,
+                display: "flex", 
+                paddingLeft: 35,
+                paddingRight: 35,
+                paddingBottom: 35,
             } : {
-                marginTop: 15,
-                padding: 35,
+                paddingLeft: 35,
+                paddingRight: 35,
+                paddingBottom: 35   
             }
         }>
+            <View style={{alignItems: "center"}}>
+                <View style={{
+                    marginBottom: 25,
+                    justifyContent: "center",
+                    height: 40,
+                    width: 120,
+                    borderRadius: 10,
+                    backgroundColor: '#1d1d1d'
+                }}>
+                    <Text style={{
+                        fontSize: 20,
+                        fontWeight: "700",
+                        textAlign: "center",
+                        color: '#ffffff'
+                    }}>MyHeroes</Text>
+                </View>
+
+            </View>
+
             <View style={{
                 display: "flex",
                 flexDirection: "row",
@@ -132,9 +156,7 @@ const NavScreen = ({ navigation }) => {
                 <View>   
                     <Text style={{
                         fontSize: 35
-                    }}>Pages</Text>
-
-                    <Text onPress={() => navigation.navigate('Home')}>Listes des pages disponibles</Text>
+                    }}>Menu</Text>
                 </View>
             </View>
         
@@ -144,7 +166,7 @@ const NavScreen = ({ navigation }) => {
                 justifyContent: "center"
             }}>              
                 <View style={{
-                    marginTop: 35
+                    marginTop: 15
                 }}>
 
                     { statusSend == true &&
@@ -159,11 +181,17 @@ const NavScreen = ({ navigation }) => {
                 <View style={{
                     marginTop: 10
                 }}>
-                    <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
-                    <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
-                    <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
-                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
-                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Connexion')} title="Compte" description="Mon Compte" />   
+                    <ScrollView>
+                        <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
+                        <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
+                        <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
+                        <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Faq')} title="Avis" description="Votre avis sur l'application" />
+                        <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Faq')} title="Parametres" description="Parametres du compte" />
+                        <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
+                        <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Faq')} title="Confidentialité" description="Confidentialité" />
+                        <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Faq')} title="A propos" description="A propos" />
+                    </ScrollView>
+
                 </View>
             </View>
         </View>

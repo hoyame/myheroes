@@ -219,109 +219,132 @@ const HeaderComponent = (props: IHeader) => {
     }
 
     return (
-        <View style={ 
-            Dimensions.get('window').height > 695 ? {
-                marginTop: 50,
-                padding: 35,
-            } : {
-                padding: 35,
-            }
-        }>
-            <View style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: screenWidth
-            }}>
-                <TouchableHighlight
-                    style={{
-                        borderRadius: 50
-                    }}
+        <>
+            <View style={ 
+                Dimensions.get('window').height > 695 ? {
+                    marginTop: 50,
+                    display: "flex", 
+                    alignItems: "center",
+                    paddingLeft: 35,
+                    paddingRight: 35,
+                    paddingBottom: 35,
+                } : {
+                    paddingLeft: 35,
+                    paddingRight: 35,
+                    paddingBottom: 35               
+                }
+            }>
+                <View style={{
+                    marginBottom: 25,
+                    justifyContent: "center",
+                    height: 40,
+                    width: 120,
+                    borderRadius: 10,
+                    backgroundColor: '#1d1d1d'
+                }}>
+                    <Text style={{
+                        fontSize: 20,
+                        fontWeight: "700",
+                        textAlign: "center",
+                        color: '#ffffff'
+                    }}>MyHeroes</Text>
+                </View>
+   
+                <View style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: screenWidth
+                }}>
+                    <TouchableHighlight
+                        style={{
+                            borderRadius: 50
+                        }}
 
-                    activeOpacity={0.5}
-                    underlayColor="#bebebe"
-                    onPress={() => props.navigation.navigate('Nav')}
-                >
-                
-                    <View style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        height: 65,
-                        width: 65,
-                        borderRadius: 50,
-                        backgroundColor: "#E1E1E1"
-                    }}>
-                        <FontAwesomeIcon icon={faAlignLeft} size={25} style={{
-                            marginTop: 20,
-                            justifyContent: "center"
-                        }} />
-                    </View>
-                </TouchableHighlight>
-
-                <TouchableOpacity
-                    onPress={() => props.navigation.navigate('Account')}
-                >                
-
-                    <View style={{
-                        height: 65,
-                        width: 175,
-                        display: "flex",
-                        flexDirection: "row",
-                        borderTopRightRadius: 10,
-                        borderBottomRightRadius: 10,
-                        borderTopLeftRadius: 50,
-                        borderBottomStartRadius: 50,
-                        backgroundColor: "#DDDDDD",
-                    }}>
+                        activeOpacity={0.5}
+                        underlayColor="#bebebe"
+                        onPress={() => props.navigation.navigate('Nav')}
+                    >
+                    
                         <View style={{
+                            display: 'flex',
+                            alignItems: 'center',
                             height: 65,
                             width: 65,
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
+                            borderRadius: 50,
+                            backgroundColor: "#E1E1E1"
                         }}>
-                            <Image
-                                style={{
-                                    height: 55,
-                                    width: 55,
-                                    borderRadius: 50,
-                                }}
-
-                                source={{
-                                    uri: imageUrl,
-                                }}
-                            />
+                            <FontAwesomeIcon icon={faAlignLeft} size={25} style={{
+                                marginTop: 20,
+                                justifyContent: "center"
+                            }} />
                         </View>
-                                
+                    </TouchableHighlight>
+
+                    <TouchableOpacity
+                        onPress={() => props.navigation.navigate('Account')}
+                    >                
+
                         <View style={{
+                            height: 65,
+                            width: 175,
                             display: "flex",
-                            justifyContent: "center",
-
-                            marginLeft: 12
+                            flexDirection: "row",
+                            borderTopRightRadius: 10,
+                            borderBottomRightRadius: 10,
+                            borderTopLeftRadius: 50,
+                            borderBottomStartRadius: 50,
+                            backgroundColor: "#DDDDDD",
                         }}>
-                            <Text style={{
-                                //color: "#6d9bff",
-                                marginBottom: 1,
-                                fontSize: 16
-                            }}>{name}</Text>
+                            <View style={{
+                                height: 65,
+                                width: 65,
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}>
+                                <Image
+                                    style={{
+                                        height: 55,
+                                        width: 55,
+                                        borderRadius: 50,
+                                    }}
 
-                            <Text style={{
-                                color: "#778899",
-                                marginBottom: 3,
-                                fontSize: 11
-                            }}>{xp} XP</Text>
-                                                    
-                            <View>
-                                {ReturnStars({rate: rate}) }
+                                    source={{
+                                        uri: imageUrl,
+                                    }}
+                                />
                             </View>
+
+                            <View style={{
+                                display: "flex",
+                                justifyContent: "center",
+
+                                marginLeft: 12
+                            }}>
+                                <Text style={{
+                                    //color: "#6d9bff",
+                                    marginBottom: 1,
+                                    fontSize: 16
+                                }}>{name}</Text>
+
+                                <Text style={{
+                                    color: "#778899",
+                                    marginBottom: 3,
+                                    fontSize: 11
+                                }}>{xp} XP</Text>
+
+                                <View>
+                                    {ReturnStars({rate: rate}) }
+                                </View>
+                            </View>
+                            
+
                         </View>
-                        
-
-                    </View>
-                </TouchableOpacity>   
+                    </TouchableOpacity>   
+                </View>
             </View>
-        </View>
-
+        </>
     );
 }
 
