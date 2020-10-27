@@ -59,12 +59,12 @@ const InscriptionScreen = ({ navigation }) => {
     };
 
     const onPress = () => {
-        setPictureS(true);
-
         setStatus(true)
+        setErrorU(false)
+        setErrorM(false)
 
-        if (state.password === state.cPassword && state.name !== "" && state.mail !== "") {
-            if (state.password !== "" && state.cPassword !== "") {
+        if (state.password !== "" && state.cPassword !== "" && state.name !== "" && state.mail !== "") {
+            if (state.password === state.cPassword) {
                 Users.Register({
                     pseudo: state.name,
                     email: state.mail,
@@ -278,9 +278,9 @@ const InscriptionScreen = ({ navigation }) => {
                     flexDirection: "column"
                 }}>
                     <InputComponent name="Pseudo" placeholder="Pseudo" value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
-                    <InputComponent name="Identifiant" placeholder="Identifiant" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                    <InputComponent name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                    <InputComponent name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+                    <InputComponent name="Identifiant" placeholder="Mail ou Télphone" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                    <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                    <InputComponent password={true} name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
                 
                     <View style={{
                         display: 'flex',

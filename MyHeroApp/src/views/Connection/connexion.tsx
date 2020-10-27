@@ -132,7 +132,7 @@ const ConnexionScreen = ({ navigation }) => {
                     flexDirection: "column"
                 }}>
                     <InputComponent name="Identifiant" placeholder="Identifiant" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                    <InputComponent name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                    <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                 
                     <View style={{
                         display: 'flex',

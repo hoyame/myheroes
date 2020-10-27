@@ -13,6 +13,7 @@ interface IInput {
     placeholder: string;
     icon: any;
     height?: number;
+    password?: boolean;
 }
 
 const InputComponent = (props: IInput) => {
@@ -76,6 +77,7 @@ const InputComponent = (props: IInput) => {
                         placeholder={props.placeholder}
                         onChangeText={text => props.onChange(text)}
                         value={props.value}
+                        secureTextEntry={props.password == true ? true : false }
                     />
                 </View>
             </View>

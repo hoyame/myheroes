@@ -44,8 +44,12 @@ const Controller = () => {
       let AName = await AsyncStorage.getItem('@name');
       let AMail = await AsyncStorage.getItem('@mail');
 
+      console.log(AName)
+      console.log(AMail)
+
       if (typeof AName == "string") { setAName(AName) }
-      if (typeof AMail == "string") { setAMail(AMail) }     
+      //if (typeof AMail == "string") { setAMail(AMail) }     
+      if (typeof AMail == "string") { setAName(AMail) }     
 
     } catch (error) {
       console.log("error", error)
@@ -65,11 +69,11 @@ const Controller = () => {
       dispatch(setName(nameA))
       dispatch(setRate(3))
       dispatch(setXp(160))
-      dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png'))
-    }, 2500)   
+      dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png')) 
+    })
   });
 
-  if (userInformation == "") {
+  if (nameA !== "" && userInformation == "") {
     return (
         <View style={{
             width: screenWidth,
