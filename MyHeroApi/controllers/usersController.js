@@ -282,3 +282,25 @@ module.exports.uploadAvatar = (req, res, next) => {
 	  message: 'success!',
 	})
 }
+
+module.exports.getUserData = (req, res, next) => {
+	const email = req.body.email;
+
+	let query = `SELECT * FROM users WHERE email=?`;
+
+	con.query(query, [email], (err, result, fields) => {
+		if (err) {
+			return next(err);
+		}
+
+		if (result.length > 0) {
+			const user = result[0];
+
+			console.log(user.pseudo)
+		} else {
+			let err = new Error('Invalid email or password entered');
+			err.field = 'token';
+			return next(err);
+		}
+	});
+}
