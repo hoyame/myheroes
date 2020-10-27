@@ -66,10 +66,10 @@ const Controller = () => {
       dispatch(setRate(3))
       dispatch(setXp(160))
       dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png'))
-    }, 2500)
+    }, 2500)   
   });
 
-  if (nameA !== '' && mailA !== '' && userInformation == "") {
+  if (userInformation == "") {
     return (
         <View style={{
             width: screenWidth,
@@ -117,5 +117,7 @@ const Controller = () => {
     </>
   );
 }
+
+
 
 export default Controller;

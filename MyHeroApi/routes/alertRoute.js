@@ -10,5 +10,7 @@ router.get('/alerts/get/lenght', alertController.returnAlertsLenght);
 
 router.post('/alerts/add', alertController.addAlert);
 
+router.post('/alerts/remove', alertController.removeAlert);
+
 
 module.exports = router;

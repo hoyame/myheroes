@@ -15,6 +15,11 @@ const AlertReducer = (state = initialState, action: IAlertsAction): IAlertState 
                 ...state, 
                 list: [...state.list, action.payload] 
             };
+        case UPDATE_ALERTS: 
+            return { 
+                ...state, 
+                list: [action.payload] 
+            };
         case GET_ALERTS: 
             return state;
         default: return state;
