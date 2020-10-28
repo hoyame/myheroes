@@ -107,7 +107,9 @@ const AccountScreen = ({ navigation }) => {
                     flexDirection: "column"
                 }}>
 
-                    <AccountStats name={name} xp={xp} rate={rate} img={img} />
+                    { Dimensions.get('window').height > 695 && 
+                        <AccountStats name={name} xp={xp} rate={rate} img={img} />
+                    }
 
                     <View style={{
                         padding: 15,
@@ -128,7 +130,7 @@ const AccountScreen = ({ navigation }) => {
                         marginTop: 15,
                         borderRadius: 7.5,
                         backgroundColor: '#e1e1e1',
-                        height: 300
+                        height: Dimensions.get('window').height > 695 ? 300 : 250
                     }}>
                         <Text style={{fontSize: 20, marginBottom: 15}}>Avis</Text>
                         
