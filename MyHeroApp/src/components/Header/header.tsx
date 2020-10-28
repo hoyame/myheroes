@@ -229,13 +229,16 @@ const HeaderComponent = (props: IHeader) => {
                     paddingRight: 35,
                     paddingBottom: 35,
                 } : {
+                    marginTop: 20,
+                    display: "flex", 
+                    alignItems: "center",
                     paddingLeft: 35,
                     paddingRight: 35,
-                    paddingBottom: 35               
+                    paddingBottom: 30               
                 }
             }>
                 <View style={{
-                    marginBottom: 25,
+                    marginBottom: 20,
                     justifyContent: "center",
                     height: 40,
                     width: 120,
