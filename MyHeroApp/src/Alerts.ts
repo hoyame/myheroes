@@ -64,11 +64,11 @@ export default abstract class MyHeroAlerts {
     
         fetch('http://146.59.227.90:3333/alerts/remove', req)
             .then(function(res) {
-                //console.log(res);
+                console.log(res);
             })
 
             .catch(function(err) {
-                //console.log("errror", err)
+                console.log("errror", err)
             })
         ;
     }
