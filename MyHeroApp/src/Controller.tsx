@@ -44,20 +44,17 @@ const Controller = () => {
       let AName = await AsyncStorage.getItem('@name');
       let AMail = await AsyncStorage.getItem('@mail');
 
-      console.log(AName)
-      console.log(AMail)
-
       if (typeof AName == "string") { setAName(AName) }
       //if (typeof AMail == "string") { setAMail(AMail) }     
-      if (typeof AMail == "string") { setAName(AMail) }     
+      //if (typeof AMail == "string") { setAName(AMail) }     
 
     } catch (error) {
-      console.log("error", error)
+
     }
   }; 
 
   useEffect(() => {
-    _retrieveData();
+    //_retrieveData();
 
     setTimeout(() => {
         if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
@@ -73,7 +70,7 @@ const Controller = () => {
     })
   });
 
-  if (nameA !== "" && userInformation == "") {
+  if (userInformation == "") {
     return (
         <View style={{
             width: screenWidth,
