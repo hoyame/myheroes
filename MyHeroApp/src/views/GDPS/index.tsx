@@ -1,8 +1,7 @@
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
 
 const GDPSPage = ({ navigation }) => {
@@ -49,6 +48,8 @@ const GDPSPage = ({ navigation }) => {
                     paddingRight: 35,
                     paddingBottom: 0,
                 } : {
+                    marginTop: 20,
+                    display: "flex",
                     paddingLeft: 35,
                     paddingRight: 35,
                     paddingBottom: 0   
@@ -84,6 +85,7 @@ const GDPSPage = ({ navigation }) => {
 
                     <View>   
                         <Text style={{
+                            width: Dimensions.get('window').width - 100, 
                             fontSize: 25
                         }}>Gestes de premier secours</Text>
                     </View>
@@ -92,7 +94,9 @@ const GDPSPage = ({ navigation }) => {
             <View style={{
                 padding: 35
             }}>
-                <ScrollView>
+                <ScrollView style={{
+                    
+                }}>
                     <PropsNav title="Inconscience" />
                     <PropsNav title="La position laterale de securité" />
                     <PropsNav title="Le massage cardiaque" />
