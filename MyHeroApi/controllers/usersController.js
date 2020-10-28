@@ -294,9 +294,9 @@ module.exports.getUserData = (req, res, next) => {
 		}
 
 		if (result.length > 0) {
-			const user = result[0];
+			const user = result;
 
-			console.log(user.pseudo)
+			console.log(user)
 
 			return user.pseudo
 		} else {
