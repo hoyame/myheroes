@@ -298,7 +298,7 @@ module.exports.getUserData = (req, res, next) => {
 
 			console.log(user)
 
-			return user
+			return res.json(user)
 		} else {
 			let err = new Error('Invalid ID');
 			err.field = 'token';
