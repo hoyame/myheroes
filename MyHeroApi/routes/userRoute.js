@@ -17,7 +17,17 @@ const {
 
 const usersController = require('../controllers/usersController');
 
-import upload from '../utils/distance';
+const Storage = multer.diskStorage({
+    destination(req, file, callback) {
+      callback(null, './images')
+    },
+
+    filename(req, file, callback) {
+      callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`)
+    },
+})
+
+const upload = multer({ storage: Storage })
 
 
 router.post(
