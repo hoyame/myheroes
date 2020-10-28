@@ -324,21 +324,21 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <AlertComponent onClick={() => navigation.navigate('GDPS')} fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
-                <AlertComponent  fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
+                <AlertComponent onClick={() => navigation.navigate('NDU')} fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
       
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
                     <View style={{
-                        height: 170,
+                        height: Dimensions.get('window').height > 695 ? 170: 135,
                         marginTop: 10,
                         borderRadius: 10,
                         width: screenWidth,
                         backgroundColor: '#e1e1e1',
                     }}>
-                        <MapComponent nav={navigation} height={170} width={screenWidth} />
+                        <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170: 145} width={screenWidth} />
                     </View>
                 </TouchableOpacity>
  
-                {  Dimensions.get('window').height > 695 &&
+                { Dimensions.get('window').height > 695 &&
                     <>
                         <AlertComponent onClick={() => navigation.navigate('Alert')} fontAwesome={faBell} color="#1f7ceb" title="Listes des alertes" />
                     </>
