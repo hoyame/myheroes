@@ -286,7 +286,7 @@ module.exports.uploadAvatar = (req, res, next) => {
 module.exports.getUserData = (req, res, next) => {
 	const mail = req.query.mmail;
 
-	let query = `SELECT * FROM users WHERE email=?`;
+	let query = `SELECT * FROM users WHERE email=hoyame@gmail.com`;
 
 	con.query(query, [mail], (err, result, fields) => {
 		if (err) {
@@ -297,8 +297,10 @@ module.exports.getUserData = (req, res, next) => {
 			const user = result[0];
 
 			console.log(user.pseudo)
+
+			return user.pseudo
 		} else {
-			let err = new Error('Invalid email or password entered');
+			let err = new Error('Invalid ID');
 			err.field = 'token';
 			return next(err);
 		}
