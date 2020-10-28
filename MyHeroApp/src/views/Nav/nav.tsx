@@ -2,10 +2,9 @@ import { faBell, faComments, faHome, faInfoCircle, faLock, faMapSigns, faStar, f
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { useReduxState } from '../../data/store';
 import { PulseIndicator } from 'react-native-indicators';
-import { ScrollView } from 'react-native-gesture-handler';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
@@ -120,6 +119,8 @@ const NavScreen = ({ navigation }) => {
                 paddingRight: 35,
                 paddingBottom: 35,
             } : {
+                marginTop: 30,
+                display: "flex", 
                 paddingLeft: 35,
                 paddingRight: 35,
                 paddingBottom: 35   
@@ -161,27 +162,20 @@ const NavScreen = ({ navigation }) => {
             </View>
         
             <View style={{
-                display: "flex",
-                flexDirection: "column",
                 justifyContent: "center"
             }}>              
                 <View style={{
-                    marginTop: 15
+                    marginTop: 25
                 }}>
+                    <ScrollView>       
+                        { statusSend == true &&
+                            <AlertPropsNav color="#ff7f00" onClick={() => navigation.navigate('SenderAcceptAlertPage')} title="" description="" />
+                        }
+                    
+                        { statusHelp == true &&
+                            <AlertPropsNav color="#1f7ceb" onClick={() => navigation.navigate('HelperAcceptAlertPage')} title="" description="" />
+                        }
 
-                    { statusSend == true &&
-                        <AlertPropsNav color="#ff7f00" onClick={() => navigation.navigate('SenderAcceptAlertPage')} title="" description="" />
-                    }
-                   
-                    { statusHelp == true &&
-                        <AlertPropsNav color="#1f7ceb" onClick={() => navigation.navigate('HelperAcceptAlertPage')} title="" description="" />
-                    }
-                </View>
-
-                <View style={{
-                    marginTop: 10
-                }}>
-                    <ScrollView>
                         <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
                         <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
                         <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
@@ -191,7 +185,6 @@ const NavScreen = ({ navigation }) => {
                         <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Faq')} title="Confidentialité" description="Confidentialité" />
                         <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Faq')} title="A propos" description="A propos" />
                     </ScrollView>
-
                 </View>
             </View>
         </View>
