@@ -284,9 +284,9 @@ module.exports.uploadAvatar = (req, res, next) => {
 }
 
 module.exports.getUserData = (req, res, next) => {
-	const mail = req.query.mmail;
+	const mail = req.query.mail;
 
-	let query = `SELECT * FROM users WHERE email=hoyame@gmail.com`;
+	let query = `SELECT * FROM users WHERE email=?`;
 
 	con.query(query, [mail], (err, result, fields) => {
 		if (err) {
