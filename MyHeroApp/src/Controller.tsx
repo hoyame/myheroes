@@ -44,30 +44,30 @@ const Controller = () => {
   useEffect(() => {
     setTimeout(() => {
         if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
-            dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
+          dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
         }
     }, 5000)
 
     setTimeout(async () => {
       if (initialize == false) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
+        console.log(AMail)
 
         if (AMail !== "") {
           Users.GetData(AMail, (e: any) => {
-            let data = JSON.stringify(e.data[0])
-            let status: number = e.status
-
-            const pseudo = JSON.stringify(e.data[0].pseudo)
+            const data = JSON.stringify(e.data[0])
+            const status: number = e.status
+            const pseudo = e.data[0].pseudo
             const rate = parseFloat(JSON.stringify(e.data[0].rate))
             const xp = parseFloat(JSON.stringify(e.data[0].xp))
-            const img = JSON.stringify(e.data[0].img)
+            const img = e.data[0].img
 
             if (status == 200) {
-              setNewUser(false);
               dispatch(setName(pseudo));
               dispatch(setRate(rate));
               dispatch(setXp(xp));
               dispatch(setImage(img));
+              setNewUser(false);
               setInitialize(true);
             } else {
               setNewUser(true);
