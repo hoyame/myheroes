@@ -8,7 +8,7 @@ import InputComponent from './input';
 import { WaveIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setSendAlertData } from '../../data/actions/user';
-import MyHeroAlerts from '../../Alerts';
+import MyHeroAlerts from '../../api/Alerts';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({

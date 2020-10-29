@@ -5,7 +5,7 @@ import { useReduxState } from "../../data/store";
 import { useDispatch } from 'react-redux';
 import { setCacheShowAlert } from "../../data/actions/user";
 import { setLocalisation } from "../../data/actions/localisation";
-import { MyHeroService } from "../../Service";
+import { MyHeroService } from "../../api/Service";
 import { WaveIndicator } from 'react-native-indicators';
 
 interface IMap {

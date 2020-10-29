@@ -3,7 +3,7 @@ import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpaci
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import Users from '../../User';
+import Users from '../../api/User';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 
