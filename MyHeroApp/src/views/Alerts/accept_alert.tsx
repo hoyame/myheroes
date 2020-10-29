@@ -7,7 +7,7 @@ import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
 import { setHelpAlertData, setSendAlertData } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
-import MyHeroAlerts from '../../Alerts';
+import MyHeroAlerts from '../../api/Alerts';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
