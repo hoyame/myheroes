@@ -120,7 +120,7 @@ const HeaderComponent = (props: IHeader) => {
     }
 
     
-    if (name == "" || rate == 0 ) {
+    if (name == "") {
         return (
             <>
                 <View style={{
