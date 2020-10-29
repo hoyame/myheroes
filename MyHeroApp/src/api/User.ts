@@ -1,4 +1,5 @@
-import { MyHeroService } from "./Service"
+import { MyHeroService } from "./Service";
+import axios from 'axios';
 
 interface IUser {
     id?: number | undefined;
@@ -69,26 +70,50 @@ export default abstract class Users {
         ;        
     }
 
-    public static GetData(data: string, cb: any) {
+    public static GetData(data: string, cb: any, error: any) {
         //var myHeaders = new Headers();
 
-        fetch(`http://146.59.227.90:3333/user/get?mail=${data}`, { 
-            method: 'GET',
-            //headers: myHeaders,
-            //mode: 'cors',
-        })
+        //return fetch(`http://146.59.227.90:3333/user/get?mail=${data}`, { 
+        //    method: 'GET',
+        //    //headers: myHeaders,
+        //    //mode: 'cors',
+        //})
 
-        .then((resp) => console.log("gcdytcc", resp)) 
-        
-        .then(function(data) {
-            //cb(data.results)
+        axios.get(`http://146.59.227.90:3333/user/get?mail=${data}`)
+            .then((response) => {
+                //console.log(response.data);
+
+                cb(response)
+                //console.log(response.status);
+                //console.log(response.statusText);
+                //console.log(response.headers);
+                //console.log(response.config);
+            })
+
+            .catch((err) => {
+                console.log("err", err)
+
+                if (err = "[Error: Request failed with status code 500]") {
+                   error(500);
+                }
+                
+            })
 
 
-        })
+        //const resJson = yield MyHeroService.get(`user/get?mail=${data}`);
+        //const Data = resJson.data;
 
-        .catch(function(err) {
-            console.log("error", err)  
-        })
+        //console.log(Data)
+
+
+    
+        //.then((resp) => console.log("gcdytcc", resp)) 
+        //
+        //.then(function(data) {})
+
+        //.catch(function(err) {
+        //    console.log("error", err)  
+        //})
     } 
 
     //public static setAvatar(data: any, cb: any) {
