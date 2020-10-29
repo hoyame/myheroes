@@ -3,7 +3,7 @@ import { ActivityIndicator, Dimensions, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { setLocalisation } from './data/actions/localisation';
-import { MyHeroService } from './Service';
+import { MyHeroService } from './api/Service';
 import { useDispatch } from 'react-redux';
 
 import 'react-native-gesture-handler';
@@ -27,6 +27,7 @@ import { setImage, setName, setRate, setXp } from './data/actions/user';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useState } from 'react';
+import Users from './api/User';
 
 
 const Controller = () => {
@@ -35,7 +36,7 @@ const Controller = () => {
   const Stack = createStackNavigator();
   const dispatch = useDispatch();
   const userInformation = useReduxState(state => state.user.name);
-  let isNewUser: boolean = true
+  const [isNewUser, setNewUser] = useState(false);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
 
@@ -63,11 +64,20 @@ const Controller = () => {
     }, 5000)
 
     setTimeout(() => {
-      dispatch(setName('Hoyame'))
-      dispatch(setRate(3))
-      dispatch(setXp(160))
-      dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png')) 
-    })
+      //if (nameA !== "") {
+        Users.GetData("hoyame@gmail.com", (a: any) => {
+          console.log(a)
+        })
+
+        //dispatch(setName(nameA))
+        //dispatch(setRate(3))
+        //dispatch(setXp(160))
+        //dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png')) 
+      //} else {
+        //setNewUser(true)
+      //}
+
+    }, 3000)
   });
 
   if (userInformation == "") {
