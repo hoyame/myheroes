@@ -48,7 +48,6 @@ const InscriptionScreen = ({ navigation }) => {
         cPassword: ''
     })
     
-
     const _storeData = async () => {
         try {
             await AsyncStorage.setItem('@name', state.name)
@@ -72,6 +71,7 @@ const InscriptionScreen = ({ navigation }) => {
                 }, (res: any) => {
                     if (res == 200) {
                         setTimeout(() => {
+                            setStatus(false);
                             setPictureS(true);
                         }, 2500)
                     } else {
@@ -129,13 +129,11 @@ const InscriptionScreen = ({ navigation }) => {
         );
     }
 
-
     const onPictureAccept = () => {
         _storeData();
         navigation.navigate('Home');
     }
 
-    
     const createFormData = (photo: any, body: any) => {
         const data = new FormData();
     
@@ -214,15 +212,17 @@ const InscriptionScreen = ({ navigation }) => {
                     textAlign: "center"
                 }}>veuillez ajouter une photo</Text>
 
-                <Image 
-                    source={{uri: img.uri}}
-                    style={{
-                        height: 200,
-                        width: 200,
-                        borderRadius: 20,
-                        marginBottom: 20
-                    }}
-                />
+                { img.uri !== "" && 
+                    <Image 
+                        source={{uri: img.uri}}
+                        style={{
+                            height: 200,
+                            width: 200,
+                            borderRadius: 20,
+                            marginBottom: 20
+                        }}
+                    />
+                }
 
                 <TouchableOpacity onPress={() => handleChoosePhoto()}>
                     <Text style={{
@@ -259,7 +259,9 @@ const InscriptionScreen = ({ navigation }) => {
                 flex: 1,
                 alignSelf: 'center',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                paddingLeft: 35,
+                paddingRight: 35,
             }}>
                 <Text style={{
                     fontSize: 35,
