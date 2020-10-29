@@ -36,51 +36,55 @@ const Controller = () => {
   const Stack = createStackNavigator();
   const dispatch = useDispatch();
   const userInformation = useReduxState(state => state.user.name);
-  const [isNewUser, setNewUser] = useState(false);
+  const [initialize, setInitialize] = useState(false);
+  const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
 
-  const _retrieveData = async () => {
-    try {
-      let AName = await AsyncStorage.getItem('@name');
-      let AMail = await AsyncStorage.getItem('@mail');
-
-      if (typeof AName == "string") { setAName(AName) }
-      //if (typeof AMail == "string") { setAMail(AMail) }     
-      //if (typeof AMail == "string") { setAName(AMail) }     
-
-    } catch (error) {
-
-    }
-  }; 
-
   useEffect(() => {
-    //_retrieveData();
-
     setTimeout(() => {
         if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
             dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
         }
     }, 5000)
 
-    setTimeout(() => {
-      //if (nameA !== "") {
-        Users.GetData("hoyame@gmail.com", (a: any) => {
-          console.log(a)
-        })
+    setTimeout(async () => {
+      if (initialize == false) {
+        let AMail = await AsyncStorage.getItem('@mail') || '';
 
-        //dispatch(setName(nameA))
-        //dispatch(setRate(3))
-        //dispatch(setXp(160))
-        //dispatch(setImage('https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png')) 
-      //} else {
-        //setNewUser(true)
-      //}
+        if (AMail !== "") {
+          Users.GetData(AMail, (e: any) => {
+            let data = JSON.stringify(e.data[0])
+            let status: number = e.status
 
+            const pseudo = JSON.stringify(e.data[0].pseudo)
+            const rate = parseFloat(JSON.stringify(e.data[0].rate))
+            const xp = parseFloat(JSON.stringify(e.data[0].xp))
+            const img = JSON.stringify(e.data[0].img)
+
+            if (status == 200) {
+              setNewUser(false);
+              dispatch(setName(pseudo));
+              dispatch(setRate(rate));
+              dispatch(setXp(xp));
+              dispatch(setImage(img));
+              setInitialize(true);
+            } else {
+              setNewUser(true);
+              setInitialize(true);
+            }
+          }, (error: number) => {
+            if (error == 500) {
+              setNewUser(true);
+              setInitialize(true);
+            }
+          })
+        }  
+      }
     }, 3000)
   });
 
-  if (userInformation == "") {
+  if (initialize == false) {
     return (
         <View style={{
             width: screenWidth,
@@ -109,7 +113,7 @@ const Controller = () => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={"Home"} screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName={isNewUser == true ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Alert" component={AlertScreen} />
             <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
