@@ -7,8 +7,14 @@ const ParametresScreen = ({ navigation }) => {
         <>
             <HeaderComponent navigation={navigation} />
 
-            <View>
-                <Text>Parametres</Text>
+            <View style={{
+                padding: 35,
+                paddingTop: 0
+            }}>
+                <Text style={{
+                    fontSize: 30,
+                    marginBottom: 25
+                }}>Parametres</Text>
 
             </View>
         </>
