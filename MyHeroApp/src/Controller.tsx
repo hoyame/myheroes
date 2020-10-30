@@ -28,6 +28,10 @@ import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useState } from 'react';
 import Users from './api/User';
+import ParametresScreen from './views/Parametres';
+import AvisScreen from './views/Avis';
+import ConfidentialiteScreen from './views/Confidentialite';
+import ProposScreen from './views/Propos';
 
 
 const Controller = () => {
@@ -115,6 +119,8 @@ const Controller = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName={isNewUser == true ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Parametres" component={ParametresScreen} />
+            <Stack.Screen name="Avis" component={AvisScreen} />
             <Stack.Screen name="Alert" component={AlertScreen} />
             <Stack.Screen name="AlertPageScreen" component={AlertPageScreen} />
             <Stack.Screen name="CreateAlertScreen" component={CreateAlertScreen} />
@@ -127,6 +133,8 @@ const Controller = () => {
             <Stack.Screen name="HelperAcceptAlertPage" component={HelperAcceptAlertPage} />
             <Stack.Screen name="NDU" component={NDUPage} />
             <Stack.Screen name="GDPS" component={GDPSPage} />
+            <Stack.Screen name="Confidentialite" component={ConfidentialiteScreen} />
+            <Stack.Screen name="Propos" component={ProposScreen} />
           </Stack.Navigator>
         </NavigationContainer>
     </>
