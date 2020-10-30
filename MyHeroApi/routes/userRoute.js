@@ -72,6 +72,8 @@ router.post(
 
 router.post('/user/add_rate', usersController.addRate); 
 
+router.post('/user/update_password', usersController.updatePassword);
+
 router.post('/user/avatar', upload.array('photo', 3), usersController.uploadAvatar); 
 
 router.get('/user/get', usersController.getUserData)
