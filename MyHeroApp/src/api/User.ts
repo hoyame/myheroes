@@ -43,7 +43,7 @@ export default abstract class Users {
     }
 
     public static Login(data: IUser, cb: any) {
-        var params = {
+        let params = {
             pseudo: data.pseudo,
             email: data.email,
             password: data.password,
@@ -84,6 +84,34 @@ export default abstract class Users {
             }
         )
     } 
+
+    public static UpdatePassword(data: { email: string, password: string }, cb: any) {
+        var params = {
+            email: data.email,
+            password: data.password
+        }
+
+        let req = {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        }
+    
+        fetch('http://146.59.227.90:3333/user/update_password', req)
+            .then(function(res) {
+                console.log(res);
+
+                cb(res.status);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+        ;
+    }
 
     public static Disconnect() {
         const _storeData = async () => {
