@@ -1,5 +1,6 @@
 import { IAlert } from "./alerts";
 
+export const SET_MAIL = "SET_MAIL";
 export const SET_NAME = "SET_NAME";
 export const SET_RATE = "SET_RATE";
 export const SET_IMAGE = "SET_IMAGE";
@@ -31,6 +32,7 @@ export interface IUserHelp {
 }
 
 export interface IUser {
+    mail?: string;
     name: string;
     rate: number;
     image: string;
