@@ -59,9 +59,9 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 </View>
 
                 <View style={{
-                    height: 210,
+                    height: 170,
                     borderRadius: 10,
-                    marginBottom: 20,
+                    marginBottom: 10,
                     width: screenWidth,
                     backgroundColor: '#e1e1e1',
                     display: "flex",
@@ -96,8 +96,41 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                     navigation.navigate('Home') 
                 }}>
                     <View style={{
-                        height: 60,
-                        marginBottom: 15,
+                        height: 50,
+                        marginBottom: 10,
+                        borderRadius: 8,
+                        padding: 10,
+                        justifyContent: "center",
+                        backgroundColor: "#e1e1e1"
+                    }}>
+                        <Text style={{
+                            textAlign: "center",
+                            fontSize: 20      
+                        }}>Vous n'etes plus en danger</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => {
+                    dispatch(setSendAlertData({status: false, data: {
+                        id: 0,
+                        level: 0,
+                        source: "",
+                        latitude: 0,
+                        longitude: 0,    
+                        description: ""
+                    }}))
+                    MyHeroAlerts.DeleteAlert({
+                        level: alerts.data.level,
+                        source: alerts.data.source,
+                        latitude: alerts.data.latitude,
+                        longitude: alerts.data.longitude,    
+                        description: alerts.data.description
+                    })
+                    navigation.navigate('EndAlertScreen') 
+                }}>
+                    <View style={{
+                        height: 50,
+                        marginBottom: 10,
                         borderRadius: 8,
                         padding: 10,
                         justifyContent: "center",
@@ -106,7 +139,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         <Text style={{
                             textAlign: "center",
                             fontSize: 22      
-                        }}>Vous n'etes plus en danger</Text>
+                        }}>Vous avez été sauvé</Text>
                     </View>
                 </TouchableOpacity>
             </View>
