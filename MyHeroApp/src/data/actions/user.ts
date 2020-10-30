@@ -12,8 +12,25 @@ import {
     SET_CACHE_SHOW_ALERT,
     IUser, 
     IUserSend,
-    IUserHelp
+    IUserHelp,
+    SET_MAIL
 } from '../types/user';
+
+////////////////////////////////////////////////////
+
+export interface ISetMail {
+    type: typeof SET_MAIL;
+    payload: {
+        mail: string;
+    }
+}
+
+export const setMail = (data: string) => ({
+    type: SET_MAIL,
+    payload: {
+        mail: data
+    }
+})
 
 ////////////////////////////////////////////////////
 
@@ -81,8 +98,6 @@ export const setXp = (data: number) => ({
 
 ////////////////////////////////////////////////////
 
-
-
 export interface ISetStatusSend {
     type: typeof SET_STATUS_SEND;
     payload: {
@@ -112,8 +127,6 @@ export const setStatusHelp = (data: boolean) => ({
         status: data
     }
 })
-
-
 
 ////////////////////////////////////////////////////
 
@@ -181,6 +194,7 @@ export const setCacheShowAlert = (data: IAlert) => ({
 })
 
 export type IUserActions = 
+    ISetMail |
     ISetName | 
     ISetRate | 
     ISetImage |
