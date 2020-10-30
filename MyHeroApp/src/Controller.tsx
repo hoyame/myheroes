@@ -5,9 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { setLocalisation } from './data/actions/localisation';
 import { MyHeroService } from './api/Service';
 import { useDispatch } from 'react-redux';
-
 import 'react-native-gesture-handler';
-
 import HeaderComponent from './components/Header/header';
 import NavbarComponent from './components/Navbar/navbar';
 import HomeScreen from './views/Home/home';
@@ -32,6 +30,7 @@ import ParametresScreen from './views/Parametres';
 import AvisScreen from './views/Avis';
 import ConfidentialiteScreen from './views/Confidentialite';
 import ProposScreen from './views/Propos';
+
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
