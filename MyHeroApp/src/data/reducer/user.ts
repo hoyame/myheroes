@@ -13,12 +13,18 @@ import {
     SET_CACHE_SHOW_ALERT,
     IUser, 
     IUserSend,
-    IUserHelp
+    IUserHelp,
+    SET_MAIL
 } from '../types/user';
 
 
 const UserReducer = (state = initialState, action: IUserActions): IUser => {
     switch (action.type) {
+        case SET_MAIL: 
+            return { 
+                ...state, 
+                mail: action.payload.mail 
+            }; 
         case SET_NAME: 
             return { 
                 ...state, 
