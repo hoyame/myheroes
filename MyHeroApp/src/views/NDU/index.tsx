@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import HeaderComponent from '../../components/Header/header';
 
-const NDUPage = () => {
+const NDUPage = ({ navigation }) => {
     return (
         <>
-            <Text>NGUPage</Text>
+            <HeaderComponent navigation={navigation} />
+
+            <View>
+                <Text>NGUPage</Text>
+            </View>
         </> 
     );
 }
