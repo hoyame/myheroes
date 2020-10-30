@@ -33,7 +33,6 @@ import AvisScreen from './views/Avis';
 import ConfidentialiteScreen from './views/Confidentialite';
 import ProposScreen from './views/Propos';
 
-
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height);
