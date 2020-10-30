@@ -1,7 +1,7 @@
-const data = [
+export const data = [
     {
         "p": "France",
-        "img": "https://flagcdn.com/16x12/fr.png",
+        "img": "https://flagcdn.com/20x15/fr.png",
         "samu": "15",
         "police": "17",
         "pompiers": "18",
@@ -10,17 +10,16 @@ const data = [
     },
     {
         "p": "Switzerland",
-        "img": "https://flagcdn.com/16x12/ch.png",
+        "img": "https://flagcdn.com/20x15/ch.png",
         "samu": "144",
         "police": "117",
         "pompiers": "118",
     },    
     {
         "p": "Spain",
-        "img": "https://flagcdn.com/16x12/es.png",
+        "img": "https://flagcdn.com/20x15/es.png",
         "samu": "144",
         "police": "117",
         "pompiers": "118",
-    },
-
+    }
 ]
