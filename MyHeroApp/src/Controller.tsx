@@ -21,7 +21,7 @@ import { SenderAcceptAlertPage, HelperAcceptAlertPage } from './views/Alerts/acc
 import GDPSPage from './views/GDPS/index';
 import NDUPage from './views/NDU/index'
 import { useReduxState } from './data/store';
-import { setImage, setName, setRate, setXp } from './data/actions/user';
+import { setImage, setMail, setName, setRate, setXp } from './data/actions/user';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useState } from 'react';
@@ -65,6 +65,7 @@ const Controller = () => {
             const img = e.data[0].img
 
             if (status == 200) {
+              dispatch(setMail(AMail));
               dispatch(setName(pseudo));
               dispatch(setRate(rate));
               dispatch(setXp(xp));
