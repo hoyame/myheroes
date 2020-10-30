@@ -1,22 +1,150 @@
 import { faHome, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Platform } from 'react-native';
+import Users from '../../api/User';
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { useReduxState } from '../../data/store';
+import ImagePicker from "react-native-image-picker";
+
+const createFormData = (photo: { fileName: any; type: any; uri: string; }, body: { [x: string]: any; }) => {
+    const data = new FormData();
+  
+    data.append('photo', {
+      name: photo.fileName,
+      type: photo.type,
+      uri:
+        Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
+    });
+  
+    Object.keys(body).forEach((key) => {
+      data.append(key, body[key]);
+    });
+  
+    return data;
+};
 
 const ParametresScreen = ({ navigation }) => {
     const image = useReduxState(state => state.user.image);
     const name = useReduxState(state => state.user.name);
     const xp = useReduxState(state => state.user.xp);
+    const [pictureS, setPictureS] = useState(false)
 
+    const [img, setImg] = useState({
+        uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
+        type: ''
+    })
+
+    const disconnect = () => {
+        Users.Disconnect();
+        navigation.navigate('Connexion');
+    }
 
     const [state, setState] = useState({
         password: '',
         cPassword: ''
     })
  
+    const handlePicker = () => {
+        ImagePicker.showImagePicker({}, (response: any) => {   
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          } else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          } else {
+            setImg({...img, uri: response.uri});
+
+            fetch('http://146.59.227.90:3000/api/upload', {
+              method: 'POST',
+              headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded',
+              }),
+              body: createFormData(response, {id: '123'}),
+            })
+              .then((data) => data.json())
+              .then((res) => {
+                console.log('upload succes', res);
+                setImg({...img, uri: response.image});
+              })
+              .catch((error) => {
+                console.log('upload error', error);
+            });
+          }
+        });
+      };
+
+
+    if (pictureS == true) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 30,                    
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>MyHeroes</Text>
+      
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 5,
+                    textAlign: "center"
+                }}>Pour continuer votre inscription</Text>
+
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>veuillez ajouter une photo</Text>
+
+                { img.uri !== "" && 
+                    <Image 
+                        source={{uri: img.uri}}
+                        style={{
+                            height: 200,
+                            width: 200,
+                            borderRadius: 20,
+                            marginBottom: 20
+                        }}
+                    />
+                }
+
+                <TouchableOpacity onPress={() => handlePicker()}>
+                    <Text style={{
+                        color: "#000000",
+                        fontSize: 20,
+                        marginBottom: 30,
+                        textAlign: "center"
+                    }}>Choisir une photo</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => setPictureS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 5,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#6d9bff'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25
+                            }}>Continuer</Text>
+                        </View>
+                    </TouchableOpacity>
+            </View>
+        );
+    }
+
     return (
         <>
             <HeaderComponent navigation={navigation} />
@@ -65,7 +193,6 @@ const ParametresScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-
                 <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                 <InputComponent password={true} name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
 
@@ -87,7 +214,7 @@ const ParametresScreen = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                <TouchableOpacity onPress={() => setPictureS(true)}>
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
@@ -105,7 +232,7 @@ const ParametresScreen = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                <TouchableOpacity onPress={() => disconnect()}>
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
