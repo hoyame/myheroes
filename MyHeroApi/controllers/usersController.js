@@ -311,9 +311,11 @@ module.exports.getUserData = (req, res, next) => {
 module.exports.updatePassword = (req, res, next) => {
 	let mail = req.body.mail;
 	let new_password = req.body.password;
+	let salt = bcrypt.genSaltSync(10);
+	let hash = bcrypt.hashSync(new_password, salt);
 	let query = `UPDATE users SET password=?, date_updated=NOW() WHERE email=?`;
 
-	con.query(query, [new_password, mail], (err, result, fields) => {
+	con.query(query, [hash, mail], (err, result, fields) => {
 		if (err) {
 			return next(err);
 		}
