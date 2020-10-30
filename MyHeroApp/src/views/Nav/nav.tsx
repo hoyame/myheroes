@@ -179,11 +179,11 @@ const NavScreen = ({ navigation }) => {
                         <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
                         <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
                         <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
-                        <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Faq')} title="Avis" description="Votre avis sur l'application" />
-                        <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Faq')} title="Parametres" description="Parametres du compte" />
+                        <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title="Avis" description="Votre avis sur l'application" />
+                        <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title="Parametres" description="Parametres du compte" />
                         <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
-                        <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Faq')} title="Confidentialité" description="Confidentialité" />
-                        <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Faq')} title="A propos" description="A propos" />
+                        <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title="Confidentialité" description="Confidentialité" />
+                        <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title="A propos" description="A propos" />
                     </ScrollView>
                 </View>
             </View>
