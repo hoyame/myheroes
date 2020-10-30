@@ -70,7 +70,7 @@ const Controller = () => {
               dispatch(setName(pseudo));
               dispatch(setRate(rate));
               dispatch(setXp(xp));
-              dispatch(setImage(img));
+              dispatch(setImage("https://cdn.discordapp.com/avatars/404715764201947156/a_3139bef87ec391ca9cecab071075d66d.png?size=128"));
               setNewUser(false);
               setInitialize(true);
             } else {
