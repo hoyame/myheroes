@@ -29,15 +29,32 @@ const STYLES = StyleSheet.create({
     }
 });
   
+const createFormData = (photo: { fileName: any; type: any; uri: string; }, body: { [x: string]: any; }) => {
+    const data = new FormData();
+  
+    data.append('photo', {
+      name: photo.fileName,
+      type: photo.type,
+      uri:
+        Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
+    });
+  
+    Object.keys(body).forEach((key) => {
+      data.append(key, body[key]);
+    });
+  
+    return data;
+};
 
 const InscriptionScreen = ({ navigation }) => {
     const [status, setStatus] = useState(false)
     const [error, setError] = useState(false)
     const [errorM, setErrorM] = useState(false)
     const [errorU, setErrorU] = useState(false)
-    const [pictureS, setPictureS] = useState(false)
+    const [pictureS, setPictureS] = useState(true)
+
     const [img, setImg] = useState({
-        uri: '',
+        uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
         type: ''
     })
 
@@ -129,59 +146,38 @@ const InscriptionScreen = ({ navigation }) => {
         );
     }
 
-    const onPictureAccept = () => {
-        _storeData();
-        navigation.navigate('Home');
-    }
+    const [avatar, setAvatar] = useState("https://s3.amazonaws.com/37assets/svn/765-default-avatar.png");
 
-    const createFormData = (photo: any, body: any) => {
-        const data = new FormData();
-    
-        data.append("photo", {
-            name: `${state.name}_picture`,
-            type: photo.type,
-            uri: Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
+    const handlePicker = () => {
+        ImagePicker.showImagePicker({}, (response: any) => {   
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          } else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          } else {
+            setImg({...img, uri: response.uri});
+
+            fetch('http://146.59.227.90:3000/api/upload', {
+              method: 'POST',
+              headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded',
+              }),
+              body: createFormData(response, {id: '123'}),
+            })
+              .then((data) => data.json())
+              .then((res) => {
+                console.log('upload succes', res);
+                setImg({...img, uri: response.image});
+              })
+              .catch((error) => {
+                console.log('upload error', error);
+            });
+          }
         });
-    
-        Object.keys(body).forEach(key => {
-        data.append(key, body[key]);
-        });
-    
-        return data;
-    };
+      };
 
-    const handleChoosePhoto = () => {
-        const options = {
-            noData: true
-        };
-
-        ImagePicker.launchImageLibrary(options, response => {           
-            if (response.uri) {
-                setImg({...img, uri: response.uri})
-                setImg({...img, type: response.type || ''})
-            }
-        })
-    }
-
-    const handleUploadPhoto = () => {
-        fetch("http://146.59.227.90:3333/user/avatar", {
-          method: "POST",
-          body: createFormData(img, { userId: "123" })
-        })
-          .then(response => response.json())
-          .then(response => {
-            console.log("upload succes", response);
-        })
-          .catch(error => {
-            console.log("upload error", error);
-        });
-    };
-
-    const saveAvatar = () => {
-        if (img.uri !== '' && img.type !== '') {
-            handleUploadPhoto();
-        }
-    }
 
     if (pictureS == true) {
         return (
@@ -224,7 +220,7 @@ const InscriptionScreen = ({ navigation }) => {
                     />
                 }
 
-                <TouchableOpacity onPress={() => handleChoosePhoto()}>
+                <TouchableOpacity onPress={() => handlePicker()}>
                     <Text style={{
                         color: "#000000",
                         fontSize: 20,
@@ -233,7 +229,7 @@ const InscriptionScreen = ({ navigation }) => {
                     }}>Choisir une photo</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => saveAvatar()}>
+                <TouchableOpacity onPress={() => null}>
                         <View style={{
                             height: 60, 
                             width: screenWidth,
