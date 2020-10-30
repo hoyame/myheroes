@@ -28,6 +28,7 @@ const createFormData = (photo: { fileName: any; type: any; uri: string; }, body:
 const ParametresScreen = ({ navigation }) => {
     const image = useReduxState(state => state.user.image);
     const name = useReduxState(state => state.user.name);
+    const mail = useReduxState(state => state.user.mail) || '';
     const xp = useReduxState(state => state.user.xp);
     const [pictureS, setPictureS] = useState(false)
 
@@ -196,7 +197,18 @@ const ParametresScreen = ({ navigation }) => {
                 <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                 <InputComponent password={true} name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
 
-                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                <TouchableOpacity onPress={() => { 
+                    const arg = {
+                        email: mail,
+                        password: state.password
+                    }
+
+                    if (state.password === state.cPassword) {
+                        Users.UpdatePassword(arg, (e: any) => {
+                            console.log(e)
+                        }
+                    )}
+                }}>
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
