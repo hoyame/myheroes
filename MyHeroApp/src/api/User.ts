@@ -1,5 +1,6 @@
 import { MyHeroService } from "./Service";
 import axios from 'axios';
+import AsyncStorage from "@react-native-community/async-storage";
 
 interface IUser {
     id?: number | undefined;
@@ -83,6 +84,17 @@ export default abstract class Users {
             }
         )
     } 
+
+    public static Disconnect() {
+        const _storeData = async () => {
+            try {
+                await AsyncStorage.setItem('@name', '')
+                await AsyncStorage.setItem('@mail', '')
+            } catch (error) {
+                console.log("error", error)
+            }
+        };
+    }
 
 
 }
