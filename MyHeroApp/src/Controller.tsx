@@ -30,6 +30,7 @@ import ParametresScreen from './views/Parametres';
 import AvisScreen from './views/Avis';
 import ConfidentialiteScreen from './views/Confidentialite';
 import ProposScreen from './views/Propos';
+import EndAlertScreen from './views/Alerts/end_alert';
 
 
 const Controller = () => {
@@ -134,6 +135,7 @@ const Controller = () => {
             <Stack.Screen name="GDPS" component={GDPSPage} />
             <Stack.Screen name="Confidentialite" component={ConfidentialiteScreen} />
             <Stack.Screen name="Propos" component={ProposScreen} />
+            <Stack.Screen name="EndAlertScreen" component={EndAlertScreen} />
           </Stack.Navigator>
         </NavigationContainer>
     </>
