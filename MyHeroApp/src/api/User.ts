@@ -78,6 +78,12 @@ export default abstract class Users {
             })
 
             .catch((err) => {
+                console.log("err", err);
+
+                if (err = "[Error: timeout of 300000ms exceeded]") {
+                    error(0);
+                }
+
                 if (err = "[Error: Request failed with status code 500]") {
                    error(500);
                 }
