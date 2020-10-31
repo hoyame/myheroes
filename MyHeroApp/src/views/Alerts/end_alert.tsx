@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
+import RateComponent from '../../components/Rate';
 
 
 const EndAlertScreen = ({ navigation }) => {
@@ -17,7 +18,45 @@ const EndAlertScreen = ({ navigation }) => {
                     marginBottom: 15
                 }}>Votre alerte</Text>
 
+                <View style={{
+                    height: 60,
+                    marginBottom: 15,
+                    borderRadius: 8,
+                    padding: 10,
+                    justifyContent: "center",
+                    backgroundColor: "#0077be"
+                }}>
+                    <Text style={{
+                        textAlign: "center",
+                        color: "#fff",
+                        fontSize: 15      
+                    }}>Merci d'avoir utilisé MyHeroes, votre alerte a été supprimé.</Text>
+                </View>
+
+                <View>
+                    <RateComponent title="Avis sur votre hero" placeholder="Description de votre avis" onClick={() => null} />
+                </View>
+
+                { /*          
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                    <View style={{
+                        height: 50,
+                        borderRadius: 8,
+                        padding: 10,
+                        justifyContent: "center",
+                        backgroundColor: '#1d1d1d'           
+                    }}>
+                        <Text style={{
+                            color: '#ffffff',
+                            textAlign: "center",
+                            fontSize: 22      
+                        }}>Retour a l'acceuil</Text>
+                    </View>
+                </TouchableOpacity>
+                */ }
             </View>
+
+
         </>
     );
 }
