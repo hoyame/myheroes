@@ -6,6 +6,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 import { useReduxState } from '../../data/store';
+import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
+import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -39,6 +41,96 @@ const AccountScreen = ({ navigation }) => {
         password: '',
         cPassword: '',
     })
+
+    interface IStars {
+        rate: number
+    }
+
+    const ReturnStars = (props: IStars) => {
+        const rate = props.rate || 0
+        const color = "#febc00"
+
+        switch (rate) {
+            case 1: 
+                return (
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row"
+                    }}>
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                    </View>
+                );
+            case 2: 
+                return (
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row"
+                    }}>
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                    </View>
+                );
+            case 3:
+                return (
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row"
+                    }}>
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                    </View>
+                );
+            case 4:
+                return (
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row"
+                    }}>
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                    </View>
+                );
+            case 5:
+                return (
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row"
+                    }}>
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                    </View>
+                );
+            default: 
+                return (
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row"
+                    }}>
+                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                    </View>
+                );
+        }
+    }
 
     const AvisProps = () => {
         return (
@@ -74,13 +166,17 @@ const AccountScreen = ({ navigation }) => {
                     padding: 10
                 }}>
                     <Text style={{
-                        fontSize: 16
+                        fontSize: 16,
+                        marginBottom: 3
                     }}>Jibril</Text>
 
+                    <ReturnStars rate={1} />
 
                     <Text style={{
-                        fontSize: 14
-                    }}>Jibril</Text>
+                        fontSize: 12,
+                        width: 130,
+                        marginTop: 4
+                    }}>Très bonne personne, m'a aidé, il a été très efficace</Text>
     
 
                 </View>
