@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, Dimensions, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Dimensions, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { setLocalisation } from './data/actions/localisation';
@@ -31,6 +31,7 @@ import AvisScreen from './views/Avis';
 import ConfidentialiteScreen from './views/Confidentialite';
 import ProposScreen from './views/Propos';
 import EndAlertScreen from './views/Alerts/end_alert';
+import { Root, Popup, Toast } from 'popup-ui'
 
 
 const Controller = () => {
@@ -52,6 +53,8 @@ const Controller = () => {
     }, 5000)
 
     setTimeout(async () => {
+
+
       if (initialize == false) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
         console.log(AMail)
@@ -81,6 +84,8 @@ const Controller = () => {
             if (error == 500) {
               setNewUser(true);
               setInitialize(true);
+            } else if (error == 0) {
+              Alert.alert("Les serveurs MyHeroes sont actuellement indisponibles");
             }
           })
         }  
@@ -116,8 +121,9 @@ const Controller = () => {
 
   return (
     <>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName={isNewUser == true ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
+      <Root>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName={isNewUser == true ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Parametres" component={ParametresScreen} />
             <Stack.Screen name="Avis" component={AvisScreen} />
@@ -138,6 +144,7 @@ const Controller = () => {
             <Stack.Screen name="EndAlertScreen" component={EndAlertScreen} />
           </Stack.Navigator>
         </NavigationContainer>
+      </Root>
     </>
   );
 }
