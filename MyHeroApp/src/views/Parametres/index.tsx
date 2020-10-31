@@ -58,7 +58,7 @@ const ParametresScreen = ({ navigation }) => {
           } else {
             setImg({...img, uri: response.uri});
 
-            fetch('http://146.59.227.90:3000/api/upload', {
+            fetch('http://51.254.228.4:3000/api/upload', {
               method: 'POST',
               headers: new Headers({
                 'Content-Type': 'application/x-www-form-urlencoded',
