@@ -3,6 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
+//const https = require("https"),
+//fs = require("fs");
+//
+//const options = {
+//	key: fs.readFileSync("/srv/www/keys/my-site-key.pem"),
+//	cert: fs.readFileSync("/srv/www/keys/chain.pem")
+//};
 
 const app = express();
 
@@ -64,3 +71,5 @@ const port = process.env.PORT || 3333;
 app.listen(port, () =>
 	console.log(`🐹 app listening on http://localhost:${port}`)
 );
+
+//https.createServer(options, app).listen(3335);
