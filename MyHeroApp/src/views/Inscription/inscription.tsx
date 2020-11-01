@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { WaveIndicator } from 'react-native-indicators';
 import ImagePicker from "react-native-image-picker";
 import { faAngry } from '@fortawesome/free-regular-svg-icons';
+import { API_LINK } from '../../App';
 
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
@@ -159,7 +160,7 @@ const InscriptionScreen = ({ navigation }) => {
           } else {
             setImg({...img, uri: response.uri});
 
-            fetch('http://146.59.227.90:3000/api/upload', {
+            fetch(`${API_LINK}/api/upload`, {
               method: 'POST',
               headers: new Headers({
                 'Content-Type': 'application/x-www-form-urlencoded',
