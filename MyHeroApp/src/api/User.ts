@@ -1,6 +1,7 @@
 import { MyHeroService } from "./Service";
 import axios from 'axios';
 import AsyncStorage from "@react-native-community/async-storage";
+import { API_LINK } from "../App";
 
 interface IUser {
     id?: number | undefined;
@@ -29,7 +30,7 @@ export default abstract class Users {
             body: JSON.stringify(params),
         }
     
-        fetch('http://146.59.227.90:3333/user/signup', req)
+        fetch(`${API_LINK}/user/signup`, req)
             .then(function(res) {
                 console.log(res);
 
@@ -58,7 +59,7 @@ export default abstract class Users {
             body: JSON.stringify(params),
         }
     
-        fetch('http://146.59.227.90:3333/user/login', req)
+        fetch(`${API_LINK}/user/login`, req)
             .then(function(res) {
                 console.log(res.status)
 
@@ -72,7 +73,7 @@ export default abstract class Users {
     }
 
     public static GetData(data: string, cb: any, error: any) {
-        axios.get(`http://146.59.227.90:3333/user/get?mail=${data}`)
+        axios.get(`${API_LINK}/user/get?mail=${data}`)
             .then((response) => {
                 cb(response)
             })
@@ -106,7 +107,7 @@ export default abstract class Users {
             body: JSON.stringify(params),
         }
     
-        fetch('http://146.59.227.90:3333/user/update_password', req)
+        fetch(`${API_LINK}/user/update_password`, req)
             .then(function(res) {
                 console.log(res);
 
