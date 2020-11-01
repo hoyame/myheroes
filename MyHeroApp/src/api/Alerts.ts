@@ -1,3 +1,4 @@
+import { API_LINK } from "../App";
 import { IAlert } from "../data/types/alerts";
 import { MyHeroService } from "./Service";
 
@@ -34,7 +35,7 @@ export default abstract class MyHeroAlerts {
             description: data.description
         }
     
-        fetch('http://146.59.227.90:3333/alerts/add', {
+        fetch(`${API_LINK}/alerts/add`, {
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -62,7 +63,7 @@ export default abstract class MyHeroAlerts {
             body: JSON.stringify(params),
         }
     
-        fetch('http://146.59.227.90:3333/alerts/remove', req)
+        fetch(`${API_LINK}/alerts/remove`, req)
             .then(function(res) {
                 console.log(res);
             })
@@ -76,7 +77,7 @@ export default abstract class MyHeroAlerts {
     public static GetAlerts() {
         this.StatusUpdate = true;
 
-        fetch('http://146.59.227.90:3333/alerts/remove', { 
+        fetch(`${API_LINK}/alerts/remove`, { 
             method: 'GET',
             headers: myHeaders,
             mode: 'cors',
