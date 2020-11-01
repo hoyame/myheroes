@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import store from './data/store';
 import { MyHeroService } from './api/Service';
 
+export const API_LINK = "http://146.59.227.90:3333"
+
 const App = () => {
   useEffect(() => {
     if (Platform.OS == "ios") {
