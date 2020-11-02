@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const multer = require('multer');
+const bodyParser = require('body-parser');
+
 const helmet = require('helmet');
 //const https = require("https"),
 //fs = require("fs");
@@ -26,6 +29,20 @@ app.use(express.static(__dirname + '/public')); // folder to upload files
 
 global.__basedir = __dirname; // very important to define base directory of the project. this is useful while creating upload scripts
 
+multer({
+	limits: {fieldSize: 25 * 1024 * 1024},
+});
+  
+const Storage = multer.diskStorage({
+	destination(req, file, callback) {
+	  callback(null, './images');
+	},
+	
+	filename(req, file, callback) {
+	  callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
+	},
+});
+  
 // Connect Database
 const con = require('./db');
 
@@ -63,6 +80,21 @@ app.use((err, req, res, next) => {
 		status: err.status,
 		message: err.message,
 		err: err,
+	});
+});
+
+app.post('/api/upload', (req, res) => {
+	let upload = multer({storage: Storage}).single('picture');
+	upload(req, res, function (err) {
+	  if (!req.file) {
+		return res.send('Please select an image to upload');
+	  } else if (err instanceof multer.MulterError) {
+		return res.send(err);
+	  } else if (err) {
+		return res.send(err);
+	  }
+	  // Display uploaded image for user validation
+	  res.send(req.file.path); // send uploaded image
 	});
 });
 
