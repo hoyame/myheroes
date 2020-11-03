@@ -7,6 +7,11 @@ import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { useReduxState } from '../../data/store';
 import ImagePicker from "react-native-image-picker";
+import { MyHeroService } from '../../api/Service';
+
+
+
+
 
 const createFormData = (photo: { fileName: any; type: any; uri: string; }, body: { [x: string]: any; }) => {
     const data = new FormData();
@@ -58,21 +63,22 @@ const ParametresScreen = ({ navigation }) => {
           } else {
             setImg({...img, uri: response.uri});
 
-            fetch('http://51.254.228.4:3000/api/upload', {
-              method: 'POST',
-              headers: new Headers({
-                'Content-Type': 'application/x-www-form-urlencoded',
-              }),
-              body: createFormData(response, {id: '123'}),
-            })
-              .then((data) => data.json())
-              .then((res) => {
-                console.log('upload succes', res);
-                setImg({...img, uri: response.image});
-              })
-              .catch((error) => {
-                console.log('upload error', error);
+            const data = new FormData();
+
+            data.append('name', 'testName');
+            data.append('photo', {
+              uri: img.uri,
+              type: 'image/jpeg',
+              name: 'testPhotoName'
             });
+            
+            MyHeroService.futch('http://51.254.228.4:3000/api/upload', {
+              method: 'post',
+              body: data
+            }, (progressEvent) => {
+              const progress = progressEvent.loaded / progressEvent.total;
+              console.log(progress);
+            }).then((res) => console.log(res), (err) => console.log(err))
           }
         });
       };
