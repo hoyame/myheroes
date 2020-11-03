@@ -67,7 +67,7 @@ const ParametresScreen = ({ navigation }) => {
             let uploadData = new FormData();
              
             uploadData.append('sumbit', 'ok');
-            uploadData.append('file', { type: `image/${response}`, uri: response.uri, name: 'zbfizb' })
+            uploadData.append('file', { type: 'image/jpg', uri: response.uri, name: 'zbfizb' })
 
             fetch(base_url, {
               method: 'post',
@@ -76,15 +76,16 @@ const ParametresScreen = ({ navigation }) => {
                 'Content-Type': 'multipart/form-data',
               },
             })
-              .then((data) => data.json())
-              .then((res) => {
-                console.log('upload succes', res);
-                setImg({...img, uri: res.image});
-              })
-              .catch((error) => {
-                console.log('upload error', error);
-            });
-          }
+
+                .then((data) => data.json())
+                .then((res) => {
+                    console.log('upload succes', res);
+                    setImg({...img, uri: res.image});
+                })
+                .catch((error) => {
+                    console.log('upload error', error);
+                });
+            }
         });
       };
 
