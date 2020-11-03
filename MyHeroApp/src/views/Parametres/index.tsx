@@ -63,22 +63,27 @@ const ParametresScreen = ({ navigation }) => {
           } else {
             setImg({...img, uri: response.uri});
 
-            const data = new FormData();
+            let base_url = 'http://176.31.15.117/test/';
+            let uploadData = new FormData();
+             
+            uploadData.append('sumbit', 'ok');
+            uploadData.append('file', { type: `image/${response}`, uri: response.uri, name: 'zbfizb' })
 
-            data.append('name', 'testName');
-            data.append('photo', {
-              uri: img.uri,
-              type: 'image/jpeg',
-              name: 'testPhotoName'
-            });
-            
-            MyHeroService.futch('http://51.254.228.4:3000/api/upload', {
+            fetch(base_url, {
               method: 'post',
-              body: data
-            }, (progressEvent) => {
-              const progress = progressEvent.loaded / progressEvent.total;
-              console.log(progress);
-            }).then((res) => console.log(res), (err) => console.log(err))
+              body: uploadData,
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            })
+              .then((data) => data.json())
+              .then((res) => {
+                console.log('upload succes', res);
+                setImg({...img, uri: res.image});
+              })
+              .catch((error) => {
+                console.log('upload error', error);
+            });
           }
         });
       };
