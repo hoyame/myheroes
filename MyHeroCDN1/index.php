@@ -7,7 +7,7 @@ if(isset($_POST['sumbit'])){
     $file_type = pathinfo($target_file, PATHINFO_EXTENSION);
     $is_image = getimagessize($_FILES['file']['tmp_name']);
 
-    if($is_image){
+    if($is_image !== false){
         $data['image'] = time() . '.' . $file_type;
         if(move_uploaded_file($_FILES['file']['tmp_name'], $data['image'])){*
             $data['status'] = true;
@@ -22,4 +22,4 @@ if(isset($_POST['sumbit'])){
 header('Access-Control-Allow-Origin: *');
 header('Content-type:application/json');
 
-echo json_encode($data);
+echo json_encode('$data');
