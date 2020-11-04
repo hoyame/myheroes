@@ -10,26 +10,6 @@ import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
 
 
-
-
-
-const createFormData = (photo: { fileName: any; type: any; uri: string; }, body: { [x: string]: any; }) => {
-    const data = new FormData();
-  
-    data.append('photo', {
-      name: photo.fileName,
-      type: photo.type,
-      uri:
-        Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
-    });
-  
-    Object.keys(body).forEach((key) => {
-      data.append(key, body[key]);
-    });
-  
-    return data;
-};
-
 const ParametresScreen = ({ navigation }) => {
     const image = useReduxState(state => state.user.image);
     const name = useReduxState(state => state.user.name);
