@@ -99,6 +99,58 @@ const AlertScreen = ({ navigation }) => {
             }} />
         })
     }
+
+    if (alerts.length == 0) {
+        return (
+            <>
+                <HeaderComponent navigation={navigation} />
+
+                <View style={{
+                    paddingLeft: 35,
+                    paddingRight: 35,
+                    paddingBottom: 35
+                }}>
+                    <Text style={{
+                        fontSize: 35,
+                        marginBottom: 20
+                    }}>Alertes</Text>
+
+                    <View style={{
+                        height: 60,
+                        marginBottom: 15,
+                        borderRadius: 8,
+                        padding: 10,
+                        justifyContent: "center",
+                        backgroundColor: "#0077be"
+                    }}>
+                        <Text style={{
+                            textAlign: "center",
+                            color: "#fff",
+                            fontSize: 20      
+                        }}>Aucune alerte disponible</Text>
+                    </View>
+
+                    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                        <View style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            height: 60, 
+                            width: screenWidth,
+                            borderRadius: 7.5,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#1d1d1d'           
+                        }}>
+                              <Text style={{
+                                fontSize: 20,
+                                color: '#ffffff'
+                            }}>Retour a l'acceuil</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </>
+        );
+    }
     
     return (
         <>
