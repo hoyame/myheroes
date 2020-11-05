@@ -124,81 +124,83 @@ const NDUPage = ({ navigation }) => {
         })
     }
 
-    return (
-        <>
-            <HeaderComponent navigation={navigation} />
-
+    const EuropeInfo = () => {
+        return (
             <View style={{
-                padding: 35,
-                paddingTop: 0
+                height: 75,
+                borderRadius: 7.5,
+                backgroundColor: '#e1e1e1',
+                padding: 15,
+                marginBottom: 10
             }}>
-                <Text style={{
-                    fontSize: 30,
-                    marginBottom: 25
-                }}>Numeros d'urgences</Text>
-
-                <SearchBar
-                    value={search}
-                    onChangeText={setSearch}
-                    style={SEARCH}
-                    inputStyle={INPUT}
-                    placeholder="Rechercher un pays"
-                    cancelText="Rechercher"
-                    theme="dark"
-                />
-
                 <View style={{
-                    height: 75,
-                    borderRadius: 7.5,
-                    backgroundColor: '#e1e1e1',
-                    padding: 15,
-                    marginBottom: 10
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginTop: -5,
+                    marginBottom: 7.5
+                }}>
+                    <Image source={{uri: 'https://flagcdn.com/20x15/eu.png'}} style={{
+                        height: 15,
+                        width: 20,
+                        marginRight: 10
+                    }} />
+                    <Text style={{
+                        fontSize: 20
+                    }}>Europe</Text> 
+                </View>
+                <View style={{
+                    marginLeft: 5
                 }}>
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        marginTop: -5,
-                        marginBottom: 7.5
+                        marginBottom: 2
                     }}>
-                        <Image source={{uri: 'https://flagcdn.com/20x15/eu.png'}} style={{
-                            height: 15,
-                            width: 20,
-                            marginRight: 10
-                        }} />
-
+                        <FontAwesomeIcon icon={faPhoneAlt} style={{
+                            color: 'red',
+                            marginRight: 7.5
+                        }}/>
+                        <Text>N° d'urgence : </Text>
                         <Text style={{
-                            fontSize: 20
-                        }}>Europe</Text> 
-                    </View>
-
-                    <View style={{
-                        marginLeft: 5
-                    }}>
-                        <View style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginBottom: 2
-                        }}>
-                            <FontAwesomeIcon icon={faPhoneAlt} style={{
-                                color: 'red',
-                                marginRight: 7.5
-                            }}/>
-
-                            <Text>N° d'urgence : </Text>
-
-                            <Text style={{
-                                color: 'red'
-                            }}>112</Text>
-                        </View>
+                            color: 'red'
+                        }}>112</Text>
                     </View>
                 </View>
-
-                <ScrollView>
-                    {returnProps(navigation)}
-                </ScrollView>
             </View>
+        );
+    }
+
+    return (
+        <>
+            <HeaderComponent navigation={navigation} />
+
+            <ScrollView>
+                <View style={{
+                    padding: 35,
+                    paddingTop: 0
+                }}>
+                    <Text style={{
+                        fontSize: 30,
+                        marginBottom: 25
+                    }}>Numeros d'urgences</Text>
+
+                    <SearchBar
+                        value={search}
+                        onChangeText={setSearch}
+                        style={SEARCH}
+                        inputStyle={INPUT}
+                        placeholder="Rechercher un pays"
+                        cancelText="Rechercher"
+                        theme="dark"
+                    />   
+
+                    <EuropeInfo />                     
+                    
+                    {returnProps(navigation)}
+                </View>
+            </ScrollView>
         </> 
     );
 }
