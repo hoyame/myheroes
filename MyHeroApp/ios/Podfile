@@ -26,6 +26,8 @@ target 'MyHeroApp' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
+
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
