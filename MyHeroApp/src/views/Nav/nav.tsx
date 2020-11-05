@@ -149,6 +149,7 @@ const NavScreen = ({ navigation }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                marginBottom: 25,
             }}>
                 <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
@@ -161,32 +162,29 @@ const NavScreen = ({ navigation }) => {
                 </View>
             </View>
         
-            <View style={{
-                justifyContent: "center"
-            }}>              
+            <ScrollView>
                 <View style={{
-                    marginTop: 25
+                    marginTop: 0,
+                    marginBottom: 90,
                 }}>
-                    <ScrollView>       
-                        { statusSend == true &&
-                            <AlertPropsNav color="#ff7f00" onClick={() => navigation.navigate('SenderAcceptAlertPage')} title="" description="" />
-                        }
+                    { statusSend == true &&
+                        <AlertPropsNav color="#ff7f00" onClick={() => navigation.navigate('SenderAcceptAlertPage')} title="" description="" />
+                    }
+                
+                    { statusHelp == true &&
+                        <AlertPropsNav color="#1f7ceb" onClick={() => navigation.navigate('HelperAcceptAlertPage')} title="" description="" />
+                    }
                     
-                        { statusHelp == true &&
-                            <AlertPropsNav color="#1f7ceb" onClick={() => navigation.navigate('HelperAcceptAlertPage')} title="" description="" />
-                        }
-
-                        <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
-                        <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
-                        <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
-                        <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title="Avis" description="Votre avis sur l'application" />
-                        <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title="Parametres" description="Parametres du compte" />
-                        <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
-                        <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title="Confidentialité" description="Confidentialité" />
-                        <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title="A propos" description="A propos" />
-                    </ScrollView>
+                    <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
+                    <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
+                    <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
+                    <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title="Avis" description="Votre avis sur l'application" />
+                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title="Parametres" description="Parametres du compte" />
+                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
+                    <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title="Confidentialité" description="Confidentialité" />
+                    <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title="A propos" description="A propos" />
                 </View>
-            </View>
+            </ScrollView>
         </View>
     );
 }
