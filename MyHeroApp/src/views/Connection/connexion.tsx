@@ -6,6 +6,7 @@ import { faArrowAltCircleLeft, faEnvelope, faLock } from "@fortawesome/free-soli
 import Users from '../../api/User';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
+import I18n from '../../i18n/i18n';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
