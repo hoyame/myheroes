@@ -2,10 +2,10 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react"
 import { StyleSheet, View, Text, Dimensions, TextInput } from "react-native"
+import I18n from '../../i18n/i18n';
 
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
-
 
 interface IInput {
     name: string;
@@ -15,7 +15,6 @@ interface IInput {
     icon: any;
     height?: number;
 }
-
 
 const InputComponent = (props: IInput) => {
     const height = props.height || 65
