@@ -9,4 +9,5 @@ export default {
     alertDescMoyen: "(En panne, coincé, vol...)",
     alertDescFaible: "(Perdu, nuisance, autre...)",
   
+    alertInProgress: "Alerte en cours",
 };

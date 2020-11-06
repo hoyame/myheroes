@@ -205,7 +205,7 @@ const HomeScreen = ({ navigation }) => {
                                         marginLeft: 5,
                                         color: 'white',
                                         fontSize: 20
-                                    }}>Alerte en cours</Text>
+                                    }}>{I18n.t("alertInProgress")}</Text>
                                 </View>
 
                                 <View style={{
