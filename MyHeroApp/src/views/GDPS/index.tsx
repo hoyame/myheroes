@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
+import I18n from '../../i18n/i18n';
 
 const GDPSPage = ({ navigation }) => {
     interface IPropsNav {
