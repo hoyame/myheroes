@@ -7,7 +7,7 @@ export default {
     par: "Par",
     chargement: "Chargement",
     welcomeMH: "Bienvenue sur MyHero",
-
+    continuer: "Continuer",
    
     menu: "Menu",
 
@@ -32,7 +32,24 @@ export default {
     connexionVousAvezPasCompte: "Vous n'avez pas de compte ?",
     connexionReg: "S'inscrire",
     connexionTES: "Se connecter",
-    
+
+    inscriptionEC: "Inscription en cours",
+    inscriptionDesc: "Créer son compte",
+    inscriptionTES: "Se connecter",
+    inscriptionContinuerInscription: "Pour continuer votre inscription",
+    inscriptionAddPhoto: "veuillez ajouter une photo",
+    inscriptionChoosePhoto: "Choisir une photo",
+
+    inscriptionPseudo: "Pseudo",
+    inscriptionIdentifiant: "Identifiant",
+    inscriptionDescIdentifiant: "Mail ou Télphone",
+    inscriptionMDP: "Mot de passe",
+    inscriptionCMDP: "Confirmer son mot de passe",
+    inscriptionVAC: "Vous avez un compte ?",
+    inscriprionERR1: "Les deux mot de passe ne correspondent pas",
+    inscriprionERR2: "Les formulaires n'ont pas été remplis correctement",
+    inscriprionERR3: "Une erreur inconnue est survenue, veuillez ressayer plus tard",
+
     descacceuil: "Page d'acceuil",
     desccarte: "Carte avec les alertes",
     descalertes: "Listes des alertes",
@@ -87,6 +104,6 @@ export default {
     gdpsBrulures: "Les brulures",
     gdpsTraumatismeOs: "Traumatisme des os",
     gdpsNoyade: "Noyade",
-    gdpsMalaise: "Le malaise"
+    gdpsMalaise: "Le malaise",
 
 };
