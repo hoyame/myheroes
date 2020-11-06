@@ -31,7 +31,7 @@ const EndAlertScreen = ({ navigation }) => {
                         textAlign: "center",
                         color: "#fff",
                         fontSize: 15      
-                        app: translate update                    }}>{I18n.t("alertThanks")}</Text>
+                    }}>{I18n.t("alertThanks")}</Text>
                 </View>
 
                 <View>
