@@ -8,6 +8,7 @@ import InputComponent from '../../components/Input/input';
 import { useReduxState } from '../../data/store';
 import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
+import I18n from '../../i18n/i18n';
 
 
 const ParametresScreen = ({ navigation }) => {
