@@ -9,6 +9,7 @@ import { WaveIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setSendAlertData } from '../../data/actions/user';
 import MyHeroAlerts from '../../api/Alerts';
+import I18n from '../../i18n/i18n';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
@@ -34,7 +35,7 @@ const CreateAlertScreen = ({ navigation }) => {
                     fontSize: 30,
                     marginBottom: 30,
                     textAlign: "center"
-                }}>Chargement</Text>
+                }}>{I18n.t("chargement")}</Text>
                     
                 <WaveIndicator color='#6d9bff' size={40} />
             </View>
@@ -48,18 +49,18 @@ const CreateAlertScreen = ({ navigation }) => {
     switch (alertLevelSe) {
         case 1: 
             color = '#ffd100'
-            name = 'Faible'
-            description = "(Perdu, nuisance, autre...)" 
+            name = I18n.t("alertFaible")
+            description = I18n.t("alertDescFaible")
             break
         case 2: 
             color = '#ff9600'
-            name = 'Moyen'
-            description = "(En panne, coincé, vol...)" 
+            name = I18n.t("alertMoyen")
+            description = I18n.t("alertDescMoyen")
             break
         case 3: 
             color = '#d80000'
-            name = 'Grave'
-            description = "(Accident, agression, malaise...)" 
+            name = I18n.t("alertGrave")
+            description = I18n.t("alertDescGrave")
             break
         default: break
     }
@@ -82,7 +83,7 @@ const CreateAlertScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 35,
                             marginBottom: 20
-                        }}>Lancer une alerte</Text>
+                        }}>{I18n.t("alertLaunch")}</Text>
 
                         <View style={{}}>
                             <View style={{
@@ -109,7 +110,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                 }}>
                                     <Text style={{
                                         fontSize: 25
-                                    }}>Alerte {name}</Text>
+                                    }}>{I18n.t("alertT")} {name}</Text>
 
                                     <Text style={{
                                         color: "#262626",
@@ -130,11 +131,11 @@ const CreateAlertScreen = ({ navigation }) => {
                                     textAlign: "center",
                                     color: "#fff",
                                     fontSize: 15      
-                                }}>Lancer des fausses alertes peut entrainer des sanctions !</Text>
+                                }}>{I18n.t("alertWarn")}</Text>
                             </View>
 
                             <View>
-                                <InputComponent height={150} name="Description" placeholder="Description de l'alerte" value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
+                                <InputComponent height={150} name={I18n.t("description")} placeholder={I18n.t("descDescription")} value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
                             </View>
 
                             <TouchableOpacity onPress={() => {
@@ -166,7 +167,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                     <Text style={{
                                         textAlign: "center",
                                         fontSize: 25      
-                                    }}>Lancer l'alerte</Text>
+                                    }}>{I18n.t("alertLaunch")}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
