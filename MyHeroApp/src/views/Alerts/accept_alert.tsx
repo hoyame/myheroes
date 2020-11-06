@@ -8,6 +8,7 @@ import { useReduxState } from '../../data/store';
 import { setHelpAlertData, setSendAlertData } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import MyHeroAlerts from '../../api/Alerts';
+import I18n from '../../i18n/i18n';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -55,7 +56,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                       style={styles.checkbox}
                       tintColors={{ true: '#6d9bff', false: '#6d9bff' }}
                     />
-                    <Text style={styles.label}>Vous voulez activer votre camera ?</Text>
+                    <Text style={styles.label}>{I18n.t("alertActivCam")}</Text>
                 </View>
 
                 <View style={{
@@ -72,7 +73,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         fontSize: 30,
                         marginBottom: 10,
                         textAlign: "center"
-                    }}>Aperçu camera</Text>
+                    }}>{I18n.t("alertApercCam")}</Text>
 
                     <ActivityIndicator size="large" color="#6d9bff" />
                 </View>
@@ -106,7 +107,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         <Text style={{
                             textAlign: "center",
                             fontSize: 20      
-                        }}>Vous n'etes plus en danger</Text>
+                        }}>{I18n.t("alertNotDanger")}</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -139,7 +140,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         <Text style={{
                             textAlign: "center",
                             fontSize: 22      
-                        }}>Vous avez été sauvé</Text>
+                        }}>{I18n.t("alertSave")}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -177,7 +178,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         color: "#000000",
                         marginBottom: 10
                     }}>
-                        Description: {alerts.data.description}
+                        {I18n.t("description")}: {alerts.data.description}
                     </Text>
                 </View>
 
@@ -195,7 +196,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         fontSize: 30,
                         marginBottom: 10,
                         textAlign: "center"
-                    }}>Aperçu Camera</Text>
+                    }}>{I18n.t("alertApercCam")}</Text>
 
                     <ActivityIndicator size="large" color="#6d9bff" />
                 </View>
@@ -212,7 +213,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         <Text style={{
                             textAlign: "center",
                             fontSize: 22      
-                        }}>Lancer l'itineraire</Text>
+                        }}>{I18n.t("alertLancerItt")}</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -238,12 +239,10 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         <Text style={{
                             textAlign: "center",
                             fontSize: 22      
-                        }}>Abbandoner l'alerte</Text>
+                        }}>{I18n.t("alertAbbandoner")}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
         </>
     );
-
-    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 }
