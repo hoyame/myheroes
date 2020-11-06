@@ -1,5 +1,6 @@
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import I18n from '../../i18n/i18n';
 import React from 'react';
 import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import { useDispatch } from 'react-redux';
@@ -23,20 +24,20 @@ const AlertScreen = ({ navigation }) => {
 
     const AlertProps: React.FC<IAlert> = (props: IAlert) => {
         let color = "#ffd100";
-        let levelName = "Faible";
+        let levelName = I18n.t("alertFaible");
 
         switch (props.level) {
             case 1: 
                 color = "#ffd100";
-                levelName = "Faible";
+                levelName = I18n.t("alertFaible");
                 break;
             case 2: 
                 color = "#ff9600";
-                levelName = "Moyenne";
+                levelName = I18n.t("alertMoyen");
                 break;
             case 3:
                 color = "#d80000";
-                levelName = "Grave";
+                levelName = I18n.t("alertGrave");
                 break;
         }
 
@@ -75,14 +76,14 @@ const AlertScreen = ({ navigation }) => {
                             marginTop: 10,
                             marginLeft: 10,
                             color: "#000000"
-                        }}>Alerte {levelName}</Text>
+                        }}>{I18n.t("alertT")} {levelName}</Text>
 
                         <Text style={{
                             fontSize: 15,
                             marginTop: 5,
                             marginLeft: 10,
                             color: "#94958B"
-                        }}>Par {props.source}</Text>
+                        }}>{I18n.t("par")} {props.source}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -113,7 +114,7 @@ const AlertScreen = ({ navigation }) => {
                     <Text style={{
                         fontSize: 35,
                         marginBottom: 20
-                    }}>Alertes</Text>
+                    }}>{I18n.t("alertes")}</Text>
 
                     <View style={{
                         height: 60,
@@ -127,7 +128,7 @@ const AlertScreen = ({ navigation }) => {
                             textAlign: "center",
                             color: "#fff",
                             fontSize: 20      
-                        }}>Aucune alerte disponible</Text>
+                        }}>{I18n.t("alertNotDispo")}</Text>
                     </View>
 
                     <TouchableOpacity onPress={() => navigation.navigate("Home")}>
@@ -144,7 +145,7 @@ const AlertScreen = ({ navigation }) => {
                               <Text style={{
                                 fontSize: 20,
                                 color: '#ffffff'
-                            }}>Retour a l'acceuil</Text>
+                            }}>{I18n.t("alertReturnAcceuil")}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -164,7 +165,7 @@ const AlertScreen = ({ navigation }) => {
                 <Text style={{
                     fontSize: 35,
                     marginBottom: 20
-                }}>Alertes</Text>
+                }}>{I18n.t("alertes")}</Text>
 
                 <ScrollView>
                     {returnAlerts(navigation)}
