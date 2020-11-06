@@ -31,33 +31,13 @@ const EndAlertScreen = ({ navigation }) => {
                         textAlign: "center",
                         color: "#fff",
                         fontSize: 15      
-                    }}>Merci d'avoir utilisé MyHeroes, votre alerte a été supprimé.</Text>
+                        app: translate update                    }}>{I18n.t("alertThanks")}</Text>
                 </View>
 
                 <View>
-                    <RateComponent title="Avis sur votre hero" placeholder="Description de votre avis" onClick={() => null} />
+                    <RateComponent title={I18n.t("alertAvisHero")} placeholder={I18n.t("alertDescHero")} onClick={() => null} />
                 </View>
-
-                { /*          
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <View style={{
-                        height: 50,
-                        borderRadius: 8,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: '#1d1d1d'           
-                    }}>
-                        <Text style={{
-                            color: '#ffffff',
-                            textAlign: "center",
-                            fontSize: 22      
-                        }}>Retour a l'acceuil</Text>
-                    </View>
-                </TouchableOpacity>
-                */ }
             </View>
-
-
         </>
     );
 }
