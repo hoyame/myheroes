@@ -267,7 +267,7 @@ const HomeScreen = ({ navigation }) => {
                                         marginLeft: 5,
                                         color: 'white',
                                         fontSize: 20
-                                    }}>Votre alerte en cours</Text>
+                                    }}>{I18n.t("alertInProgress")}</Text>
                                     </View>
 
                                 <View style={{
@@ -324,8 +324,8 @@ const HomeScreen = ({ navigation }) => {
                     }
                 </View>
 
-                <AlertComponent onClick={() => navigation.navigate('GDPS')} fontAwesome={faFirstAid} color="#008b00" title="Gestes de premier secours" />
-                <AlertComponent onClick={() => navigation.navigate('NDU')} fontAwesome={faPhoneAlt} color="#d80000" title="Numeros d'urgence" />
+                <AlertComponent onClick={() => navigation.navigate('GDPS')} fontAwesome={faFirstAid} color="#008b00" title={I18n.t("gdps")} />
+                <AlertComponent onClick={() => navigation.navigate('NDU')} fontAwesome={faPhoneAlt} color="#d80000" title={I18n.t("ndu")} />
       
                 <TouchableOpacity onPress={() => navigation.navigate('Map')}>
                     <View style={{
