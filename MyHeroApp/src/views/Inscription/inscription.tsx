@@ -122,14 +122,14 @@ const InscriptionScreen = ({ navigation }) => {
                     fontSize: 30,                    
                     marginBottom: 10,
                     textAlign: "center"
-                }}>Bienvenue sur MyHero</Text>
+                }}>{I18n.t("welcomeMH")}</Text>
       
                 <Text style={{
                     color: "#6d9bff",
                     fontSize: 25,
                     marginBottom: 30,
                     textAlign: "center"
-                }}>Inscription en cours</Text>
+                }}>{I18n.t("inscriptionEC")}</Text>
             </>
         );
     }
@@ -194,21 +194,21 @@ const InscriptionScreen = ({ navigation }) => {
                     fontSize: 30,                    
                     marginBottom: 40,
                     textAlign: "center"
-                }}>Bienvenue sur MyHero</Text>
+                }}>{I18n.t("welcomeMH")}</Text>
       
                 <Text style={{
                     color: "#6d9bff",
                     fontSize: 20,
                     marginBottom: 5,
                     textAlign: "center"
-                }}>Pour continuer votre inscription</Text>
+                }}>{I18n.t("inscriptionContinuerInscription")}</Text>
 
                 <Text style={{
                     color: "#6d9bff",
                     fontSize: 20,
                     marginBottom: 40,
                     textAlign: "center"
-                }}>veuillez ajouter une photo</Text>
+                }}>{I18n.t("inscriptionAddPhoto")}</Text>
 
                 { img.uri !== "" && 
                     <Image 
@@ -228,7 +228,7 @@ const InscriptionScreen = ({ navigation }) => {
                         fontSize: 20,
                         marginBottom: 30,
                         textAlign: "center"
-                    }}>Choisir une photo</Text>
+                    }}>{I18n.t("inscriptionChoosePhoto")}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => null}>
@@ -243,7 +243,7 @@ const InscriptionScreen = ({ navigation }) => {
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>Continuer</Text>
+                            }}>{I18n.t("inscriptiocontinuernContinuerInscription")}</Text>
                         </View>
                     </TouchableOpacity>
             </View>
@@ -265,11 +265,11 @@ const InscriptionScreen = ({ navigation }) => {
                     fontSize: 35,
                     textAlign: 'center',
                     marginBottom: 10
-                }}>Inscription</Text>
+                }}>{I18n.t("inscription")}</Text>
                 
                 <Text style={{
                     marginBottom: 20
-                }}>Créer son compte</Text>
+                }}>{I18n.t("inscriptionDesc")}</Text>
 
 
                 <View style={{
@@ -277,10 +277,10 @@ const InscriptionScreen = ({ navigation }) => {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <InputComponent name="Pseudo" placeholder="Pseudo" value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
-                    <InputComponent name="Identifiant" placeholder="Mail ou Télphone" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                    <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                    <InputComponent password={true} name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+                    <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
+                    <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                    <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                    <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
                 
                     <View style={{
                         display: 'flex',
@@ -288,17 +288,17 @@ const InscriptionScreen = ({ navigation }) => {
                         marginBottom: 7.5,
                         flexDirection: 'row'
                     }}>
-                        <Text>Vous avez un compte ?</Text>
+                        <Text>{I18n.t("inscriptionVAC")}</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('Connexion')}>
                             <Text style={{
                                 color: "#6d9bff"
-                            }}> Se connecter</Text>
+                            }}>{I18n.t("connexionTES")}</Text>
                         </TouchableOpacity>
                     </View>
 
-                    {error && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>Les deux mot de passe ne correspondent pas</Text>}
-                    {errorM && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>Les formulaires n'ont pas été remplis correctement</Text>}
-                    {errorU && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>Une erreur inconnue est survenue, veuillez ressayer plus tard</Text>}
+                    {error && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR1")}</Text>}
+                    {errorM && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR2")}</Text>}
+                    {errorU && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR3")}</Text>}
 
                     <TouchableOpacity onPress={() => onPress()}>
                         <View style={{
@@ -312,7 +312,7 @@ const InscriptionScreen = ({ navigation }) => {
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>S'inscrire</Text>
+                            }}>{I18n.t("inscriptionTES")}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
