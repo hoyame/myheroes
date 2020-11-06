@@ -9,6 +9,7 @@ import { useReduxState } from '../../data/store';
 import { MaterialIndicator, DotIndicator, PulseIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setCacheCreateAlertLevel, setName } from '../../data/actions/user';
+import I18n from '../../i18n/i18n';
 //import SosSVG from '../../assets/sos.svg'
 
 const HomeScreen = ({ navigation }) => {
@@ -151,10 +152,10 @@ const HomeScreen = ({ navigation }) => {
                                     dispatch(setCacheCreateAlertLevel(3))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
-                                title="Grave" 
+                                title={I18n.t("alertGrave")}
                                 color="#d80000" 
                                 colorComponent="#860258" 
-                                description="(Accident, agression, malaise...)" 
+                                description={I18n.t("alertDescGrave")} 
                             />
 
                             <AlertProps 
@@ -162,10 +163,10 @@ const HomeScreen = ({ navigation }) => {
                                     dispatch(setCacheCreateAlertLevel(2))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
-                                title="Moyen" 
+                                title={I18n.t("alertMoyen")}
                                 color="#ff9600" 
                                 colorComponent="#860258" 
-                                description="(En panne, coincé, vol...)" 
+                                description={I18n.t("alertDescMoyen")}
                             />
 
                             <AlertProps 
@@ -173,10 +174,10 @@ const HomeScreen = ({ navigation }) => {
                                     dispatch(setCacheCreateAlertLevel(1))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
-                                title="Faible" 
+                                title={I18n.t("alertFaible")}
                                 color="#ffd100" 
                                 colorComponent="#860258" 
-                                description="(Perdu, nuisance, autre...)" 
+                                description={I18n.t("alertDescFaible")}
                             />
                         </>   
                     }
