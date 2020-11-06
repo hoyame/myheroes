@@ -8,6 +8,7 @@ import HeaderComponent from '../../components/Header/header';
 import { useReduxState } from '../../data/store';
 import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
+import I18n from '../../i18n/i18n';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -195,7 +196,7 @@ const AccountScreen = ({ navigation }) => {
             }}>
                 <Text style={{
                     fontSize: 35
-                }}>Mon Compte</Text>
+                }}>{I18n.t("account")}</Text>
 
                 <View style={{
                     marginTop: 15,
@@ -214,7 +215,7 @@ const AccountScreen = ({ navigation }) => {
                         backgroundColor: '#e1e1e1',
                         height: 75
                     }}>
-                        <Text style={{fontSize: 20, marginBottom: 15}}>Trophées</Text>
+                        <Text style={{fontSize: 20, marginBottom: 15}}>{I18n.t("accountTrophes")}</Text>
                         
                         <ScrollView>
    
@@ -228,7 +229,7 @@ const AccountScreen = ({ navigation }) => {
                         backgroundColor: '#e1e1e1',
                         height: Dimensions.get('window').height > 695 ? 300 : 250
                     }}>
-                        <Text style={{fontSize: 20, marginBottom: 15}}>Avis</Text>
+                        <Text style={{fontSize: 20, marginBottom: 15}}>{I18n.t("accountAvis")}</Text>
                         
                         <ScrollView>
                             <AvisProps />
@@ -260,7 +261,7 @@ const AccountScreen = ({ navigation }) => {
                             <Text style={{
                                 fontSize: 25,
                                 color: '#ffffff'
-                            }}>Acceuil</Text>
+                            }}>{I18n.t("acceuil")}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
