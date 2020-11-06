@@ -91,14 +91,14 @@ const ParametresScreen = ({ navigation }) => {
                     fontSize: 20,
                     marginBottom: 5,
                     textAlign: "center"
-                }}>Pour continuer votre inscription</Text>
+                }}>{I18n.t("inscriptionContinuerInscription")}</Text>
 
                 <Text style={{
                     color: "#6d9bff",
                     fontSize: 20,
                     marginBottom: 40,
                     textAlign: "center"
-                }}>veuillez ajouter une photo</Text>
+                }}>{I18n.t("inscriptionAddPhoto")}</Text>
 
                 { img.uri !== "" && 
                     <Image 
@@ -118,7 +118,7 @@ const ParametresScreen = ({ navigation }) => {
                         fontSize: 20,
                         marginBottom: 30,
                         textAlign: "center"
-                    }}>Choisir une photo</Text>
+                    }}>{I18n.t("inscriptionChoosePhoto")}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setPictureS(false)}>
@@ -132,7 +132,7 @@ const ParametresScreen = ({ navigation }) => {
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>Continuer</Text>
+                            }}>{I18n.t("continuer")}</Text>
                         </View>
                     </TouchableOpacity>
             </View>
@@ -150,7 +150,7 @@ const ParametresScreen = ({ navigation }) => {
                 <Text style={{
                     fontSize: 30,
                     marginBottom: 15
-                }}>Parametres du compte</Text>
+                }}>{I18n.t("settingsDesc")}</Text>
 
                 <View style={{
                     display: "flex",
@@ -187,8 +187,8 @@ const ParametresScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-                <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                <InputComponent password={true} name="Confirmer son mot de passe" placeholder="Confirmer son mdp" value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+                <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
 
                 <TouchableOpacity onPress={() => { 
                     const arg = {
@@ -215,7 +215,7 @@ const ParametresScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 20,
                             color: '#000000'
-                        }}>Changer son mot de passe</Text>
+                        }}>{I18n.t("settingsCSMDP")}</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -233,7 +233,7 @@ const ParametresScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 20,
                             color: '#000000'
-                        }}>Changer son avatar</Text>
+                        }}>{I18n.t("settingsChangerAvatar")}</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -251,7 +251,7 @@ const ParametresScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 20,
                             color: '#ffffff'
-                        }}>Se deconnecter</Text>
+                        }}>{I18n.t("settingsSeDeco")}</Text>
                     </View>
                 </TouchableOpacity>
             </View>  
