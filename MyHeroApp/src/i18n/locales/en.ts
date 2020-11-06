@@ -1,5 +1,11 @@
 export default {
     hello: "Hello",
+    errorServMH: "Les serveurs MyHeroes sont actuellement indisponibles",
+    initMHServ: "Initialisation de",
+    description: "Description",
+    descDescription: "Description de l'alerte",
+    par: "Par",
+    chargement: "Chargement",
 
     alertGrave: "Grave",
     alertMoyen: "Moyen",
@@ -17,7 +23,7 @@ export default {
     alertes: "Alertes",
     avis: "Avis",
     parametres: "Parametres",
-    account: "Account",
+    account: "Mon compte",
     faq: "F.A.Q",
     confidentiality: "Confidentialité",
     apropos: "A propos",
@@ -35,5 +41,24 @@ export default {
     descapropos: "A propos",
     descgdps: "Gestes de premier secours",
     descndu: "Numeros d'urgence",
+
+    accountTrophes: "Trophées",
+    accountAvis: "Avis",
+
+    alertT: "Alerte",
+    alertMy: "Votre alerte",
+    alertWarn: "Lancer des fausses alertes peut entrainer des sanctions !",
+    alertLaunch: "Lancer une alerte",
+    alertNotDispo: "Aucune alerte disponible",
+    alertReturnAcceuil: "Retour a l'acceuil",
+    alertActivCam: "Vous voulez activer votre camera ?",
+    alertApercCam: "Aperçu camera",
+    alertNotDanger: "Vous n'etes plus en danger",
+    alertSave: "Vous avez été sauvé",
+    alertLancerItt: "Lancer l'itineraire",
+    alertAbbandoner: "Abbandoner l'alerte",
+    alertIDAlert: "ID de l'alerte",
+    alertPrendreAlert: "Prendre l'alerte",
+
 
 };
