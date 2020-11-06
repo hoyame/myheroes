@@ -8,6 +8,7 @@ import AlertInformationProps from '../../components/AlertPropsDetails';
 import HeaderComponent from '../../components/Header/header';
 import { setHelpAlertData, setSendAlertData, setStatusHelp } from '../../data/actions/user';
 import { useReduxState } from '../../data/store';
+import I18n from '../../i18n/i18n';
 
 const AlertPageScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
@@ -26,12 +27,12 @@ const AlertPageScreen = ({ navigation }) => {
                 <Text style={{
                     fontSize: 35,
                     marginBottom: 5
-                }}>Alerte</Text>
+                }}>{I18n.t("alertes")}</Text>
                 
                 <Text style={{
                     fontSize: 15,
                     marginBottom: 20
-                }}>ID de l'alerte: {alertData.id}</Text>
+                }}>{I18n.t("alertIDAlert")}: {alertData.id}</Text>
 
                 <View style={{
                     marginBottom: 10,
@@ -52,7 +53,7 @@ const AlertPageScreen = ({ navigation }) => {
                         fontSize: 20,
                         marginBottom: 10
                     }}>
-                        Description: 
+                        {I18n.t("description")}: 
                     </Text>
 
                     <Text style={{
@@ -78,7 +79,7 @@ const AlertPageScreen = ({ navigation }) => {
                     }}>
                         <Text style={{
                             fontSize: 25
-                        }}>Prendre l'alerte</Text>
+                        }}>{I18n.t("alertPrendreAlert")}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
