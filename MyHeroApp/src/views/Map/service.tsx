@@ -7,6 +7,7 @@ import { setCacheShowAlert } from "../../data/actions/user";
 import { setLocalisation } from "../../data/actions/localisation";
 import { MyHeroService } from "../../api/Service";
 import { WaveIndicator } from 'react-native-indicators';
+import I18n from '../../i18n/i18n';
 
 interface IMap {
   height: number;
