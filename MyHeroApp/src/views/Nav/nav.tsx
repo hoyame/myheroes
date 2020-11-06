@@ -5,6 +5,7 @@ import React from 'react';
 import { ScrollView, Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { useReduxState } from '../../data/store';
 import { PulseIndicator } from 'react-native-indicators';
+import I18n from '../../i18n/i18n';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
@@ -99,11 +100,11 @@ const NavScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 24,
                             color: "white"
-                        }}>Alerte en cours</Text>
+                        }}>{I18n.t("alertInProgress")}</Text>
                         <Text style={{
                             fontSize: 15,
                             color: "white"
-                        }}>Page de l'alerte</Text>
+                        }}>{I18n.t("alertInProgressDesc")}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -158,7 +159,7 @@ const NavScreen = ({ navigation }) => {
                 <View>   
                     <Text style={{
                         fontSize: 35
-                    }}>Menu</Text>
+                    }}>{I18n.t("menu")}</Text>
                 </View>
             </View>
         
@@ -175,14 +176,14 @@ const NavScreen = ({ navigation }) => {
                         <AlertPropsNav color="#1f7ceb" onClick={() => navigation.navigate('HelperAcceptAlertPage')} title="" description="" />
                     }
                     
-                    <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title="Acceuil" description="Page d'acceuil" />
-                    <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title="Carte" description="Carte avec les alertes" />
-                    <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title="Alertes" description="Listes des alertes" />
-                    <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title="Avis" description="Votre avis sur l'application" />
-                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title="Parametres" description="Parametres du compte" />
-                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title="F.A.Q" description="Foire aux questions" />
-                    <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title="Confidentialité" description="Confidentialité" />
-                    <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title="A propos" description="A propos" />
+                    <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
+                    <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title={I18n.t("carte")} description={I18n.t("desccarte")} />
+                    <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
+                    <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title={I18n.t("avis")} description={I18n.t("descavis")} />
+                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
+                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title={I18n.t("faq")} description={I18n.t("descfaq")} />
+                    <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
+                    <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
                 </View>
             </ScrollView>
         </View>
