@@ -6,9 +6,13 @@ export default {
     descDescription: "Description de l'alerte",
     par: "Par",
     chargement: "Chargement",
-    
+    welcomeMH: "Bienvenue sur MyHero",
+
+   
     menu: "Menu",
 
+    connexion: "Connexion",
+    inscription: "Incription",
     acceuil: "Acceuil",
     carte: "Carte",
     alertes: "Alertes",
@@ -20,6 +24,15 @@ export default {
     apropos: "A propos",
     gdps: "Gestes de premier secours",
     ndu: "Numeros d'urgence",
+
+    connexionEC: "Connexion en cours",
+    connexionDesc: "Se connecter a son compte",
+    connexoinIdentifiant: "Identifiant",
+    connexoinMDP: "Mot de passe",
+    connexionVousAvezPasCompte: "Vous n'avez pas de compte ?",
+    connexionReg: "S'inscrire",
+    connexionTES: "Se connecter",
+    
 
     descacceuil: "Page d'acceuil",
     desccarte: "Carte avec les alertes",

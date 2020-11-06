@@ -81,14 +81,14 @@ const ConnexionScreen = ({ navigation }) => {
                     fontSize: 30,                    
                     marginBottom: 10,
                     textAlign: "center"
-                }}>Bienvenue sur MyHero</Text>
+                }}>{I18n.t("welcomeMH")}</Text>
       
                 <Text style={{
                     color: "#6d9bff",
                     fontSize: 25,
                     marginBottom: 30,
                     textAlign: "center"
-                }}>Connexion en cours</Text>
+                }}>{I18n.t("connexionEC")}</Text>
             </>
         );
     }
@@ -121,19 +121,19 @@ const ConnexionScreen = ({ navigation }) => {
                     fontSize: 35,
                     textAlign: 'center',
                     marginBottom: 10
-                }}>Connexion</Text>
+                }}>{I18n.t("connexion")}</Text>
                 
                 <Text style={{
                     marginBottom: 20
-                }}>Se connecter a son compte</Text>
+                }}>{I18n.t("connexionDesc")}</Text>
 
                 <View style={{
                     marginTop: 15,
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <InputComponent name="Identifiant" placeholder="Identifiant" value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                    <InputComponent password={true} name="Mot de passe" placeholder="Mot de passe" value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                    <InputComponent name={I18n.t("connexoinIdentifiant")} placeholder={I18n.t("connexoinIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                    <InputComponent password={true} name={I18n.t("connexoinMDP")} placeholder={I18n.t("connexoinIdentifiant")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                 
                     <View style={{
                         display: 'flex',
@@ -141,11 +141,11 @@ const ConnexionScreen = ({ navigation }) => {
                         marginBottom: 7.5,
                         flexDirection: 'row'
                     }}>
-                        <Text>Vous n'avez pas de compte ?</Text>
+                        <Text>{I18n.t("connexionVousAvezPasCompte")}</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('Inscription')}>
                             <Text style={{
                                 color: "#6d9bff"
-                            }}> S'inscrire</Text>
+                            }}>{I18n.t("connexionReg")}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -163,7 +163,7 @@ const ConnexionScreen = ({ navigation }) => {
                         }}>
                             <Text style={{
                                 fontSize: 25
-                            }}>Se connecter</Text>
+                            }}>{I18n.t("connexionTES")}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

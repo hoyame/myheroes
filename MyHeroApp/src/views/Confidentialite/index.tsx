@@ -9,7 +9,7 @@ const ConfidentialiteScreen = ({ navigation }) => {
             <HeaderComponent navigation={navigation} />
 
             <View>
-                <Text>Confidentialite</Text>
+                <Text>{I18n.t("confidentiality")}</Text>
 
             </View>
         </>
