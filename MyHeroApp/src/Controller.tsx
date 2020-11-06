@@ -31,7 +31,8 @@ import AvisScreen from './views/Avis';
 import ConfidentialiteScreen from './views/Confidentialite';
 import ProposScreen from './views/Propos';
 import EndAlertScreen from './views/Alerts/end_alert';
-import { Root, Popup, Toast } from 'popup-ui'
+import { Root, Popup, Toast } from 'popup-ui';
+import I18n from './i18n/i18n';
 
 
 const Controller = () => {
@@ -53,8 +54,6 @@ const Controller = () => {
     }, 5000)
 
     setTimeout(async () => {
-
-
       if (initialize == false) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
         console.log(AMail)
@@ -85,7 +84,7 @@ const Controller = () => {
               setNewUser(true);
               setInitialize(true);
             } else if (error == 0) {
-              Alert.alert("Les serveurs MyHeroes sont actuellement indisponibles");
+              Alert.alert(I18n.t("errorServMH"));
             }
           })
         }  
@@ -106,7 +105,7 @@ const Controller = () => {
                 color: "#6d9bff",
                 fontSize: 30,
                 textAlign: "center"
-            }}>Initialisation de</Text>
+            }}>{I18n.t("initMHServ")}</Text>
 
             <Text style={{
                 color: "#6d9bff",
