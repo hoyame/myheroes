@@ -6,16 +6,7 @@ export default {
     descDescription: "Description de l'alerte",
     par: "Par",
     chargement: "Chargement",
-
-    alertGrave: "Grave",
-    alertMoyen: "Moyen",
-    alertFaible: "Faible",
-    alertDescGrave: "(Accident, agression, malaise...)",
-    alertDescMoyen: "(En panne, coincé, vol...)",
-    alertDescFaible: "(Perdu, nuisance, autre...)",
-    alertInProgress: "Alerte en cours",
-    alertInProgressDesc: "Page de l'alerte",
-
+    
     menu: "Menu",
 
     acceuil: "Acceuil",
@@ -45,6 +36,17 @@ export default {
     accountTrophes: "Trophées",
     accountAvis: "Avis",
 
+    alertAvisHero: "Avis sur votre hero",
+    alertDescHero: "Avis sur votre hero",
+    alertThanks: "Merci d'avoir utilisé MyHeroes, votre alerte a été supprimé.",
+    alertGrave: "Grave",
+    alertMoyen: "Moyen",
+    alertFaible: "Faible",
+    alertDescGrave: "(Accident, agression, malaise...)",
+    alertDescMoyen: "(En panne, coincé, vol...)",
+    alertDescFaible: "(Perdu, nuisance, autre...)",
+    alertInProgress: "Alerte en cours",
+    alertInProgressDesc: "Page de l'alerte",
     alertT: "Alerte",
     alertMy: "Votre alerte",
     alertWarn: "Lancer des fausses alertes peut entrainer des sanctions !",
