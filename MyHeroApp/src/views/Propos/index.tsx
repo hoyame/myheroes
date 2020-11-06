@@ -9,8 +9,7 @@ const ProposScreen = ({ navigation }) => {
             <HeaderComponent navigation={navigation} />
 
             <View>
-                <Text>Propos</Text>
-
+                <Text>{I18n.t("apropos")}</Text>
             </View>
         </>
     );
