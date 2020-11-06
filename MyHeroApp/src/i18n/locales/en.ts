@@ -62,5 +62,7 @@ export default {
     alertIDAlert: "ID de l'alerte",
     alertPrendreAlert: "Prendre l'alerte",
 
+    avisRateApp: "Noter l'application",
+    avisDescApp: "Avis",
 
 };
