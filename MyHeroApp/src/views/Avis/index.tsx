@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
 import RateComponent from '../../components/Rate';
+import I18n from '../../i18n/i18n';
 
 const AvisScreen = ({ navigation }) => {
     return (
@@ -19,7 +20,7 @@ const AvisScreen = ({ navigation }) => {
                     marginBottom: 5
                 }}>MyHeroes</Text>
 
-                <RateComponent title="Noter l'application" placeholder="Avis" onClick={() => null} />
+                <RateComponent title={I18n.t("avisRateApp")} placeholder={I18n.t("avisDescApp")} onClick={() => null} />
             </View>
         </>
     );
