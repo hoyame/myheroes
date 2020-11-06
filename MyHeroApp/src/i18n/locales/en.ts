@@ -33,7 +33,6 @@ export default {
     connexionReg: "S'inscrire",
     connexionTES: "Se connecter",
     
-
     descacceuil: "Page d'acceuil",
     desccarte: "Carte avec les alertes",
     descalertes: "Listes des alertes",
@@ -77,5 +76,17 @@ export default {
 
     avisRateApp: "Noter l'application",
     avisDescApp: "Avis",
+
+    gdpsInconsience: "Inconscience",
+    gdpsPLS: "La position laterale de securité",
+    gdpsMassageCardiaque: "Le massage cardiaque",
+    gdpsDefibrilateur: "Le défibrilateur automatisé",
+    gdpsEttouffementAdulte: "Ettouffement adulte",
+    gdpsEttouffementNourisson: "Ettouffement nourisson",
+    gdpsSaignementAbondant: "Saignement abondant",
+    gdpsBrulures: "Les brulures",
+    gdpsTraumatismeOs: "Traumatisme des os",
+    gdpsNoyade: "Noyade",
+    gdpsMalaise: "Le malaise"
 
 };

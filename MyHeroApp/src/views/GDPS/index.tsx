@@ -88,27 +88,25 @@ const GDPSPage = ({ navigation }) => {
                         <Text style={{
                             width: Dimensions.get('window').width - 100, 
                             fontSize: 25
-                        }}>Gestes de premier secours</Text>
+                        }}>{I18n.t("gdps")}</Text>
                     </View>
                 </View>
             </View>
             <View style={{
                 padding: 35
             }}>
-                <ScrollView style={{
-                    
-                }}>
-                    <PropsNav title="Inconscience" />
-                    <PropsNav title="La position laterale de securité" />
-                    <PropsNav title="Le massage cardiaque" />
-                    <PropsNav title="Le défibrilateur automatisé" />
-                    <PropsNav title="Ettouffement adulte" />
-                    <PropsNav title="Ettouffement nourisson" />
-                    <PropsNav title="Saignement abondant" />
-                    <PropsNav title="Les brulures" />
-                    <PropsNav title="Traumatisme des os" />
-                    <PropsNav title="Noyade" />
-                    <PropsNav title="Le malaise" />
+                <ScrollView>
+                    <PropsNav title={I18n.t("gdpsInconsience")} />
+                    <PropsNav title={I18n.t("gdpsPLS")} />
+                    <PropsNav title={I18n.t("gdpsMassageCardiaque")} />
+                    <PropsNav title={I18n.t("gdpsDefibrilateur")} />
+                    <PropsNav title={I18n.t("gdpsEttouffementAdulte")} />
+                    <PropsNav title={I18n.t("gdpsEttouffementNourisson")} />
+                    <PropsNav title={I18n.t("gdpsSaignementAbondant")} />
+                    <PropsNav title={I18n.t("gdpsBrulures")} />
+                    <PropsNav title={I18n.t("gdpsTraumatismeOs")} />
+                    <PropsNav title={I18n.t("gdpsNoyade")} />
+                    <PropsNav title={I18n.t("gdpsMalaise")} />
                 </ScrollView>
             </View>
         </> 
