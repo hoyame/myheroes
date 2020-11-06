@@ -106,4 +106,10 @@ export default {
     gdpsNoyade: "Noyade",
     gdpsMalaise: "Le malaise",
 
+    nduSearchPays: "Rechercher un pays",
+    nduSearch: "Rechercher",
+    nduAmbulance: "Ambulance/Samu",
+    nduPolice: "Police",
+    nduPompiers: "Pompiers",
+    
 };

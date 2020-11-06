@@ -5,6 +5,7 @@ import SearchBar from "react-native-platform-searchbar"
 import { data } from '../../data/ndu';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import I18n from '../../i18n/i18n';
 
 
 const SEARCH: ViewStyle = {
@@ -71,7 +72,7 @@ const NDUPage = ({ navigation }) => {
                             marginRight: 7.5
                         }}/>
 
-                        <Text>Ambulances/Samu : </Text>
+                        <Text>{I18n.t("nduAmbulance")} : </Text>
 
                         <Text style={{
                             color: 'red'
@@ -89,7 +90,7 @@ const NDUPage = ({ navigation }) => {
                             marginRight: 7.5
                         }}/>
 
-                        <Text>Police : </Text>
+                        <Text>{I18n.t("nduPolice")} : </Text>
 
                         <Text style={{
                             color: 'blue'
@@ -107,7 +108,7 @@ const NDUPage = ({ navigation }) => {
                             marginRight: 7.5
                         }}/>
 
-                        <Text>Pompiers : </Text>
+                        <Text>{I18n.t("nduPompiers")} : </Text>
 
                         <Text style={{
                             color: 'orange'
@@ -162,7 +163,7 @@ const NDUPage = ({ navigation }) => {
                             color: 'red',
                             marginRight: 7.5
                         }}/>
-                        <Text>N° d'urgence : </Text>
+                        <Text>{I18n.t("ndu")} : </Text>
                         <Text style={{
                             color: 'red'
                         }}>112</Text>
@@ -184,15 +185,15 @@ const NDUPage = ({ navigation }) => {
                     <Text style={{
                         fontSize: 30,
                         marginBottom: 25
-                    }}>Numeros d'urgences</Text>
+                    }}>{I18n.t("ndu")}</Text>
 
                     <SearchBar
                         value={search}
                         onChangeText={setSearch}
                         style={SEARCH}
                         inputStyle={INPUT}
-                        placeholder="Rechercher un pays"
-                        cancelText="Rechercher"
+                        placeholder={I18n.t("nduSearchPays")}
+                        cancelText={I18n.t("nduSearch")}
                         theme="dark"
                     />   
 
