@@ -112,4 +112,10 @@ export default {
     nduPolice: "Police",
     nduPompiers: "Pompiers",
     
+    settingsDesc: "Parametres du compte",
+    settingsCSMDP: "Changer son mot de passe",
+    settingsChangerAvatar: "Changer son avatar",
+    settingsSeDeco: "Se deconnecter",
+
+
 };
