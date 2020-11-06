@@ -9,6 +9,7 @@ import { WaveIndicator } from 'react-native-indicators';
 import ImagePicker from "react-native-image-picker";
 import { faAngry } from '@fortawesome/free-regular-svg-icons';
 import { API_LINK } from '../../App';
+import I18n from '../../i18n/i18n';
 
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
