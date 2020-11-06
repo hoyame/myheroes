@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
 import RateComponent from '../../components/Rate';
+import I18n from '../../i18n/i18n';
 
 
 const EndAlertScreen = ({ navigation }) => {
@@ -16,7 +17,7 @@ const EndAlertScreen = ({ navigation }) => {
                 <Text style={{
                     fontSize: 30,
                     marginBottom: 15
-                }}>Votre alerte</Text>
+                }}>{I18n.t("alertMy")}</Text>
 
                 <View style={{
                     height: 60,
