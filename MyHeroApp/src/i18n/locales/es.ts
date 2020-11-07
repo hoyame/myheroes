@@ -1,10 +1,4 @@
-import translate from 'translate';      
-
-
-async function translateTD(text: string) {
-    const le = await translate(text, 'es');
-    return le;
-}
+/*
 
 export default {
     hello: translateTD("Hello"),
@@ -127,3 +121,5 @@ export default {
 
 
 };
+
+*/
