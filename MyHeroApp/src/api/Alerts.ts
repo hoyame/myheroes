@@ -1,8 +1,12 @@
 import { API_LINK } from "../App";
 import { IAlert } from "../data/types/alerts";
 import { MyHeroService } from "./Service";
+import axios from 'axios';
+import { useReduxState } from "../data/store";
 
-var myHeaders = new Headers();
+const myHeaders = new Headers();
+const myLatitude = useReduxState(state => state.location.latitude);
+const myLongitude = useReduxState(state => state.location.longitude);
 
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
     var R = 6371; // Radius of the earth in km
@@ -41,7 +45,7 @@ const fetchApiCall = async () => {
 
 export default abstract class MyHeroAlerts {
     public static StatusUpdate: boolean = false;
-    public static AlertsData = {};
+    public static AlertsData: IAlert[];
 
     public static SendAlert(data: IAlert) {
         var params = {
@@ -94,6 +98,28 @@ export default abstract class MyHeroAlerts {
     public static GetAlerts() {
         this.StatusUpdate = true;
 
-        
+        axios.get(`${API_LINK}/alerts/get`)
+
+        .then((response) => {
+            const e = response;
+            const status: number = e.status
+
+            if (status === 200) {
+                const alerts: IAlert[] = e.data[0];
+                console.log(alerts);
+
+                alerts.map((v, k) => {
+                    let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
+
+                    if (dist < 50) {
+                        this.AlertsData.push(v);
+                    }
+                })
+            }
+        })
+
+        .catch((err) => {
+            console.log("err", err);
+        })
     }
 }
