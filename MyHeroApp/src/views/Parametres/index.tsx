@@ -147,11 +147,6 @@ const ParametresScreen = ({ navigation }) => {
                 padding: 35,
                 paddingTop: 0
             }}>
-                <Text style={{
-                    fontSize: 30,
-                    marginBottom: 15
-                }}>{I18n.t("settingsDesc")}</Text>
-
                 <View style={{
                     display: "flex",
                     flexDirection: "row",
