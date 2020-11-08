@@ -175,7 +175,7 @@ const NDUPage = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("ndu")} navigation={navigation} />
 
             <ScrollView>
                 <View style={{
