@@ -23,19 +23,7 @@ const HeaderComponent = (props: IHeader) => {
     
     return (
         <>
-            <View style={ 
-                Dimensions.get('window').height > 695 ? {
-                    marginTop: 50,
-                    display: "flex", 
-                    alignItems: "center",
-                    padding: 35,            
-                } : {
-                    marginTop: 20,
-                    display: "flex", 
-                    alignItems: "center",
-                    padding: 35,            
-                }
-            }>
+            <View style={{ padding: 35}}>
                 <View style={{alignItems: "center"}}>
                     <View style={{
                         marginBottom: 25,
