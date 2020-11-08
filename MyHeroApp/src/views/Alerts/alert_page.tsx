@@ -23,12 +23,7 @@ const AlertPageScreen = ({ navigation }) => {
                 paddingLeft: 35,
                 paddingRight: 35,
                 paddingBottom: 35
-            }}>
-                <Text style={{
-                    fontSize: 35,
-                    marginBottom: 5
-                }}>{I18n.t("alertes")}</Text>
-                
+            }}>               
                 <Text style={{
                     fontSize: 15,
                     marginBottom: 20
