@@ -181,7 +181,7 @@ const NavScreen = ({ navigation }) => {
                     <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
                     <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title={I18n.t("avis")} description={I18n.t("descavis")} />
                     <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
-                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('Faq')} title={I18n.t("faq")} description={I18n.t("descfaq")} />
+                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('FAQScreen')} title={I18n.t("faq")} description={I18n.t("descfaq")} />
                     <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
                     <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
                 </View>
