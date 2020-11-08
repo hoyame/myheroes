@@ -6,7 +6,7 @@ import I18n from '../../i18n/i18n';
 const ProposScreen = ({ navigation }) => {
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("apropos")} navigation={navigation} />
 
             <View>
                 <Text>{I18n.t("apropos")}</Text>
