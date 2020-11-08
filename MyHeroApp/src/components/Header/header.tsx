@@ -26,9 +26,11 @@ const HeaderComponent = (props: IHeader) => {
             <View style={ 
                 Dimensions.get('window').height > 695 ? {
                     marginTop: 50,
+                    paddingTop: 0,
                     padding: 35
                 } : {
                     marginTop: 20,
+                    paddingTop: 0,
                     padding: 35             
                 }
             }>
