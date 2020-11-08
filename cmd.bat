@@ -1,3 +1,8 @@
 git pull
 cd MyHeroApp
-yarn && yarn start
+yarn
+cd ios
+pod install
+cd ..
+yarn start
+yarn ios
