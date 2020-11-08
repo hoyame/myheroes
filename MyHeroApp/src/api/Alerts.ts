@@ -5,8 +5,11 @@ import axios from 'axios';
 import { useReduxState } from "../data/store";
 
 const myHeaders = new Headers();
-const myLatitude = useReduxState(state => state.location.latitude);
-const myLongitude = useReduxState(state => state.location.longitude);
+//const myLatitude = useReduxState(state => state.location.latitude);
+//const myLongitude = useReduxState(state => state.location.longitude);
+
+const myLatitude = 15;
+const myLongitude = 3;
 
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
     var R = 6371; // Radius of the earth in km
