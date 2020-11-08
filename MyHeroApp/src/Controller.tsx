@@ -33,6 +33,7 @@ import ProposScreen from './views/Propos';
 import EndAlertScreen from './views/Alerts/end_alert';
 import { Root, Popup, Toast } from 'popup-ui';
 import I18n from './i18n/i18n';
+import FAQScreen from './views/FAQ';
 
 
 const Controller = () => {
@@ -141,6 +142,7 @@ const Controller = () => {
             <Stack.Screen name="Confidentialite" component={ConfidentialiteScreen} />
             <Stack.Screen name="Propos" component={ProposScreen} />
             <Stack.Screen name="EndAlertScreen" component={EndAlertScreen} />
+            <Stack.Screen name="FAQScreen" component={FAQScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </Root>
