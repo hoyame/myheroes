@@ -67,7 +67,7 @@ const CreateAlertScreen = ({ navigation }) => {
  
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
 
             <ScrollView>  
                 <KeyboardAvoidingView 
