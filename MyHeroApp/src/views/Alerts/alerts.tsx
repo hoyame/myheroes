@@ -104,7 +104,7 @@ const AlertScreen = ({ navigation }) => {
     if (alerts.length == 0) {
         return (
             <>
-                <HeaderComponent navigation={navigation} />
+                <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
 
                 <View style={{
                     paddingLeft: 35,
@@ -155,7 +155,7 @@ const AlertScreen = ({ navigation }) => {
     
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
 
             <View style={{
                 paddingLeft: 35,
