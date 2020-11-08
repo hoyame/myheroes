@@ -194,10 +194,6 @@ const AccountScreen = ({ navigation }) => {
                 paddingRight: 35,
                 paddingBottom: 35
             }}>
-                <Text style={{
-                    fontSize: 35
-                }}>{I18n.t("account")}</Text>
-
                 <View style={{
                     marginTop: 15,
                     display: "flex",
