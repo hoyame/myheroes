@@ -6,10 +6,10 @@ import I18n from '../../i18n/i18n';
 const FAQScreen = ({ navigation }) => {
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("faq")} navigation={navigation} />
 
             <View>
-                <Text>F.A.Q</Text>
+                <Text>{I18n.t("faq")}</Text>
             </View>
         </>
     );
