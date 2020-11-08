@@ -162,11 +162,6 @@ const AlertScreen = ({ navigation }) => {
                 paddingRight: 35,
                 paddingBottom: 35
             }}>
-                <Text style={{
-                    fontSize: 35,
-                    marginBottom: 20
-                }}>{I18n.t("alertes")}</Text>
-
                 <ScrollView>
                     {returnAlerts(navigation)}
                 </ScrollView>
