@@ -7,7 +7,7 @@ import I18n from '../../i18n/i18n';
 const AvisScreen = ({ navigation }) => {
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("avis")} navigation={navigation} />
 
             <View style={{
                 display: "flex", 
