@@ -187,7 +187,7 @@ const AccountScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("account")} navigation={navigation} />
 
             <View style={{
                 paddingLeft: 35,
