@@ -58,7 +58,6 @@ const HeaderComponent = (props: IHeader) => {
                         }}>Menu ?</Text>
                     </View>
                 </View>
-            </View>
         </>
     );
 }
