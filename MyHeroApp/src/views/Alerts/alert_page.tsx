@@ -17,7 +17,7 @@ const AlertPageScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
 
             <View style={{
                 paddingLeft: 35,
