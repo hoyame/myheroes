@@ -141,7 +141,7 @@ const ParametresScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("parametres")} navigation={navigation} />
 
             <View style={{
                 padding: 35,
