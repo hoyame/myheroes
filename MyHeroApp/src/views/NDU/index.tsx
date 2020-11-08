@@ -182,11 +182,6 @@ const NDUPage = ({ navigation }) => {
                     padding: 35,
                     paddingTop: 0
                 }}>
-                    <Text style={{
-                        fontSize: 30,
-                        marginBottom: 25
-                    }}>{I18n.t("ndu")}</Text>
-
                     <SearchBar
                         value={search}
                         onChangeText={setSearch}
