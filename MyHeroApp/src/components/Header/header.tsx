@@ -66,7 +66,7 @@ const HeaderComponent = (props: IHeader) => {
                         <Text style={{
                             width: Dimensions.get('window').width - 100, 
                             fontSize: 25
-                        }}>Menu ?</Text>
+                        }}>{props.title}</Text>
                     </View>
                 </View>
             </View>
