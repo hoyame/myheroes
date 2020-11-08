@@ -41,7 +41,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
 
             <View style={{
                 paddingLeft: 35,
@@ -154,7 +154,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
 
             <View style={{
                 paddingLeft: 35,
