@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
-import HeaderComponent from '../../components/Header/header';
+import HeaderComponent from '../../components/Header/headerTw';
 import NavbarComponent from '../../components/Navbar/navbar';
 import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
