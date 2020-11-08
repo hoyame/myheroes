@@ -23,6 +23,7 @@ const HeaderComponent = (props: IHeader) => {
     
     return (
         <>
+            <View style={{ padding: 35}}>
                 <View style={{alignItems: "center"}}>
                     <View style={{
                         marginBottom: 25,
@@ -58,6 +59,7 @@ const HeaderComponent = (props: IHeader) => {
                         }}>Menu ?</Text>
                     </View>
                 </View>
+            </View>
         </>
     );
 }
