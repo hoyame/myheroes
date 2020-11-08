@@ -8,17 +8,12 @@ import I18n from '../../i18n/i18n';
 const EndAlertScreen = ({ navigation }) => {
     return (
         <>
-            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertMy")} navigation={navigation} />
 
             <View style={{
                 padding: 35,
                 paddingTop: 0
             }}>
-                <Text style={{
-                    fontSize: 30,
-                    marginBottom: 15
-                }}>{I18n.t("alertMy")}</Text>
-
                 <View style={{
                     height: 60,
                     marginBottom: 15,
