@@ -28,16 +28,12 @@ const HeaderComponent = (props: IHeader) => {
                     marginTop: 50,
                     display: "flex", 
                     alignItems: "center",
-                    paddingLeft: 35,
-                    paddingRight: 35,
-                    paddingBottom: 35,
+                    padding: 35,            
                 } : {
                     marginTop: 20,
                     display: "flex", 
                     alignItems: "center",
-                    paddingLeft: 35,
-                    paddingRight: 35,
-                    paddingBottom: 30               
+                    padding: 35,            
                 }
             }>
                 <View style={{alignItems: "center"}}>
