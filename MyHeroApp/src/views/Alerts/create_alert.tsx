@@ -67,7 +67,7 @@ const CreateAlertScreen = ({ navigation }) => {
  
     return (
         <>
-            <HeaderComponent title={I18n.t("alertes")} navigation={navigation} />
+            <HeaderComponent title={I18n.t("alertLaunch")} navigation={navigation} />
 
             <ScrollView>  
                 <KeyboardAvoidingView 
@@ -80,11 +80,6 @@ const CreateAlertScreen = ({ navigation }) => {
                         paddingLeft: 35,
                         paddingRight: 35
                     }}>
-                        <Text style={{
-                            fontSize: 35,
-                            marginBottom: 20
-                        }}>{I18n.t("alertLaunch")}</Text>
-
                         <View style={{}}>
                             <View style={{
                                 marginBottom: 15,

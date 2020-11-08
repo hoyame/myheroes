@@ -65,7 +65,7 @@ const HeaderComponent = (props: IHeader) => {
                     <View>   
                         <Text style={{
                             width: Dimensions.get('window').width - 100, 
-                            fontSize: 25
+                            fontSize: 35
                         }}>{props.title}</Text>
                     </View>
                 </View>
