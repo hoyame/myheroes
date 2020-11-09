@@ -13,6 +13,7 @@ interface IMap {
   height: number;
   width: number;
   nav: any;
+  dmdm?: any;
 }
 
 const MapComponent = (props: IMap) => {
@@ -95,6 +96,7 @@ const MapComponent = (props: IMap) => {
           showsUserLocation={true}
           followsUserLocation={true}
           //provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          customMapStyle={props.dmdm ? props.dmdm : []}
 
           style={{
               height: props.height,
