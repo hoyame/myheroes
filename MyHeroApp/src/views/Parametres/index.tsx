@@ -16,7 +16,8 @@ const ParametresScreen = ({ navigation }) => {
     const name = useReduxState(state => state.user.name);
     const mail = useReduxState(state => state.user.mail) || '';
     const xp = useReduxState(state => state.user.xp);
-    const [pictureS, setPictureS] = useState(false)
+    const [pictureS, setPictureS] = useState(false);
+    const [mdpS, setMdpS] = useState(false);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -68,8 +69,94 @@ const ParametresScreen = ({ navigation }) => {
                 });
             }
         });
-      };
+    };
 
+    if (mdpS == true) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 30,                    
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>MyHeroes</Text>
+
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 5,
+                    textAlign: "center"
+                }}>{I18n.t("settingsMDP1")}</Text>
+
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>{I18n.t("settingsMDP2")}</Text>
+
+                <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+            
+                <View style={{
+                    display: "flex",
+                    flexDirection: "row"
+                }}>
+                    <TouchableOpacity onPress={() => setMdpS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            marginRight: 10,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#6d9bff'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25
+                            }}>{I18n.t("annuler")}</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => {
+                        const arg = {
+                            email: mail,
+                            password: state.password
+                        }
+
+                        if (state.password === state.cPassword) {
+                            Users.UpdatePassword(arg, (e: any) => {
+                                console.log(e)
+                            }
+                        )}
+                        
+                        setMdpS(false)
+                    }}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#6d9bff'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25
+                            }}>{I18n.t("continuer")}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        );
+    }
 
     if (pictureS == true) {
         return (
@@ -122,19 +209,19 @@ const ParametresScreen = ({ navigation }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setPictureS(false)}>
-                        <View style={{
-                            height: 60, 
-                            borderRadius: 7.5,
-                            marginTop: 5,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: '#6d9bff'           
-                        }}>
-                            <Text style={{
-                                fontSize: 25
-                            }}>{I18n.t("continuer")}</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <View style={{
+                        height: 60, 
+                        borderRadius: 7.5,
+                        marginTop: 5,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: '#6d9bff'           
+                    }}>
+                        <Text style={{
+                            fontSize: 25
+                        }}>{I18n.t("continuer")}</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -182,20 +269,19 @@ const ParametresScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-                <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
-
                 <TouchableOpacity onPress={() => { 
-                    const arg = {
-                        email: mail,
-                        password: state.password
-                    }
+                    //const arg = {
+                    //    email: mail,
+                    //    password: state.password
+                    //}
+//
+                    //if (state.password === state.cPassword) {
+                    //    Users.UpdatePassword(arg, (e: any) => {
+                    //        console.log(e)
+                    //    }
+                    //)}
 
-                    if (state.password === state.cPassword) {
-                        Users.UpdatePassword(arg, (e: any) => {
-                            console.log(e)
-                        }
-                    )}
+                    setMdpS(true)
                 }}>
                     <View style={{
                         display: "flex",
