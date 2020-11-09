@@ -8,6 +8,7 @@ export default {
     chargement: "Chargement",
     welcomeMH: "Bienvenue sur MyHero",
     continuer: "Continuer",
+    annuler: "Annuler",
    
     menu: "Menu",
 
@@ -116,5 +117,6 @@ export default {
     settingsCSMDP: "Changer son mot de passe",
     settingsChangerAvatar: "Changer son avatar",
     settingsSeDeco: "Se deconnecter",
-
+    settingsMDP1: "Changer son mot de passe",
+    settingsMDP2: "Veuillez remplir les formulaires",
 };
