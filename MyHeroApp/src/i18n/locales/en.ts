@@ -123,6 +123,8 @@ export default {
     settingsMDP1: "Changer son mot de passe",
     settingsMDP2: "Veuillez remplir les formulaires",
 
+    settingsPseudo1: "Changer son pseudo",
+
     faq1: "Historique",
     faq1Desc: "Crée en 2019 par SAIDAT Wahib, l'application MyHeroes dea pour but de sauver la population quelque soit leur situation.L'equipe composé du directeur SAIDAT Wahib et de son développeur Hoyame Zouhari ont décidé d'apporter une assistance rapide suite atout les mouvements mauvais qu'il y'a eu ( terrorisme, metou, aggressions scolaires, etc...)",
     faq2: "Objectif",
