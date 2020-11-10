@@ -120,6 +120,34 @@ export default abstract class Users {
         ;
     }
 
+    public static UpdatePseudo(data: { email: any; pseudo: any; }, cb: any) {
+        var params = {
+            email: data.email,
+            pseudo: data.pseudo
+        }
+        
+        let req = {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        }
+
+        fetch(`${API_LINK}/user/update_pseudo`, req)
+            .then(function(res) {
+                console.log(res);
+
+                cb(res.status);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+        ;
+    }
+
     public static Disconnect() {
         const _storeData = async () => {
             try {
