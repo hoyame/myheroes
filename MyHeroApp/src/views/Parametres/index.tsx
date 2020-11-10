@@ -1,8 +1,9 @@
 import { faHome, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Platform, StyleSheet } from 'react-native';
 import Users from '../../api/User';
+import CheckBox from '@react-native-community/checkbox';
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { useReduxState } from '../../data/store';
@@ -10,6 +11,26 @@ import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
 import I18n from '../../i18n/i18n';
 
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    checkboxContainer: {
+      flexDirection: "row",
+      marginTop: 0,
+      marginBottom: 20,
+    },
+    checkbox: {
+      alignSelf: "center",
+      color: "red"
+    },
+    label: {
+      margin: 8,
+      fontSize: 22.5
+    },
+});
 
 const ParametresScreen = ({ navigation }) => {
     const image = useReduxState(state => state.user.image);
@@ -18,6 +39,8 @@ const ParametresScreen = ({ navigation }) => {
     const xp = useReduxState(state => state.user.xp);
     const [pictureS, setPictureS] = useState(false);
     const [mdpS, setMdpS] = useState(false);
+    const [pseudoS, setPseudoS] = useState(false);
+    const [alertC, setAlertC] = useState(false);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -269,24 +292,21 @@ const ParametresScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-                <TouchableOpacity onPress={() => { 
-                    //const arg = {
-                    //    email: mail,
-                    //    password: state.password
-                    //}
-//
-                    //if (state.password === state.cPassword) {
-                    //    Users.UpdatePassword(arg, (e: any) => {
-                    //        console.log(e)
-                    //    }
-                    //)}
+                <View style={styles.checkboxContainer}>
+                    <CheckBox
+                      value={alertC}
+                      onValueChange={setAlertC}
+                      style={styles.checkbox}
+                      tintColors={{ true: '#6d9bff', false: '#6d9bff' }}
+                    />
+                    <Text style={styles.label}>{I18n.t("settingsChk1")}</Text>
+                </View>
 
-                    setMdpS(true)
-                }}>
+                <TouchableOpacity onPress={() => setMdpS(true)}>
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
-                        height: 50, 
+                        height: 60, 
                         borderRadius: 7.5,
                         marginBottom: 10,
                         justifyContent: "center",
@@ -294,7 +314,7 @@ const ParametresScreen = ({ navigation }) => {
                         backgroundColor: '#e1e1e1'
                     }}>
                         <Text style={{
-                            fontSize: 20,
+                            fontSize: 21,
                             color: '#000000'
                         }}>{I18n.t("settingsCSMDP")}</Text>
                     </View>
@@ -304,7 +324,7 @@ const ParametresScreen = ({ navigation }) => {
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
-                        height: 50, 
+                        height: 60, 
                         borderRadius: 7.5,
                         marginBottom: 10,
                         justifyContent: "center",
@@ -312,9 +332,27 @@ const ParametresScreen = ({ navigation }) => {
                         backgroundColor: '#e1e1e1'
                     }}>
                         <Text style={{
-                            fontSize: 20,
+                            fontSize: 21,
                             color: '#000000'
                         }}>{I18n.t("settingsChangerAvatar")}</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => setPseudoS(true)}>
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        height: 60, 
+                        borderRadius: 7.5,
+                        marginBottom: 10,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: '#e1e1e1'
+                    }}>
+                        <Text style={{
+                            fontSize: 21,
+                            color: '#000000'
+                        }}>{I18n.t("settingsChangerPseudo")}</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -322,7 +360,7 @@ const ParametresScreen = ({ navigation }) => {
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
-                        height: 50, 
+                        height: 60, 
                         borderRadius: 7.5,
                         marginBottom: 10,
                         justifyContent: "center",
@@ -330,7 +368,7 @@ const ParametresScreen = ({ navigation }) => {
                         backgroundColor: '#d80000'           
                     }}>
                         <Text style={{
-                            fontSize: 20,
+                            fontSize: 21,
                             color: '#ffffff'
                         }}>{I18n.t("settingsSeDeco")}</Text>
                     </View>
