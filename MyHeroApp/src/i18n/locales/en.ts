@@ -115,7 +115,9 @@ export default {
     
     settingsDesc: "Parametres du compte",
     settingsCSMDP: "Changer son mot de passe",
+    settingsChk1: "Notification d'alertes",
     settingsChangerAvatar: "Changer son avatar",
+    settingsChangerPseudo: "Changer son pseudo",
     settingsSeDeco: "Se deconnecter",
     settingsMDP1: "Changer son mot de passe",
     settingsMDP2: "Veuillez remplir les formulaires",
