@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     checkboxContainer: {
       flexDirection: "row",
       marginTop: 0,
-      marginBottom: 20,
+      marginBottom: 10,
     },
     checkbox: {
       alignSelf: "center",
@@ -41,6 +41,7 @@ const ParametresScreen = ({ navigation }) => {
     const [mdpS, setMdpS] = useState(false);
     const [pseudoS, setPseudoS] = useState(false);
     const [alertC, setAlertC] = useState(false);
+    const [languageS, setLanguageS] = useState(false);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -105,7 +106,7 @@ const ParametresScreen = ({ navigation }) => {
                 <Text style={{
                     color: "#6d9bff",
                     fontSize: 30,                    
-                    marginBottom: 40,
+                    marginBottom: 0,
                     textAlign: "center"
                 }}>MyHeroes</Text>
 
@@ -268,7 +269,7 @@ const ParametresScreen = ({ navigation }) => {
                             height: 80,
                             width: 80,
                             borderRadius: 10,
-                            marginBottom: 20
+                            marginBottom: 10
                         }}
                     />
 
@@ -353,6 +354,24 @@ const ParametresScreen = ({ navigation }) => {
                             fontSize: 21,
                             color: '#000000'
                         }}>{I18n.t("settingsChangerPseudo")}</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => setLanguageS(true)}>
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        height: 60, 
+                        borderRadius: 7.5,
+                        marginBottom: 10,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: '#e1e1e1'
+                    }}>
+                        <Text style={{
+                            fontSize: 21,
+                            color: '#000000'
+                        }}>{I18n.t("settingsLanguage")}</Text>
                     </View>
                 </TouchableOpacity>
 
