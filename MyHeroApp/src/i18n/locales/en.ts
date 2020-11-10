@@ -118,6 +118,7 @@ export default {
     settingsChk1: "Notification d'alertes",
     settingsChangerAvatar: "Changer son avatar",
     settingsChangerPseudo: "Changer son pseudo",
+    settingsLanguage: "Langue",
     settingsSeDeco: "Se deconnecter",
     settingsMDP1: "Changer son mot de passe",
     settingsMDP2: "Veuillez remplir les formulaires",
