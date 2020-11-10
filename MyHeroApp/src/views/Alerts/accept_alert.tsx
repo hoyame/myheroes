@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
       margin: 8,
       fontSize: 16
     },
-  });
+});
 
   
 export const SenderAcceptAlertPage = ({ navigation }) => {
