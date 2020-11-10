@@ -326,3 +326,21 @@ module.exports.updatePassword = (req, res, next) => {
 		});
 	});
 }
+
+
+module.exports.updatePseudo = (req, res, next) => {
+	let mail = req.body.mail;
+	let new_pseudo = req.body.pseudo;
+	let query = `UPDATE users SET pseudo=?, date_updated=NOW() WHERE email=?`;
+
+	con.query(query, [new_pseudo, mail], (err, result, fields) => {
+		if (err) {
+			return next(err);
+		}
+
+		return res.json({
+			status: 'success',
+			result: result,
+		});
+	});
+}
