@@ -1,4 +1,4 @@
-import { faHome, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Platform, StyleSheet } from 'react-native';
@@ -55,7 +55,8 @@ const ParametresScreen = ({ navigation }) => {
 
     const [state, setState] = useState({
         password: '',
-        cPassword: ''
+        cPassword: '',
+        pseudo: ''
     })
  
     const handlePicker = () => {
@@ -94,6 +95,92 @@ const ParametresScreen = ({ navigation }) => {
             }
         });
     };
+
+    if (pseudoS == true) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 30,                    
+                    marginBottom: 0,
+                    textAlign: "center"
+                }}>MyHeroes</Text>
+
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 5,
+                    textAlign: "center"
+                }}>{I18n.t("settingsPseudo1")}</Text>
+
+                <Text style={{
+                    color: "#6d9bff",
+                    fontSize: 20,
+                    marginBottom: 40,
+                    textAlign: "center"
+                }}>{I18n.t("settingsMDP2")}</Text>
+
+                <InputComponent password={true} name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.pseudo} icon={faUser} onChange={(v: string) => setState({...state, pseudo: v})} />
+            
+                <View style={{
+                    display: "flex",
+                    flexDirection: "row"
+                }}>
+                    <TouchableOpacity onPress={() => setMdpS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            marginRight: 10,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#6d9bff'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25
+                            }}>{I18n.t("annuler")}</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => {
+                        const arg = {
+                            email: mail,
+                            pseudo: state.pseudo
+                        }
+
+                        if (state.password === state.cPassword) {
+                            Users.UpdatePseudo(arg, (e: any) => {
+                                console.log(e)
+                            }
+                        )}
+                        
+                        setMdpS(false)
+                    }}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#6d9bff'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25
+                            }}>{I18n.t("continuer")}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        );
+    }
 
     if (mdpS == true) {
         return (
