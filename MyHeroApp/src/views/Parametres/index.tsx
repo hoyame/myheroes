@@ -125,13 +125,13 @@ const ParametresScreen = ({ navigation }) => {
                     textAlign: "center"
                 }}>{I18n.t("settingsMDP2")}</Text>
 
-                <InputComponent password={true} name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.pseudo} icon={faUser} onChange={(v: string) => setState({...state, pseudo: v})} />
+                <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.pseudo} icon={faUser} onChange={(v: string) => setState({...state, pseudo: v})} />
             
                 <View style={{
                     display: "flex",
                     flexDirection: "row"
                 }}>
-                    <TouchableOpacity onPress={() => setMdpS(false)}>
+                    <TouchableOpacity onPress={() => setPseudoS(false)}>
                         <View style={{
                             height: 60, 
                             borderRadius: 7.5,
@@ -154,13 +154,11 @@ const ParametresScreen = ({ navigation }) => {
                             pseudo: state.pseudo
                         }
 
-                        if (state.password === state.cPassword) {
-                            Users.UpdatePseudo(arg, (e: any) => {
-                                console.log(e)
-                            }
-                        )}
+                        Users.UpdatePseudo(arg, (e: any) => {
+                            console.log(e)
+                        })
                         
-                        setMdpS(false)
+                        setPseudoS(false)
                     }}>
                         <View style={{
                             height: 60, 
