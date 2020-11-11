@@ -125,24 +125,6 @@ const AlertScreen = ({ navigation }) => {
                             fontSize: 20      
                         }}>{I18n.t("alertNotDispo")}</Text>
                     </View>
-
-                    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-                        <View style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            height: 60, 
-                            width: screenWidth,
-                            borderRadius: 7.5,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: '#1d1d1d'           
-                        }}>
-                              <Text style={{
-                                fontSize: 20,
-                                color: '#ffffff'
-                            }}>{I18n.t("alertReturnAcceuil")}</Text>
-                        </View>
-                    </TouchableOpacity>
                 </View>
             </>
         );

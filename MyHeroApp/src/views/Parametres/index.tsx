@@ -19,8 +19,10 @@ const styles = StyleSheet.create({
       justifyContent: "center",
     },
     checkboxContainer: {
+      display: "flex",
       flexDirection: "row",
-      marginTop: 0,
+      alignItems: "center",
+      marginTop: 6,
       marginBottom: 10,
     },
     checkbox: {
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
     },
     label: {
       margin: 8,
+      marginLeft: 15,
       fontSize: 22.5
     },
 });
@@ -42,7 +45,7 @@ const ParametresScreen = ({ navigation }) => {
     const [mdpS, setMdpS] = useState(false);
     const [pseudoS, setPseudoS] = useState(false);
     const [alertC, setAlertC] = useState(false);
-    const [languageS, setLanguageS] = useState(true);
+    const [languageS, setLanguageS] = useState(false);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',

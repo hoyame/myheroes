@@ -5,7 +5,7 @@ import React from 'react';
 import { View, Text, TouchableHighlight, Image, ActivityIndicator } from 'react-native';
 import { Dimensions } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faBars, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faAlignLeft, faHome } from '@fortawesome/free-solid-svg-icons'
 import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -34,31 +34,40 @@ const HeaderComponent = (props: IHeader) => {
                     padding: 35             
                 }
             }>
-                <View style={{alignItems: "center"}}>
-                    <View style={{
-                        marginBottom: 25,
-                        justifyContent: "center",
-                        height: 40,
-                        width: 120,
-                        borderRadius: 10,
-                        backgroundColor: '#1d1d1d'
-                    }}>
-                        <Text style={{
-                            fontSize: 20,
-                            fontWeight: "700",
-                            textAlign: "center",
-                            color: '#ffffff'
-                        }}>MyHeroes</Text>
-                    </View>
+                <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
+                    <View style={{alignItems: "center"}}>
+                        <View style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginBottom: 25,
+                            justifyContent: "center",
+                            height: 40,
+                            width: 150,
+                            borderRadius: 10,
+                            backgroundColor: '#1d1d1d'
+                        }}>
+                            <FontAwesomeIcon icon={faHome} size={20} style={{
+                                marginRight: 8,
+                                color: "#ffffff"
+                            }} />
 
-                </View>
+                            <Text style={{
+                                fontSize: 20,
+                                fontWeight: "700",
+                                color: '#ffffff'
+                            }}>MyHeroes</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
 
                 <View style={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                 }}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Nav')}>
                         <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
                     </TouchableOpacity>
 

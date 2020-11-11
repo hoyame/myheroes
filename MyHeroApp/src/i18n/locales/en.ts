@@ -14,7 +14,7 @@ export default {
 
     connexion: "Connexion",
     inscription: "Incription",
-    acceuil: "Acceuil",
+    acceuil: "Général",
     carte: "Carte",
     alertes: "Alertes",
     avis: "Avis",
@@ -51,7 +51,7 @@ export default {
     inscriprionERR2: "Les formulaires n'ont pas été remplis correctement",
     inscriprionERR3: "Une erreur inconnue est survenue, veuillez ressayer plus tard",
 
-    descacceuil: "Page d'acceuil",
+    descacceuil: "Page générale",
     desccarte: "Carte avec les alertes",
     descalertes: "Listes des alertes",
     descavis: "Votre avis sur l'application",
@@ -116,7 +116,7 @@ export default {
     settingsDesc: "Parametres du compte",
     settingsCSMDP: "Changer son mot de passe",
     settingsChk1: "Notification d'alertes",
-    settingsChangerAvatar: "Changer son avatar",
+    settingsChangerAvatar: "Changer sa photo",
     settingsChangerPseudo: "Changer son pseudo",
     settingsLanguage: "Langue",
     settingsSeDeco: "Se deconnecter",
