@@ -1,7 +1,7 @@
 import { faHome, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Platform, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView } from 'react-native';
 import Users from '../../api/User';
 import CheckBox from '@react-native-community/checkbox';
 import HeaderComponent from '../../components/Header/header';
@@ -10,6 +10,7 @@ import { useReduxState } from '../../data/store';
 import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
 import I18n from '../../i18n/i18n';
+import { Langues } from '../../data/langues';
 
 const styles = StyleSheet.create({
     container: {
@@ -41,7 +42,7 @@ const ParametresScreen = ({ navigation }) => {
     const [mdpS, setMdpS] = useState(false);
     const [pseudoS, setPseudoS] = useState(false);
     const [alertC, setAlertC] = useState(false);
-    const [languageS, setLanguageS] = useState(false);
+    const [languageS, setLanguageS] = useState(true);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -95,6 +96,57 @@ const ParametresScreen = ({ navigation }) => {
             }
         });
     };
+
+    const returnLangues = () => {
+        return Langues.map((v, k) => {
+            return (
+                <TouchableOpacity>
+                    <View style={{
+                        display: 'flex',
+                        flexDirection: "row",
+                        height: 80,
+                        backgroundColor: '#e1e1e1',
+                        marginBottom: 10,
+                        borderRadius: 7.5,
+                        alignItems: "center",
+                    }}>
+                        <View style={{
+                            marginLeft: 10,
+                            height: 80,
+                            width: 80,
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}>
+                            <Image source={{uri: v.img}} style={{
+                                height: 30,
+                                width: 40,
+                                marginRight: 10
+                            }} />    
+                        </View> 
+
+                        <Text style={{fontSize: 25}}>{v.name}</Text>  
+                    </View>
+                </TouchableOpacity>
+            );
+        })
+      }
+
+    if (languageS == true) {
+        return (
+            <>
+                <HeaderComponent title={I18n.t("settingsLanguage")} navigation={navigation} />
+
+                <ScrollView>
+                    <View style={{
+                        paddingLeft: 35,
+                        paddingRight: 35
+                    }}>
+                        {returnLangues()}
+                    </View>
+                </ScrollView>
+            </>
+        );
+    }
 
     if (pseudoS == true) {
         return (
