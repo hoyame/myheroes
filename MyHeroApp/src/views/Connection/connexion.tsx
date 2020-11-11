@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
+import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Alert } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +7,8 @@ import Users from '../../api/User';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 import I18n from '../../i18n/i18n';
+import { setMail, setName, setRate, setXp, setImage } from '../../data/actions/user';
+import { useDispatch } from 'react-redux';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -29,6 +31,7 @@ const STYLES = StyleSheet.create({
   
 
 const ConnexionScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
     const [status, setStatus] = useState(false)
     const [error, setError] = useState(false)
 
@@ -46,32 +49,6 @@ const ConnexionScreen = ({ navigation }) => {
             console.log("error", error)
         }
     };
-
-    //useEffect(() => {
-    //    setStatus(false);
-    //})
-
-    const onPress = () => {
-        setStatus(true);
-
-        Users.Login({
-            pseudo: state.mail,
-            email: state.mail,
-            password: state.password,
-        }, (res: any) => {
-            if (res == 200) {
-                setTimeout(() => {
-                    _storeData();
-                    navigation.navigate('Home');
-                }, 2500)
-            } else {
-                setTimeout(() => {
-                    setStatus(false);
-                    setError(true);
-                }, 3000)
-            }
-        })
-    }
 
     const Ze = () => {
         return (
@@ -151,7 +128,43 @@ const ConnexionScreen = ({ navigation }) => {
 
                     {error && <Text style={{color: 'red', textAlign: "center", marginBottom: 10}}>Identifiant ou/et mot de passe erronée</Text>}
 
-                    <TouchableOpacity onPress={() => onPress()}>
+                    <TouchableOpacity onPress={() => {
+                        setStatus(true);
+
+                        Users.Login({
+                            pseudo: state.mail,
+                            email: state.mail,
+                            password: state.password,
+                        }, (res: any) => {
+                            if (res == 200) {
+                                setTimeout(() => {
+                                    _storeData();
+                
+                                    setTimeout(() => {
+                                        Users.Load((e: any) => {
+                                            dispatch(setMail(e.mail));
+                                            dispatch(setName(e.pseudo));
+                                            dispatch(setRate(e.rate));
+                                            dispatch(setXp(e.xp));
+                                            dispatch(setImage(e.image));
+                
+                                            navigation.navigate('Home');
+                                        }, () => {
+                                            navigation.navigate('Connexion');
+                                        }, () => {
+                                            Alert.alert(I18n.t("errorServMH"));
+                                            navigation.navigate('Connexion');
+                                        })
+                                    }, 2500)
+                                }, 2500)
+                            } else {
+                                setTimeout(() => {
+                                    setStatus(false);
+                                    setError(true);
+                                }, 3000)
+                            }
+                        })
+                    }}>
                         <View style={{
                             height: 60, 
                             width: screenWidth,
