@@ -57,38 +57,51 @@ const Controller = () => {
     setTimeout(async () => {
       if (initialize == false) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
-        console.log(AMail)
+        console.log(typeof AMail)
 
-        if (AMail !== "") {
-          Users.GetData(AMail, (e: any) => {
-            const data = JSON.stringify(e.data[0])
-            const status: number = e.status
-            const pseudo = e.data[0].pseudo
-            const rate = parseFloat(JSON.stringify(e.data[0].rate))
-            const xp = parseFloat(JSON.stringify(e.data[0].xp))
-            const img = e.data[0].img
+        try {
+          if (AMail !== "") {
+            Users.GetData(AMail, (e: any) => {
+              const data = JSON.stringify(e.data[0])
+              const status: number = e.status
+              const pseudo = e.data[0].pseudo
+              const rate = parseFloat(JSON.stringify(e.data[0].rate))
+              const xp = parseFloat(JSON.stringify(e.data[0].xp))
+              const img = e.data[0].img
 
-            if (status == 200) {
-              dispatch(setMail(AMail));
-              dispatch(setName(pseudo));
-              dispatch(setRate(rate));
-              dispatch(setXp(xp));
-              dispatch(setImage("https://cdn.discordapp.com/avatars/404715764201947156/a_3139bef87ec391ca9cecab071075d66d.png?size=128"));
-              setNewUser(false);
-              setInitialize(true);
-            } else {
-              setNewUser(true);
-              setInitialize(true);
-            }
-          }, (error: number) => {
-            if (error == 500) {
-              setNewUser(true);
-              setInitialize(true);
-            } else if (error == 0) {
-              Alert.alert(I18n.t("errorServMH"));
-            }
-          })
-        }  
+              if (status == 200) {
+                dispatch(setMail(AMail));
+                dispatch(setName(pseudo));
+                dispatch(setRate(rate));
+                dispatch(setXp(xp));
+                dispatch(setImage("https://cdn.discordapp.com/avatars/404715764201947156/a_3139bef87ec391ca9cecab071075d66d.png?size=128"));
+                setNewUser(false);
+                setInitialize(true);
+                console.log("200")
+              } else {
+                setNewUser(true);
+                setInitialize(true);
+                console.log("else200")
+              }
+            }, (error: number) => {
+              if (error == 500) {
+                setNewUser(true);
+                setInitialize(true);
+                console.log("e500")
+              } else if (error == 0) {
+                Alert.alert(I18n.t("errorServMH"));
+              }
+            })
+          } else {
+            setNewUser(true);
+            setInitialize(true);
+          }  
+        } catch (error) {
+          setNewUser(true);
+          setInitialize(true);
+          console.log("ce")
+          console.log("ce")
+        }
       }
     }, 3000)
   });
