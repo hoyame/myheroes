@@ -116,6 +116,6 @@ export default {
     settingsCSMDP: "Changer son mot de passe",
     settingsChangerAvatar: "Changer son avatar",
     settingsSeDeco: "Se deconnecter",
-
+    settingsLangue: "Langue",
 
 };
