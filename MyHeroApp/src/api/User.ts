@@ -14,6 +14,52 @@ interface IUser {
 
 
 export default abstract class Users {
+    public static async Load(succes: any, errorFunc: any, newUser: any) {
+        let AMail = await AsyncStorage.getItem('@mail') || '';
+        console.log(typeof AMail)
+
+        try {
+            if (AMail !== "") {
+                this.GetData(AMail, (e: any) => {
+                    const data = JSON.stringify(e.data[0])
+                    const status: number = e.status
+                    const pseudo = e.data[0].pseudo
+                    const rate = parseFloat(JSON.stringify(e.data[0].rate))
+                    const xp = parseFloat(JSON.stringify(e.data[0].xp))
+                    const img = e.data[0].img
+
+                    if (status == 200) {
+                        let d = {
+                            mail: AMail,
+                            data: data,
+                            pseudo: pseudo,
+                            rate: rate,
+                            xp: xp,
+                            img: img
+                        }
+
+                        succes(d);
+                        console.log("200")
+                    } else {
+                        newUser()
+                        console.log("else200")
+                    }
+                }, (error: number) => {
+                    if (error == 500) {
+                        newUser()
+                        console.log("e500")
+                    } else if (error == 0) {
+                        errorFunc()
+                    }
+                })
+            } else {
+              newUser();
+            }  
+        } catch (error) {
+            newUser();
+        }
+    }
+
     public static Register(data: IUser, cb: any) {
         var params = {
             pseudo: data.pseudo,
@@ -151,13 +197,12 @@ export default abstract class Users {
     public static Disconnect() {
         const _storeData = async () => {
             try {
-                await AsyncStorage.setItem('@name', '')
-                await AsyncStorage.setItem('@mail', '')
+                await AsyncStorage.removeItem('@mail')
             } catch (error) {
                 console.log("error", error)
             }
         };
+
+        _storeData();
     }
-
-
 }
