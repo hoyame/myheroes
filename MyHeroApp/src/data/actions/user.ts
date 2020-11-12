@@ -8,6 +8,7 @@ import {
     SET_STATUS_HELP, 
     SET_SEND_ALERT_DATA,
     SET_HELP_ALERT_DATA, 
+    SET_CACHE_NAVIGATION,
     SET_CACHE_CREATE_ALERT_LEVEL, 
     SET_CACHE_SHOW_ALERT,
     IUser, 
@@ -193,6 +194,24 @@ export const setCacheShowAlert = (data: IAlert) => ({
     }
 })
 
+////////////////////////////////////////////////////
+
+export interface ISetCacheNav {
+    type: typeof SET_CACHE_NAVIGATION,
+    payload: {
+        nav: string;
+    }
+}
+
+export const setCacheNav = (data: string) => ({
+    type: SET_CACHE_NAVIGATION,
+    payload: {
+        nav: data
+    }
+})
+
+////////////////////////////////////////////////////
+
 export type IUserActions = 
     ISetMail |
     ISetName | 
@@ -204,5 +223,6 @@ export type IUserActions =
     ISetStatusSend |
     ISetHelpAlertData |
     ISetCacheCreateAlertLevel |
-    ISetCacheShowAlert
+    ISetCacheShowAlert |
+    ISetCacheNav
 ;
