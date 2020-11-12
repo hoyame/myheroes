@@ -13,7 +13,22 @@ const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
     const statusHelp = useReduxState(state => state.user.help.status);
     const statusSend = useReduxState(state => state.user.send.status);
+    const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
+
     const dispatch = useDispatch();
+
+    const returnColor = (alert: number) => {
+        switch (alert) {
+            case 1: 
+                return "#ffd100";
+            case 2: 
+                return "#ff9600";
+            case 3:
+                return "#d80000";
+            default: 
+                return "";
+        }
+    }
 
     interface IPropsNav {
         title: string;
@@ -172,7 +187,7 @@ const NavScreen = ({ navigation }) => {
                     marginBottom: 90,
                 }}>
                     { statusSend == true &&
-                        <AlertPropsNav color="#ff7f00" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('SenderAcceptAlertPage')}} title="" description="" />
+                        <AlertPropsNav color={returnColor(createAlertLevel)} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('SenderAcceptAlertPage')}} title="" description="" />
                     }
                 
                     { statusHelp == true &&
