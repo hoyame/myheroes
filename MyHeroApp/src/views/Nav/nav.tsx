@@ -8,6 +8,7 @@ import { PulseIndicator } from 'react-native-indicators';
 import I18n from '../../i18n/i18n';
 import { setCacheNav } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
+import HeaderComponent from '../../components/Header/header';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
@@ -130,81 +131,40 @@ const NavScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={ 
-            Dimensions.get('window').height > 695 ? {
-                marginTop: 50,
-                display: "flex", 
-                paddingLeft: 35,
-                paddingRight: 35,
-                paddingBottom: 35,
-            } : {
-                marginTop: 30,
-                display: "flex", 
-                paddingLeft: 35,
-                paddingRight: 35,
-                paddingBottom: 35   
-            }
-        }>
-            <View style={{alignItems: "center"}}>
-                <View style={{
-                    marginBottom: 25,
-                    justifyContent: "center",
-                    height: 40,
-                    width: 120,
-                    borderRadius: 10,
-                    backgroundColor: '#1d1d1d'
-                }}>
-                    <Text style={{
-                        fontSize: 20,
-                        fontWeight: "700",
-                        textAlign: "center",
-                        color: '#ffffff'
-                    }}>MyHeroes</Text>
-                </View>
-
-            </View>
-
-            <View style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 25,
-            }}>
-                <TouchableOpacity onPress={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Home')}}>
-                    <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
-                </TouchableOpacity>
-
-                <View>   
-                    <Text style={{
-                        fontSize: 35
-                    }}>{I18n.t("menu")}</Text>
-                </View>
-            </View>
+        <>
+            <HeaderComponent title={I18n.t("menu")} navigation={navigation} />
         
-            <ScrollView>
-                <View style={{
-                    marginTop: 0,
-                    marginBottom: 90,
-                }}>
-                    { statusSend == true &&
-                        <AlertPropsNav color={returnColor(createAlertLevel)} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('SenderAcceptAlertPage')}} title="" description="" />
-                    }
-                
-                    { statusHelp == true &&
-                        <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
-                    }
+            <View style={{
+                display: "flex", 
+                paddingLeft: 35,
+                paddingRight: 35,
+                paddingBottom: 35
+            }}>        
+                <ScrollView>
+                    <View style={{
+                        marginTop: 0,
+                        marginBottom: 130,
+                    }}>
+                        { statusSend == true &&
+                            <AlertPropsNav color={returnColor(createAlertLevel)} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('SenderAcceptAlertPage')}} title="" description="" />
+                        }
                     
-                    <PropsNav fontAwesome={faHome} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Home')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
-                    <PropsNav fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
-                    <PropsNav fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
-                    <PropsNav fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
-                    <PropsNav fontAwesome={faUser} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
-                    <PropsNav fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
-                    <PropsNav fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
-                    <PropsNav fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
-                </View>
-            </ScrollView>
-        </View>
+                        { statusHelp == true &&
+                            <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
+                        }
+                        
+                        <PropsNav fontAwesome={faHome} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Home')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
+                        <PropsNav fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
+                        <PropsNav fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
+                        <PropsNav fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
+                        <PropsNav fontAwesome={faUser} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
+                        <PropsNav fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
+                        <PropsNav fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
+                        <PropsNav fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
+                    </View>
+                </ScrollView>
+            </View>
+        </>
     );
 }
 
