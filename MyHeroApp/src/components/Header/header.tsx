@@ -19,7 +19,8 @@ interface IHeader {
 
 const HeaderComponent = (props: IHeader) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
-
+    const navCache = useReduxState(state => state.user.navCache) || 'Nav';
+    console.log(navCache);
     
     return (
         <>
@@ -67,7 +68,7 @@ const HeaderComponent = (props: IHeader) => {
                     flexDirection: "row",
                     alignItems: "center",
                 }}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Nav')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate(navCache)}>
                         <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
                     </TouchableOpacity>
 
