@@ -9,6 +9,8 @@ import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useReduxState } from '../../data/store';
+import { setCacheNav } from '../../data/actions/user';
+import { useDispatch } from 'react-redux';
 
 interface IHeader {
     navigation: any;
@@ -21,6 +23,7 @@ const HeaderComponent = (props: IHeader) => {
     const rate = useReduxState(state => state.user.rate);
     const img = useReduxState(state => state.user.image);
     const xp = useReduxState(state => state.user.xp);
+    const dispatch = useDispatch();
     let imageUrl;
     
     if (img == '') {
@@ -266,7 +269,7 @@ const HeaderComponent = (props: IHeader) => {
 
                         activeOpacity={0.5}
                         underlayColor="#bebebe"
-                        onPress={() => props.navigation.navigate('Nav')}
+                        onPress={() => { dispatch(setCacheNav('Home')); props.navigation.navigate('Nav')}}
                     >
                     
                         <View style={{
