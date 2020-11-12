@@ -19,6 +19,7 @@ export const SET_HELP_ALERT_DATA = "SET_HELP_ALERT_DATA";
 
 export const SET_CACHE_CREATE_ALERT_LEVEL = "SET_CACHE_CREATE_ALERT_LEVEL";
 export const SET_CACHE_SHOW_ALERT = "SET_CACHE_SHOW_ALERT";
+export const SET_CACHE_NAVIGATION = "SET_CACHE_NAVIGATION";
 
 
 export interface IUserSend {
@@ -46,5 +47,5 @@ export interface IUser {
 
     createAlertLevel: number;
     showAlert: IAlert;
-    
+    navCache: string;
 }
