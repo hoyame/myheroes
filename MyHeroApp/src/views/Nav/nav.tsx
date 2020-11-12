@@ -1,4 +1,4 @@
-import { faBell, faComments, faHome, faInfoCircle, faLock, faMapSigns, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCog, faComments, faHome, faInfoCircle, faLock, faMapSigns, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
@@ -153,7 +153,7 @@ const NavScreen = ({ navigation }) => {
                             <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
                         }
                         
-                        <PropsNav fontAwesome={faHome} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Home')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
+                        <PropsNav fontAwesome={faCog} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('General')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
                         <PropsNav fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
                         <PropsNav fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
                         <PropsNav fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
