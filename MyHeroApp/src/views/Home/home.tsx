@@ -8,7 +8,7 @@ import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
 import { MaterialIndicator, DotIndicator, PulseIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
-import { setCacheCreateAlertLevel, setName } from '../../data/actions/user';
+import { setCacheCreateAlertLevel, setCacheNav, setName } from '../../data/actions/user';
 import I18n from '../../i18n/i18n';
 //import SosSVG from '../../assets/sos.svg'
 
@@ -149,6 +149,7 @@ const HomeScreen = ({ navigation }) => {
                         <>
                             <AlertProps 
                                 onClick={() => {
+                                    dispatch(setCacheNav('Home'));
                                     dispatch(setCacheCreateAlertLevel(3))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
@@ -160,6 +161,7 @@ const HomeScreen = ({ navigation }) => {
 
                             <AlertProps 
                                 onClick={() => {
+                                    dispatch(setCacheNav('Home'));
                                     dispatch(setCacheCreateAlertLevel(2))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
@@ -171,6 +173,7 @@ const HomeScreen = ({ navigation }) => {
 
                             <AlertProps 
                                 onClick={() => {
+                                    dispatch(setCacheNav('Home'));
                                     dispatch(setCacheCreateAlertLevel(1))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
@@ -246,7 +249,7 @@ const HomeScreen = ({ navigation }) => {
                     }
 
                     { statusSend == true &&
-                        <TouchableOpacity onPress={() => navigation.navigate("SenderAcceptAlertPage")}>
+                        <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate("SenderAcceptAlertPage")}}>
                             <View style={{
                                 padding: 5,
                                 height: 165,
@@ -324,10 +327,10 @@ const HomeScreen = ({ navigation }) => {
                     }
                 </View>
 
-                <AlertComponent onClick={() => navigation.navigate('GDPS')} fontAwesome={faFirstAid} color="#008b00" title={I18n.t("gdps")} />
-                <AlertComponent onClick={() => navigation.navigate('NDU')} fontAwesome={faPhoneAlt} color="#d80000" title={I18n.t("ndu")} />
+                <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('GDPS')}} fontAwesome={faFirstAid} color="#008b00" title={I18n.t("gdps")} />
+                <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('NDU')}} fontAwesome={faPhoneAlt} color="#d80000" title={I18n.t("ndu")} />
       
-                <TouchableOpacity onPress={() => navigation.navigate('Map')}>
+                <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
                     <View style={{
                         height: Dimensions.get('window').height > 695 ? 170: 135,
                         marginTop: 10,
@@ -341,7 +344,7 @@ const HomeScreen = ({ navigation }) => {
  
                 { Dimensions.get('window').height > 695 &&
                     <>
-                        <AlertComponent onClick={() => navigation.navigate('Alert')} fontAwesome={faBell} color="#1f7ceb" title="Listes des alertes" />
+                        <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('Alert')}} fontAwesome={faBell} color="#1f7ceb" title="Listes des alertes" />
                     </>
                 }
             </View>
