@@ -6,11 +6,14 @@ import { ScrollView, Dimensions, Text, TouchableOpacity, View } from "react-nati
 import { useReduxState } from '../../data/store';
 import { PulseIndicator } from 'react-native-indicators';
 import I18n from '../../i18n/i18n';
+import { setCacheNav } from '../../data/actions/user';
+import { useDispatch } from 'react-redux';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
     const statusHelp = useReduxState(state => state.user.help.status);
     const statusSend = useReduxState(state => state.user.send.status);
+    const dispatch = useDispatch();
 
     interface IPropsNav {
         title: string;
@@ -152,7 +155,7 @@ const NavScreen = ({ navigation }) => {
                 alignItems: "center",
                 marginBottom: 25,
             }}>
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity onPress={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Home')}}>
                     <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
                 </TouchableOpacity>
 
@@ -169,21 +172,21 @@ const NavScreen = ({ navigation }) => {
                     marginBottom: 90,
                 }}>
                     { statusSend == true &&
-                        <AlertPropsNav color="#ff7f00" onClick={() => navigation.navigate('SenderAcceptAlertPage')} title="" description="" />
+                        <AlertPropsNav color="#ff7f00" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('SenderAcceptAlertPage')}} title="" description="" />
                     }
                 
                     { statusHelp == true &&
-                        <AlertPropsNav color="#1f7ceb" onClick={() => navigation.navigate('HelperAcceptAlertPage')} title="" description="" />
+                        <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
                     }
                     
-                    <PropsNav fontAwesome={faHome} onClick={() => navigation.navigate('Home')} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
-                    <PropsNav fontAwesome={faMapSigns} onClick={() => navigation.navigate('Map')} title={I18n.t("carte")} description={I18n.t("desccarte")} />
-                    <PropsNav fontAwesome={faBell} onClick={() => navigation.navigate('Alert')} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
-                    <PropsNav fontAwesome={faStar} onClick={() => navigation.navigate('Avis')} title={I18n.t("avis")} description={I18n.t("descavis")} />
-                    <PropsNav fontAwesome={faUser} onClick={() => navigation.navigate('Parametres')} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
-                    <PropsNav fontAwesome={faComments} onClick={() => navigation.navigate('FAQScreen')} title={I18n.t("faq")} description={I18n.t("descfaq")} />
-                    <PropsNav fontAwesome={faLock} onClick={() => navigation.navigate('Confidentialite')} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
-                    <PropsNav fontAwesome={faInfoCircle} onClick={() => navigation.navigate('Propos')} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
+                    <PropsNav fontAwesome={faHome} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Home')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
+                    <PropsNav fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
+                    <PropsNav fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
+                    <PropsNav fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
+                    <PropsNav fontAwesome={faUser} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
+                    <PropsNav fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
+                    <PropsNav fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
+                    <PropsNav fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
                 </View>
             </ScrollView>
         </View>
