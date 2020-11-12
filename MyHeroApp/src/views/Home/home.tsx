@@ -20,6 +20,7 @@ const HomeScreen = ({ navigation }) => {
     const alertDataSend = useReduxState(state => state.user.send);
     const statusHelp = useReduxState(state => state.user.help.status);
     const statusSend = useReduxState(state => state.user.send.status);
+    const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
 
     interface IAlertProps {
         title?: string;
@@ -27,6 +28,19 @@ const HomeScreen = ({ navigation }) => {
         description?: string;
         colorComponent?: string;
         onClick: any;
+    }
+
+    const returnColor = (alert: number) => {
+        switch (alert) {
+            case 1: 
+                return "#ffd100";
+            case 2: 
+                return "#ff9600";
+            case 3:
+                return "#d80000";
+            default: 
+                return "";
+        }
     }
 
     const AlertProps = (props: IAlertProps) => {
@@ -192,8 +206,7 @@ const HomeScreen = ({ navigation }) => {
                                 height: 165,
                                 width: screenWidth - 20,
                                 borderRadius: 10,
-
-                                backgroundColor: '#1f7ceb'
+                                backgroundColor: returnColor(createAlertLevel)
                             }}>
                                 <View style={{
                                     display: "flex",
@@ -255,7 +268,7 @@ const HomeScreen = ({ navigation }) => {
                                 height: 165,
                                 width: screenWidth - 20,
                                 borderRadius: 10,
-                                backgroundColor: '#ff7f00'
+                                backgroundColor: returnColor(createAlertLevel)
                             }}>
                                 <View style={{
                                     display: "flex",
