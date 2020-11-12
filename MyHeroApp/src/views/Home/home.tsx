@@ -1,12 +1,11 @@
 import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/headerTw';
-import NavbarComponent from '../../components/Navbar/navbar';
 import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
-import { MaterialIndicator, DotIndicator, PulseIndicator } from 'react-native-indicators';
+import { PulseIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setCacheCreateAlertLevel, setCacheNav, setName } from '../../data/actions/user';
 import I18n from '../../i18n/i18n';
@@ -38,8 +37,7 @@ const HomeScreen = ({ navigation }) => {
                 return "#ff9600";
             case 3:
                 return "#d80000";
-            default: 
-                return "";
+            default: return "";
         }
     }
 
