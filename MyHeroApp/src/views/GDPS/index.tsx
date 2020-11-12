@@ -41,59 +41,13 @@ const GDPSPage = ({ navigation }) => {
     
     return (
         <>
-            <View style={ 
-                Dimensions.get('window').height > 695 ? {
-                    marginTop: 50,
-                    display: "flex", 
-                    paddingLeft: 35,
-                    paddingRight: 35,
-                    paddingBottom: 0,
-                } : {
-                    marginTop: 20,
-                    display: "flex",
-                    paddingLeft: 35,
-                    paddingRight: 35,
-                    paddingBottom: 0   
-                }
-            }>
-                <View style={{alignItems: "center"}}>
-                    <View style={{
-                        marginBottom: 25,
-                        justifyContent: "center",
-                        height: 40,
-                        width: 120,
-                        borderRadius: 10,
-                        backgroundColor: '#1d1d1d'
-                    }}>
-                        <Text style={{
-                            fontSize: 20,
-                            fontWeight: "700",
-                            textAlign: "center",
-                            color: '#ffffff'
-                        }}>MyHeroes</Text>
-                    </View>
+            <HeaderComponent title={I18n.t("gdps")} navigation={navigation} />
 
-                </View>
-
-                <View style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                        <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
-                    </TouchableOpacity>
-
-                    <View>   
-                        <Text style={{
-                            width: Dimensions.get('window').width - 100, 
-                            fontSize: 25
-                        }}>{I18n.t("gdps")}</Text>
-                    </View>
-                </View>
-            </View>
             <View style={{
-                padding: 35
+                paddingLeft: 35,
+                paddingRight: 35,
+                paddingBottom: 0,
+                marginBottom: 160   
             }}>
                 <ScrollView>
                     <PropsNav title={I18n.t("gdpsInconsience")} />
