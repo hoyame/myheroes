@@ -14,7 +14,8 @@ import {
     IUser, 
     IUserSend,
     IUserHelp,
-    SET_MAIL
+    SET_MAIL,
+    SET_CACHE_NAVIGATION
 } from '../types/user';
 
 
@@ -64,7 +65,12 @@ const UserReducer = (state = initialState, action: IUserActions): IUser => {
             return { 
                 ...state, 
                 showAlert: action.payload.showAlert 
-            };   
+            };
+        case SET_CACHE_NAVIGATION: 
+            return { 
+                ...state, 
+                navCache: action.payload.nav            
+            }
         default: return state;
     }
 }
@@ -92,7 +98,7 @@ const initialState: IUser = {
 
     createAlertLevel: 0,
     showAlert: {},
-    
+    navCache: ""
 }
 
 export default UserReducer;
