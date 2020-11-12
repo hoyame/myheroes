@@ -34,6 +34,7 @@ import EndAlertScreen from './views/Alerts/end_alert';
 import { Root, Popup, Toast } from 'popup-ui';
 import I18n from './i18n/i18n';
 import FAQScreen from './views/FAQ';
+import GeneralScreen from './views/General';
 
 
 const Controller = () => {
@@ -138,6 +139,7 @@ const Controller = () => {
         <NavigationContainer>
           <Stack.Navigator initialRouteName={isNewUser == true ? "Connexion" : "Home"} screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="General" component={GeneralScreen} />
             <Stack.Screen name="Parametres" component={ParametresScreen} />
             <Stack.Screen name="Avis" component={AvisScreen} />
             <Stack.Screen name="Alert" component={AlertScreen} />
