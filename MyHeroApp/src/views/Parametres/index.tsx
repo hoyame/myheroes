@@ -45,7 +45,6 @@ const ParametresScreen = ({ navigation }) => {
     const [mdpS, setMdpS] = useState(false);
     const [pseudoS, setPseudoS] = useState(false);
     const [alertC, setAlertC] = useState(false);
-    const [languageS, setLanguageS] = useState(false);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -99,57 +98,6 @@ const ParametresScreen = ({ navigation }) => {
             }
         });
     };
-
-    const returnLangues = () => {
-        return Langues.map((v, k) => {
-            return (
-                <TouchableOpacity>
-                    <View style={{
-                        display: 'flex',
-                        flexDirection: "row",
-                        height: 80,
-                        backgroundColor: '#e1e1e1',
-                        marginBottom: 10,
-                        borderRadius: 7.5,
-                        alignItems: "center",
-                    }}>
-                        <View style={{
-                            marginLeft: 10,
-                            height: 80,
-                            width: 80,
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}>
-                            <Image source={{uri: v.img}} style={{
-                                height: 30,
-                                width: 40,
-                                marginRight: 10
-                            }} />    
-                        </View> 
-
-                        <Text style={{fontSize: 25}}>{v.name}</Text>  
-                    </View>
-                </TouchableOpacity>
-            );
-        })
-      }
-
-    if (languageS == true) {
-        return (
-            <>
-                <HeaderComponent title={I18n.t("settingsLanguage")} navigation={navigation} />
-
-                <ScrollView>
-                    <View style={{
-                        paddingLeft: 35,
-                        paddingRight: 35
-                    }}>
-                        {returnLangues()}
-                    </View>
-                </ScrollView>
-            </>
-        );
-    }
 
     if (pseudoS == true) {
         return (
@@ -494,24 +442,6 @@ const ParametresScreen = ({ navigation }) => {
                             fontSize: 21,
                             color: '#000000'
                         }}>{I18n.t("settingsChangerPseudo")}</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => setLanguageS(true)}>
-                    <View style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        height: 60, 
-                        borderRadius: 7.5,
-                        marginBottom: 10,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: '#e1e1e1'
-                    }}>
-                        <Text style={{
-                            fontSize: 21,
-                            color: '#000000'
-                        }}>{I18n.t("settingsLanguage")}</Text>
                     </View>
                 </TouchableOpacity>
 
