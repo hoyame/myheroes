@@ -214,8 +214,6 @@ const ConnexionScreen = ({ navigation }) => {
                         <TouchableOpacity onPress={() => {
                             setStatus(true);
 
-                            setStatus(true);
-
                             if (state.password !== "" && state.cPassword !== "" && state.name !== "" && state.mail !== "") {
                                 if (state.password === state.cPassword) {
                                     Users.Register({
