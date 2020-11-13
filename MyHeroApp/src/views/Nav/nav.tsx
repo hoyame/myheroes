@@ -50,39 +50,43 @@ const NavScreen = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={props.onClick}>
                 <View style={{
-                    height: 70,
+                    height: 77.5,
                     width: screenWidth - 70,
-                    borderRadius: 10,
+                    borderRadius: 15,
                     marginBottom: 15,
-                    backgroundColor: '#E1E1E1',
+                    backgroundColor: '#3497FD',
                     display: 'flex',
-                    flexDirection: 'row'
+                    flexDirection: 'row',
                 }}>
                     <View style={{
+                        paddingLeft: 15,
+                        justifyContent: "center",
+                    }}>
+                        <Text style={{
+                            fontSize: 22,
+                            color: "#ffffff"
+                        }}>{props.title}</Text>
+                        <Text style={{
+                            fontSize: 15,
+                            color: "#f0f0f0"
+                        }}>{props.description}</Text>
+                    </View>
+
+                    
+                    <View style={{
+                        position: "absolute",
+                        top: 15,
+                        right: 0,
                         height: 55,
                         width: 55,
                         margin: 7.5,
                         borderRadius: 7.5,
                         //backgroundColor: "#434343",
-                        justifyContent: "center",
-                        alignItems: "center",
+   
                     }}>
                         { props.fontAwesome && 
-                            <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{color: "#434343"}} />
+                            <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{color: "#ffffff"}} />
                         }
-                    </View>
-
-                    <View style={{
-                        paddingTop: 10
-                    }}>
-                        <Text style={{
-                            fontSize: 24,
-                            color: "#222222"
-                        }}>{props.title}</Text>
-                        <Text style={{
-                            fontSize: 15,
-                            color: "#767676"
-                        }}>{props.description}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
