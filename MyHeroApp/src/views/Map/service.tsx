@@ -91,7 +91,7 @@ const MapComponent = (props: IMap) => {
   }
 
   return (
-      <>
+      <View style={{ borderRadius: 15, overflow: 'hidden'}}>
         <MapView
           showsUserLocation={true}
           followsUserLocation={true}
@@ -101,7 +101,8 @@ const MapComponent = (props: IMap) => {
           style={{
               height: props.height,
               width: props.width,
-              borderRadius: 10
+              borderRadius: 15,
+              overflow: 'hidden' 
           }}
 
           region={{
@@ -113,7 +114,7 @@ const MapComponent = (props: IMap) => {
         >
           {returnAlerts()}
         </MapView>
-      </>
+      </ View>
   );
 }
 
