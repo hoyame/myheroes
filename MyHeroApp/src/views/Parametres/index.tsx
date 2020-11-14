@@ -1,4 +1,4 @@
-import { faFont, faHome, faLock, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faFont, faHome, faLock, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView } from 'react-native';
@@ -108,30 +108,46 @@ const ParametresScreen = ({ navigation }) => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 30,                    
-                    marginBottom: 0,
-                    textAlign: "center"
-                }}>MyHeroes</Text>
+                <FontAwesomeIcon icon={faCircle} size={250} style={{
+                    position: 'absolute',
+                    top: 150,
+                    right: -150,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={150} style={{
+                    position: 'absolute',
+                    top: 260,
+                    left: -50,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={120} style={{
+                    position: 'absolute',
+                    bottom: -60,
+                    right: -50,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={120} style={{
+                    position: 'absolute',
+                    top: -60,
+                    left: -50,
+                    color: "#3497FD"
+                }} />
 
                 <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 20,
-                    marginBottom: 5,
+                    color: "#000000",
+                    fontSize: 35,
+                    width: 200,
+                    marginBottom: 35,
                     textAlign: "center"
                 }}>{I18n.t("settingsPseudo1")}</Text>
-
-                <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 20,
-                    marginBottom: 40,
-                    textAlign: "center"
-                }}>{I18n.t("settingsMDP2")}</Text>
 
                 <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.pseudo} icon={faUser} onChange={(v: string) => setState({...state, pseudo: v})} />
             
                 <View style={{
+                    marginTop: 10,
                     display: "flex",
                     flexDirection: "row"
                 }}>
@@ -144,10 +160,11 @@ const ParametresScreen = ({ navigation }) => {
                             marginRight: 10,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#6d9bff'           
+                            backgroundColor: '#3497FD'           
                         }}>
                             <Text style={{
-                                fontSize: 25
+                                fontSize: 25,
+                                color: "#ffffff"
                             }}>{I18n.t("annuler")}</Text>
                         </View>
                     </TouchableOpacity>
@@ -171,10 +188,11 @@ const ParametresScreen = ({ navigation }) => {
                             width: 140,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#6d9bff'           
+                            backgroundColor: '#3497FD'           
                         }}>
                             <Text style={{
-                                fontSize: 25
+                                fontSize: 25,
+                                color: "#ffffff"
                             }}>{I18n.t("continuer")}</Text>
                         </View>
                     </TouchableOpacity>
@@ -192,26 +210,41 @@ const ParametresScreen = ({ navigation }) => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 30,                    
-                    marginBottom: 0,
-                    textAlign: "center"
-                }}>MyHeroes</Text>
+                <FontAwesomeIcon icon={faCircle} size={250} style={{
+                    position: 'absolute',
+                    top: 150,
+                    right: -150,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={150} style={{
+                    position: 'absolute',
+                    top: 260,
+                    left: -50,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={120} style={{
+                    position: 'absolute',
+                    bottom: -60,
+                    right: -50,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={120} style={{
+                    position: 'absolute',
+                    top: -60,
+                    left: -50,
+                    color: "#3497FD"
+                }} />
 
                 <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 20,
-                    marginBottom: 5,
+                    color: "#000000",
+                    fontSize: 35,
+                    width: 200,
+                    marginBottom: 35,
                     textAlign: "center"
                 }}>{I18n.t("settingsMDP1")}</Text>
-
-                <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 20,
-                    marginBottom: 40,
-                    textAlign: "center"
-                }}>{I18n.t("settingsMDP2")}</Text>
 
                 <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                 <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
@@ -229,10 +262,11 @@ const ParametresScreen = ({ navigation }) => {
                             marginRight: 10,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#6d9bff'           
+                            backgroundColor: '#3497FD'           
                         }}>
                             <Text style={{
-                                fontSize: 25
+                                fontSize: 25,
+                                color: "#ffffff"
                             }}>{I18n.t("annuler")}</Text>
                         </View>
                     </TouchableOpacity>
@@ -258,10 +292,11 @@ const ParametresScreen = ({ navigation }) => {
                             width: 140,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#6d9bff'           
+                            backgroundColor: '#3497FD'           
                         }}>
                             <Text style={{
-                                fontSize: 25
+                                fontSize: 25,
+                                color: "#ffffff"
                             }}>{I18n.t("continuer")}</Text>
                         </View>
                     </TouchableOpacity>
@@ -278,27 +313,42 @@ const ParametresScreen = ({ navigation }) => {
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center"
-            }}>
-                <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 30,                    
-                    marginBottom: 40,
-                    textAlign: "center"
-                }}>MyHeroes</Text>
-      
-                <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 20,
-                    marginBottom: 5,
-                    textAlign: "center"
-                }}>{I18n.t("inscriptionContinuerInscription")}</Text>
+            }}>     
+                            <FontAwesomeIcon icon={faCircle} size={250} style={{
+                    position: 'absolute',
+                    top: 150,
+                    right: -150,
+                    color: "#3497FD"
+                }} />
 
+                <FontAwesomeIcon icon={faCircle} size={150} style={{
+                    position: 'absolute',
+                    top: 260,
+                    left: -50,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={120} style={{
+                    position: 'absolute',
+                    bottom: -60,
+                    right: -50,
+                    color: "#3497FD"
+                }} />
+
+                <FontAwesomeIcon icon={faCircle} size={120} style={{
+                    position: 'absolute',
+                    top: -60,
+                    left: -50,
+                    color: "#3497FD"
+                }} />
+                
                 <Text style={{
-                    color: "#6d9bff",
-                    fontSize: 20,
-                    marginBottom: 40,
+                    color: "#000000",
+                    fontSize: 35,
+                    width: 200,
+                    marginBottom: 35,
                     textAlign: "center"
-                }}>{I18n.t("inscriptionAddPhoto")}</Text>
+                }}>{I18n.t("settingsAvatar")}</Text>
 
                 { img.uri !== "" && 
                     <Image 
@@ -316,25 +366,50 @@ const ParametresScreen = ({ navigation }) => {
                     <Text style={{
                         color: "#000000",
                         fontSize: 20,
-                        marginBottom: 30,
+                        marginBottom: 15,
                         textAlign: "center"
                     }}>{I18n.t("inscriptionChoosePhoto")}</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => setPictureS(false)}>
-                    <View style={{
-                        height: 60, 
-                        borderRadius: 7.5,
-                        marginTop: 5,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: '#6d9bff'           
-                    }}>
-                        <Text style={{
-                            fontSize: 25
-                        }}>{I18n.t("continuer")}</Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={{
+                    display: "flex",
+                    flexDirection: "row"
+                }}>
+                    <TouchableOpacity onPress={() => setPictureS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            marginRight: 10,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#3497FD'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25,
+                                color: "#ffffff"
+                            }}>{I18n.t("annuler")}</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => setPictureS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#3497FD'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25,
+                                color: "#ffffff"
+                            }}>{I18n.t("continuer")}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -377,7 +452,7 @@ const ParametresScreen = ({ navigation }) => {
                     }}>{mail}</Text>
                 </View>
 
-                <ButtonComponent onClick={() => setMdpS(true)} title={I18n.t("settingsChk1")} icon={faLock} color="#FCCA1C" />
+                <ButtonComponent onClick={() => setMdpS(true)} title={I18n.t("settingsCSMDP")} icon={faLock} color="#FCCA1C" />
                 <ButtonComponent onClick={() => setPictureS(true)} title={I18n.t("settingsChangerAvatar")} icon={faUser} color="#FC9A21" />
                 <ButtonComponent onClick={() => setPseudoS(true)} title={I18n.t("settingsChangerPseudo")} icon={faFont} color="#B0F50A" />
                 <ButtonComponent onClick={() => disconnect()} title={I18n.t("settingsSeDeco")} icon={faSignOutAlt} color="#E63B25" />
