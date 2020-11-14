@@ -11,6 +11,7 @@ import { setMail, setName, setRate, setXp, setImage } from '../../data/actions/u
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import * as Animatable from 'react-native-animatable';
+import FondComponent from '../../components/Fond';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -107,34 +108,7 @@ const ConnexionScreen = ({ navigation }) => {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <FontAwesomeIcon icon={faCircle} size={250} style={{
-                        position: 'absolute',
-                        top: 150,
-                        right: -150,
-                        color: "#3497FD"
-                    }} />
-
-                    <FontAwesomeIcon icon={faCircle} size={150} style={{
-                        position: 'absolute',
-                        top: 260,
-                        left: -50,
-                        color: "#3497FD"
-                    }} />
-
-                    <FontAwesomeIcon icon={faCircle} size={120} style={{
-                        position: 'absolute',
-                        bottom: -60,
-                        right: -50,
-                        color: "#3497FD"
-                    }} />
-
-                    <FontAwesomeIcon icon={faCircle} size={120} style={{
-                        position: 'absolute',
-                        top: -60,
-                        left: -50,
-                        color: "#3497FD"
-                    }} />
-
+                    <FondComponent />
 
                     <View style={{
                         display: "flex",
@@ -294,33 +268,7 @@ const ConnexionScreen = ({ navigation }) => {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <FontAwesomeIcon icon={faCircle} size={250} style={{
-                    position: 'absolute',
-                    top: 150,
-                    right: -150,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={150} style={{
-                    position: 'absolute',
-                    top: 260,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    bottom: -60,
-                    right: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    top: -60,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
+                <FondComponent />
 
 
                 <View style={{
