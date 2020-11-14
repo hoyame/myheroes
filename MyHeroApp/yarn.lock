@@ -5826,6 +5826,11 @@ querystring@0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
+ramda@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
+  integrity sha1-zNE//3NJepOXTj6GMnv9h71ujis=
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
@@ -5899,6 +5904,13 @@ react-native-reanimated@^1.13.1:
   integrity sha512-3sF46jts9MbktgIasf0sTM8uhOYO5a5Q3YyQ4X1jjSE82n/fY2nW3XTFsLGfLEpK2ir4XSDhQWVgFHazaXZTww==
   dependencies:
     fbjs "^1.0.0"
+
+react-native-rnmk-switch@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-rnmk-switch/-/react-native-rnmk-switch-0.0.2.tgz#03086d68b729d5f8fb8a45df9aedfe674cadfcc6"
+  integrity sha1-AwhtaLcp1fj7ikXfmu3+Z0yt/MY=
+  dependencies:
+    ramda "^0.23.0"
 
 react-native-safe-area-context@^3.1.8:
   version "3.1.8"
