@@ -51,8 +51,8 @@ const ButtonComponent = (props: IButton) => {
                     </View>
 
                     <View style={{
-                        height: 40,
-                        width: 40,
+                        height: 20,
+                        width: 20,
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
@@ -64,8 +64,5 @@ const ButtonComponent = (props: IButton) => {
     );
 }
 
-/* 
-                    <FontAwesomeIcon icon={faAngleRight} size={25} style={{color: "#454F63"}} />
-*/
 
 export default ButtonComponent;
