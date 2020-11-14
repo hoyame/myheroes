@@ -117,7 +117,7 @@ const Controller = () => {
             alignItems: "center"
         }}>
             <Text style={{
-                color: "#6d9bff",
+                color: "#3497FD",
                 fontSize: 30,
                 textAlign: "center"
             }}>{I18n.t("initMHServ")}</Text>
@@ -128,7 +128,7 @@ const Controller = () => {
                 marginBottom: 30,
                 textAlign: "center"
             }}>MyHeroServices</Text>
-              <WaveIndicator color='#6d9bff' size={40} />
+              <WaveIndicator color='#3497FD' size={40} />
         </View>
     );
   }
