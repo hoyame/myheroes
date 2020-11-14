@@ -11,6 +11,7 @@ import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
 import I18n from '../../i18n/i18n';
 import { Langues } from '../../data/langues';
+import ButtonComponent from '../../components/Button';
 
 const styles = StyleSheet.create({
     container: {
@@ -348,40 +349,47 @@ const ParametresScreen = ({ navigation }) => {
             }}>
                 <View style={{
                     display: "flex",
-                    flexDirection: "row",
+                    alignItems: "center",                    
                     marginBottom: 0,
                 }}>
-                    <Image 
-                        source={{uri: image}}
+                       <Image
                         style={{
-                            height: 80,
-                            width: 80,
-                            borderRadius: 10,
-                            marginBottom: 10
+                            height: 110,
+                            width: 110,
+                            borderRadius: 15,
+                            marginBottom: 12.5,
+                        }}
+
+                        source={{
+                            uri: image,
                         }}
                     />
 
-                    <View style={{
-                        height: 80,
-                        justifyContent: "center",
-                        marginLeft: 15
-                    }}>
-                        <Text style={{
-                            fontSize: 30
-                        }}>
-                            {name}
-                        </Text>
+                    <Text style={{
+                        fontSize: 25,
+                        color: "#454F63"
+                    }}>{name}</Text>
 
-                        <Text style={{
-                            color: "#778899",
-                            fontSize: 25
-                        }}>
-                            {xp} XP
-                        </Text>
-                    </View>
+                    <Text style={{
+                        fontSize: 17.5,
+                        marginBottom: 15,
+                        color: "#454F63"
+                    }}>{mail}</Text>
                 </View>
 
-                <View style={styles.checkboxContainer}>
+                <ButtonComponent />
+                <ButtonComponent />
+                <ButtonComponent />
+            </View>  
+        </>
+    );
+}
+
+export default ParametresScreen;
+
+/*
+
+<View style={styles.checkboxContainer}>
                     <CheckBox
                       value={alertC}
                       onValueChange={setAlertC}
@@ -462,9 +470,5 @@ const ParametresScreen = ({ navigation }) => {
                         }}>{I18n.t("settingsSeDeco")}</Text>
                     </View>
                 </TouchableOpacity>
-            </View>  
-        </>
-    );
-}
 
-export default ParametresScreen;
+                */
