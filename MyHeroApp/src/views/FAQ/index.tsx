@@ -21,7 +21,7 @@ const FAQScreen = ({ navigation }) => {
                     paddingRight: 35,
                 }}>
                     <View style={{
-                        //height: screenHeight,
+                        marginBottom: 15
                     }}>
                         <Text style={{ fontSize: 15, fontWeight: "bold", marginBottom: 10 }}>
                             Que se passe t-il si il y'a personne autour de moi qui a l'application pour me sauver ?
@@ -52,20 +52,20 @@ const FAQScreen = ({ navigation }) => {
                         </Text>
                     </View>
 
-                    <InputComponent height={130} name="Question" placeholder="Question" value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
+                    <InputComponent height={60} name="Question" placeholder="Question" value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
 
                     <TouchableOpacity onPress={() => {}}>
                         <View style={{
-                            height: 60,
-                            marginBottom: 15,
-                            borderRadius: 8,
-                            padding: 10,
+                            height: 60, 
+                            borderRadius:15,
+                            marginTop: 5,
                             justifyContent: "center",
-                            backgroundColor: "#e1e1e1"
+                            alignItems: "center",
+                            backgroundColor: '#3497FD'           
                         }}>
                             <Text style={{
-                                textAlign: "center",
-                                fontSize: 25      
+                                fontSize: 25,
+                                color: "#ffffff",
                             }}>Envoyer votre question</Text>
                         </View>
                     </TouchableOpacity>
