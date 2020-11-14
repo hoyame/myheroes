@@ -1,67 +1,65 @@
 import { faAngleRight, faBaby } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Switch } from 'react-native-paper';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 
 interface IButton {
-    checkbox: boolean;
+    checkbox?: boolean;
     title: string;
     color: string;
     icon: any;
+    onClick: any
 }
 
-const ButtonComponent = () => {
-    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-    const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
-
+const ButtonComponent = (props: IButton) => {
     return (
         <>
-            <View style={{
-                display: "flex",
-                flexDirection: "row",
-                height: 60,
-                alignItems: "center",
-                justifyContent: "space-between",
-                paddingLeft: 7.5,
-                marginBottom: 5,
-                backgroundColor: "yellow"
-            }}>
+            <TouchableOpacity onPress={props.onClick}>
                 <View style={{
                     display: "flex",
-                    flexDirection: "row", 
+                    flexDirection: "row",
+                    height: 60,
                     alignItems: "center",
+                    justifyContent: "space-between",
+                    paddingLeft: 7.5,
+                    marginBottom: 5,
                 }}>
-
                     <View style={{
-                        backgroundColor: "#E63B25",
+                        display: "flex",
+                        flexDirection: "row", 
                         alignItems: "center",
-                        justifyContent: "center",
-                        height: 40,
-                        width: 40,
-                        marginRight: 13,
-                        borderRadius: 10,
                     }}>
-                        <FontAwesomeIcon icon={faBaby} size={25} style={{color: "#ffffff"}} />
+
+                        <View style={{
+                            backgroundColor: props.color,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            height: 40,
+                            width: 40,
+                            marginRight: 13,
+                            borderRadius: 10,
+                        }}>
+                            <FontAwesomeIcon icon={props.icon} size={25} style={{color: "#ffffff"}} />
+                        </View>
+
+                        <Text style={{
+                            fontSize: 18
+                        }}>
+                            {props.title}
+                        </Text>
                     </View>
 
-                    <Text style={{
-                        fontSize: 18
+                    <View style={{
+                        height: 40,
+                        width: 40,
+                        alignItems: "center",
+                        justifyContent: "center",
                     }}>
-                        Dark mode
-                    </Text>
+                        <FontAwesomeIcon icon={faAngleRight} size={25} style={{color: "#454F63"}} />
+                    </View>
                 </View>
-
-                <View style={{
-                    height: 40,
-                    width: 40,
-                    alignItems: "center",
-                    justifyContent: "center",
-                }}>
-                    <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
-                </View>
-            </View>
+            </TouchableOpacity>
         </>
     );
 }
