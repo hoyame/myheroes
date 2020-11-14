@@ -83,7 +83,7 @@ export default {
     alertLaunch: "Lancer une alerte",
     alertNotDispo: "Aucune alerte disponible",
     alertReturnAcceuil: "Retour a l'acceuil",
-    alertActivCam: "Vous voulez activer votre camera ?",
+    alertActivCam: "Activer votre camera ?",
     alertApercCam: "Aperçu camera",
     alertNotDanger: "Vous n'etes plus en danger",
     alertSave: "Vous avez été sauvé",

@@ -17,7 +17,7 @@ const BottomComponent = (props: IBottom) => {
                     borderRadius:15,
                     justifyContent: "center",
                     alignItems: "center",
-                    backgroundColor: '#3497FD'           
+                    backgroundColor: '#3497FD'
                 }}>
                     <Text style={{
                         fontSize: 25,

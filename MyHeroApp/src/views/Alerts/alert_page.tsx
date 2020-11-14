@@ -5,6 +5,7 @@ import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, Vie
 import { useDispatch } from 'react-redux';
 import AccountStats from '../../components/AccountStats';
 import AlertInformationProps from '../../components/AlertPropsDetails';
+import BottomComponent from '../../components/Bottom';
 import HeaderComponent from '../../components/Header/header';
 import { setHelpAlertData, setSendAlertData, setStatusHelp } from '../../data/actions/user';
 import { useReduxState } from '../../data/store';
@@ -24,11 +25,6 @@ const AlertPageScreen = ({ navigation }) => {
                 paddingRight: 35,
                 paddingBottom: 35
             }}>               
-                <Text style={{
-                    fontSize: 15,
-                    marginBottom: 20
-                }}>{I18n.t("alertIDAlert")}: {alertData.id}</Text>
-
                 <View style={{
                     marginBottom: 10,
                 }}>
@@ -42,6 +38,15 @@ const AlertPageScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{
+                    padding: 15,
+                    height: 120,
+                    borderRadius: 15,
+                    backgroundColor: '#ffffff',
+                    elevation:10,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 1 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 5, 
                     marginBottom: 20
                 }}>
                     <Text style={{
@@ -60,23 +65,10 @@ const AlertPageScreen = ({ navigation }) => {
                     </Text>
                 </View>
 
-                <TouchableOpacity onPress={() => {
+                <BottomComponent title={I18n.t("alertPrendreAlert")} onClick={() => {
                     dispatch(setHelpAlertData({status: true, data: alertData}))              
                     navigation.navigate('HelperAcceptAlertPage')  
-                }}>
-                    <View style={{
-                        height: 60, 
-                        width: screenWidth,
-                        borderRadius: 7.5,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: "#e1e1e1"
-                    }}>
-                        <Text style={{
-                            fontSize: 25
-                        }}>{I18n.t("alertPrendreAlert")}</Text>
-                    </View>
-                </TouchableOpacity>
+                }}/>
             </View>
         </>
     );

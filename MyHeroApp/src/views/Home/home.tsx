@@ -193,8 +193,9 @@ const HomeScreen = ({ navigation }) => {
                                 padding: 5,
                                 height: 165,
                                 width: screenWidth,
-                                borderRadius: 10,
-                                backgroundColor: returnColor(createAlertLevel)
+                                borderRadius: 15,
+                                marginBottom: 7.5,
+                                backgroundColor: returnColor(alertDataHelp.level)
                             }}>
                                 <View style={{
                                     display: "flex",

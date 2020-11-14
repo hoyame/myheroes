@@ -48,12 +48,33 @@ const AlertScreen = ({ navigation }) => {
                 <View style={{
                     height: 70,
                     width: screenWidth - 8,
-                    backgroundColor: '#e1e1e1',
-                    borderRadius: 7.5,
+                    backgroundColor: color,
+                    borderRadius: 15,
+                    paddingLeft: 5,
                     display: 'flex',
                     flexDirection: 'row',
+                    justifyContent: "space-between",
+                    alignItems: 'center',
                     marginBottom: 7.5
                 }}>
+                    <View style={{
+                        backgroundColor: 'transparent',
+                        justifyContent: "flex-start",
+                    }}>   
+                        <Text style={{
+                            fontSize: 20,
+                            marginLeft: 10,
+                            color: "#000000"
+                        }}>{I18n.t("alertT")} {levelName}</Text>
+
+                        <Text style={{
+                            fontSize: 15,
+                            marginTop: 0,
+                            marginLeft: 10,
+                            color: "#94958B"
+                        }}>{I18n.t("par")} {props.source}</Text>
+                    </View>
+
                     <View style={{
                         height: 55,
                         width: 55,
@@ -63,27 +84,8 @@ const AlertScreen = ({ navigation }) => {
                     }}>
                         <FontAwesomeIcon icon={faExclamationCircle} size={35} style={{
                           margin: 10,
-                          color: color
+                          color: "#ffffff"
                         }}></FontAwesomeIcon>
-                    </View>
-
-                    <View style={{
-                        backgroundColor: 'transparent',
-
-                    }}>   
-                        <Text style={{
-                            fontSize: 20,
-                            marginTop: 10,
-                            marginLeft: 10,
-                            color: "#000000"
-                        }}>{I18n.t("alertT")} {levelName}</Text>
-
-                        <Text style={{
-                            fontSize: 15,
-                            marginTop: 5,
-                            marginLeft: 10,
-                            color: "#94958B"
-                        }}>{I18n.t("par")} {props.source}</Text>
                     </View>
                 </View>
             </TouchableOpacity>

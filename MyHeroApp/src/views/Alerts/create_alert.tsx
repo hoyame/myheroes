@@ -117,7 +117,6 @@ const CreateAlertScreen = ({ navigation }) => {
                                 }}>
                                     <FontAwesomeIcon icon={faExclamationCircle} size={50} style={{ color: "#ffffff" }}></FontAwesomeIcon>
                                 </View>
-
                             </View>
                                 
                             <View style={{

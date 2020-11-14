@@ -1,7 +1,9 @@
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
+import { faFirstAid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import ButtonComponent from '../../components/Button';
 import HeaderComponent from '../../components/Header/header';
 import I18n from '../../i18n/i18n';
 
@@ -44,23 +46,23 @@ const GDPSPage = ({ navigation }) => {
             <HeaderComponent title={I18n.t("gdps")} navigation={navigation} />
 
             <View style={{
-                paddingLeft: 35,
-                paddingRight: 35,
+                paddingLeft: 20,
+                paddingRight: 20,
                 paddingBottom: 0,
-                marginBottom: 160   
+                marginBottom: 200   
             }}>
                 <ScrollView>
-                    <PropsNav title={I18n.t("gdpsInconsience")} />
-                    <PropsNav title={I18n.t("gdpsPLS")} />
-                    <PropsNav title={I18n.t("gdpsMassageCardiaque")} />
-                    <PropsNav title={I18n.t("gdpsDefibrilateur")} />
-                    <PropsNav title={I18n.t("gdpsEttouffementAdulte")} />
-                    <PropsNav title={I18n.t("gdpsEttouffementNourisson")} />
-                    <PropsNav title={I18n.t("gdpsSaignementAbondant")} />
-                    <PropsNav title={I18n.t("gdpsBrulures")} />
-                    <PropsNav title={I18n.t("gdpsTraumatismeOs")} />
-                    <PropsNav title={I18n.t("gdpsNoyade")} />
-                    <PropsNav title={I18n.t("gdpsMalaise")} />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsInconsience")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsPLS")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsMassageCardiaque")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsDefibrilateur")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsEttouffementAdulte")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsEttouffementNourisson")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsSaignementAbondant")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsBrulures")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsTraumatismeOs")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsNoyade")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsMalaise")} icon={faFirstAid} color="#008b00" />
                 </ScrollView>
             </View>
         </> 

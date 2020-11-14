@@ -58,6 +58,7 @@ const NavScreen = ({ navigation }) => {
                     backgroundColor: props.color,
                     display: 'flex',
                     flexDirection: 'row',
+                    
                 }}>
                     <View style={{
                         paddingLeft: 15,
@@ -159,11 +160,10 @@ const NavScreen = ({ navigation }) => {
                             <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
                         }
                         
-                        <PropsNav color="#008B00" fontAwesome={faCog} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('General')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
                         <PropsNav color="#FCCA1C" fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
                         <PropsNav color="#E63B25" fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
                         <PropsNav color="#701CFC" fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
-                        <PropsNav color="#1F7CEB" fontAwesome={faUser} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
+                        <PropsNav color="#1F7CEB" fontAwesome={faCog} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("parametres")} />
                         <PropsNav color="#d80000" fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
                         <PropsNav color="#B0F50A" fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
                         <PropsNav color="#FC9A21" fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
