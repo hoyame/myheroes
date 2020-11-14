@@ -255,7 +255,8 @@ const HomeScreen = ({ navigation }) => {
                                 padding: 5,
                                 height: 165,
                                 width: screenWidth,
-                                borderRadius: 10,
+                                borderRadius: 15,
+                                marginBottom: 7.5,
                                 backgroundColor: returnColor(createAlertLevel)
                             }}>
                                 <View style={{
