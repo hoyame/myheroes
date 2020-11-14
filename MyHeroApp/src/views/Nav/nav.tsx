@@ -36,6 +36,7 @@ const NavScreen = ({ navigation }) => {
         description: string;
         onClick?: any;
         fontAwesome?: any;
+        color: string;
     }
 
     interface IAlertPropsNav {
@@ -50,39 +51,45 @@ const NavScreen = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={props.onClick}>
                 <View style={{
-                    height: 70,
+                    height: 77.5,
                     width: screenWidth - 70,
-                    borderRadius: 10,
+                    borderRadius: 15,
                     marginBottom: 15,
-                    backgroundColor: '#E1E1E1',
+                    backgroundColor: props.color,
                     display: 'flex',
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    
                 }}>
                     <View style={{
+                        paddingLeft: 15,
+                        justifyContent: "center",
+                    }}>
+                        <Text style={{
+                            fontSize: 22,
+                            color: "#ffffff"
+                        }}>{props.title}</Text>
+                        <Text style={{
+                            fontSize: 15,
+                            color: "#f0f0f0"
+                        }}>{props.description}</Text>
+                    </View>
+
+                    
+                    <View style={{
+                        position: "absolute",
+                        top: 15,
+                        right: 0,
                         height: 55,
                         width: 55,
                         margin: 7.5,
                         borderRadius: 7.5,
+                        opacity: 0.6
                         //backgroundColor: "#434343",
-                        justifyContent: "center",
-                        alignItems: "center",
+   
                     }}>
                         { props.fontAwesome && 
-                            <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{color: "#434343"}} />
+                            <FontAwesomeIcon icon={props.fontAwesome} size={35} style={{color: "#ffffff"}} />
                         }
-                    </View>
-
-                    <View style={{
-                        paddingTop: 10
-                    }}>
-                        <Text style={{
-                            fontSize: 24,
-                            color: "#222222"
-                        }}>{props.title}</Text>
-                        <Text style={{
-                            fontSize: 15,
-                            color: "#767676"
-                        }}>{props.description}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -95,7 +102,7 @@ const NavScreen = ({ navigation }) => {
                 <View style={{
                     height: 70,
                     width: screenWidth - 70,
-                    borderRadius: 10,
+                    borderRadius: 15,
                     marginBottom: 15,
                     backgroundColor: props.color,
                     display: 'flex',
@@ -137,7 +144,7 @@ const NavScreen = ({ navigation }) => {
             <View style={{
                 display: "flex", 
                 paddingLeft: 35,
-                paddingRight: 35,
+                paddingRight: 22.5,
                 paddingBottom: 35
             }}>        
                 <ScrollView>
@@ -153,14 +160,13 @@ const NavScreen = ({ navigation }) => {
                             <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
                         }
                         
-                        <PropsNav fontAwesome={faCog} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('General')}} title={I18n.t("acceuil")} description={I18n.t("descacceuil")} />
-                        <PropsNav fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
-                        <PropsNav fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
-                        <PropsNav fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
-                        <PropsNav fontAwesome={faUser} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("descparametres")} />
-                        <PropsNav fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
-                        <PropsNav fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
-                        <PropsNav fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
+                        <PropsNav color="#FCCA1C" fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
+                        <PropsNav color="#E63B25" fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
+                        <PropsNav color="#701CFC" fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
+                        <PropsNav color="#1F7CEB" fontAwesome={faCog} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("parametres")} />
+                        <PropsNav color="#d80000" fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
+                        <PropsNav color="#B0F50A" fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
+                        <PropsNav color="#FC9A21" fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
                     </View>
                 </ScrollView>
             </View>

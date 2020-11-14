@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/headerTw';
-import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
@@ -48,44 +48,39 @@ const HomeScreen = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={props.onClick}>
                 <View style={{
-                    height: 165,
-                    width: pWidth,
-                    marginRight: 5,
+                    display: "flex",
+                    flexDirection: "row",
+                    height: 55,
+                    width: screenWidth,
+                    marginBottom: 7.5,
                     backgroundColor: props.color,
-                    borderRadius: 7.5,
+                    borderRadius: 15,
                     alignItems: "center",
-                    padding: 10
+                    justifyContent: "space-between",
+                    paddingLeft: 20
                 }}>
-                    <View style={{
-                        display: 'flex',
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}>
-                        <View style={{
-                            margin: 5,
-                            height: 55,
-                            width: 55,
-                            opacity: 0.40,
-                            backgroundColor: props.colorComponent,
-                            borderRadius: 50,
-                            //display: 'flex',
-                            justifyContent: "center",
-                            alignItems: "center"
-                        }}>
-                            <FontAwesomeIcon icon={faExclamationCircle} size={40}></FontAwesomeIcon>
-                        </View>
-
+                    <View>
                         <Text style={{
-                            marginTop: 5,
                             fontSize: 18,
-                            textAlign: "center"
                         }}>{props.title}</Text>
 
                         <Text style={{
                             fontSize: 12,
-                            textAlign: "center"
                         }}>{props.description} </Text>
+                    </View>
+
+                    <View style={{
+                        marginRight: 15,
+                        height: 35,
+                        width: 35,
+                        opacity: 0.40,
+                        backgroundColor: props.colorComponent,
+                        borderRadius: 50,
+                        //display: 'flex',
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}>
+                        <FontAwesomeIcon icon={faExclamationCircle} size={25}></FontAwesomeIcon>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -104,15 +99,23 @@ const HomeScreen = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={props.onClick}>
                 <View style={{
-                    height: 65,
-                    borderRadius: 10,
-                    marginTop: 10,
+                    height: 55,
+                    borderRadius: 15,
                     width: screenWidth,
-                    backgroundColor: '#e1e1e1',
+                    marginBottom: 7.5,
+                    backgroundColor: props.color,
                     display: "flex",
                     alignItems: "center",
-                    flexDirection: "row"
+                    justifyContent: "space-between",
+                    flexDirection: "row",
+                    paddingLeft: 20,
                 }}>
+                    <Text style={{
+                        fontSize: 18,
+                        textAlign: "center",
+                        color: 'white'
+                    }}>{props.title}</Text>
+                                        
                     <View style={{
                         justifyContent: "center",
                         alignItems: "center",
@@ -123,15 +126,11 @@ const HomeScreen = ({ navigation }) => {
                         opacity: 0.5,
                     }}>
                         { props.fontAwesome && 
-                            <FontAwesomeIcon icon={props.fontAwesome} size={30} style={{ color: props.color }} />
+                            <FontAwesomeIcon icon={props.fontAwesome} size={25} style={{ color: "#ffffff" }} />
                         }
                     </View>
-
-                    <Text style={{
-                        fontSize: 20,
-                        textAlign: "center"
-                    }}>{props.title}</Text>
                 </View>
+                
             </TouchableOpacity>
         );
     }
@@ -148,15 +147,6 @@ const HomeScreen = ({ navigation }) => {
                 paddingLeft: 35
             }}>
 
-                <View style={{
-                    height: 185,
-                    width: screenWidth,
-                    backgroundColor: '#e1e1e1',
-                    borderRadius: 10,
-                    padding: 10,
-                    display: 'flex',
-                    flexDirection: 'row'
-                }}>
                     {   statusHelp == false && statusSend == false &&
                         <>
                             <AlertProps 
@@ -202,9 +192,10 @@ const HomeScreen = ({ navigation }) => {
                             <View style={{
                                 padding: 5,
                                 height: 165,
-                                width: screenWidth - 20,
-                                borderRadius: 10,
-                                backgroundColor: returnColor(createAlertLevel)
+                                width: screenWidth,
+                                borderRadius: 15,
+                                marginBottom: 7.5,
+                                backgroundColor: returnColor(alertDataHelp.level)
                             }}>
                                 <View style={{
                                     display: "flex",
@@ -264,8 +255,9 @@ const HomeScreen = ({ navigation }) => {
                             <View style={{
                                 padding: 5,
                                 height: 165,
-                                width: screenWidth - 20,
-                                borderRadius: 10,
+                                width: screenWidth,
+                                borderRadius: 15,
+                                marginBottom: 7.5,
                                 backgroundColor: returnColor(createAlertLevel)
                             }}>
                                 <View style={{
@@ -336,28 +328,30 @@ const HomeScreen = ({ navigation }) => {
                             </View>  
                         </TouchableOpacity>
                     }
-                </View>
-
-                <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('GDPS')}} fontAwesome={faFirstAid} color="#008b00" title={I18n.t("gdps")} />
-                <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('NDU')}} fontAwesome={faPhoneAlt} color="#d80000" title={I18n.t("ndu")} />
       
                 <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
                     <View style={{
                         height: Dimensions.get('window').height > 695 ? 170: 135,
-                        marginTop: 10,
+                        marginTop: 7.5,
                         borderRadius: 10,
                         width: screenWidth,
                         backgroundColor: '#e1e1e1',
                     }}>
-                        <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170: 145} width={screenWidth} />
+                        <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170: 135} width={screenWidth} />
                     </View>
                 </TouchableOpacity>
- 
-                { Dimensions.get('window').height > 695 &&
-                    <>
+
+                
+                <View style={{marginTop: 15}}>
+                    <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('GDPS')}} fontAwesome={faFirstAid} color="#008b00" title={I18n.t("gdps")} />
+                    <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('NDU')}} fontAwesome={faPhoneAlt} color="#d80000" title={I18n.t("ndu")} />
+        
+                    { Dimensions.get('window').height > 695 &&
                         <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('Alert')}} fontAwesome={faBell} color="#1f7ceb" title="Listes des alertes" />
-                    </>
-                }
+                    }
+                </View>
+ 
+
             </View>
         </View>
     );

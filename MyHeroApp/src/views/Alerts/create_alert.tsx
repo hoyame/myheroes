@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { setSendAlertData } from '../../data/actions/user';
 import MyHeroAlerts from '../../api/Alerts';
 import I18n from '../../i18n/i18n';
+import BottomComponent from '../../components/Bottom';
+import FondComponent from '../../components/Fond';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
@@ -77,29 +79,21 @@ const CreateAlertScreen = ({ navigation }) => {
                     }}
                 >
                     <View style={{
-                        paddingLeft: 35,
-                        paddingRight: 35
+                        padding: 35,
+                        paddingTop: 15,
                     }}>
-                        <View style={{}}>
+
+                        <View>
                             <View style={{
                                 marginBottom: 15,
                                 height: 100,
-                                borderRadius: 8,
+                                borderRadius: 15,
+                                paddingLeft: 25,
                                 display: "flex",
                                 flexDirection: 'row',
-                                backgroundColor: "#e1e1e1"
+                                justifyContent: "space-between",
+                                backgroundColor: color
                             }}>
-                                <View style={{
-                                    height: 100,
-                                    width: 100,
-                                    borderRadius: 100,
-                                    opacity: 0.60,
-                                    justifyContent: "center",
-                                    alignItems: "center"
-                                }}>
-                                    <FontAwesomeIcon icon={faExclamationCircle} size={55} style={{ color: color }}></FontAwesomeIcon>
-                                </View>
-
                                 <View style={{
                                     justifyContent: "center",
                                 }}>
@@ -112,15 +106,26 @@ const CreateAlertScreen = ({ navigation }) => {
                                         fontSize: 12
                                     }}>{description}</Text>
                                 </View>
+
+                                <View style={{
+                                    height: 100,
+                                    width: 90,
+                                    borderRadius: 100,
+                                    opacity: 0.60,
+                                    justifyContent: "center",
+                                    alignItems: "center"
+                                }}>
+                                    <FontAwesomeIcon icon={faExclamationCircle} size={50} style={{ color: "#ffffff" }}></FontAwesomeIcon>
+                                </View>
                             </View>
                                 
                             <View style={{
                                 height: 60,
                                 marginBottom: 15,
-                                borderRadius: 8,
+                                borderRadius: 15,
                                 padding: 10,
                                 justifyContent: "center",
-                                backgroundColor: "#0077be"
+                                backgroundColor: "#FC9A21"
                             }}>
                                 <Text style={{
                                     textAlign: "center",
@@ -130,10 +135,10 @@ const CreateAlertScreen = ({ navigation }) => {
                             </View>
 
                             <View>
-                                <InputComponent height={150} name={I18n.t("description")} placeholder={I18n.t("descDescription")} value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
+                                <InputComponent height={65} name={I18n.t("description")} placeholder={I18n.t("descDescription")} value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
                             </View>
 
-                            <TouchableOpacity onPress={() => {
+                            <BottomComponent title={I18n.t("alertLaunch")} onClick={() => {
                                 MyHeroAlerts.SendAlert({
                                     level: alertLevelSe,
                                     source: nameSe,
@@ -149,22 +154,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                     longitude: longitude,    
                                     description: state.description
                                 } })) 
-
-                            }} >
-                                <View style={{
-                                    height: 60,
-                                    marginBottom: 15,
-                                    borderRadius: 8,
-                                    padding: 10,
-                                    justifyContent: "center",
-                                    backgroundColor: "#e1e1e1"
-                                }}>
-                                    <Text style={{
-                                        textAlign: "center",
-                                        fontSize: 25      
-                                    }}>{I18n.t("alertLaunch")}</Text>
-                                </View>
-                            </TouchableOpacity>
+                            }}/>
                         </View>
                     </View>
                 </KeyboardAvoidingView>

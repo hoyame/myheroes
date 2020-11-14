@@ -344,8 +344,6 @@ const HeaderComponent = (props: IHeader) => {
                                     {ReturnStars({rate: rate}) }
                                 </View>
                             </View>
-                            
-
                         </View>
                     </TouchableOpacity>   
                 </View>

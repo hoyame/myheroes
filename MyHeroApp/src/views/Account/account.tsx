@@ -1,4 +1,4 @@
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faBaby, faBed, faBiking, faBlind, faBold, faCut, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
@@ -44,12 +44,14 @@ const AccountScreen = ({ navigation }) => {
     })
 
     interface IStars {
-        rate: number
+        rate: number;
+        size?: number;
     }
 
     const ReturnStars = (props: IStars) => {
         const rate = props.rate || 0
         const color = "#febc00"
+        const size = props.size || 20
 
         switch (rate) {
             case 1: 
@@ -58,11 +60,11 @@ const AccountScreen = ({ navigation }) => {
                         display: "flex",
                         flexDirection: "row"
                     }}>
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
                     </View>
                 );
             case 2: 
@@ -71,11 +73,11 @@ const AccountScreen = ({ navigation }) => {
                         display: "flex",
                         flexDirection: "row"
                     }}>
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
                     </View>
                 );
             case 3:
@@ -84,11 +86,11 @@ const AccountScreen = ({ navigation }) => {
                         display: "flex",
                         flexDirection: "row"
                     }}>
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
                     </View>
                 );
             case 4:
@@ -97,11 +99,11 @@ const AccountScreen = ({ navigation }) => {
                         display: "flex",
                         flexDirection: "row"
                     }}>
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
                     </View>
                 );
             case 5:
@@ -110,11 +112,11 @@ const AccountScreen = ({ navigation }) => {
                         display: "flex",
                         flexDirection: "row"
                     }}>
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
                     </View>
                 );
             default: 
@@ -123,11 +125,11 @@ const AccountScreen = ({ navigation }) => {
                         display: "flex",
                         flexDirection: "row"
                     }}>
-                        <FontAwesomeIcon icon={Zei} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
-                        <FontAwesomeIcon icon={Zeo} size={20} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zei} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
+                        <FontAwesomeIcon icon={Zeo} size={size} style={{color: color}} />
                     </View>
                 );
         }
@@ -136,50 +138,62 @@ const AccountScreen = ({ navigation }) => {
     const AvisProps = () => {
         return (
             <View style={{
-                display: "flex",
-                flexDirection: "row",
-                height: 105,
+                height: 150,
+                width: screenWidth,
                 marginBottom: 10,
                 borderRadius: 7.5,
-                backgroundColor: '#c2c2c2'
+                padding: 13,
+                backgroundColor: '#353A50'
             }}>
                 <View style={{
-                    height: 105,
-                    width: 105,
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
+                    flexDirection: "row",
                 }}>
-                    <Image
-                        style={{
-                            height: 73,
-                            width: 73,
-                            borderRadius: 50,
-                        }}
-                    
-                        source={{
-                            uri: 'https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128',
-                        }}
-                    />
+                    <View style={{
+                        height: 50,
+                        width: 50,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}>
+                        <Image
+                            style={{
+                                height: 45,
+                                width: 45,
+                                borderRadius: 50,
+                            }}
+                        
+                            source={{
+                                uri: 'https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128',
+                            }}
+                        />
+                    </View>
+
+                    <View style={{
+                        paddingTop: 3,
+                        paddingLeft: 10
+                    }}>
+                        <Text style={{
+                            fontSize: 16,
+                            marginBottom: 3,
+                            color: "white"
+                        }}>Jibril</Text>
+
+                        <ReturnStars size={15} rate={1} />
+
+                    </View>
                 </View>
 
-                <View style={{
-                    padding: 10
-                }}>
-                    <Text style={{
-                        fontSize: 16,
-                        marginBottom: 3
-                    }}>Jibril</Text>
 
-                    <ReturnStars rate={1} />
-
+                <View>
                     <Text style={{
                         fontSize: 12,
-                        width: 130,
-                        marginTop: 4
-                    }}>Très bonne personne, m'a aidé, il a été très efficace</Text>
-    
-
+                        width: screenWidth - 20,
+                        marginTop: 4,
+                        color: "rgba(255, 255, 255, 0.75)"
+                    }}>Gros pervers, il a voulu me violer, on voit que c'est un gros chien affamer,
+                    copine l'avais quitter, je la comprend vu sa tete de rat enfumée et ses airs pervers... il ma toucher la
+                    foufoune a plusieurs reprises, a s'en mefier....</Text>
                 </View>
             </View>
         );
@@ -187,80 +201,70 @@ const AccountScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent title={I18n.t("account")} navigation={navigation} />
+            <HeaderComponent title='' navigation={navigation} />
 
             <View style={{
+                marginTop: -30,
                 paddingLeft: 35,
                 paddingRight: 35,
                 paddingBottom: 35
             }}>
+                <ScrollView>
+
                 <View style={{
-                    marginTop: 15,
-                    display: "flex",
-                    flexDirection: "column"
+                    alignItems: 'center',
                 }}>
+                    <Image
+                        style={{
+                            height: 110,
+                            width: 110,
+                            borderRadius: 15,
+                            marginBottom: 12.5,
+                        }}
 
-                    { Dimensions.get('window').height > 695 && 
-                        <AccountStats name={name} xp={xp} rate={rate} img={img} />
-                    }
+                        source={{
+                            uri: img,
+                        }}
+                    />
+
+                    <Text style={{
+                        fontSize: 25,
+                        color: "#454F63"
+                    }}>{name}</Text>
+
+                    <Text style={{
+                        fontSize: 17.5,
+                        marginBottom: 12.5,
+                        color: "#454F63"
+                    }}>Sevran, FR</Text>
+
+                    <ReturnStars rate={rate} />
 
                     <View style={{
-                        padding: 15,
-                        marginTop: 15,
-                        borderRadius: 7.5,
-                        backgroundColor: '#e1e1e1',
-                        height: 75
+                        height: 60,
+                        borderRadius: 15,
+                        marginBottom: 12.5,
+                        marginTop: 12.5,
+                        width: screenWidth,
+                        backgroundColor: "#ffffff",
+                        alignItems: 'center',
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: 'row'
                     }}>
-                        <Text style={{fontSize: 20, marginBottom: 15}}>{I18n.t("accountTrophes")}</Text>
-                        
-                        <ScrollView>
-   
-                        </ScrollView>
+                        <FontAwesomeIcon icon={faBold} size={25} style={{color: "#008B00", marginRight: 7.5}} />
+                        <FontAwesomeIcon icon={faBiking} size={25} style={{color: "#FCCA1C", marginRight: 7.5}} />
+                        <FontAwesomeIcon icon={faBaby} size={25} style={{color: "#1F7CEB", marginRight: 7.5}} />
+                        <FontAwesomeIcon icon={faBed} size={25} style={{color: "#B0F50A", marginRight: 7.5}} />
+                        <FontAwesomeIcon icon={faBlind} size={25} style={{color: "#E63B25", marginRight: 7.5}} />
+                        <FontAwesomeIcon icon={faCut} size={25} style={{color: "#FC9A21", marginRight: 7.5}} />
                     </View>
 
-                    <View style={{
-                        padding: 15,
-                        marginTop: 15,
-                        borderRadius: 7.5,
-                        backgroundColor: '#e1e1e1',
-                        height: Dimensions.get('window').height > 695 ? 300 : 250
-                    }}>
-                        <Text style={{fontSize: 20, marginBottom: 15}}>{I18n.t("accountAvis")}</Text>
-                        
-                        <ScrollView>
-                            <AvisProps />
-                            <AvisProps />
-                            <AvisProps />
-                            <AvisProps />
-                            <AvisProps />
-                            <AvisProps />
-                        </ScrollView>
-                    </View>
+                    <AvisProps />
 
-                    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-                        <View style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            height: 60, 
-                            width: screenWidth,
-                            borderRadius: 7.5,
-                            marginTop: 10,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: '#1d1d1d'           
-                        }}>
-                            <FontAwesomeIcon icon={faHome} size={25} style={{
-                                color: '#ffffff',
-                                marginRight: 15
-                            }}/>
-
-                            <Text style={{
-                                fontSize: 25,
-                                color: '#ffffff'
-                            }}>{I18n.t("acceuil")}</Text>
-                        </View>
-                    </TouchableOpacity>
                 </View>
+                    </ScrollView>
+
             </View>
         </>
     );

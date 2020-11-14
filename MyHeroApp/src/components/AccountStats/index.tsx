@@ -105,15 +105,15 @@ const AccountStats = (props: IAccount) => {
     }
 
     return (
-        <>
+        <TouchableOpacity>
             <View style={{
                 padding: 15,
                 display: "flex",
                 flexDirection: "row",
                 width: screenWidth,
                 height: 110,
-                borderRadius: 10,
-                backgroundColor: "#e1e1e1"
+                borderRadius: 15,
+                backgroundColor: '#353A50'
             }}>
                 <View style={{
                     height: 80,
@@ -126,18 +126,16 @@ const AccountStats = (props: IAccount) => {
                         height: 80,
                         width: 80,
                         
-                        borderRadius: 50,
-                        borderColor: "#6d9bff",
-                        borderWidth: 2,
+                        borderRadius: 15,
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center"
                     }}>
                         <Image
                             style={{
-                                height: 73,
-                                width: 73,
-                                borderRadius: 50,
+                                height: 80,
+                                width: 80,
+                                borderRadius: 10,
                             }}
                         
                             source={{
@@ -149,7 +147,7 @@ const AccountStats = (props: IAccount) => {
 
                 <View>
                     <Text style={{
-                        //color: "#6d9bff",
+                        color: "#ffffff",
                         marginBottom: 2,
                         fontSize: 20
                     }}>{props.name}</Text>
@@ -167,7 +165,7 @@ const AccountStats = (props: IAccount) => {
                     </View>
                 </View>
             </View>
-        </>  
+        </TouchableOpacity>  
     );
 }
 

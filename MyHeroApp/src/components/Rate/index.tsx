@@ -194,20 +194,19 @@ const RateComponent = (props: IRate) => {
     }
 
     return (
-        <>
             <View style={{
+                display: "flex",
                 height: 150,
-                //backgroundColor: '#e1e1e1',
                 borderRadius: 8,
                 marginBottom: 15
             }}>
                 <Text style={{
                     textAlign: "center",
-                    fontSize: 20
+                    fontSize: 20,
+                    marginBottom: 15
                 }}>{props.title}</Text>
 
                 <View style={{
-                    marginTop: 7.5,
                     alignItems: "center"
                 }}>
                     <ReturnStars rate={rate}/>
@@ -216,7 +215,7 @@ const RateComponent = (props: IRate) => {
                         marginTop: 25,
                     }}>
                         <InputComponent 
-                            height={150} 
+                            height={65} 
                             name={props.title}
                             placeholder={props.placeholder}
                             value={description} 
@@ -228,21 +227,20 @@ const RateComponent = (props: IRate) => {
 
                 <TouchableOpacity onPress={props.onClick}>
                     <View style={{
-                        height: 50,
-                        marginBottom: 10,
-                        borderRadius: 8,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: "#e1e1e1"
-                    }}>
-                        <Text style={{
-                            textAlign: "center",
-                            fontSize: 22      
-                        }}>Publier</Text>
-                    </View>
+                            height: 60, 
+                            borderRadius:15,
+                            marginTop: 5,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#3497FD'      
+                        }}>
+                            <Text style={{
+                                fontSize: 25,
+                                color: "#ffffff",
+                            }}>Publier</Text>
+                        </View>
                 </TouchableOpacity>
             </View>
-        </>
     );
 }
 

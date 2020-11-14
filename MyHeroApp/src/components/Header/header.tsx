@@ -5,7 +5,7 @@ import React from 'react';
 import { View, Text, TouchableHighlight, Image, ActivityIndicator } from 'react-native';
 import { Dimensions } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faBars, faAlignLeft, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faAlignLeft, faHome, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -69,13 +69,14 @@ const HeaderComponent = (props: IHeader) => {
                     alignItems: "center",
                 }}>
                     <TouchableOpacity onPress={() => props.navigation.navigate(navCache)}>
-                        <FontAwesomeIcon icon={faArrowAltCircleLeft} size={45} style={{color: "#434343", marginRight: 20}} />
+                        <FontAwesomeIcon icon={faArrowLeft} size={28} style={{color: "#434343", marginRight: 20}} />
                     </TouchableOpacity>
 
                     <View>   
                         <Text style={{
                             width: Dimensions.get('window').width - 100, 
-                            fontSize: 35
+                            fontSize: 35,
+                            color: "#434343"
                         }}>{props.title}</Text>
                     </View>
                 </View>
