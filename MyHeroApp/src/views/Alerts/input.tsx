@@ -1,11 +1,10 @@
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react"
-import { StyleSheet, View, Text, Dimensions, TextInput } from "react-native"
-import I18n from '../../i18n/i18n';
-
+import { StyleSheet, View, Text, Dimensions, TextInput, Platform } from "react-native"
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
+
 
 interface IInput {
     name: string;
@@ -14,6 +13,7 @@ interface IInput {
     placeholder: string;
     icon: any;
     height?: number;
+    password?: boolean;
 }
 
 const InputComponent = (props: IInput) => {
@@ -30,11 +30,16 @@ const InputComponent = (props: IInput) => {
             flexDirection: "row",
             height: height, 
             width: screenWidth,
-            borderColor: 'gray', 
-            borderWidth: 1,
-            borderRadius: 10,
-            marginBottom: 15,
-            //paddingLeft: 20
+            backgroundColor:"white",
+            alignItems: "flex-start",
+            borderRadius: 15,
+            padding:10,
+            elevation: 10,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 3 },
+            shadowOpacity: 0.5,
+            shadowRadius: 5, 
+            marginBottom: 15
         },
     
         ICON: {
@@ -45,38 +50,17 @@ const InputComponent = (props: IInput) => {
     return (
         <>
             <View style={STYLES.INPUT}>
-                <View style={{
-                    height: 65, 
-                    width: 65, 
-                    borderRadius: 10, 
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}>
-                    <FontAwesomeIcon icon={props.icon} size={25} style={STYLES.ICON} />
-                </View>
+                <TextInput
+                    style={{
+                        fontSize: 17.5,
+                        width: screenWidth - 22,
 
-                <View style={{
-                    marginTop: 10
-                    //justifyContent: "center",
-                }}>
-                    <Text style={{ 
-                        marginLeft: 5,
-                        marginTop: 3,
-                        marginBottom: -8,
-                        color: "#6d9bff" 
-                        }}>{props.name}</Text>
-                    <TextInput
-                        style={{
-                            fontSize: 20,
-                            width: screenWidth - 75
-                        }}
-                        multiline={true} 
-                        //numberOfLines={} 
-                        placeholder={props.placeholder}
-                        onChangeText={text => props.onChange(text)}
-                        value={props.value}
-                    />
-                </View>
+                    }}
+                    placeholder={props.placeholder}
+                    onChangeText={text => props.onChange(text)}
+                    value={props.value}
+                    secureTextEntry={props.password == true ? true : false }
+                />
             </View>
         </>
     );
