@@ -2,15 +2,32 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity, Linking } from 'react-native';
 import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
-import CheckBox from '@react-native-community/checkbox';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
 import { setHelpAlertData, setSendAlertData } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import MyHeroAlerts from '../../api/Alerts';
 import I18n from '../../i18n/i18n';
+import CheckBoxComponent from '../../components/Checkbox';
+import BottomComponent from '../../components/Bottom';
+import { faUser, faQuestionCircle, faFileAlt } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { PulseIndicator } from 'react-native-indicators';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
+
+
+const returnColor = (alert: number) => {
+    switch (alert) {
+        case 1: 
+            return "#ffd100";
+        case 2: 
+            return "#ff9600";
+        case 3:
+            return "#d80000";
+        default: return "";
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -20,8 +37,9 @@ const styles = StyleSheet.create({
     },
     checkboxContainer: {
       flexDirection: "row",
-      marginTop: 20,
-      marginBottom: 20,
+      alignItems: "center",
+      marginTop: 7.5,
+      marginBottom: 15,
     },
     checkbox: {
       alignSelf: "center",
@@ -29,7 +47,7 @@ const styles = StyleSheet.create({
     },
     label: {
       margin: 8,
-      fontSize: 16
+      fontSize: 20
     },
 });
 
@@ -37,6 +55,9 @@ const styles = StyleSheet.create({
 export const SenderAcceptAlertPage = ({ navigation }) => {
     const [isSelected, setSelection] = useState(false);
     const alerts = useReduxState(state => state.user.send);
+    const alertDataHelp = useReduxState(state => state.user.showAlert);
+    const alertDataSend = useReduxState(state => state.user.send);
+    const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const dispatch = useDispatch();
 
     return (
@@ -49,36 +70,81 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
             }}>
                 <AccountStats name="hoyame" xp="5132" rate={3} img="https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png" />
                 
+                <View style={{
+                    padding: 5,
+                    height: 165,
+                    width: screenWidth,
+                    borderRadius: 15,
+                    marginTop: 10,
+                    marginBottom: 7.5,
+                    backgroundColor: returnColor(createAlertLevel)
+                }}>
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        margin: 10
+                    }}>
+                        <PulseIndicator color='white' />
+                        <Text style={{
+                            marginTop: 6,
+                            marginLeft: 5,
+                            color: 'white',
+                            fontSize: 20
+                        }}>{I18n.t("alertInProgress")}</Text>
+                        </View>
+                    <View style={{
+                        marginLeft: 30
+                    }}>
+                        <View style={{
+                            marginBottom: 10,
+                            display: "flex",
+                            flexDirection: "row"
+                        }}>
+                            <FontAwesomeIcon icon={faUser} style={{
+                                color: 'white'
+                            }} />
+                            <Text style={{
+                                color: 'white',
+                                marginLeft: 5
+                            }}>.......</Text>
+                        </View>
+                        <View style={{
+                            marginBottom: 10,
+                            width: screenWidth - 80,
+                            display: "flex",
+                            flexDirection: "row"
+                        }}>
+                            <FontAwesomeIcon icon={faQuestionCircle} style={{
+                                color: 'white'
+                            }} />
+                            
+                            <Text style={{
+                                color: 'white',
+                                marginLeft: 5
+                            }}>En attente</Text>
+                        </View>
+                        <View style={{
+                            width: screenWidth - 80,
+                            display: "flex",
+                            flexDirection: "row"
+                        }}>
+                            <FontAwesomeIcon icon={faFileAlt} style={{
+                                color: 'white'
+                            }} />
+                            <Text style={{
+                                color: 'white',
+                                marginLeft: 5
+                            }}>{alertDataSend.data.description}</Text>
+                        </View>
+                    </View>
+                </View> 
+                                            
                 <View style={styles.checkboxContainer}>
-                    <CheckBox
-                      value={isSelected}
-                      onValueChange={setSelection}
-                      style={styles.checkbox}
-                      tintColors={{ true: '#6d9bff', false: '#6d9bff' }}
-                    />
+                    <CheckBoxComponent />
                     <Text style={styles.label}>{I18n.t("alertActivCam")}</Text>
                 </View>
 
-                <View style={{
-                    height: 170,
-                    borderRadius: 10,
-                    marginBottom: 10,
-                    width: screenWidth,
-                    backgroundColor: '#e1e1e1',
-                    display: "flex",
-                    justifyContent: "center"
-                }}>
-                    <Text style={{
-                        color: "#6d9bff",
-                        fontSize: 30,
-                        marginBottom: 10,
-                        textAlign: "center"
-                    }}>{I18n.t("alertApercCam")}</Text>
-
-                    <ActivityIndicator size="large" color="#6d9bff" />
-                </View>
-
-                <TouchableOpacity onPress={() => {
+                <BottomComponent title={I18n.t("alertNotDanger")} onClick={() => {
                     dispatch(setSendAlertData({status: false, data: {
                         id: 0,
                         level: 0,
@@ -95,23 +161,11 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         description: alerts.data.description
                     })
                     navigation.navigate('Home') 
-                }}>
-                    <View style={{
-                        height: 50,
-                        marginBottom: 10,
-                        borderRadius: 8,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: "#e1e1e1"
-                    }}>
-                        <Text style={{
-                            textAlign: "center",
-                            fontSize: 20      
-                        }}>{I18n.t("alertNotDanger")}</Text>
-                    </View>
-                </TouchableOpacity>
+                }}/>
 
-                <TouchableOpacity onPress={() => {
+                <View style={{marginBottom: 10}}></View>
+                
+                <BottomComponent title={I18n.t("alertSave")} onClick={() => {
                     dispatch(setSendAlertData({status: false, data: {
                         id: 0,
                         level: 0,
@@ -128,21 +182,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         description: alerts.data.description
                     })
                     navigation.navigate('EndAlertScreen') 
-                }}>
-                    <View style={{
-                        height: 50,
-                        marginBottom: 10,
-                        borderRadius: 8,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: "#e1e1e1"
-                    }}>
-                        <Text style={{
-                            textAlign: "center",
-                            fontSize: 22      
-                        }}>{I18n.t("alertSave")}</Text>
-                    </View>
-                </TouchableOpacity>
+                }}/>
             </View>
         </>
     );
@@ -150,6 +190,9 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
 
 export const HelperAcceptAlertPage = ({ navigation }) => {
     const alerts = useReduxState(state => state.user.help);
+    const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
+    const alertDataHelp = useReduxState(state => state.user.showAlert);
+
     const dispatch = useDispatch();
 
     return (
@@ -161,63 +204,85 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 paddingRight: 35,
             }}>
                 <View style={{
-                    marginBottom: 10
+                    padding: 5,
+                    height: 165,
+                    width: screenWidth,
+                    borderRadius: 15,
+                    marginBottom: 10,
+                    backgroundColor: returnColor(alertDataHelp.level),
                 }}>
-                    <AccountStats name={alerts.data.source} xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
-                </View>
-
-                <View>
-                    <AlertInformationProps level={alerts.data.level} sender={alerts.data.source} avatar="" distance="510" />
-                </View>
-
-                <View style={{
-                    marginBottom: 0
-                }}>
-                    <Text style={{
-                        fontSize: 16,
-                        color: "#000000",
-                        marginBottom: 10
+                    <View style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        margin: 10
                     }}>
-                        {I18n.t("description")}: {alerts.data.description}
-                    </Text>
-                </View>
+                        <PulseIndicator color='white' />
+                        <Text style={{
+                            marginTop: 6,
+                            marginLeft: 5,
+                            color: 'white',
+                            fontSize: 20
+                        }}>{I18n.t("alertInProgress")}</Text>
+                    </View>
+                    <View style={{
+                        marginLeft: 30
+                    }}>
+                        <View style={{
+                            marginBottom: 10,
+                            display: "flex",
+                            flexDirection: "row"
+                        }}>
+                            <FontAwesomeIcon icon={faUser} style={{
+                                color: 'white'
+                            }} />
+                            <Text style={{
+                                color: 'white',
+                                marginLeft: 5
+                            }}>{alertDataHelp.source}</Text>
+                        </View>
+                        <View style={{
+                            width: screenWidth - 80,
+                            display: "flex",
+                            flexDirection: "row"
+                        }}>
+                            <FontAwesomeIcon icon={faFileAlt} style={{
+                                color: 'white'
+                            }} />
+                            <Text style={{
+                                color: 'white',
+                                marginLeft: 5
+                            }}>{alertDataHelp.description}</Text>
+                        </View>
+                    </View>
+                </View>  
 
                 <View style={{
                     height: 140,
                     borderRadius: 10,
                     marginBottom: 10,
                     width: screenWidth,
-                    backgroundColor: '#e1e1e1',
+                    elevation:10,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 3 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 5, 
+                    backgroundColor: '#ffffff',
                     display: "flex",
                     justifyContent: "center"
                 }}>
                     <Text style={{
-                        color: "#6d9bff",
+                        color: "#3497FD",
                         fontSize: 30,
                         marginBottom: 10,
                         textAlign: "center"
                     }}>{I18n.t("alertApercCam")}</Text>
 
-                    <ActivityIndicator size="large" color="#6d9bff" />
+                    <ActivityIndicator size="large" color="#3497FD" />
                 </View>
 
-                <TouchableOpacity onPress={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)}>
-                    <View style={{
-                        height: 50,
-                        marginBottom: 10,
-                        borderRadius: 8,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: "#e1e1e1"
-                    }}>
-                        <Text style={{
-                            textAlign: "center",
-                            fontSize: 22      
-                        }}>{I18n.t("alertLancerItt")}</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => {
+                <BottomComponent title={I18n.t("alertLancerItt")} onClick={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)}/>
+                <View style={{marginBottom: 10}}></View>
+                <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
                     dispatch(setHelpAlertData({status: false, data: {
                         id: 0,
                         level: 0,
@@ -227,21 +292,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         description: ""
                     }}))              
                     navigation.navigate('Home')  
-                }}>
-                    <View style={{
-                        height: 50,
-                        marginBottom: 10,
-                        borderRadius: 8,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: "#e1e1e1"
-                    }}>
-                        <Text style={{
-                            textAlign: "center",
-                            fontSize: 22      
-                        }}>{I18n.t("alertAbbandoner")}</Text>
-                    </View>
-                </TouchableOpacity>
+                }}/>
             </View>
         </>
     );
