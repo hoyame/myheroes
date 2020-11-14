@@ -12,6 +12,7 @@ import { MyHeroService } from '../../api/Service';
 import I18n from '../../i18n/i18n';
 import { Langues } from '../../data/langues';
 import ButtonComponent from '../../components/Button';
+import FondComponent from '../../components/Fond';
 
 const styles = StyleSheet.create({
     container: {
@@ -108,33 +109,7 @@ const ParametresScreen = ({ navigation }) => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <FontAwesomeIcon icon={faCircle} size={250} style={{
-                    position: 'absolute',
-                    top: 150,
-                    right: -150,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={150} style={{
-                    position: 'absolute',
-                    top: 260,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    bottom: -60,
-                    right: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    top: -60,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
+                <FondComponent />
 
                 <Text style={{
                     color: "#000000",
@@ -210,33 +185,8 @@ const ParametresScreen = ({ navigation }) => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <FontAwesomeIcon icon={faCircle} size={250} style={{
-                    position: 'absolute',
-                    top: 150,
-                    right: -150,
-                    color: "#3497FD"
-                }} />
+                <FondComponent />
 
-                <FontAwesomeIcon icon={faCircle} size={150} style={{
-                    position: 'absolute',
-                    top: 260,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    bottom: -60,
-                    right: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    top: -60,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
 
                 <Text style={{
                     color: "#000000",
@@ -314,33 +264,7 @@ const ParametresScreen = ({ navigation }) => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>     
-                            <FontAwesomeIcon icon={faCircle} size={250} style={{
-                    position: 'absolute',
-                    top: 150,
-                    right: -150,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={150} style={{
-                    position: 'absolute',
-                    top: 260,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    bottom: -60,
-                    right: -50,
-                    color: "#3497FD"
-                }} />
-
-                <FontAwesomeIcon icon={faCircle} size={120} style={{
-                    position: 'absolute',
-                    top: -60,
-                    left: -50,
-                    color: "#3497FD"
-                }} />
+                <FondComponent />
                 
                 <Text style={{
                     color: "#000000",
