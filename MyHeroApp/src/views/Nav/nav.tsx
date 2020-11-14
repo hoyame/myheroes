@@ -101,7 +101,7 @@ const NavScreen = ({ navigation }) => {
                 <View style={{
                     height: 70,
                     width: screenWidth - 70,
-                    borderRadius: 10,
+                    borderRadius: 15,
                     marginBottom: 15,
                     backgroundColor: props.color,
                     display: 'flex',
