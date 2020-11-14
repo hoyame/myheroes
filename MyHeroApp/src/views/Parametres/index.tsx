@@ -1,4 +1,4 @@
-import { faHome, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFont, faHome, faLock, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView } from 'react-native';
@@ -372,14 +372,16 @@ const ParametresScreen = ({ navigation }) => {
 
                     <Text style={{
                         fontSize: 17.5,
-                        marginBottom: 15,
+                        marginBottom: 30,
                         color: "#454F63"
                     }}>{mail}</Text>
                 </View>
 
-                <ButtonComponent />
-                <ButtonComponent />
-                <ButtonComponent />
+                <ButtonComponent onClick={() => setMdpS(true)} title={I18n.t("settingsChk1")} icon={faLock} color="#FCCA1C" />
+                <ButtonComponent onClick={() => setPictureS(true)} title={I18n.t("settingsChangerAvatar")} icon={faUser} color="#FC9A21" />
+                <ButtonComponent onClick={() => setPseudoS(true)} title={I18n.t("settingsChangerPseudo")} icon={faFont} color="#B0F50A" />
+                <ButtonComponent onClick={() => disconnect()} title={I18n.t("settingsSeDeco")} icon={faSignOutAlt} color="#E63B25" />
+                
             </View>  
         </>
     );
