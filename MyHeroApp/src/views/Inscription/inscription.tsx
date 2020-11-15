@@ -78,14 +78,14 @@ const InscriptionScreen = ({ navigation }) => {
         return (
             <>
                 <Text style={{
-                    color: "#6d9bff",
+                    color: "#3497FD",
                     fontSize: 30,                    
                     marginBottom: 10,
                     textAlign: "center"
                 }}>{I18n.t("welcomeMH")}</Text>
       
                 <Text style={{
-                    color: "#6d9bff",
+                    color: "#3497FD",
                     fontSize: 25,
                     marginBottom: 30,
                     textAlign: "center"
@@ -103,7 +103,7 @@ const InscriptionScreen = ({ navigation }) => {
                 alignItems: "center"
             }}>
                 <Ze />
-                <WaveIndicator color='#6d9bff' size={40} />
+                <WaveIndicator color='#3497FD' size={40} />
             </View>
         );
     }
@@ -149,7 +149,7 @@ const InscriptionScreen = ({ navigation }) => {
                         <Text>{I18n.t("inscriptionVAC")}</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('Connexion')}>
                             <Text style={{
-                                color: "#6d9bff"
+                                color: "#3497FD"
                             }}>{I18n.t("connexionTES")}</Text>
                         </TouchableOpacity>
                     </View>
@@ -217,7 +217,7 @@ const InscriptionScreen = ({ navigation }) => {
                             marginTop: 5,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: '#6d9bff'           
+                            backgroundColor: '#3497FD'           
                         }}>
                             <Text style={{
                                 fontSize: 25
