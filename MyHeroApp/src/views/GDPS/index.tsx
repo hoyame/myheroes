@@ -1,13 +1,16 @@
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { faFirstAid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import React from 'react';
-import { ScrollView, View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, View, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
 import ButtonComponent from '../../components/Button';
 import HeaderComponent from '../../components/Header/header';
 import I18n from '../../i18n/i18n';
 
 const GDPSPage = ({ navigation }) => {
+    const [state, setState] = useState(false);
+    const [page, setPage] = useState(2);
+
     interface IPropsNav {
         title: string;
         description?: string;
@@ -15,30 +18,34 @@ const GDPSPage = ({ navigation }) => {
         fontAwesome?: any;
     }
 
-    const PropsNav = (props: IPropsNav) => {
-        return (
-            <TouchableOpacity onPress={props.onClick}>
-                <View style={{
-                    height: 60,
-                    //width: screenWidth - 70,
-                    borderRadius: 10,
-                    marginBottom: 15,
-                    backgroundColor: '#E1E1E1',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: "center"
-                }}>
+    if (state == true) {
+        switch (page) {
+            case 1: // inconsience
+                return (
+                    <>
+                        <Text>zzfzf</Text>
+                    </>
+                );
+            case 2: // pls
+                return (
                     <View style={{
-                        paddingLeft: 15,
+                        display: "flex",
+                        alignItems: "center",
+                        paddingTop: 35                    
                     }}>
-                        <Text style={{
-                            fontSize: 24,
-                            color: "#222222"
-                        }}>{props.title}</Text>
+                        <Image 
+                            style={{height: '100%', width: '100%'}} 
+                            source={{uri: "https://cdn.discordapp.com/attachments/777534669544620043/777534952287764520/unnamed2.jpg"}} 
+                        />
                     </View>
-                </View>
-            </TouchableOpacity>
-        );
+                );    
+            default: return (
+                <>
+                    <Text>Erreur 200</Text>
+                </>
+            )
+            
+        }
     }
     
     return (
@@ -52,7 +59,7 @@ const GDPSPage = ({ navigation }) => {
                 marginBottom: 200   
             }}>
                 <ScrollView>
-                    <ButtonComponent onClick={() => null} title={I18n.t("gdpsInconsience")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => setState(true)} title={I18n.t("gdpsInconsience")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => null} title={I18n.t("gdpsPLS")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => null} title={I18n.t("gdpsMassageCardiaque")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => null} title={I18n.t("gdpsDefibrilateur")} icon={faFirstAid} color="#008b00" />
