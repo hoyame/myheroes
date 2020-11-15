@@ -13,6 +13,9 @@ import I18n from '../../i18n/i18n';
 import { Langues } from '../../data/langues';
 import ButtonComponent from '../../components/Button';
 import FondComponent from '../../components/Fond';
+import TitleComponent from '../../components/Title';
+import { setCacheNav } from '../../data/actions/user';
+import { useDispatch } from 'react-redux';
 
 const styles = StyleSheet.create({
     container: {
@@ -48,6 +51,7 @@ const ParametresScreen = ({ navigation }) => {
     const [pseudoS, setPseudoS] = useState(false);
     const [alertC, setAlertC] = useState(false);
     const [languageS, setLanguageS] = useState(false);
+    const dispatch = useDispatch();
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -162,6 +166,7 @@ const ParametresScreen = ({ navigation }) => {
                 alignItems: "center"
             }}>
                 <FondComponent />
+                <TitleComponent />
 
                 <Text style={{
                     color: "#000000",
@@ -238,7 +243,7 @@ const ParametresScreen = ({ navigation }) => {
                 alignItems: "center"
             }}>
                 <FondComponent />
-
+                <TitleComponent />
 
                 <Text style={{
                     color: "#000000",
@@ -317,7 +322,8 @@ const ParametresScreen = ({ navigation }) => {
                 alignItems: "center"
             }}>     
                 <FondComponent />
-                
+                <TitleComponent />
+
                 <Text style={{
                     color: "#000000",
                     fontSize: 35,
@@ -428,7 +434,7 @@ const ParametresScreen = ({ navigation }) => {
                     }}>{mail}</Text>
                 </View>
 
-                <ButtonComponent onClick={() => setLanguageS(true)} title={I18n.t("settingsLanguage")} icon={faLanguage} color="#1F7CEB" />
+                <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav')); setLanguageS(true) }} title={I18n.t("settingsLanguage")} icon={faLanguage} color="#1F7CEB" />
                 <ButtonComponent onClick={() => setMdpS(true)} title={I18n.t("settingsCSMDP")} icon={faLock} color="#FCCA1C" />
                 <ButtonComponent onClick={() => setPictureS(true)} title={I18n.t("settingsChangerAvatar")} icon={faUser} color="#FC9A21" />
                 <ButtonComponent onClick={() => setPseudoS(true)} title={I18n.t("settingsChangerPseudo")} icon={faFont} color="#B0F50A" />
