@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import * as Animatable from 'react-native-animatable';
 import FondComponent from '../../components/Fond';
+import TitleComponent from '../../components/Title';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -109,11 +110,12 @@ const ConnexionScreen = ({ navigation }) => {
                     alignItems: 'center'
                 }}>
                     <FondComponent />
+                    <TitleComponent />
 
                     <View style={{
                         display: "flex",
                         flexDirection: "row",
-                        marginBottom: 30
+                        marginBottom: 15
                     }}>
                         <TouchableOpacity onPress={() => { setConnexion(true); setInscription(false) }}>
                             <View style={{
@@ -150,11 +152,11 @@ const ConnexionScreen = ({ navigation }) => {
                     <Text style={{
                         fontSize: 35,
                         textAlign: 'center',
-                        marginBottom: 10
+                        marginBottom: 5
                     }}>{I18n.t("inscription")}</Text>
 
                     <Text style={{
-                        marginBottom: 30
+                        marginBottom: 20
                     }}>{I18n.t("inscriptionDesc")}</Text>
 
                     <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
@@ -163,7 +165,7 @@ const ConnexionScreen = ({ navigation }) => {
                     <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
                 
                     <View style={{
-                        marginTop: 15,
+                        marginTop: 5,
                         display: "flex",
                         flexDirection: "column"
                     }}>
@@ -269,7 +271,7 @@ const ConnexionScreen = ({ navigation }) => {
                 alignItems: 'center'
             }}>
                 <FondComponent />
-
+                <TitleComponent />
 
                 <View style={{
                     display: "flex",
