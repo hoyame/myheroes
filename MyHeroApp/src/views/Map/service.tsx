@@ -53,19 +53,19 @@ const MapComponent = (props: IMap) => {
         alignItems: "center"
       }}>
         <Text style={{
-            color: "#6d9bff",
+            color: "#3497FD",
             fontSize: 20,
             textAlign: "center"
         }}>Initialisation de</Text>
 
         <Text style={{
-            color: "#6d9bff",
+            color: "#3497FD",
             fontSize: 20,
             marginBottom: 10,
             textAlign: "center"
         }}>MyHeroService.Localisation</Text> 
         
-        <WaveIndicator color='#6d9bff' size={35} />
+        <WaveIndicator color='#3497FD' size={35} />
       </View> 
     )
   }
