@@ -33,13 +33,13 @@ const CreateAlertScreen = ({ navigation }) => {
                 alignItems: "center"
             }}>
                 <Text style={{
-                    color: "#6d9bff",
+                    color: "#3497FD",
                     fontSize: 30,
                     marginBottom: 30,
                     textAlign: "center"
                 }}>{I18n.t("chargement")}</Text>
                     
-                <WaveIndicator color='#6d9bff' size={40} />
+                <WaveIndicator color='#3497FD' size={40} />
             </View>
         );
     }
