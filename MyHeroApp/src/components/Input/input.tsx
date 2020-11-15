@@ -42,7 +42,7 @@ const InputComponent = (props: IInput) => {
         },
     
         ICON: {
-            color: "#6d9bff"
+            color: "#3497FD"
         }
     });
 
