@@ -123,7 +123,7 @@ const Controller = () => {
             }}>{I18n.t("initMHServ")}</Text>
 
             <Text style={{
-                color: "#6d9bff",
+                color: "#3497FD",
                 fontSize: 30,
                 marginBottom: 30,
                 textAlign: "center"
