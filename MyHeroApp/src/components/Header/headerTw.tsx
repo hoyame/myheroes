@@ -203,10 +203,10 @@ const HeaderComponent = (props: IHeader) => {
                                     alignItems: "center",
                                     marginLeft: 2
                                 }}>
-                                    <ActivityIndicator size="small" color="#6d9bff" />
+                                    <ActivityIndicator size="small" color="#3497FD" />
 
                                     <Text style={{
-                                        color: "#6d9bff",
+                                        color: "#3497FD",
                                         fontSize: 15,
                                         marginLeft: 3,
                                         textAlign: "center"
@@ -329,7 +329,7 @@ const HeaderComponent = (props: IHeader) => {
                                 marginLeft: 12
                             }}>
                                 <Text style={{
-                                    //color: "#6d9bff",
+                                    //color: "#3497FD",
                                     marginBottom: 1,
                                     fontSize: 16
                                 }}>{name}</Text>
