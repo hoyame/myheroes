@@ -448,7 +448,7 @@ export default ParametresScreen;
                       value={alertC}
                       onValueChange={setAlertC}
                       style={styles.checkbox}
-                      tintColors={{ true: '#6d9bff', false: '#6d9bff' }}
+                      tintColors={{ true: '#3497FD', false: '#3497FD' }}
                     />
                     <Text style={styles.label}>{I18n.t("settingsChk1")}</Text>
                 </View>
