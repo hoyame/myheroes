@@ -9,6 +9,7 @@ import I18n from '../../i18n/i18n';
 import { setCacheNav } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import HeaderComponent from '../../components/Header/header';
+import ButtonComponent from '../../components/Button';
 
 const NavScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
@@ -159,14 +160,14 @@ const NavScreen = ({ navigation }) => {
                         { statusHelp == true &&
                             <AlertPropsNav color="#1f7ceb" onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('HelperAcceptAlertPage')}} title="" description="" />
                         }
-                        
-                        <PropsNav color="#FCCA1C" fontAwesome={faMapSigns} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}} title={I18n.t("carte")} description={I18n.t("desccarte")} />
-                        <PropsNav color="#E63B25" fontAwesome={faBell} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}} title={I18n.t("alertes")} description={I18n.t("descalertes")} />
-                        <PropsNav color="#701CFC" fontAwesome={faStar} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}} title={I18n.t("avis")} description={I18n.t("descavis")} />
-                        <PropsNav color="#1F7CEB" fontAwesome={faCog} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}} title={I18n.t("parametres")} description={I18n.t("parametres")} />
-                        <PropsNav color="#d80000" fontAwesome={faComments} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}} title={I18n.t("faq")} description={I18n.t("descfaq")} />
-                        <PropsNav color="#B0F50A" fontAwesome={faLock} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}} title={I18n.t("confidentiality")} description={I18n.t("descconfidentiality")} />
-                        <PropsNav color="#FC9A21" fontAwesome={faInfoCircle} onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}} title={I18n.t("apropos")} description={I18n.t("descapropos")} />
+
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Map')}}  title={I18n.t("carte")} icon={faMapSigns} color="#FCCA1C" />
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}}  title={I18n.t("alertes")} icon={faBell} color="#E63B25" />
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}}  title={I18n.t("avis")} icon={faStar} color="#701CFC" />
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}}  title={I18n.t("parametres")} icon={faCog} color="#1F7CEB" />
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}}  title={I18n.t("faq")} icon={faComments} color="#d80000" />
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}}  title={I18n.t("confidentiality")} icon={faLock} color="#B0F50A" />
+                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}}  title={I18n.t("apropos")} icon={faInfoCircle} color="#FC9A21" />
                     </View>
                 </ScrollView>
             </View>
