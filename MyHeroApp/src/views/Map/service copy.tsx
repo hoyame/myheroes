@@ -84,7 +84,7 @@ export default class MapComponent extends Component<{height: number; width: numb
               alignItems: "center",
               justifyContent: "center"
             }}>
-              <ActivityIndicator size="large" color="#6d9bff" />
+              <ActivityIndicator size="large" color="#3497FD" />
             </View> 
           )
         }
