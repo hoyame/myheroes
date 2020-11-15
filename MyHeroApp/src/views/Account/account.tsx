@@ -141,7 +141,7 @@ const AccountScreen = ({ navigation }) => {
                 height: 150,
                 width: screenWidth,
                 marginBottom: 10,
-                borderRadius: 7.5,
+                borderRadius: 15,
                 padding: 13,
                 backgroundColor: '#353A50'
             }}>
@@ -180,10 +180,8 @@ const AccountScreen = ({ navigation }) => {
                         }}>Jibril</Text>
 
                         <ReturnStars size={15} rate={1} />
-
                     </View>
                 </View>
-
 
                 <View>
                     <Text style={{
