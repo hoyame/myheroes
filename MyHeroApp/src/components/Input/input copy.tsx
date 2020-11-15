@@ -38,7 +38,7 @@ const InputComponent = (props: IInput) => {
         },
     
         ICON: {
-            color: "#6d9bff"
+            color: "#3497FD"
         }
     });
 
@@ -59,12 +59,12 @@ const InputComponent = (props: IInput) => {
                     //justifyContent: "center",
                 }}>
                     <Text style={ Platform.OS == "android" ? { 
-                        color: "#6d9bff",
+                        color: "#3497FD",
                         marginLeft: 5,
                         marginTop: 3,
                         marginBottom: -8
                     } : { 
-                        color: "#6d9bff",
+                        color: "#3497FD",
                         marginLeft: 1,
                         marginTop: 3,
                         marginBottom: 1
