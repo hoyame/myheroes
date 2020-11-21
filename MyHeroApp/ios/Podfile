@@ -28,6 +28,8 @@ target 'MyHeroApp' do
 
   pod 'RNLocalize', :path => '../node_modules/react-native-localize'
 
+  pod 'react-native-background-timer', :path => '../node_modules/react-native-background-timer'
+
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
