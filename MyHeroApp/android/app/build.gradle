@@ -132,6 +132,7 @@ android {
         applicationId "com.myheroapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
     }
@@ -194,6 +195,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-maps')
+    compile 'com.android.support:multidex:1.0.1'
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
