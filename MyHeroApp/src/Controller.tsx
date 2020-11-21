@@ -35,7 +35,9 @@ import { Root, Popup, Toast } from 'popup-ui';
 import I18n from './i18n/i18n';
 import FAQScreen from './views/FAQ';
 import GeneralScreen from './views/General';
-
+import BackgroundTimer from 'react-native-background-timer';
+import MyHeroAlerts, { AlertsData } from './api/Alerts';
+import { addAlert, getAlert } from './data/actions/alerts';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -47,6 +49,24 @@ const Controller = () => {
   const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
+
+  setInterval(() => {
+    if (MyHeroAlerts.StatusUpdate == true) {
+      dispatch(getAlert(false));
+
+      AlertsData.map((v, k) => {
+        dispatch(addAlert({ 
+          latitude: v.latitude, 
+          longitude: v.longitude, 
+          source: v.source, 
+          level: v.level, 
+          description: v.description 
+        }))
+      })
+
+      MyHeroAlerts.SetStatusUpdate(false);
+    }
+  }, 15000);
 
   useEffect(() => {
     setTimeout(() => {
