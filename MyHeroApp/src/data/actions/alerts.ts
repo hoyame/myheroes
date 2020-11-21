@@ -17,7 +17,7 @@ interface IGetAlert {
     payload: IAlert;
 }
 
-export const getAlert = (data: IAlert) => ({
+export const getAlert = (data: boolean) => ({
     type: GET_ALERTS,
     payload: data
 })
