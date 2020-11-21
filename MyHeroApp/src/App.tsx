@@ -4,6 +4,9 @@ import Controller from './Controller';
 import { Provider } from 'react-redux';
 import store from './data/store';
 import { MyHeroService } from './api/Service';
+import MyHeroAlerts from './api/Alerts';
+import BackgroundTimer from 'react-native-background-timer';
+
 
 export const API_LINK = "http://146.59.227.90:3333"
 
@@ -33,5 +36,9 @@ const App = () => {
     </Provider>
   );
 }
+
+BackgroundTimer.runBackgroundTimer(() => { 
+  MyHeroAlerts.GetAlerts();
+}, 20000);
 
 export default App;
