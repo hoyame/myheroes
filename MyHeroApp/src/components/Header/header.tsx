@@ -15,12 +15,15 @@ interface IHeader {
     navigation: any;
     map?: boolean;
     title?: string;
+    redirect?: string;
+    onBackClick?: any;
 }
 
 const HeaderComponent = (props: IHeader) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const navCache = useReduxState(state => state.user.navCache) || 'Nav';
-    console.log(navCache);
+    const navClick = props.redirect || navCache;
+    console.log(navClick);
     
     return (
         <>
@@ -68,7 +71,12 @@ const HeaderComponent = (props: IHeader) => {
                     flexDirection: "row",
                     alignItems: "center",
                 }}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate(navCache)}>
+                    <TouchableOpacity onPress={() => { 
+                        props.navigation.navigate(navClick);
+                        { props.onBackClick && 
+                            props.onBackClick();
+                        }
+                    }}>
                         <FontAwesomeIcon icon={faArrowLeft} size={28} style={{color: "#434343", marginRight: 20}} />
                     </TouchableOpacity>
 
