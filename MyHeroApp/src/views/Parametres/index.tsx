@@ -143,7 +143,7 @@ const ParametresScreen = ({ navigation }) => {
     if (languageS == true) {
         return (
             <>
-                <HeaderComponent title={I18n.t("settingsLanguage")} navigation={navigation} />
+                <HeaderComponent title={I18n.t("settingsLanguage")} navigation={navigation} redirect="Parametres" onBackClick={() => setLanguageS(false)} />
 
                 <ScrollView>
                     <View style={{
