@@ -11,6 +11,8 @@ const myHeaders = new Headers();
 const myLatitude = 15;
 const myLongitude = 3;
 
+export let AlertsData: IAlert[] = [];
+
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -48,7 +50,7 @@ const fetchApiCall = async () => {
 
 export default abstract class MyHeroAlerts {
     public static StatusUpdate: boolean = false;
-    public static AlertsData: IAlert[];
+    //public static AlertsData: IAlert[];
 
     public static SendAlert(data: IAlert) {
         var params = {
@@ -100,7 +102,6 @@ export default abstract class MyHeroAlerts {
 
     public static GetAlerts() {
         this.StatusUpdate = true;
-
         axios.get(`${API_LINK}/alerts/get`)
 
         .then((response) => {
@@ -108,15 +109,16 @@ export default abstract class MyHeroAlerts {
             const status: number = e.status
 
             if (status === 200) {
-                const alerts: IAlert[] = e.data[0];
-                console.log(alerts);
+                const alerts = e.data || [];
+                AlertsData = [];
 
-                alerts.map((v, k) => {
+                alerts.map((v: IAlert, k: any) => {
                     let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
 
-                    if (dist < 50) {
-                        this.AlertsData.push(v);
-                    }
+                    //if (dist < 50) {
+                        AlertsData.push(v);
+
+                    //}
                 })
             }
         })
@@ -124,5 +126,9 @@ export default abstract class MyHeroAlerts {
         .catch((err) => {
             console.log("err", err);
         })
+    }
+
+    public static SetStatusUpdate(arg: boolean) {
+        this.StatusUpdate = arg
     }
 }
