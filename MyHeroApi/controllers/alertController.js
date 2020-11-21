@@ -12,6 +12,7 @@ module.exports.addAlert = (req, res, next) => {
     }
     
     AlertsData.push(model);
+    console.log(AlertsData)
 
     res.send(AlertsData);
 }
