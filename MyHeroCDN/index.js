@@ -14,16 +14,13 @@ const Storage = multer.diskStorage({
   },
 });
 
-//const upload = multer({ storage: Storage });
-//const storage = multer.memoryStorage()
-const upload = multer({storage: Storage, limits: {fileSize: 30000000}})
-
+const upload = multer({ storage: Storage });
 
 app.get('/', (req, res) => {
   res.status(200).send('You can post to /api/upload.');
 });
 
-app.post('/api/upload', upload.single('photo'), (req, res) => {
+app.post('/api/upload', upload.single('avatar'), (req, res) => {
   console.log('Zfzifbzuifbiugbibigbigb');
 
   console.log('file', req.files);
