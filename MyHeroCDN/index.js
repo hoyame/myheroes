@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.status(200).send('You can post to /api/upload.');
 });
 
-app.post('/api/upload', upload.array('photo', 3), (req, res) => {
+app.post('/api/upload', upload.single('photo'), (req, res) => {
   console.log('Zfzifbzuifbiugbibigbigb');
 
   console.log('file', req.files);
