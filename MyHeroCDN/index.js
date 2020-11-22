@@ -4,15 +4,9 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 
 const app = Express();
-app.use(bodyParser.json());
 
 var upload = multer({dest:'uploads/'});
-
-var type = upload.single('recfile');
-
-app.get('/', (req, res) => {
-  res.status(200).send('You can post to /api/upload.');
-});
+var type = upload.single('file');
 
 app.post('/api/upload', type, (req, res) => {
   var tmp_path = req.file.path;
