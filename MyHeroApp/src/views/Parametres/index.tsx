@@ -68,40 +68,79 @@ const ParametresScreen = ({ navigation }) => {
         cPassword: '',
         pseudo: ''
     })
+
+    const createFormData = (photo: any, body: any) => {
+        const data = new FormData();
+      
+        data.append('photo', {
+          name: photo.fileName,
+          type: photo.type,
+          uri:
+            Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
+        });
+      
+        Object.keys(body).forEach((key) => {
+          data.append(key, body[key]);
+        });
+      
+        return data;
+    };
+
+    const handleUploadPhoto = (iamge: any) => {
+        fetch('http://146.59.227.90:3000/api/upload', {
+          method: 'POST',
+          body: createFormData(img.uri, { userId: '123' }),
+        })
+        
+        .then((response) => response.json())
+        .then((response) => {
+          console.log('upload succes', response);
+          //setState({ photo: null });
+        })
+        .catch((error) => {
+          console.log('upload error', error);
+        });
+    };
+
+      
+    const uploadImage = (image_uri: string) => {
+        let base_url = 'http://146.59.227.90:3000/api/upload/';
+        let uploadData = new FormData();
+         
+        uploadData.append('sumbit', 'ok');
+        uploadData.append('file', { 
+            type: 'image/jpg', 
+            uri: image_uri, 
+            name: `${name}.jpg`
+        })
+
+        fetch(base_url, {
+          method: 'post',
+          body: uploadData,
+        })
+
+        //.then((response) => {response.json})
+
+        .then((res: any) => {
+            console.log('upload succes', res);
+            setImg({...img, uri: res.image});
+        })
+        .catch((error) => {
+            console.log('upload error', error);
+        });
+    }
  
     const handlePicker = () => {
-        ImagePicker.showImagePicker({}, (response: any) => {   
-          if (response.didCancel) {
-            console.log('User cancelled image picker');
-          } else if (response.error) {
-            console.log('ImagePicker Error: ', response.error);
-          } else if (response.customButton) {
-            console.log('User tapped custom button: ', response.customButton);
-          } else {
-            setImg({...img, uri: response.uri});
-
-            let base_url = 'http://176.31.15.117/test/';
-            let uploadData = new FormData();
-             
-            uploadData.append('sumbit', 'ok');
-            uploadData.append('file', { type: 'image/jpg', uri: response.uri, name: 'zbfizb' })
-
-            fetch(base_url, {
-              method: 'post',
-              body: uploadData,
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            })
-
-                .then((data) => data.json())
-                .then((res) => {
-                    console.log('upload succes', res);
-                    setImg({...img, uri: res.image});
-                })
-                .catch((error) => {
-                    console.log('upload error', error);
-                });
+        ImagePicker.showImagePicker({ noData: true, mediaType: 'photo', allowsEditing: true, quality: 0.7 }, (response: any) => {   
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                setImg({...img, uri: response.uri});
+                uploadImage(response.uri)
             }
         });
     };
