@@ -8,6 +8,7 @@ const app = Express();
 var upload = multer({
   dest: 'uploads/'
 });
+
 var type = upload.single('file');
 
 app.get("/Kiruu.jpg", (req, res) => {
