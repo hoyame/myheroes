@@ -16,6 +16,7 @@ const App = () => {
       setTimeout(() => {
         MyHeroService.requestLocationPermission();
         MyHeroService.initialize();
+        MyHeroAlerts.GetAlerts();
       }, 1000)
       return
     } else {
@@ -23,6 +24,7 @@ const App = () => {
         setTimeout(() => {
           MyHeroService.requestLocationPermission();
           MyHeroService.initialize();
+          MyHeroAlerts.GetAlerts();
         }, 1000)
       } catch {
         return
@@ -39,6 +41,6 @@ const App = () => {
 
 BackgroundTimer.runBackgroundTimer(() => { 
   MyHeroAlerts.GetAlerts();
-}, 20000);
+}, 50000);
 
 export default App;
