@@ -5,8 +5,14 @@ const fs = require('fs');
 
 const app = Express();
 
-var upload = multer({dest:'uploads/'});
+var upload = multer({
+  dest: 'uploads/'
+});
 var type = upload.single('file');
+
+app.get("/Kiruu.jpg", (req, res) => {
+  res.sendFile(path.join(__dirname, "./uploads/Kiruu.jpg"));
+});
 
 app.post('/api/upload', type, (req, res) => {
   var tmp_path = req.file.path;
@@ -17,7 +23,7 @@ app.post('/api/upload', type, (req, res) => {
   src.pipe(dest);
   //src.on('end', function() { res.render('complete'); });
   //src.on('error', function(err) { res.render('error'); });
-  
+
   res.status(200).json({
     message: 'success!',
   });
