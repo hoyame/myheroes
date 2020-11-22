@@ -12,9 +12,9 @@ app.post('/api/upload', type, (req, res) => {
   var tmp_path = req.file.path;
   var target_path = 'uploads/' + req.file.originalname;
 
-  //var src = fs.createReadStream(tmp_path);
-  //var dest = fs.createWriteStream(target_path);
-  //src.pipe(dest);
+  var src = fs.createReadStream(tmp_path);
+  var dest = fs.createWriteStream(target_path);
+  src.pipe(dest);
   //src.on('end', function() { res.render('complete'); });
   //src.on('error', function(err) { res.render('error'); });
   
