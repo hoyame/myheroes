@@ -5,16 +5,8 @@ const bodyParser = require('body-parser');
 const app = Express();
 app.use(bodyParser.json());
 
-const Storage = multer.diskStorage({
-  destination(req, file, callback) {
-    callback(null, './images');
-  },
-  filename(req, file, callback) {
-    callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
-  },
-});
+var upload = multer({ dest: 'images/' })
 
-const upload = multer({ storage: Storage });
 
 app.get('/', (req, res) => {
   res.status(200).send('You can post to /api/upload.');
