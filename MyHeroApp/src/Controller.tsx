@@ -63,22 +63,20 @@ const Controller = () => {
           description: v.description 
         }))
       })
-
       MyHeroAlerts.SetStatusUpdate(false);
     }
-  }, 15000);
+  }, 20000);
 
   useEffect(() => {
     setTimeout(() => {
-        if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
-          dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
-        }
+      if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
+        dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
+      }
     }, 5000)
 
     setTimeout(async () => {
       if (initialize == false) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
-        console.log(typeof AMail)
 
         try {
           if (AMail !== "") {
@@ -120,8 +118,6 @@ const Controller = () => {
         } catch (error) {
           setNewUser(true);
           setInitialize(true);
-          console.log("ce")
-          console.log("ce")
         }
       }
     }, 3000)
