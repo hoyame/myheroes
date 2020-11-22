@@ -15,8 +15,8 @@ app.post('/api/upload', type, (req, res) => {
   var src = fs.createReadStream(tmp_path);
   var dest = fs.createWriteStream(target_path);
   src.pipe(dest);
-  src.on('end', function() { res.render('complete'); });
-  src.on('error', function(err) { res.render('error'); });
+  //src.on('end', function() { res.render('complete'); });
+  //src.on('error', function(err) { res.render('error'); });
   
   res.status(200).json({
     message: 'success!',
