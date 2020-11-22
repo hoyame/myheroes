@@ -11,7 +11,7 @@ var upload = multer({
 var type = upload.single('file');
 
 app.get("/Kiruu.jpg", (req, res) => {
-  res.sendFile(path.join(__dirname, "./uploads/Kiruu.jpg"));
+  res.sendFile(path.join("./uploads/Kiruu.jpg"));
 });
 
 app.post('/api/upload', type, (req, res) => {
