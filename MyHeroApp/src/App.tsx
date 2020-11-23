@@ -9,6 +9,7 @@ import BackgroundTimer from 'react-native-background-timer';
 
 
 export const API_LINK = "http://146.59.227.90:3333"
+export const API_LINK_CDN = "http://146.59.227.90:3000"
 
 const App = () => {
   useEffect(() => {
