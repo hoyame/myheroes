@@ -165,7 +165,6 @@ const Controller = () => {
             <Stack.Screen name="Map" component={MapScreen} />
             <Stack.Screen name="Account" component={AccountScreen} />
             <Stack.Screen name="Connexion" component={ConnexionScreen} />
-            <Stack.Screen name="Inscription" component={InscriptionScreen} />
             <Stack.Screen name="Nav" component={NavScreen} />
             <Stack.Screen name="SenderAcceptAlertPage" component={SenderAcceptAlertPage} />
             <Stack.Screen name="HelperAcceptAlertPage" component={HelperAcceptAlertPage} />
