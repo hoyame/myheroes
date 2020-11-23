@@ -132,6 +132,8 @@ const AccountStats = (props: IAccount) => {
                         alignItems: "center"
                     }}>
                         <Image
+                            key={Date.now()} 
+
                             style={{
                                 height: 80,
                                 width: 80,
