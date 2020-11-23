@@ -1,3 +1,4 @@
+/*
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Platform, Alert } from "react-native";
 import HeaderComponent from '../../components/Header/header';
@@ -209,7 +210,8 @@ const InscriptionScreen = ({ navigation }) => {
                                                     dispatch(setXp(e.xp));
                                                     dispatch(setImage(e.image));
 
-                                                    navigation.navigate('Home');
+                                                    //navigation.navigate('Home');
+                                                    
                                                 }, () => {
                                                     navigation.navigate('Connexion');
                                                 }, () => {
@@ -259,3 +261,5 @@ const InscriptionScreen = ({ navigation }) => {
 }
 
 export default InscriptionScreen;
+
+*/
