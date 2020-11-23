@@ -38,6 +38,7 @@ import GeneralScreen from './views/General';
 import BackgroundTimer from 'react-native-background-timer';
 import MyHeroAlerts, { AlertsData } from './api/Alerts';
 import { addAlert, getAlert } from './data/actions/alerts';
+import { API_LINK, API_LINK_CDN } from './App';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -93,7 +94,7 @@ const Controller = () => {
                 dispatch(setName(pseudo));
                 dispatch(setRate(rate));
                 dispatch(setXp(xp));
-                dispatch(setImage("https://cdn.discordapp.com/avatars/404715764201947156/a_3139bef87ec391ca9cecab071075d66d.png?size=128"));
+                dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${pseudo}?time=${new Date()}`));
                 setNewUser(false);
                 setInitialize(true);
                 console.log("200")
