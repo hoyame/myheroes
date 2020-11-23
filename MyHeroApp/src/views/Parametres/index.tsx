@@ -1,7 +1,7 @@
 import { faCircle, faFont, faHome, faLanguage, faLock, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Users from '../../api/User';
 import CheckBox from '@react-native-community/checkbox';
 import HeaderComponent from '../../components/Header/header';
@@ -52,6 +52,7 @@ const ParametresScreen = ({ navigation }) => {
     const [alertC, setAlertC] = useState(false);
     const [languageS, setLanguageS] = useState(false);
     const dispatch = useDispatch();
+    const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
@@ -333,9 +334,22 @@ const ParametresScreen = ({ navigation }) => {
                     color: "#000000",
                     fontSize: 35,
                     width: 200,
-                    marginBottom: 35,
+                    marginBottom: 20,
                     textAlign: "center"
                 }}>{I18n.t("settingsAvatar")}</Text>
+
+                <TouchableOpacity>
+                    <View style={{
+                        height: 50,
+                        width: screenWidth,
+                        marginBottom: 20,
+                        borderRadius: 15,
+                        backgroundColor: '#3497FD',
+                        justifyContent: 'center'           
+                    }}>
+                        <Text style={{textAlign: "center", color: "#ffffff"}}>La photo de profil est utilisée pour vous reconnaitre</Text>
+                    </View>
+                </TouchableOpacity>
 
                 { img.uri !== "" && 
                     <Image 
