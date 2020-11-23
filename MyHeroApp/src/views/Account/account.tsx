@@ -157,6 +157,8 @@ const AccountScreen = ({ navigation }) => {
                         justifyContent: "center"
                     }}>
                         <Image
+                            key={Date.now()} 
+
                             style={{
                                 height: 45,
                                 width: 45,
@@ -213,6 +215,8 @@ const AccountScreen = ({ navigation }) => {
                     alignItems: 'center',
                 }}>
                     <Image
+                        key={Date.now()} 
+                        
                         style={{
                             height: 110,
                             width: 110,

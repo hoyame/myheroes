@@ -257,6 +257,7 @@ const MapScreen = ({ navigation }) => {
                     onPress={() => props.navigation.navigate('Account')}
                 >                
                     <Image
+                        key={Date.now()} 
                         style={{
                             height: 65,
                             width: 65,

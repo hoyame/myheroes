@@ -33,23 +33,6 @@ const STYLES = StyleSheet.create({
     }
 });
   
-const createFormData = (photo: { fileName: any; type: any; uri: string; }, body: { [x: string]: any; }) => {
-    const data = new FormData();
-  
-    data.append('photo', {
-      name: photo.fileName,
-      type: photo.type,
-      uri:
-        Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
-    });
-  
-    Object.keys(body).forEach((key) => {
-      data.append(key, body[key]);
-    });
-  
-    return data;
-};
-
 const InscriptionScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const [status, setStatus] = useState(false)
@@ -57,12 +40,59 @@ const InscriptionScreen = ({ navigation }) => {
     const [errorM, setErrorM] = useState(false)
     const [errorU, setErrorU] = useState(false)
 
+    const [img, setImg] = useState({
+        uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
+        type: ''
+    })
+
     const [state, setState] = useState({
         name: '',
         mail: '',
         password: '',
         cPassword: ''
     })
+
+    const uploadImage = (image_uri: string) => {
+        let base_url = 'http://146.59.227.90:3000/api/upload/';
+        let uploadData = new FormData();
+         
+        uploadData.append('sumbit', 'ok');
+        uploadData.append('file', { 
+            type: 'image/jpg', 
+            uri: image_uri, 
+            name: `${state.name}.jpg`
+        })
+
+        fetch(base_url, {
+          method: 'post',
+          body: uploadData,
+        })
+
+        .then((res: any) => {
+            console.log('upload succes', res);
+            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`});
+            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`));
+
+        })
+        .catch((error) => {
+            console.log('upload error', error);
+        });
+    }
+ 
+    const handlePicker = () => {
+        ImagePicker.showImagePicker({ noData: true, mediaType: 'photo', allowsEditing: true, quality: 0.7 }, (response: any) => {   
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                setImg({...img, uri: response.uri});
+                uploadImage(response.uri)
+            }
+        });
+    };
     
     const _storeData = async () => {
         try {
@@ -71,8 +101,6 @@ const InscriptionScreen = ({ navigation }) => {
             console.log("error", error)
         }
     };
-
-
 
     const Ze = () => {
         return (

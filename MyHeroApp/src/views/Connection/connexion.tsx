@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import * as Animatable from 'react-native-animatable';
 import FondComponent from '../../components/Fond';
 import TitleComponent from '../../components/Title';
+import ImagePicker from "react-native-image-picker";
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -23,8 +24,13 @@ const ConnexionScreen = ({ navigation }) => {
     const [connexion, setConnexion] = useState(true);
     const [inscription, setInscription] = useState(false);
     const [errorS, setErrorS] = useState(false)
+    const [pictureS, setPictureS] = useState(false);
     const [errorM, setErrorM] = useState(false)
     const [errorU, setErrorU] = useState(false)
+    const [img, setImg] = useState({
+        uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
+        type: ''
+    })
 
     const [state, setState] = useState({
         name: '',
@@ -32,6 +38,48 @@ const ConnexionScreen = ({ navigation }) => {
         password: '',
         cPassword: ''
     })
+
+    const uploadImage = (image_uri: string) => {
+        let base_url = 'http://146.59.227.90:3000/api/upload/';
+        let uploadData = new FormData();
+         
+        uploadData.append('sumbit', 'ok');
+        uploadData.append('file', { 
+            type: 'image/jpg', 
+            uri: image_uri, 
+            name: `${state.name}.jpg`
+        })
+
+        fetch(base_url, {
+          method: 'post',
+          body: uploadData,
+        })
+
+        .then((res: any) => {
+            console.log('upload succes', res);
+            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`});
+            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`));
+
+        })
+        .catch((error) => {
+            console.log('upload error', error);
+        });
+    }
+ 
+    const handlePicker = () => {
+        ImagePicker.showImagePicker({ noData: true, mediaType: 'photo', allowsEditing: true, quality: 0.7 }, (response: any) => {   
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                setImg({...img, uri: response.uri});
+                uploadImage(response.uri)
+            }
+        });
+    };
 
     const _storeData = async () => {
         try {
@@ -79,6 +127,90 @@ const ConnexionScreen = ({ navigation }) => {
                 </>
             )
         }
+    }
+
+    if (pictureS == true) {
+        return (
+            <View style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+            }}>     
+                <FondComponent />
+                <TitleComponent />
+
+                <Text style={{
+                    color: "#000000",
+                    fontSize: 35,
+                    width: 200,
+                    marginBottom: 35,
+                    textAlign: "center"
+                }}>{I18n.t("settingsAvatar")}</Text>
+
+                { img.uri !== "" && 
+                    <Image 
+                        key={Date.now()} 
+                        source={{uri: img.uri}}
+                        style={{
+                            height: 200,
+                            width: 200,
+                            borderRadius: 20,
+                            marginBottom: 20
+                        }}
+                    />
+                }
+
+                <TouchableOpacity onPress={() => handlePicker()}>
+                    <Text style={{
+                        color: "#000000",
+                        fontSize: 20,
+                        marginBottom: 15,
+                        textAlign: "center"
+                    }}>{I18n.t("inscriptionChoosePhoto")}</Text>
+                </TouchableOpacity>
+
+                <View style={{
+                    display: "flex",
+                    flexDirection: "row"
+                }}>
+                    <TouchableOpacity onPress={() => setPictureS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            marginRight: 10,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#3497FD'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25,
+                                color: "#ffffff"
+                            }}>{I18n.t("annuler")}</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => setPictureS(false)}>
+                        <View style={{
+                            height: 60, 
+                            borderRadius: 7.5,
+                            marginTop: 10,
+                            width: 140,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            backgroundColor: '#3497FD'           
+                        }}>
+                            <Text style={{
+                                fontSize: 25,
+                                color: "#ffffff"
+                            }}>{I18n.t("continuer")}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        );
     }
     
     if (status == true) {

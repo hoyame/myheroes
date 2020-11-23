@@ -34,6 +34,7 @@ const GDPSPage = ({ navigation }) => {
                         paddingTop: 35                    
                     }}>
                         <Image 
+                            key={Date.now()} 
                             style={{height: '100%', width: '100%'}} 
                             source={{uri: "https://cdn.discordapp.com/attachments/777534669544620043/777534952287764520/unnamed2.jpg"}} 
                         />

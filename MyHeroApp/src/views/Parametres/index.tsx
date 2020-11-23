@@ -14,7 +14,7 @@ import { Langues } from '../../data/langues';
 import ButtonComponent from '../../components/Button';
 import FondComponent from '../../components/Fond';
 import TitleComponent from '../../components/Title';
-import { setCacheNav } from '../../data/actions/user';
+import { setCacheNav, setImage } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 
 const styles = StyleSheet.create({
@@ -68,41 +68,7 @@ const ParametresScreen = ({ navigation }) => {
         cPassword: '',
         pseudo: ''
     })
-
-    const createFormData = (photo: any, body: any) => {
-        const data = new FormData();
-      
-        data.append('photo', {
-          name: photo.fileName,
-          type: photo.type,
-          uri:
-            Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
-        });
-      
-        Object.keys(body).forEach((key) => {
-          data.append(key, body[key]);
-        });
-      
-        return data;
-    };
-
-    const handleUploadPhoto = (iamge: any) => {
-        fetch('http://146.59.227.90:3000/api/upload', {
-          method: 'POST',
-          body: createFormData(img.uri, { userId: '123' }),
-        })
-        
-        .then((response) => response.json())
-        .then((response) => {
-          console.log('upload succes', response);
-          //setState({ photo: null });
-        })
-        .catch((error) => {
-          console.log('upload error', error);
-        });
-    };
-
-      
+     
     const uploadImage = (image_uri: string) => {
         let base_url = 'http://146.59.227.90:3000/api/upload/';
         let uploadData = new FormData();
@@ -119,11 +85,11 @@ const ParametresScreen = ({ navigation }) => {
           body: uploadData,
         })
 
-        //.then((response) => {response.json})
-
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: res.image});
+            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`});
+            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`));
+
         })
         .catch((error) => {
             console.log('upload error', error);
@@ -165,7 +131,7 @@ const ParametresScreen = ({ navigation }) => {
                             alignItems: "center",
                             justifyContent: "center",
                         }}>
-                            <Image source={{uri: v.img}} style={{
+                            <Image key={Date.now()}  source={{uri: v.img}} style={{
                                 height: 30,
                                 width: 40,
                                 marginRight: 10
@@ -373,6 +339,7 @@ const ParametresScreen = ({ navigation }) => {
 
                 { img.uri !== "" && 
                     <Image 
+                        key={Date.now()} 
                         source={{uri: img.uri}}
                         style={{
                             height: 200,
@@ -449,6 +416,7 @@ const ParametresScreen = ({ navigation }) => {
                     marginBottom: 0,
                 }}>
                        <Image
+                        key={Date.now()} 
                         style={{
                             height: 110,
                             width: 110,

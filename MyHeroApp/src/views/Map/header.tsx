@@ -62,6 +62,7 @@ const HeaderComponent = (props: IHeader) => {
                     onPress={() => props.navigation.navigate('Account')}
                 >                
                     <Image
+                        key={Date.now()} 
                         style={{
                             height: 65,
                             width: 65,
