@@ -184,6 +184,8 @@ const HeaderComponent = (props: IHeader) => {
                                     alignItems: "center",
                                 }}>
                                     <Image
+                                        key={Date.now()} 
+
                                         style={{
                                             height: 55,
                                             width: 55,
@@ -310,6 +312,8 @@ const HeaderComponent = (props: IHeader) => {
                                 alignItems: "center",
                             }}>
                                 <Image
+                                    key={Date.now()} 
+                                    
                                     style={{
                                         height: 55,
                                         width: 55,
