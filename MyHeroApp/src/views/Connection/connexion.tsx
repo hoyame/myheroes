@@ -14,10 +14,13 @@ import * as Animatable from 'react-native-animatable';
 import FondComponent from '../../components/Fond';
 import TitleComponent from '../../components/Title';
 import ImagePicker from "react-native-image-picker";
+import { useReduxState } from '../../data/store';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
 const ConnexionScreen = ({ navigation }) => {
+    const name = useReduxState(state => state.user.name);
+
     const dispatch = useDispatch();
     const [status, setStatus] = useState(false)
     const [error, setError] = useState(false)
@@ -47,7 +50,7 @@ const ConnexionScreen = ({ navigation }) => {
         uploadData.append('file', { 
             type: 'image/jpg', 
             uri: image_uri, 
-            name: `${state.name}.jpg`
+            name: `${name}.jpg`
         })
 
         fetch(base_url, {
@@ -148,6 +151,19 @@ const ConnexionScreen = ({ navigation }) => {
                     textAlign: "center"
                 }}>{I18n.t("settingsAvatar")}</Text>
 
+                <TouchableOpacity>
+                    <View style={{
+                        height: 50,
+                        width: screenWidth,
+                        marginBottom: 20,
+                        borderRadius: 15,
+                        backgroundColor: '#3497FD',
+                        justifyContent: 'center'           
+                    }}>
+                        <Text style={{textAlign: "center", color: "#ffffff"}}>La photo de profil est utilisée pour vous reconnaitre</Text>
+                    </View>
+                </TouchableOpacity>
+
                 { img.uri !== "" && 
                     <Image 
                         key={Date.now()} 
@@ -174,7 +190,7 @@ const ConnexionScreen = ({ navigation }) => {
                     display: "flex",
                     flexDirection: "row"
                 }}>
-                    <TouchableOpacity onPress={() => setPictureS(false)}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                         <View style={{
                             height: 60, 
                             borderRadius: 7.5,
@@ -192,7 +208,7 @@ const ConnexionScreen = ({ navigation }) => {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => setPictureS(false)}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                         <View style={{
                             height: 60, 
                             borderRadius: 7.5,
@@ -342,7 +358,8 @@ const ConnexionScreen = ({ navigation }) => {
                                                         dispatch(setXp(e.xp));
                                                         dispatch(setImage(e.image));
     
-                                                        navigation.navigate('Home');
+                                                        //navigation.navigate('Home');
+                                                        setPictureS(true)
                                                     }, () => {
                                                         navigation.navigate('Connexion');
                                                     }, () => {
