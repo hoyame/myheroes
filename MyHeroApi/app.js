@@ -98,6 +98,10 @@ app.post('/api/upload', (req, res) => {
 	});
 });
 
+setInterval(function () {
+    con.query('SELECT 1');
+}, 10000);
+
 // Run the server
 const port = process.env.PORT || 3333;
 app.listen(port, () =>
