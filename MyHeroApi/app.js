@@ -99,7 +99,11 @@ app.post('/api/upload', (req, res) => {
 });
 
 setInterval(function () {
-    con.query('SELECT 1');
+	let sql = `SELECT 1`;
+
+	con.query(sql, [], function (err, result) {
+		console.log("refresh")
+	});
 }, 10000);
 
 // Run the server
