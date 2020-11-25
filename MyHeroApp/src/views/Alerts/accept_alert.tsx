@@ -192,8 +192,13 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
     const alerts = useReduxState(state => state.user.help);
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const alertDataHelp = useReduxState(state => state.user.showAlert);
-
     const dispatch = useDispatch();
+    
+    let description = alertDataHelp.description
+
+    if (description == "") {
+        description = "Pas de description";
+    } 
 
     return (
         <>
@@ -251,35 +256,13 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                             <Text style={{
                                 color: 'white',
                                 marginLeft: 5
-                            }}>{alertDataHelp.description}</Text>
+                            }}>{description}</Text>
                         </View>
                     </View>
                 </View>  
 
-                <View style={{
-                    height: 140,
-                    borderRadius: 10,
-                    marginBottom: 10,
-                    width: screenWidth,
-                    elevation:10,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 3 },
-                    shadowOpacity: 0.5,
-                    shadowRadius: 5, 
-                    backgroundColor: '#ffffff',
-                    display: "flex",
-                    justifyContent: "center"
-                }}>
-                    <Text style={{
-                        color: "#3497FD",
-                        fontSize: 30,
-                        marginBottom: 10,
-                        textAlign: "center"
-                    }}>{I18n.t("alertApercCam")}</Text>
-
-                    <ActivityIndicator size="large" color="#3497FD" />
-                </View>
-
+                <BottomComponent title={I18n.t("alertApercCam")} onClick={() => navigation.navigate('ViewStream')}/>
+                <View style={{marginBottom: 10}}></View>
                 <BottomComponent title={I18n.t("alertLancerItt")} onClick={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)}/>
                 <View style={{marginBottom: 10}}></View>
                 <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
