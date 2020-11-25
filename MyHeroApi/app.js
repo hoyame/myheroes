@@ -98,14 +98,6 @@ app.post('/api/upload', (req, res) => {
 	});
 });
 
-setInterval(function () {
-	let sql = `SELECT 1`;
-
-	con.query(sql, [], function (err, result) {
-		console.log("refresh")
-	});
-}, 10000);
-
 // Run the server
 const port = process.env.PORT || 3333;
 app.listen(port, () =>
