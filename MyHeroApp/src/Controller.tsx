@@ -39,6 +39,7 @@ import BackgroundTimer from 'react-native-background-timer';
 import MyHeroAlerts, { AlertsData } from './api/Alerts';
 import { addAlert, getAlert } from './data/actions/alerts';
 import { API_LINK, API_LINK_CDN } from './App';
+import ViewStream from './views/Alerts/view_stream';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -174,6 +175,7 @@ const Controller = () => {
             <Stack.Screen name="Propos" component={ProposScreen} />
             <Stack.Screen name="EndAlertScreen" component={EndAlertScreen} />
             <Stack.Screen name="FAQScreen" component={FAQScreen} />
+            <Stack.Screen name="ViewStream" component={ViewStream} />
           </Stack.Navigator>
         </NavigationContainer>
       </Root>
