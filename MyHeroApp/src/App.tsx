@@ -16,6 +16,7 @@ const App = () => {
     if (Platform.OS == "ios") {
       setTimeout(() => {
         MyHeroService.requestLocationPermission();
+        MyHeroService.requestCamAudioPermission();
         MyHeroService.initialize();
         MyHeroAlerts.GetAlerts();
       }, 1000)
@@ -24,6 +25,7 @@ const App = () => {
       try {
         setTimeout(() => {
           MyHeroService.requestLocationPermission();
+          MyHeroService.requestCamAudioPermission();
           MyHeroService.initialize();
           MyHeroAlerts.GetAlerts();
         }, 1000)

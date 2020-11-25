@@ -88,6 +88,30 @@ export abstract class MyHeroService {
         this.getLocalisation();
       }
     }
+    
+    public static async requestCamAudioPermission() {
+      if (Platform.OS == 'android') {
+        try {
+          const granted = await PermissionsAndroid.requestMultiple([
+              PermissionsAndroid.PERMISSIONS.CAMERA,
+              PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+          ])
+
+          if (
+              granted['android.permission.RECORD_AUDIO'] === PermissionsAndroid.RESULTS.GRANTED
+              && granted['android.permission.CAMERA'] === PermissionsAndroid.RESULTS.GRANTED
+          ) {
+              console.log('You can use the cameras & mic')
+          } else {
+              console.log('Permission denied')
+          }
+        } catch (err) {
+            console.warn(err)
+        }
+      } else {
+        // get acces for ios
+      }
+    }
 
     public static async getNotificationToken() {
 
