@@ -9,13 +9,13 @@ import I18n from '../../i18n/i18n';
 
 
 const SEARCH: ViewStyle = {
-
     marginBottom: 15,
 }
 
 const INPUT: TextStyle = {
     color: '#000000',
-    backgroundColor: '#e1e1e1'
+    backgroundColor: '#ffffff',
+    borderRadius: 15
 }
 
 const NDUPage = ({ navigation }) => {
@@ -35,10 +35,10 @@ const NDUPage = ({ navigation }) => {
         return (
             <View style={{
                 height: 120,
-                borderRadius: 7.5,
+                borderRadius: 15,
                 padding: 15,
                 marginBottom: 10,
-                backgroundColor: '#e1e1e1'
+                backgroundColor: '#ffffff'
             }}>
                 <View style={{
                     display: "flex",
@@ -68,14 +68,14 @@ const NDUPage = ({ navigation }) => {
                         marginBottom: 2
                     }}>
                         <FontAwesomeIcon icon={faPhoneAlt} style={{
-                            color: 'red',
+                            color: '#f10000',
                             marginRight: 7.5
                         }}/>
 
                         <Text>{I18n.t("nduAmbulance")} : </Text>
 
                         <Text style={{
-                            color: 'red'
+                            color: '#f10000'
                         }}>{props.samu}</Text>
                     </View>
 
@@ -86,14 +86,14 @@ const NDUPage = ({ navigation }) => {
                         marginBottom: 2
                     }}>
                         <FontAwesomeIcon icon={faPhoneAlt} style={{
-                            color: 'blue',
+                            color: '#058cef',
                             marginRight: 7.5
                         }}/>
 
                         <Text>{I18n.t("nduPolice")} : </Text>
 
                         <Text style={{
-                            color: 'blue'
+                            color: '#058cef'
                         }}>{props.police}</Text>
                     </View>
 
@@ -104,14 +104,14 @@ const NDUPage = ({ navigation }) => {
                         marginBottom: 2
                     }}>
                         <FontAwesomeIcon icon={faPhoneAlt} style={{
-                            color: 'orange',
+                            color: '#fdaa8f',
                             marginRight: 7.5
                         }}/>
 
                         <Text>{I18n.t("nduPompiers")} : </Text>
 
                         <Text style={{
-                            color: 'orange'
+                            color: '#fdaa8f'
                         }}>{props.pompiers}</Text>
                     </View>
                 </View>
@@ -129,8 +129,8 @@ const NDUPage = ({ navigation }) => {
         return (
             <View style={{
                 height: 75,
-                borderRadius: 7.5,
-                backgroundColor: '#e1e1e1',
+                borderRadius: 15,
+                backgroundColor: '#ffffff',
                 padding: 15,
                 marginBottom: 10
             }}>
@@ -141,7 +141,7 @@ const NDUPage = ({ navigation }) => {
                     marginTop: -5,
                     marginBottom: 7.5
                 }}>
-                    <Image source={{uri: 'https://flagcdn.com/20x15/eu.png'}} style={{
+                    <Image source={{uri: 'https://www.countryflags.io/eu/flat/64.png'}} style={{
                         height: 15,
                         width: 20,
                         marginRight: 10
@@ -160,12 +160,12 @@ const NDUPage = ({ navigation }) => {
                         marginBottom: 2
                     }}>
                         <FontAwesomeIcon icon={faPhoneAlt} style={{
-                            color: 'red',
+                            color: '#f10000',
                             marginRight: 7.5
                         }}/>
                         <Text>{I18n.t("ndu")} : </Text>
                         <Text style={{
-                            color: 'red'
+                            color: '#f10000'
                         }}>112</Text>
                     </View>
                 </View>
