@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/headerTw';
-import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell, faCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
@@ -9,9 +9,14 @@ import { PulseIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setCacheCreateAlertLevel, setCacheNav, setName } from '../../data/actions/user';
 import I18n from '../../i18n/i18n';
+import BlurView from 'react-native-blur';
+import { color } from 'react-native-reanimated';
+
 //import SosSVG from '../../assets/sos.svg'
 
 const HomeScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
+
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const screenHeight = Math.round(Dimensions.get('window').height / 4);
     
@@ -21,12 +26,16 @@ const HomeScreen = ({ navigation }) => {
     const statusSend = useReduxState(state => state.user.send.status);
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
 
+    const [alertLevel, setAlertLevel] = useState(1)
+    const [popup, setPopus] = useState(false)
+
     interface IAlertProps {
         title?: string;
         color?: string;
         description?: string;
         colorComponent?: string;
         onClick: any;
+        onPresss: any;
     }
 
     const returnColor = (alert: number) => {
@@ -46,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
         const pWidth = (screenWidth / 3 - 10)
 
         return (
-            <TouchableOpacity onPress={props.onClick}>
+            <TouchableOpacity onPress={props.onClick} onLongPress={props.onPresss}>
                 <View style={{
                     display: "flex",
                     flexDirection: "row",
@@ -59,14 +68,14 @@ const HomeScreen = ({ navigation }) => {
                     justifyContent: "space-between",
                     paddingLeft: 20
                 }}>
-                    <View>
+                    <View style={{
+                        opacity: 0.80,
+                    }}>
                         <Text style={{
-                            fontSize: 18,
+                            fontSize: 22,
+                            color: "#000000"
                         }}>{props.title}</Text>
 
-                        <Text style={{
-                            fontSize: 12,
-                        }}>{props.description} </Text>
                     </View>
 
                     <View style={{
@@ -135,7 +144,84 @@ const HomeScreen = ({ navigation }) => {
         );
     }
     
-    const dispatch = useDispatch();
+    if (popup == true) {
+        let title;
+        let description;
+    
+        if (alertLevel == 3) {
+            title = I18n.t("alertGrave")
+            description = I18n.t("alertDescGrave")
+        } else if (alertLevel == 2) {
+            title = I18n.t("alertMoyen")
+            description = I18n.t("alertDescMoyen")
+        } else if (alertLevel == 1) {
+            title = I18n.t("alertFaible")
+            description = I18n.t("alertDescFaible")
+        }
+
+        return (
+            <View style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+            }}>
+                <View style={{
+                    height: 175,
+                    width: 265,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 15,
+                    backgroundColor: returnColor(alertLevel)
+                }}>
+                    <TouchableOpacity onPress={() => setPopus(false)} style={{
+                        position: "absolute",
+                        top: 15,
+                        right: 15,
+                    }}>
+                        <View style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                            height: 27.5,
+                            width: 27.5,
+                            opacity: 0.40,
+                            borderRadius: 50,
+                            backgroundColor: "#860258",
+                        }}>
+                            <FontAwesomeIcon icon={faTimes} size={20}></FontAwesomeIcon>
+                        </View>
+                    </TouchableOpacity>
+
+                    <View style={{
+                        height: 55,
+                        width: 55,
+                        opacity: 0.40,
+                        backgroundColor: "#860258",
+                        borderRadius: 50,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: 7.5,
+                    }}>
+                        <FontAwesomeIcon icon={faExclamationCircle} size={40}></FontAwesomeIcon>
+                    </View>
+
+                    <View style={{
+                        opacity: 0.80,
+                    }}>
+                        <Text style={{ 
+                            fontSize: 25,
+                            color: "#860258",
+                            marginBottom: 5,
+                        }}>{title}</Text>
+
+                        <Text style={{
+                            fontSize: 15,
+                            color: "#860258",
+                        }}>{description}</Text>
+                    </View>
+                </View>
+            </View>
+        );
+    }
 
     return (
         <View style={{
@@ -146,7 +232,6 @@ const HomeScreen = ({ navigation }) => {
             <View style={{
                 paddingLeft: 35
             }}>
-
                     {   statusHelp == false && statusSend == false &&
                         <>
                             <AlertProps 
@@ -154,6 +239,10 @@ const HomeScreen = ({ navigation }) => {
                                     dispatch(setCacheNav('Home'));
                                     dispatch(setCacheCreateAlertLevel(3))
                                     navigation.navigate("CreateAlertScreen")
+                                }}
+                                onPresss={() => { 
+                                    setPopus(true)
+                                    setAlertLevel(3)
                                 }}
                                 title={I18n.t("alertGrave")}
                                 color="#d80000" 
@@ -167,6 +256,10 @@ const HomeScreen = ({ navigation }) => {
                                     dispatch(setCacheCreateAlertLevel(2))
                                     navigation.navigate("CreateAlertScreen")
                                 }}
+                                onPresss={() => { 
+                                    setPopus(true)
+                                    setAlertLevel(2)
+                                }}
                                 title={I18n.t("alertMoyen")}
                                 color="#ff9600" 
                                 colorComponent="#860258" 
@@ -178,6 +271,10 @@ const HomeScreen = ({ navigation }) => {
                                     dispatch(setCacheNav('Home'));
                                     dispatch(setCacheCreateAlertLevel(1))
                                     navigation.navigate("CreateAlertScreen")
+                                }}
+                                onPresss={() => { 
+                                    setPopus(true)
+                                    setAlertLevel(1)
                                 }}
                                 title={I18n.t("alertFaible")}
                                 color="#ffd100" 
