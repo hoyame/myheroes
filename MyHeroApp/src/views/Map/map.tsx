@@ -3,6 +3,7 @@ import { faAlignLeft, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, Image, TouchableHighlight } from "react-native";
+import { useReduxState } from "../../data/store";
 import MapComponent from "./service";
 
 
@@ -15,6 +16,7 @@ const MapScreen = ({ navigation }) => {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height);
   const [dark, setDark] = useState(false);
+  const image = useReduxState(state => state.user.image);
 
   const mapstyle = [
     {
@@ -265,7 +267,7 @@ const MapScreen = ({ navigation }) => {
                         }}
 
                         source={{
-                            uri: 'https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png',
+                            uri: image,
                         }}
                     />
                 </TouchableHighlight>   

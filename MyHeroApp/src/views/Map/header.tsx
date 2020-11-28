@@ -5,6 +5,7 @@ import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { Dimensions } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { useReduxState } from '../../data/store';
 
 interface IHeader {
     navigation: any;
@@ -14,7 +15,8 @@ interface IHeader {
 const HeaderComponent = (props: IHeader) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const map = props.map || false
-    
+    const image = useReduxState(state => state.user.image);
+
     return (
         <View style={{
             position: "absolute",
@@ -70,7 +72,7 @@ const HeaderComponent = (props: IHeader) => {
                         }}
 
                         source={{
-                            uri: 'https://hoyame.fr/e399d871b6455e3f2a7b0acd8add87c9.png',
+                            uri: image,
                         }}
                     />
                 </TouchableHighlight>   
