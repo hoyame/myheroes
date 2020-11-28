@@ -122,7 +122,6 @@ const ParametresScreen = ({ navigation }) => {
                         height: 63,
                         backgroundColor: '#ffffff',
                         marginBottom: 10,
-                        
                         borderRadius: 15,
                         alignItems: "center",
                     }}>
