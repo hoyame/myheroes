@@ -274,7 +274,6 @@ const MapScreen = ({ navigation }) => {
     );
   }
 
-
   return (
     <View>
       <MapComponent dmdm={dark == true && mapstyle} nav={navigation} height={screenHeight} width={screenWidth} />

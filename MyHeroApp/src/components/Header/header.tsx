@@ -17,6 +17,7 @@ interface IHeader {
     title?: string;
     redirect?: string;
     onBackClick?: any;
+    noMargin?: boolean;
 }
 
 const HeaderComponent = (props: IHeader) => {
@@ -31,11 +32,13 @@ const HeaderComponent = (props: IHeader) => {
                 Dimensions.get('window').height > 695 ? {
                     marginTop: 50,
                     paddingTop: 0,
-                    padding: 35
+                    paddingBottom: props.noMargin ? 0 : 35,
+                    padding: 35,
                 } : {
                     marginTop: 20,
                     paddingTop: 0,
-                    padding: 35             
+                    paddingBottom: props.noMargin ? 0 : 35,
+                    padding: 35,
                 }
             }>
                 <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
@@ -64,7 +67,6 @@ const HeaderComponent = (props: IHeader) => {
                         </View>
                     </View>
                 </TouchableOpacity>
-
 
                 <View style={{
                     display: "flex",

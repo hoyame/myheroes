@@ -1,6 +1,5 @@
-import React, { Component, useState} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import HeaderComponent from '../../components/Header/header';
+import React, { Component, useEffect, useState} from 'react';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import I18n from '../../i18n/i18n';
 import {
     RTCPeerConnection,
@@ -12,12 +11,26 @@ import {
     mediaDevices,
     registerGlobals
 } from 'react-native-webrtc';
-
+import HeaderComponent from '../../components/Header/header';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Button } from 'react-native';
 import WebRTC from '../../utils/WebRTC';
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
+import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { MyHeroService } from '../../api/Service';
+import { useReduxState } from '../../data/store';
+
+interface IHeader {
+  navigation: any;
+  map?: boolean
+}
+
+const screenWidth = Math.round(Dimensions.get('window').width - 70);
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 
+let load = false
 
 const styles = StyleSheet.create({
     body: {
@@ -35,64 +48,51 @@ const styles = StyleSheet.create({
     },
 });
 
-
 const ViewStream = ({ navigation }) => {
-    const [stream, setStream] = useState(null);
-    const [selfViewSrc, setSelfViewSrc] = useState("");
+    const alertDataHelp = useReduxState(state => state.user.showAlert);
     const [state, setState] = useState({
       remoteStreamURL: '',
     })
 
-    const [isFront, setFront] = useState(true)
+    useEffect(() => {
+      if (load == false) {
+        setState({...state, remoteStreamURL: alertDataHelp.webrtc});
+        load = true
+      }
+    })
 
-    const onConnect = () => {
-      const configuration = { 
-        "iceServers": [
-          {"url": "stun:stun.l.google.com:19302"}
-        ] 
-      };
-      const pc = new RTCPeerConnection(configuration);
+    if (alertDataHelp.webrtc == "") {
+      return (
+        <View style={{alignItems: "center", justifyContent: "center"}}>
+          <Text>Une erreur est survenue</Text>
 
-      mediaDevices.enumerateDevices().then(sourceInfos => {
-        console.log(sourceInfos);
-        let videoSourceId;
-        for (let i = 0; i < sourceInfos.length; i++) {
-          const sourceInfo = sourceInfos[i];
-          if(sourceInfo.kind == "videoinput" && sourceInfo.facing == (isFront ? "front" : "environment")) {
-            videoSourceId = sourceInfo.deviceId;
-          }
-        }
-        mediaDevices.getUserMedia({
-          audio: true,
-          video: {
-            //width: 640,
-            //height: 480,
-            //frameRate: 30
-            facingMode: (isFront ? "user" : "environment"),
-            deviceId: videoSourceId
-          }
-        })
-        .then((stream: any) => {
-          // Got stream!
-          setState({...state, remoteStreamURL: stream.toURL()});
-        })
-        .catch(error => {
-          // Log error
-        });
-      });
-      
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Text style={{color: 'red'}}>Retour a l'acceuil</Text>
+          </TouchableOpacity>
+        </View>
+      )
     }
 
     return (
         <>
-          <RTCView
-              streamURL={state.remoteStreamURL}
-              style={{width: 300, height: 300, alignSelf: 'center'}} 
-          />
-          
-          <Button onPress={onConnect} title='Connect' />
+          <HeaderComponent noMargin={true} title="" navigation={navigation} />
 
-          <HeaderComponent title='' navigation={navigation} redirect='Home' />
+          <View style={{
+            borderRadius: 10,
+            marginTop: -75,
+            width: screenWidth - 25, 
+            height: screenHeight, 
+            alignSelf: 'center'
+          }}>
+
+            <RTCView
+                streamURL={state.remoteStreamURL}
+                style={{ 
+                  width: screenWidth - 25, 
+                  height: screenHeight, 
+                }} 
+            />
+          </View>
         </>
     );
 }

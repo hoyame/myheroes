@@ -8,7 +8,8 @@ module.exports.addAlert = (req, res, next) => {
         source: req.body.source,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
-        description: req.body.description
+        description: req.body.description,
+        webid: req.body.webid
     }
     
     AlertsData.push(model);
@@ -24,7 +25,8 @@ module.exports.removeAlert = (req, res, next) => {
         source: req.body.source,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
-        description: req.body.description
+        description: req.body.description,
+        webid: req.body.webid
     }
 
     AlertsData = AlertsData.filter(x => x.source != req.body.source);

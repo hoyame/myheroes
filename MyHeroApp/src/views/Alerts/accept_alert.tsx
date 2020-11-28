@@ -151,14 +151,16 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         source: "",
                         latitude: 0,
                         longitude: 0,    
-                        description: ""
+                        description: "",
+                        webrtc: ""
                     }}))
                     MyHeroAlerts.DeleteAlert({
                         level: alerts.data.level,
                         source: alerts.data.source,
                         latitude: alerts.data.latitude,
                         longitude: alerts.data.longitude,    
-                        description: alerts.data.description
+                        description: alerts.data.description,
+                        webrtc: alerts.data.webrtc
                     })
                     navigation.navigate('Home') 
                 }}/>
@@ -172,14 +174,16 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         source: "",
                         latitude: 0,
                         longitude: 0,    
-                        description: ""
+                        description: "",
+                        webrtc: ""
                     }}))
                     MyHeroAlerts.DeleteAlert({
                         level: alerts.data.level,
                         source: alerts.data.source,
                         latitude: alerts.data.latitude,
                         longitude: alerts.data.longitude,    
-                        description: alerts.data.description
+                        description: alerts.data.description,
+                        webrtc: ""
                     })
                     navigation.navigate('EndAlertScreen') 
                 }}/>
@@ -272,7 +276,8 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                         source: "",
                         latitude: 0,
                         longitude: 0,    
-                        description: ""
+                        description: "",
+                        webrtc: ""
                     }}))              
                     navigation.navigate('Home')  
                 }}/>

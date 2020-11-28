@@ -1,6 +1,22 @@
 import Geolocation from '@react-native-community/geolocation';
 import { PermissionsAndroid, Platform } from 'react-native';
 import axios, { AxiosInstance } from 'axios';
+import {
+  RTCPeerConnection,
+  RTCIceCandidate,
+  RTCSessionDescription,
+  RTCView,
+  MediaStream,
+  MediaStreamTrack,
+  mediaDevices,
+  registerGlobals
+} from 'react-native-webrtc';
+
+
+
+export const TURN_SERVER_URL = '146.59.227.90:3478';
+export const TURN_SERVER_USERNAME = 'username';
+export const TURN_SERVER_CREDENTIAL = 'password';
 
 const apiLink = 'http://146.59.227.90:3333/';
 axios.defaults.baseURL = apiLink;
@@ -130,5 +146,56 @@ export abstract class MyHeroService {
               xhr.upload.onprogress = onProgress; // event.loaded / event.total * 100 ; //event.lengthComputable
           xhr.send(opts.body);
       });
-  }
+    }
+
+    public static initConnexionStream(cb: any) {
+      const isFront = true
+      const configuration = { 
+        "iceServers": [
+          { 
+            url: "stun:stun.l.google.com:19302"
+          },
+          {
+            urls: 'turn:' + TURN_SERVER_URL + '?transport=tcp',
+            username: TURN_SERVER_USERNAME,
+            credential: TURN_SERVER_CREDENTIAL
+          },
+          {
+            urls: 'turn:' + TURN_SERVER_URL + '?transport=udp',
+            username: TURN_SERVER_USERNAME,
+            credential: TURN_SERVER_CREDENTIAL
+          }
+        ] 
+      };
+
+      const pc = new RTCPeerConnection(configuration);
+
+      mediaDevices.enumerateDevices().then(sourceInfos => {
+        console.log(sourceInfos);
+        let videoSourceId;
+        for (let i = 0; i < sourceInfos.length; i++) {
+          const sourceInfo = sourceInfos[i];
+          if(sourceInfo.kind == "videoinput" && sourceInfo.facing == (isFront ? "front" : "environment")) {
+            videoSourceId = sourceInfo.deviceId;
+          }
+        }
+        mediaDevices.getUserMedia({
+          audio: true,
+          video: {
+            //width: 640,
+            //height: 480,
+            //frameRate: 30
+            facingMode: (isFront ? "user" : "environment"),
+            deviceId: videoSourceId
+          }
+        })
+        .then((stream: any) => {
+          // Got stream!
+          cb(stream.toURL())
+        })
+        .catch(error => {
+          // Log error
+        });
+      });
+    }
 }
