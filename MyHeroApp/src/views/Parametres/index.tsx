@@ -119,23 +119,25 @@ const ParametresScreen = ({ navigation }) => {
                     <View style={{
                         display: 'flex',
                         flexDirection: "row",
-                        height: 80,
-                        backgroundColor: '#e1e1e1',
+                        height: 63,
+                        backgroundColor: '#ffffff',
                         marginBottom: 10,
-                        borderRadius: 7.5,
+                        
+                        borderRadius: 15,
                         alignItems: "center",
                     }}>
                         <View style={{
                             marginLeft: 10,
-                            height: 80,
-                            width: 80,
+                            height: 65,
+                            width: 65,
                             alignItems: "center",
                             justifyContent: "center",
                         }}>
                             <Image key={Date.now()}  source={{uri: v.img}} style={{
-                                height: 30,
-                                width: 40,
-                                marginRight: 10
+                                height: 35,
+                                width: 45,
+                                marginRight: 10,
+                                borderRadius: 12
                             }} />    
                         </View> 
 
