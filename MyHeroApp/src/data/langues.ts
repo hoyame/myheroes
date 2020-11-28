@@ -1,7 +1,7 @@
 export const Langues = [
-    { name: "Français", id: "fr", img: "https://flagcdn.com/80x60/fr.png" },
-    { name: "Italiano", id: "it", img: "https://flagcdn.com/80x60/it.png" },
-    { name: "Anglais", id: "gb", img: "https://flagcdn.com/80x60/gb.png" },
-    { name: "Espagnol", id: "es", img: "https://flagcdn.com/80x60/es.png" },
-    { name: "Allemand", id: "de", img: "https://flagcdn.com/80x60/de.png" },
+    { name: "Français", id: "fr", img: "https://www.countryflags.io/fr/flat/64.png" },
+    { name: "Italiano", id: "it", img: "https://www.countryflags.io/it/flat/64.png" },
+    { name: "Anglais", id: "gb", img: "https://www.countryflags.io/gb/flat/64.png" },
+    { name: "Espagnol", id: "es", img: "https://www.countryflags.io/es/flat/64.png" },
+    { name: "Allemand", id: "de", img: "https://www.countryflags.io/de/flat/64.png" },
 ]
