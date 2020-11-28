@@ -49,6 +49,7 @@
     "react-native-webrtc": "^1.87.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "socket.io-client": "^3.0.3",
     "translate": "^1.1.2",
     "url": "^0.11.0"
   },

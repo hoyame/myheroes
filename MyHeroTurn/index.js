@@ -8,12 +8,10 @@ var server = new Turn({
   }
 });
 
-server.start()
-    .then(() => {
-        console.log('[MyHeroTurn] : Started')
-    })
+setTimeout(() => {
+    server.start()
+    console.log('[MyHeroTurn] : Started')
 
-    .catch((err) => {
-        console.log('[MyHeroTurn] : Error [' + err + ']')
-    })
-;
+
+}, 1000)
+
