@@ -1,7 +1,7 @@
 export const data = [
     {
         "p": "France",
-        "img": "https://flagcdn.com/20x15/fr.png",
+        "img": "https://www.countryflags.io/fr/flat/64.png",
         "samu": "15",
         "police": "17",
         "pompiers": "18",
@@ -10,14 +10,14 @@ export const data = [
     },
     {
         "p": "Switzerland",
-        "img": "https://flagcdn.com/20x15/ch.png",
+        "img": "https://www.countryflags.io/ch/flat/64.png",
         "samu": "144",
         "police": "117",
         "pompiers": "118",
     },    
     {
         "p": "Spain",
-        "img": "https://flagcdn.com/20x15/es.png",
+        "img": "https://www.countryflags.io/es/flat/64.png",
         "samu": "144",
         "police": "117",
         "pompiers": "118",
