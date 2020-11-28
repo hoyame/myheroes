@@ -68,9 +68,7 @@ const HomeScreen = ({ navigation }) => {
                     justifyContent: "space-between",
                     paddingLeft: 20
                 }}>
-                    <View style={{
-                        opacity: 0.80,
-                    }}>
+                    <View style={{}}>
                         <Text style={{
                             fontSize: 22,
                             color: "#000000"
@@ -205,17 +203,18 @@ const HomeScreen = ({ navigation }) => {
                     </View>
 
                     <View style={{
-                        opacity: 0.80,
+                        alignItems: "center",
+                        justifyContent: "center",
                     }}>
                         <Text style={{ 
                             fontSize: 25,
-                            color: "#860258",
+                            color: "#000000",
                             marginBottom: 5,
                         }}>{title}</Text>
 
                         <Text style={{
                             fontSize: 15,
-                            color: "#860258",
+                            color: "#000000",
                         }}>{description}</Text>
                     </View>
                 </View>
