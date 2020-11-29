@@ -71,7 +71,7 @@ app.get('*', function (req, res) {
 
 //An error handling middleware
 app.use((err, req, res, next) => {
-	console.log('🐞 Error Handler');
+	console.log(`[MyHeroApi] : Error Handler`)
 
 	err.statusCode = err.statusCode || 500;
 	err.status = err.status || 'error';
@@ -101,14 +101,16 @@ app.post('/api/upload', (req, res) => {
 // Run the server
 const port = process.env.PORT || 3333;
 app.listen(port, () =>
-	console.log(`🐹 app listening on http://localhost:${port}`)
+	console.log(`[MyHeroApi] : Started on ${port}`)
 );
 
 
 setInterval(() => { 
-	let query = `SELECT a=? FROM refresh`;
+	console.log(`[MyHeroApi] : Refresh`)
+
+	let query = `SELECT a FROM refresh`;
 	
-	con.query(query, ["a"], (err, result, fields) => {
+	con.query(query, [], (err, result, fields) => {
 
 		
 	});
