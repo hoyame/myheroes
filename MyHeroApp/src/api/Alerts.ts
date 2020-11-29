@@ -110,16 +110,21 @@ export default abstract class MyHeroAlerts {
 
             if (status === 200) {
                 const alerts = e.data || [];
-                AlertsData = [];
 
-                alerts.map((v: IAlert, k: any) => {
-                    let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
+                if (AlertsData.length === alerts.length) {
+                    return false
+                } else if (AlertsData.length !== alerts.length) {
+                    AlertsData = [];
+                    
+                    alerts.map((v: IAlert, k: any) => {
+                        let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
+                        //if (dist < 50) {
+                            AlertsData.push(v);
+                        //}
+                    })
 
-                    //if (dist < 50) {
-                        AlertsData.push(v);
-
-                    //}
-                })
+                    MyHeroService.sendNotification('Alertes', 'Des alertes sont disponibles')
+                }
             }
         })
 
