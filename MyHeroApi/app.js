@@ -106,7 +106,12 @@ app.listen(port, () =>
 
 
 setInterval(() => { 
-	console.log('Hehgiuesbgi')
-}, 3000);
+	let query = `SELECT a=? FROM refresh`;
+	
+	con.query(query, ["a"], (err, result, fields) => {
+
+		
+	});
+}, 25000);
 
 //https.createServer(options, app).listen(3335);
