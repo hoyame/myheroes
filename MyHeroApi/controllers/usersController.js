@@ -295,11 +295,8 @@ module.exports.getUserData = (req, res, next) => {
 
 		if (result.length > 0) {
 			const user = result;
-			
 			console.log(user)
 			res.status(200).json(user);
-
-			//return res.json(user)
 		} else {
 			let err = new Error('Invalid ID');
 			err.field = 'token';
