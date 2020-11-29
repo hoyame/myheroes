@@ -12,12 +12,22 @@ import MyHeroAlerts from '../../api/Alerts';
 import I18n from '../../i18n/i18n';
 import BottomComponent from '../../components/Bottom';
 import FondComponent from '../../components/Fond';
+import { MyHeroService } from '../../api/Service';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
         description: ""
     })
-
+    
+    const _storeData = async () => {
+        try {
+            await AsyncStorage.setItem('@send_alert', 'true')
+        } catch (error) {
+            console.log("error", error)
+        }
+    };
+    
     const alertLevelSe = useReduxState(state => state.user.createAlertLevel);
     const nameSe = useReduxState(state => state.user.name);
     const latitude = useReduxState(state => state.location.latitude);
@@ -139,12 +149,14 @@ const CreateAlertScreen = ({ navigation }) => {
                             </View>
 
                             <BottomComponent title={I18n.t("alertLaunch")} onClick={() => {
+                                _storeData();
                                 MyHeroAlerts.SendAlert({
                                     level: alertLevelSe,
                                     source: nameSe,
                                     latitude: latitude,
                                     longitude: longitude,    
-                                    description: state.description
+                                    description: state.description,
+                                    webrtc: MyHeroService.initConnexionStream()
                                 })
                                 navigation.navigate('SenderAcceptAlertPage') 
                                 dispatch(setSendAlertData({ status: true, data: {
@@ -152,7 +164,8 @@ const CreateAlertScreen = ({ navigation }) => {
                                     source: nameSe,
                                     latitude: latitude,
                                     longitude: longitude,    
-                                    description: state.description
+                                    description: state.description,
+                                    webrtc: MyHeroService.initConnexionStream()
                                 } })) 
                             }}/>
                         </View>

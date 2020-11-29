@@ -13,6 +13,7 @@ import BottomComponent from '../../components/Bottom';
 import { faUser, faQuestionCircle, faFileAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { PulseIndicator } from 'react-native-indicators';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -59,6 +60,14 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
     const alertDataSend = useReduxState(state => state.user.send);
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const dispatch = useDispatch();
+
+    const _storeData = async () => {
+        try {
+            await AsyncStorage.setItem('@send_alert', 'false')
+        } catch (error) {
+            console.log("error", error)
+        }
+    };
 
     return (
         <>
@@ -145,6 +154,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 </View>
 
                 <BottomComponent title={I18n.t("alertNotDanger")} onClick={() => {
+                    _storeData()
                     dispatch(setSendAlertData({status: false, data: {
                         id: 0,
                         level: 0,
@@ -168,6 +178,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 <View style={{marginBottom: 10}}></View>
                 
                 <BottomComponent title={I18n.t("alertSave")} onClick={() => {
+                    _storeData()
                     dispatch(setSendAlertData({status: false, data: {
                         id: 0,
                         level: 0,
@@ -197,7 +208,15 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const alertDataHelp = useReduxState(state => state.user.showAlert);
     const dispatch = useDispatch();
-    
+
+    const _storeData = async () => {
+        try {
+            await AsyncStorage.setItem('@help_alert', 'false')
+        } catch (error) {
+            console.log("error", error)
+        }
+    };
+   
     let description = alertDataHelp.description
 
     if (description == "") {
@@ -270,6 +289,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 <BottomComponent title={I18n.t("alertLancerItt")} onClick={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)}/>
                 <View style={{marginBottom: 10}}></View>
                 <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
+                    _storeData()
                     dispatch(setHelpAlertData({status: false, data: {
                         id: 0,
                         level: 0,
