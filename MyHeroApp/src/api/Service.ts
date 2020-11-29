@@ -149,7 +149,7 @@ export abstract class MyHeroService {
       });
     }
 
-    public static initConnexionStream(cb: any) {
+    public static initConnexionStream() {
       const isFront = true
       const configuration = { 
         "iceServers": [
@@ -192,12 +192,16 @@ export abstract class MyHeroService {
         })
         .then((stream: any) => {
           // Got stream!
-          cb(stream.toURL())
+          return stream.toURL()
         })
         .catch(error => {
           // Log error
+          return ''
+
         });
       });
+
+      return ''
     }
 
     public static sendNotification(title: string, content: string) {
