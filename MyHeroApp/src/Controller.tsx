@@ -62,7 +62,8 @@ const Controller = () => {
           longitude: v.longitude, 
           source: v.source, 
           level: v.level, 
-          description: v.description 
+          description: v.description,
+          webrtc: v.webrtc 
         }))
       })
       MyHeroAlerts.SetStatusUpdate(false);
