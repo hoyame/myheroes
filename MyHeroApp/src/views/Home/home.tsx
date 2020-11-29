@@ -71,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
                     <View style={{}}>
                         <Text style={{
                             fontSize: 22,
-                            color: "#000000"
+                            color: "#ffffff"
                         }}>{props.title}</Text>
 
                     </View>
@@ -80,14 +80,13 @@ const HomeScreen = ({ navigation }) => {
                         marginRight: 15,
                         height: 35,
                         width: 35,
-                        opacity: 0.40,
-                        backgroundColor: props.colorComponent,
+                        opacity: 0.50,
                         borderRadius: 50,
                         //display: 'flex',
                         justifyContent: "center",
                         alignItems: "center"
                     }}>
-                        <FontAwesomeIcon icon={faExclamationCircle} size={25}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faExclamationCircle} size={30} style={{color: "#ffffff"}}></FontAwesomeIcon>
                     </View>
                 </View>
             </TouchableOpacity>
