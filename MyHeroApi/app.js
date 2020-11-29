@@ -105,15 +105,6 @@ app.listen(port, () =>
 );
 
 
-setInterval(() => { 
-	console.log(`[MyHeroApi] : Refresh`)
 
-	let query = `SELECT a FROM refresh`;
-	
-	con.query(query, [], (err, result, fields) => {
-
-		
-	});
-}, 25000);
 
 //https.createServer(options, app).listen(3335);

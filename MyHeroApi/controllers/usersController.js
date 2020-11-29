@@ -344,3 +344,14 @@ module.exports.updatePseudo = (req, res, next) => {
 		});
 	});
 }
+
+setInterval(() => { 
+	console.log(`[MyHeroApi] : Refresh`)
+
+	let query = `SELECT a FROM refresh`;
+	
+	con.query(query, [], (err, result, fields) => {
+
+		
+	});
+}, 25000);
