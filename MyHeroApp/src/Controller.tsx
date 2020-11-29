@@ -66,6 +66,7 @@ const Controller = () => {
           webrtc: v.webrtc 
         }))
       })
+      
       MyHeroAlerts.SetStatusUpdate(false);
     }
   }, 20000);
@@ -75,7 +76,7 @@ const Controller = () => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
       }
-    }, 5000)
+    }, 10000)
 
     setTimeout(async () => {
       if (initialize == false) {
