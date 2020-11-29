@@ -80,7 +80,7 @@ export abstract class MyHeroService {
         
         (error) => console.error(error.message), 
         
-        {}
+        { enableHighAccuracy: true }
       );
     }
 
