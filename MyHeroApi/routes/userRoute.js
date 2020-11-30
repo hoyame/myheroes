@@ -80,6 +80,6 @@ router.post('/user/avatar', upload.array('photo', 3), usersController.uploadAvat
 
 router.get('/user/get', usersController.getUserData);
 
-router.get('/user/get_rate/:user', usersController.returnRateUser);
+router.get('/user/get_rate', usersController.returnRateUser);
 
 module.exports = router;
