@@ -58,6 +58,8 @@ const AccountScreen = ({ navigation }) => {
         { user: "Karim", rate: 2, description: "Bonne personne, avec des mauvaises intentions" },
         { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
         { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
+        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
+        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
     ]
 
     const ReturnStars = (props: IStars) => {
@@ -230,6 +232,7 @@ const AccountScreen = ({ navigation }) => {
 
                 <View style={{
                     alignItems: 'center',
+                    marginBottom: 165
                 }}>
                     <Image
                         key={Date.now()} 
