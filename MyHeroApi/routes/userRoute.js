@@ -78,6 +78,8 @@ router.post('/user/update_pseudo', usersController.updatePseudo);
 
 router.post('/user/avatar', upload.array('photo', 3), usersController.uploadAvatar); 
 
-router.get('/user/get', usersController.getUserData)
+router.get('/user/get', usersController.getUserData);
+
+router.get('/user/get_rate', usersController.returnRateUser);
 
 module.exports = router;
