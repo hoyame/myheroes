@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2020 at 04:16 PM
+-- Generation Time: Nov 30, 2020 at 07:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -70,6 +70,7 @@ INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `img`, `rate`, `xp`, `
 
 CREATE TABLE `users_data` (
   `id` int(15) NOT NULL,
+  `source` varchar(255) DEFAULT NULL,
   `user` varchar(255) DEFAULT NULL,
   `rate` int(15) DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL
@@ -79,13 +80,13 @@ CREATE TABLE `users_data` (
 -- Dumping data for table `users_data`
 --
 
-INSERT INTO `users_data` (`id`, `user`, `rate`, `description`) VALUES
-(1, 'fenoeinge', 5, '511515411'),
-(2, 'fenoeinge', 5, '511515411'),
-(3, 'dddd', 4, '534'),
-(4, 'dddd', 4, '534'),
-(5, 'dddd', 4, '534'),
-(6, 'dddd', 4, '534');
+INSERT INTO `users_data` (`id`, `source`, `user`, `rate`, `description`) VALUES
+(1, '0', 'fenoeinge', 5, '511515411'),
+(2, '0', 'fenoeinge', 5, '511515411'),
+(3, '0', 'dddd', 4, '534'),
+(4, '0', 'dddd', 4, '534'),
+(5, '0', 'dddd', 4, '534'),
+(6, '0', 'dddd', 4, '534');
 
 --
 -- Indexes for dumped tables
