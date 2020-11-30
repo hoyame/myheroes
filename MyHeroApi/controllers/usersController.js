@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const { result } = require('lodash');
 
 // SignUp
 module.exports.signUp = (req, res, next) => {
@@ -340,6 +341,17 @@ module.exports.updatePseudo = (req, res, next) => {
 			result: result,
 		});
 	});
+}
+
+module.exports.returnRateUser = (req, res, next) => {
+	const user = req.query.user;
+
+	const query = `SELECT * FROM users_data WHERE source=?`
+
+	con.query(query, [user], (err, result, fields) => {
+		console.log("result", result)
+	})
+
 }
 
 setInterval(() => { 
