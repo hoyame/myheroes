@@ -351,7 +351,6 @@ module.exports.returnRateUser = (req, res, next) => {
 	con.query(query, [user], (err, result, fields) => {
 		//console.log("result", result)
 		res.status(200).json(result);
-
 	})
 }
 
