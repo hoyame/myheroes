@@ -349,7 +349,9 @@ module.exports.returnRateUser = (req, res, next) => {
 	const query = `SELECT * FROM users_data WHERE source=?`
 
 	con.query(query, [user], (err, result, fields) => {
-		console.log("result", result)
+		//console.log("result", result)
+		res.status(200).json(result);
+
 	})
 
 }
