@@ -48,6 +48,18 @@ const AccountScreen = ({ navigation }) => {
         size?: number;
     }
 
+    interface IAvis {
+        user?: string;
+        rate: number;
+        description?: string;
+    }
+
+    const AvisData: IAvis[] = [
+        { user: "Karim", rate: 2, description: "Bonne personne, avec des mauvaises intentions" },
+        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
+        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
+    ]
+
     const ReturnStars = (props: IStars) => {
         const rate = props.rate || 0
         const color = "#febc00"
@@ -135,7 +147,7 @@ const AccountScreen = ({ navigation }) => {
         }
     }
 
-    const AvisProps = () => {
+    const AvisProps = (props: IAvis) => {
         return (
             <View style={{
                 height: 150,
@@ -166,7 +178,7 @@ const AccountScreen = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: 'https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128',
+                                uri: `http://146.59.227.90:3000/api/avatar/${props.user}?time=${new Date()}`,
                             }}
                         />
                     </View>
@@ -179,9 +191,9 @@ const AccountScreen = ({ navigation }) => {
                             fontSize: 16,
                             marginBottom: 3,
                             color: "white"
-                        }}>Jibril</Text>
+                        }}>{props.user}</Text>
 
-                        <ReturnStars size={15} rate={1} />
+                        <ReturnStars size={15} rate={props.rate} />
                     </View>
                 </View>
 
@@ -191,13 +203,18 @@ const AccountScreen = ({ navigation }) => {
                         width: screenWidth - 20,
                         marginTop: 4,
                         color: "rgba(255, 255, 255, 0.75)"
-                    }}>Gros pervers, il a voulu me violer, on voit que c'est un gros chien affamer,
-                    copine l'avais quitter, je la comprend vu sa tete de rat enfumée et ses airs pervers... il ma toucher la
-                    foufoune a plusieurs reprises, a s'en mefier....</Text>
+                    }}>{props.description}</Text>
                 </View>
             </View>
         );
     }
+
+    const returnAvis = () => {
+        return AvisData.map((v, k) => (
+            <AvisProps key={k} {...v} />
+        ))
+    }
+
 
     return (
         <>
@@ -262,7 +279,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faCut} size={25} style={{color: "#FC9A21", marginRight: 7.5}} />
                     </View>
 
-                    <AvisProps />
+                    {returnAvis()}
 
                 </View>
                     </ScrollView>
