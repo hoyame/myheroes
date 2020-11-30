@@ -19,6 +19,8 @@ target 'MyHeroApp' do
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
   pod 'GoogleMaps', '4.0.0'
+
+  pod 'Google-Maps-iOS-Utils'
   
   pod 'GooglePlaces', '4.0.0'
   

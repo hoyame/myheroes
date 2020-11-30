@@ -67,6 +67,22 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - Google-Maps-iOS-Utils (3.4.2):
+    - Google-Maps-iOS-Utils/Clustering (= 3.4.2)
+    - Google-Maps-iOS-Utils/Geometry (= 3.4.2)
+    - Google-Maps-iOS-Utils/Heatmap (= 3.4.2)
+    - Google-Maps-iOS-Utils/QuadTree (= 3.4.2)
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Clustering (3.4.2):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Geometry (3.4.2):
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Heatmap (3.4.2):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/QuadTree (3.4.2):
+    - GoogleMaps
   - GoogleMaps (4.0.0):
     - GoogleMaps/Maps (= 4.0.0)
   - GoogleMaps/Base (4.0.0)
@@ -364,6 +380,7 @@ DEPENDENCIES:
   - FlipperKit/SKIOSNetworkPlugin (~> 0.54.0)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - Google-Maps-iOS-Utils
   - GoogleMaps (= 4.0.0)
   - GooglePlaces (= 4.0.0)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -418,6 +435,7 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
+    - Google-Maps-iOS-Utils
     - GoogleMaps
     - GooglePlaces
     - OpenSSL-Universal
@@ -525,6 +543,7 @@ SPEC CHECKSUMS:
   FlipperKit: ab353d41aea8aae2ea6daaf813e67496642f3d7d
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
+  Google-Maps-iOS-Utils: e8826ab68a4f81355a8e70678507a93cc6aab06b
   GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
   GooglePlaces: ca8d4aba09ba79e0a829cf1dca03a41de6a09016
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
@@ -567,6 +586,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 4769549b4d7d6fe2589506bd9bb9c07b65767b97
+PODFILE CHECKSUM: c9a8cd8baf3cf473f9c3251247b9ed2db8aaa67f
 
 COCOAPODS: 1.10.0

@@ -21,10 +21,7 @@ export default abstract class Users {
         axios.get(`${API_LINK}/user/get_rate/?user=${user}`)
             .then((response) => {
                 const data = response.data
-
                 AvisUsers = data
-
-                console.log(data);
             })
 
             .catch((err) => {
