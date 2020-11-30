@@ -140,7 +140,7 @@ const NavScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent title={I18n.t("menu")} navigation={navigation} />
+            <HeaderComponent redirect="Home" title={I18n.t("menu")} navigation={navigation} />
         
             <View style={{
                 display: "flex", 
