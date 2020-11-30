@@ -9,6 +9,7 @@ import { useReduxState } from '../../data/store';
 import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import I18n from '../../i18n/i18n';
+import { AvisUsers } from '../../api/User';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -54,13 +55,7 @@ const AccountScreen = ({ navigation }) => {
         description?: string;
     }
 
-    const AvisData: IAvis[] = [
-        { user: "Karim", rate: 2, description: "Bonne personne, avec des mauvaises intentions" },
-        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
-        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
-        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
-        { user: "Hozqle", rate: 4, description: "wfjib wifbwfibwfiuwb" },
-    ]
+    const AvisData = AvisUsers
 
     const ReturnStars = (props: IStars) => {
         const rate = props.rate || 0
