@@ -10,7 +10,7 @@ module.exports.addAlert = (req, res, next) => {
         longitude: req.body.longitude,
         description: req.body.description,
         webid: req.body.webid,
-        count: 1
+        count: 0
     }
     
     AlertsData.push(model);
