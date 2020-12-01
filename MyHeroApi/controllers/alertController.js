@@ -75,6 +75,15 @@ module.exports.removeDataViewer = (req, res, next) => {
     res.send(AlertsData[indexOf]);
 }
 
+module.exports.getDataViewer = (req, res, next) => {
+    const id = req.body.id;
+
+    const found = AlertsData.find(element => element.id == id);
+    const indexOf = AlertsData.indexOf(found)
+
+    res.send(AlertsData[indexOf].count);
+}
+
 module.exports.returnAlerts = (req, res, next) => {
     res.send(AlertsData);
 }
