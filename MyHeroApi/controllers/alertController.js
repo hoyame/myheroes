@@ -81,7 +81,9 @@ module.exports.getDataViewer = (req, res, next) => {
     const found = AlertsData.find(element => element.id == id);
     const indexOf = AlertsData.indexOf(found)
 
-    res.send(AlertsData[indexOf].count);
+    res.status(200).json(AlertsData[indexOf].count);
+
+    //res.send(AlertsData[indexOf].count);
 }
 
 module.exports.returnAlerts = (req, res, next) => {
