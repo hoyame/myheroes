@@ -12,5 +12,9 @@ router.post('/alerts/add', alertController.addAlert);
 
 router.post('/alerts/remove', alertController.removeAlert);
 
+router.post('/alerts/add_data_viewer', alertController.addDataViewer);
+
+router.post('/alerts/remove_data_viewer', alertController.removeDataViewer);
+
 
 module.exports = router;
