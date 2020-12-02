@@ -345,13 +345,11 @@ module.exports.updatePseudo = (req, res, next) => {
 
 module.exports.returnRateUser = (req, res, next) => {
 	const user = req.query.user;
-
 	const query = `SELECT * FROM users_data WHERE source=?`
 
 	con.query(query, [user], (err, result, fields) => {
-		console.log("result", result)
+		res.status(200).json(result);
 	})
-
 }
 
 setInterval(() => { 
@@ -359,3 +357,4 @@ setInterval(() => {
 	let query = `SELECT a FROM refresh`;
 	con.query(query, [], (err, result, fields) => {});
 }, 100000);
+

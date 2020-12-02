@@ -95,9 +95,9 @@ const MapComponent = (props: IMap) => {
         <MapView
           showsUserLocation={true}
           followsUserLocation={true}
-          //provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           customMapStyle={props.dmdm ? props.dmdm : []}
-
+    
 
           style={{
               height: props.height,

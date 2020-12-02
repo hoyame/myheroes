@@ -12,8 +12,24 @@ interface IUser {
     xp?: number | undefined;
 }
 
+export let AvisUsers = []
+
 
 export default abstract class Users {
+
+    public static GetRate(user: string) {
+        axios.get(`${API_LINK}/user/get_rate/?user=${user}`)
+            .then((response) => {
+                const data = response.data
+                AvisUsers = data
+            })
+
+            .catch((err) => {
+                console.log("err", err);
+            }
+        )
+    }
+
     public static async Load(succes: any, errorFunc: any, newUser: any) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
         console.log(typeof AMail)
@@ -38,6 +54,7 @@ export default abstract class Users {
                             img: img
                         }
 
+                        this.GetRate(pseudo)
                         succes(d);
                         console.log("200")
                     } else {
@@ -206,3 +223,4 @@ export default abstract class Users {
         _storeData();
     }
 }
+

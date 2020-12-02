@@ -100,7 +100,8 @@ const Controller = () => {
                 dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${pseudo}?time=${new Date()}`));
                 setNewUser(false);
                 setInitialize(true);
-                console.log("200")
+                Users.GetRate(pseudo);
+                console.log("200");
               } else {
                 setNewUser(true);
                 setInitialize(true);

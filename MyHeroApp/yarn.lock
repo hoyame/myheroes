@@ -5976,6 +5976,11 @@ react-native-gesture-handler@^1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-google-maps@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-google-maps/-/react-native-google-maps-1.0.0.tgz#df55b421642bd02ba9cb95229ca9f5546db0208c"
+  integrity sha1-31W0IWQr0Cupy5UinKn1VG2wIIw=
+
 react-native-image-picker@^2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.3.4.tgz#1c31dbe9872ade17e2ed6457b0c669d63c322590"
