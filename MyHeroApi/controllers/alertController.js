@@ -76,7 +76,7 @@ module.exports.removeDataViewer = (req, res, next) => {
 }
 
 module.exports.getDataViewer = (req, res, next) => {
-    const id = req.query.id;
+    const id = req.query.id || req.body.id;
 
     const found = AlertsData.find(element => element.id == id);
     const indexOf = AlertsData.indexOf(found)

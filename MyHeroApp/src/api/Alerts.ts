@@ -136,4 +136,23 @@ export default abstract class MyHeroAlerts {
     public static SetStatusUpdate(arg: boolean) {
         this.StatusUpdate = arg
     }
+
+    public static getUsersCount(id: number) {
+        axios.get(`${API_LINK}/alerts/get_data_viewer`)
+
+        .then((response) => {
+            const e = response;
+            const status: number = e.status
+
+            if (status === 200) {
+                const alerts = e.data || 0;
+
+                
+            }
+        })
+
+        .catch((err) => {
+            console.log("err", err);
+        })
+    }
 }
