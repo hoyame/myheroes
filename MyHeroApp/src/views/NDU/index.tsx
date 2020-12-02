@@ -31,6 +31,29 @@ const NDUPage = ({ navigation }) => {
         sme?: string;
     }
 
+    const getContacts = () => {
+        let previousChar = '';
+        let char = '';
+        let childrens = [];
+
+        for (let i = 0; i < contacts.length; i++) {
+            const contact = contacts[i];
+            char = (contact.lastname
+                ? contact.lastname.substring(0, 1)
+                : contact.firstname.substring(0, 1)
+            ).toUpperCase();
+
+            if (char != previousChar) {
+                childrens.push(getSeparator(char));
+            }
+            previousChar = char;
+
+            childrens.push(getContact(contact));
+        }
+
+        return <ul id="contact-list">{childrens}</ul>;
+    };
+
     const Props: React.FC<IProps> = (props: IProps) => {
         return (
             <View style={{
