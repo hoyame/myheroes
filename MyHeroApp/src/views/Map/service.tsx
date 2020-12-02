@@ -85,6 +85,8 @@ const MapComponent = (props: IMap) => {
               dispatch(setCacheShowAlert(v))
               props.nav.navigate('AlertPageScreen')
             }}
+
+            image={require("../../assets/sos.png")}
           />
         );
     })
