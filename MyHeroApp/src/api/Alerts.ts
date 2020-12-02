@@ -138,7 +138,7 @@ export default abstract class MyHeroAlerts {
     }
 
     public static getUsersCount(id: number) {
-        axios.get(`${API_LINK}/alerts/get_data_viewer`)
+        axios.get(`${API_LINK}/alerts/get_data_viewer/?id=${id}`)
 
         .then((response) => {
             const e = response;
@@ -147,12 +147,14 @@ export default abstract class MyHeroAlerts {
             if (status === 200) {
                 const alerts = e.data || 0;
 
-                
+                return alerts;
             }
         })
 
         .catch((err) => {
-            console.log("err", err);
+            console.log("err g", err);
         })
     }
 }
+
+console.log(MyHeroAlerts.getUsersCount(1));
