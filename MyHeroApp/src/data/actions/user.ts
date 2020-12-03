@@ -11,10 +11,12 @@ import {
     SET_CACHE_NAVIGATION,
     SET_CACHE_CREATE_ALERT_LEVEL, 
     SET_CACHE_SHOW_ALERT,
+    SET_CACHE_USER,
     IUser, 
     IUserSend,
     IUserHelp,
-    SET_MAIL
+    SET_MAIL,
+    IUserCache
 } from '../types/user';
 
 ////////////////////////////////////////////////////
@@ -212,6 +214,20 @@ export const setCacheNav = (data: string) => ({
 
 ////////////////////////////////////////////////////
 
+export interface ISetCacheUser {
+    type: typeof SET_CACHE_USER,
+    payload: {
+        userCache: IUserCache
+    }
+}
+
+export const setCacheUser = (d: IUserCache) => ({
+    type: SET_CACHE_USER,
+    payload: {
+        userCache: d
+    }
+})
+
 export type IUserActions = 
     ISetMail |
     ISetName | 
@@ -224,5 +240,6 @@ export type IUserActions =
     ISetHelpAlertData |
     ISetCacheCreateAlertLevel |
     ISetCacheShowAlert |
-    ISetCacheNav
+    ISetCacheNav |
+    ISetCacheUser
 ;
