@@ -11,6 +11,7 @@ import { setCacheCreateAlertLevel, setCacheNav, setName } from '../../data/actio
 import I18n from '../../i18n/i18n';
 import BlurView from 'react-native-blur';
 import { color } from 'react-native-reanimated';
+import { ScrollView } from 'react-native-gesture-handler';
 
 //import SosSVG from '../../assets/sos.svg'
 
@@ -141,97 +142,113 @@ const HomeScreen = ({ navigation }) => {
             </TouchableOpacity>
         );
     }
-    
-    if (popup == true) {
-        let title;
-        let description;
-    
-        if (alertLevel == 3) {
-            title = I18n.t("alertGrave")
-            description = I18n.t("alertDescGrave")
-        } else if (alertLevel == 2) {
-            title = I18n.t("alertMoyen")
-            description = I18n.t("alertDescMoyen")
-        } else if (alertLevel == 1) {
-            title = I18n.t("alertFaible")
-            description = I18n.t("alertDescFaible")
-        }
 
-        return (
-            <View style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-            }}>
-                <View style={{
-                    height: 175,
-                    width: 265,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: 15,
-                    backgroundColor: returnColor(alertLevel)
-                }}>
-                    <TouchableOpacity onPress={() => setPopus(false)} style={{
-                        position: "absolute",
-                        top: 15,
-                        right: 15,
-                    }}>
-                        <View style={{
-                            justifyContent: "center",
-                            alignItems: "center",
-                            height: 27.5,
-                            width: 27.5,
-                            opacity: 0.40,
-                            borderRadius: 50,
-                            backgroundColor: "#860258",
-                        }}>
-                            <FontAwesomeIcon icon={faTimes} size={20}></FontAwesomeIcon>
-                        </View>
-                    </TouchableOpacity>
+    let ptitle;
+    let pdescription;
 
-                    <View style={{
-                        height: 55,
-                        width: 55,
-                        opacity: 0.40,
-                        backgroundColor: "#860258",
-                        borderRadius: 50,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        marginBottom: 7.5,
-                    }}>
-                        <FontAwesomeIcon icon={faExclamationCircle} size={40}></FontAwesomeIcon>
-                    </View>
-
-                    <View style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}>
-                        <Text style={{ 
-                            fontSize: 25,
-                            color: "#000000",
-                            marginBottom: 5,
-                        }}>{title}</Text>
-
-                        <Text style={{
-                            fontSize: 15,
-                            color: "#000000",
-                        }}>{description}</Text>
-                    </View>
-                </View>
-            </View>
-        );
+    if (alertLevel == 3) {
+        ptitle = I18n.t("alertGrave")
+        pdescription = I18n.t("alertDescGrave")
+    } else if (alertLevel == 2) {
+        ptitle = I18n.t("alertMoyen")
+        pdescription = I18n.t("alertDescMoyen")
+    } else if (alertLevel == 1) {
+        ptitle = I18n.t("alertFaible")
+        pdescription = I18n.t("alertDescFaible")
     }
 
     return (
         <View style={{
             display: "flex",
         }}>
+        <ScrollView>
             <HeaderComponent navigation={navigation} />
 
             <View style={{
-                paddingLeft: 35
+                paddingLeft: 35,
+                marginBottom: 60
             }}>
-                    {   statusHelp == false && statusSend == false &&
+                    {
+                        statusHelp == false && statusSend == false && popup == true && 
+                        <>
+
+                            <TouchableOpacity onPress={() => {
+                                if (alertLevel == 3) {
+                                    dispatch(setCacheNav('Home'));
+                                    dispatch(setCacheCreateAlertLevel(3))
+                                    navigation.navigate("CreateAlertScreen")
+                                } else if (alertLevel == 2) {
+                                    dispatch(setCacheNav('Home'));
+                                    dispatch(setCacheCreateAlertLevel(2))
+                                    navigation.navigate("CreateAlertScreen")
+                                } else if (alertLevel == 1) {
+                                    dispatch(setCacheNav('Home'));
+                                    dispatch(setCacheCreateAlertLevel(1))
+                                    navigation.navigate("CreateAlertScreen")
+                                }
+                            }}>
+                            
+                            <View style={{
+                                height: 165,
+                                width: screenWidth,
+                                alignItems: "center",
+                                justifyContent: "center",
+                                marginBottom: 7.5,
+                                borderRadius: 15,
+                                backgroundColor: returnColor(alertLevel)
+                            }}>
+                                <TouchableOpacity onPress={() => setPopus(false)} style={{
+                                    position: "absolute",
+                                    top: 15,
+                                    right: 15,
+                                }}>
+                                    <View style={{
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        height: 27.5,
+                                        width: 27.5,
+                                        opacity: 0.40,
+                                        borderRadius: 50,
+                                        backgroundColor: "#860258",
+                                    }}>
+                                        <FontAwesomeIcon icon={faTimes} size={20}></FontAwesomeIcon>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <View style={{
+                                    height: 55,
+                                    width: 55,
+                                    opacity: 0.40,
+                                    backgroundColor: "#860258",
+                                    borderRadius: 50,
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    marginBottom: 7.5,
+                                }}>
+                                    <FontAwesomeIcon icon={faExclamationCircle} size={40}></FontAwesomeIcon>
+                                </View>
+
+                                <View style={{
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}>
+                                    <Text style={{ 
+                                        fontSize: 25,
+                                        color: "#000000",
+                                        marginBottom: 5,
+                                    }}>{ptitle}</Text>
+
+                                    <Text style={{
+                                        fontSize: 15,
+                                        color: "#000000",
+                                    }}>{pdescription}</Text>
+                                </View>
+                            </View>
+                            </TouchableOpacity>
+                        </>
+                    }
+
+                    {   statusHelp == false && statusSend == false && popup == false &&
                         <>
                             <AlertProps 
                                 onClick={() => {
@@ -296,7 +313,7 @@ const HomeScreen = ({ navigation }) => {
                                 <View style={{
                                     display: "flex",
                                     flexDirection: "row",
-
+                                    
                                     margin: 10
                                 }}>
                                     <PulseIndicator color='white' />
@@ -308,7 +325,7 @@ const HomeScreen = ({ navigation }) => {
                                         fontSize: 20
                                     }}>{I18n.t("alertInProgress")}</Text>
                                 </View>
-
+                            
                                 <View style={{
                                     marginLeft: 30
                                 }}>
@@ -359,7 +376,7 @@ const HomeScreen = ({ navigation }) => {
                                 <View style={{
                                     display: "flex",
                                     flexDirection: "row",
-
+                                    
                                     margin: 10
                                 }}>
                                     <PulseIndicator color='white' />
@@ -449,6 +466,7 @@ const HomeScreen = ({ navigation }) => {
  
 
             </View>
+        </ScrollView>
         </View>
     );
 }
