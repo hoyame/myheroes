@@ -11,6 +11,7 @@ import {
     SET_HELP_ALERT_DATA, 
     SET_CACHE_CREATE_ALERT_LEVEL, 
     SET_CACHE_SHOW_ALERT,
+    SET_CACHE_USER,
     IUser, 
     IUserSend,
     IUserHelp,
@@ -71,6 +72,11 @@ const UserReducer = (state = initialState, action: IUserActions): IUser => {
                 ...state, 
                 navCache: action.payload.nav            
             }
+        case SET_CACHE_USER: 
+            return {
+                ...state,
+                userCache: action.payload.userCache
+            }
         default: return state;
     }
 }
@@ -98,7 +104,15 @@ const initialState: IUser = {
 
     createAlertLevel: 0,
     showAlert: {},
-    navCache: ""
+    navCache: "",
+    userCache: {
+        status: false,
+        mail: "",
+        name: "",
+        rate: 0,
+        image: "",
+        xp: 0
+    },
 }
 
 export default UserReducer;
