@@ -1,8 +1,11 @@
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import React from 'react';
-import { AsyncStorage, Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
+import React, { useEffect, useState } from 'react';
+import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import { useDispatch } from 'react-redux';
+import MyHeroAlerts from '../../api/Alerts';
+import Users from '../../api/User';
 import AccountStats from '../../components/AccountStats';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import BottomComponent from '../../components/Bottom';
@@ -11,10 +14,28 @@ import { setHelpAlertData, setSendAlertData, setStatusHelp } from '../../data/ac
 import { useReduxState } from '../../data/store';
 import I18n from '../../i18n/i18n';
 
+
 const AlertPageScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const alertData = useReduxState(state => state.user.showAlert);
     const dispatch = useDispatch();
+
+    const [state, setState] = useState({
+        star: 0,
+        xp: 0
+    })
+    
+    useEffect(() => {
+        console.log(alertData.source)
+        
+        Users.GetData(alertData.source, (e: any) => {
+            const rate = parseFloat(JSON.stringify(e.data[0].rate))
+            const xp = parseFloat(JSON.stringify(e.data[0].xp))
+            
+            setState({...state, star: rate, xp: xp})
+        }, () => null)
+    })
+
 
     const _storeData = async () => {
         try {
@@ -36,7 +57,7 @@ const AlertPageScreen = ({ navigation }) => {
                 <View style={{
                     marginBottom: 10,
                 }}>
-                    <AccountStats name={alertData.source} xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
+                    <AccountStats name={alertData.source} xp={state.xp} rate={state.star} img={`http://146.59.227.90:3000/api/avatar/${alertData.source}?time=${new Date()}`} />
                 </View>
                 
                 <View style={{
