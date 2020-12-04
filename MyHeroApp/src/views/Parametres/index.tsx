@@ -9,13 +9,14 @@ import InputComponent from '../../components/Input/input';
 import { useReduxState } from '../../data/store';
 import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
-import I18n from '../../i18n/i18n';
+import I18n, { setLanguage } from '../../i18n/i18n';
 import { Langues } from '../../data/langues';
 import ButtonComponent from '../../components/Button';
 import FondComponent from '../../components/Fond';
 import TitleComponent from '../../components/Title';
 import { setCacheNav, setImage } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const styles = StyleSheet.create({
     container: {
@@ -58,6 +59,14 @@ const ParametresScreen = ({ navigation }) => {
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
         type: ''
     })
+
+    const _storeDataLanguage = async (d: string) => {
+        try {
+            await AsyncStorage.setItem('@language', d)
+        } catch (error) {
+            console.log("error", error)
+        }
+    };
 
     const disconnect = () => {
         Users.Disconnect();
@@ -115,7 +124,11 @@ const ParametresScreen = ({ navigation }) => {
     const returnLangues = () => {
         return Langues.map((v, k) => {
             return (
-                <TouchableOpacity key={k}>
+                <TouchableOpacity key={k} onPress={() => {
+                    _storeDataLanguage(v.id);
+                    setLanguage(v.id);
+                    setLanguageS(false);
+                }} >
                     <View style={{
                         display: 'flex',
                         flexDirection: "row",
