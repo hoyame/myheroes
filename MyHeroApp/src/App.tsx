@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { Platform, StyleSheet } from 'react-native';;
 import Controller from './Controller';
 import { Provider } from 'react-redux';
-import store from './data/store';
+import { store, persistor } from './data/store';
 import { MyHeroService } from './api/Service';
 import MyHeroAlerts from './api/Alerts';
 import BackgroundTimer from 'react-native-background-timer';
 
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import PushNotification from "react-native-push-notification";
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 PushNotification.configure({
@@ -79,7 +80,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Controller />
+      <PersistGate loading={null} persistor={persistor}>
+        <Controller />
+      </PersistGate>
     </Provider>
   );
 }
