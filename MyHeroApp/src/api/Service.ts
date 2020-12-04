@@ -19,6 +19,28 @@ export const TURN_SERVER_URL = '146.59.227.90:3478';
 export const TURN_SERVER_USERNAME = 'username';
 export const TURN_SERVER_CREDENTIAL = 'password';
 
+const configuration = { 
+  "iceServers": [
+    { 
+      url: "stun:stun.l.google.com:19302"
+    },
+    /*
+    {
+      urls: 'turn:' + TURN_SERVER_URL + '?transport=tcp',
+      username: TURN_SERVER_USERNAME,
+      credential: TURN_SERVER_CREDENTIAL
+    },
+    {
+      urls: 'turn:' + TURN_SERVER_URL + '?transport=udp',
+      username: TURN_SERVER_USERNAME,
+      credential: TURN_SERVER_CREDENTIAL
+    }
+    */
+  ] 
+};
+
+const pc = new RTCPeerConnection(configuration);
+
 const apiLink = 'http://146.59.227.90:3333/';
 axios.defaults.baseURL = apiLink;
 axios.defaults.timeout = 1000 * 60 * 5;
@@ -151,25 +173,6 @@ export abstract class MyHeroService {
 
     public static initConnexionStream() {
       const isFront = true
-      const configuration = { 
-        "iceServers": [
-          { 
-            url: "stun:stun.l.google.com:19302"
-          },
-          {
-            urls: 'turn:' + TURN_SERVER_URL + '?transport=tcp',
-            username: TURN_SERVER_USERNAME,
-            credential: TURN_SERVER_CREDENTIAL
-          },
-          {
-            urls: 'turn:' + TURN_SERVER_URL + '?transport=udp',
-            username: TURN_SERVER_USERNAME,
-            credential: TURN_SERVER_CREDENTIAL
-          }
-        ] 
-      };
-
-      const pc = new RTCPeerConnection(configuration);
 
       mediaDevices.enumerateDevices().then(sourceInfos => {
         console.log(sourceInfos);
@@ -192,6 +195,7 @@ export abstract class MyHeroService {
         })
         .then((stream: any) => {
           // Got stream!
+          console.log('succes connexion webtrc')
           return stream.toURL()
         })
         .catch(error => {
