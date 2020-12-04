@@ -16,7 +16,7 @@ module.exports.addAlert = (req, res, next) => {
     AlertsData.push(model);
     console.log(AlertsData)
 
-    res.send(AlertsData);
+    res.send(model);
 }
 
 module.exports.removeAlert = (req, res, next) => {
