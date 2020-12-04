@@ -86,6 +86,7 @@ const initialState: IUser = {
     rate: 0,
     image: '',
     xp: 0,
+    language: '',
 
     statusSend: false,
     statusHelp: false,
