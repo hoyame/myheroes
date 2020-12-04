@@ -32,7 +32,7 @@ import ConfidentialiteScreen from './views/Confidentialite';
 import ProposScreen from './views/Propos';
 import EndAlertScreen from './views/Alerts/end_alert';
 import { Root, Popup, Toast } from 'popup-ui';
-import I18n from './i18n/i18n';
+import I18n, { setLanguage } from './i18n/i18n';
 import FAQScreen from './views/FAQ';
 import GeneralScreen from './views/General';
 import BackgroundTimer from 'react-native-background-timer';
@@ -40,6 +40,7 @@ import MyHeroAlerts, { AlertsData } from './api/Alerts';
 import { addAlert, getAlert } from './data/actions/alerts';
 import { API_LINK, API_LINK_CDN } from './App';
 import ViewStream from './views/Alerts/view_stream';
+import * as RNLocalize from "react-native-localize";
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -81,6 +82,30 @@ const Controller = () => {
     setTimeout(async () => {
       if (initialize == false) {
         let AMail = await AsyncStorage.getItem('@mail') || '';
+        let ALanguage = await AsyncStorage.getItem('@language') || '';
+
+        try {
+          if (ALanguage !== "") {
+            setLanguage(ALanguage);
+          } else {
+            console.log("err lang")
+
+            const locales = RNLocalize.getLocales();
+
+            if (Array.isArray(locales)) {
+              setLanguage(locales[0].languageTag);
+            }
+          }
+        } catch {
+          console.log("err lang")
+
+          const locales = RNLocalize.getLocales();
+
+          if (Array.isArray(locales)) {
+            setLanguage(locales[0].languageTag);
+          }
+        }
+
 
         try {
           if (AMail !== "") {
