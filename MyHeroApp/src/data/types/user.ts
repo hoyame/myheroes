@@ -5,6 +5,7 @@ export const SET_NAME = "SET_NAME";
 export const SET_RATE = "SET_RATE";
 export const SET_IMAGE = "SET_IMAGE";
 export const SET_XP = "SET_XP";
+export const SET_LANGUAGE = "SET_LANGUAGE";
 
 export const SET_STATUS_SEND = "SET_STATUS";
 export const SET_STATUS_HELP = "SET_STATUS";
@@ -21,6 +22,7 @@ export const SET_CACHE_CREATE_ALERT_LEVEL = "SET_CACHE_CREATE_ALERT_LEVEL";
 export const SET_CACHE_SHOW_ALERT = "SET_CACHE_SHOW_ALERT";
 export const SET_CACHE_NAVIGATION = "SET_CACHE_NAVIGATION";
 export const SET_CACHE_USER = "SET_CACHE_USER";
+
 
 export interface IUserSend {
     status: boolean;
@@ -47,6 +49,7 @@ export interface IUser {
     rate: number;
     image: string;
     xp: number;
+    language: string;
 
     statusSend: boolean;
     statusHelp: boolean;
