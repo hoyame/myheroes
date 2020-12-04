@@ -4,6 +4,7 @@ import {
     SET_RATE, 
     SET_IMAGE, 
     SET_XP, 
+    SET_LANGUAGE,
     SET_STATUS_SEND, 
     SET_STATUS_HELP, 
     SET_SEND_ALERT_DATA,
@@ -32,6 +33,22 @@ export const setMail = (data: string) => ({
     type: SET_MAIL,
     payload: {
         mail: data
+    }
+})  
+
+////////////////////////////////////////////////////
+
+export interface ISetLanguage {
+    type: typeof SET_LANGUAGE;
+    payload: {
+        language: string;
+    }
+}
+
+export const setLanguage = (d: string) => ({
+    type: SET_LANGUAGE,
+    payload: {
+        language: d
     }
 })
 
@@ -232,8 +249,9 @@ export type IUserActions =
     ISetMail |
     ISetName | 
     ISetRate | 
-    ISetImage |
-    ISetXp |
+    ISetImage | 
+    ISetXp | 
+    ISetLanguage |
     ISetSendAlertData |
     ISetStatusHelp |
     ISetStatusSend |
