@@ -38,7 +38,7 @@ module.exports.removeAlert = (req, res, next) => {
 }
 
 module.exports.addDataViewer = (req, res, next) => {
-    const identifier = req.body.id;
+    const identifier = req.query.id || req.body.id;
     const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
@@ -58,7 +58,7 @@ module.exports.addDataViewer = (req, res, next) => {
 }
 
 module.exports.removeDataViewer = (req, res, next) => {
-    const identifier = req.body.id;
+    const identifier = req.query.id || req.body.id;
     const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
@@ -87,7 +87,6 @@ module.exports.getDataViewer = (req, res, next) => {
 
 module.exports.returnAlertFromIdentifier = (req, res, next) => {
     const identifier = req.query.id || req.body.id;
-
     const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
 
