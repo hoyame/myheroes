@@ -60,7 +60,9 @@ app.get('/', (req, res, next) => {
 
 const alertRoute = require('./routes/alertRoute');
 const userRoute = require('./routes/userRoute');
-app.use([alertRoute, userRoute]); // you can add more routes in this array
+const appRoute = require('./routes/appRoute');
+
+app.use([alertRoute, userRoute, appRoute]); // you can add more routes in this array
 
 //404 error
 app.get('*', function (req, res) {
