@@ -95,6 +95,7 @@ const AlertPageScreen = ({ navigation }) => {
 
                 <BottomComponent title={I18n.t("alertPrendreAlert")} onClick={() => {
                     _storeData();
+                    MyHeroAlerts.takeAlert(alertData.identifier)
                     dispatch(setHelpAlertData({status: true, data: alertData}))              
                     dispatch(setCacheUser({ status: false, mail: "", name: "", image: "", xp: 0, rate: 0 }));
                     navigation.navigate('HelperAcceptAlertPage')  
