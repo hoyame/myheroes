@@ -303,7 +303,9 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 <View style={{marginBottom: 10}}></View>
                 <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
                     _storeData()
+                    MyHeroAlerts.removeAlert(alertDataHelp.identifier)
                     dispatch(setHelpAlertData({status: false, data: {
+                        identifier: "",
                         id: 0,
                         level: 0,
                         source: "",
