@@ -6,6 +6,7 @@ export const SET_RATE = "SET_RATE";
 export const SET_IMAGE = "SET_IMAGE";
 export const SET_XP = "SET_XP";
 export const SET_LANGUAGE = "SET_LANGUAGE";
+export const SET_VIEWER_COUNT = "SET_VIEWER_COUNT";
 
 export const SET_STATUS_SEND = "SET_STATUS";
 export const SET_STATUS_HELP = "SET_STATUS";
@@ -50,6 +51,7 @@ export interface IUser {
     image: string;
     xp: number;
     language: string;
+    countViewers: number;
 
     statusSend: boolean;
     statusHelp: boolean;
