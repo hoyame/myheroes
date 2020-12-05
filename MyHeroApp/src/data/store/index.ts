@@ -16,7 +16,8 @@ const reducers = combineReducers({
 const persistConfig = { // configuration object for redux-persist
     key: 'root',
     storage: AsyncStorage, // define which storage to use
-    whitelist: ['alerts', 'location', 'user'] // only navigation will be persisted
+    whitelist: ['user'], // only navigation will be persisted
+    blacklist: ['location, alerts']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers) // create a persisted reducer
