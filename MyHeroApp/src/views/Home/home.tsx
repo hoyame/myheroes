@@ -7,11 +7,12 @@ import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
 import { PulseIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
-import { setCacheCreateAlertLevel, setCacheNav, setName } from '../../data/actions/user';
+import { setCacheCreateAlertLevel, setCacheNav, setName, setViewerCount } from '../../data/actions/user';
 import I18n from '../../i18n/i18n';
 import BlurView from 'react-native-blur';
 import { color } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
+import MyHeroAlerts from '../../api/Alerts';
 
 //import SosSVG from '../../assets/sos.svg'
 
@@ -30,6 +31,14 @@ const HomeScreen = ({ navigation }) => {
     const [alertLevel, setAlertLevel] = useState(1)
     const [popup, setPopus] = useState(false)
 
+    const count = useReduxState(state => state.user.countViewers)
+
+    setInterval(() => {
+        if (MyHeroAlerts.ViewerData.status == true) {
+            dispatch(setViewerCount(MyHeroAlerts.ViewerData.count))
+        }
+    }, 5000)
+    
     interface IAlertProps {
         title?: string;
         color?: string;
@@ -404,7 +413,7 @@ const HomeScreen = ({ navigation }) => {
                                         <Text style={{
                                             color: 'white',
                                             marginLeft: 5
-                                        }}>.......</Text>
+                                        }}>{count}</Text>
                                     </View>
 
                                     <View style={{
