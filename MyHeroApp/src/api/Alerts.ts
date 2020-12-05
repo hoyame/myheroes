@@ -223,9 +223,6 @@ export default abstract class MyHeroAlerts {
     }
 }
 
-setInterval(() => {
-    
-}, 10000)
 
 setInterval(() => {
     if (MyHeroAlerts.ViewerData.status == true) {
