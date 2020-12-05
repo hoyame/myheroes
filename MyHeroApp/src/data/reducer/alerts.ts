@@ -32,11 +32,13 @@ const AlertReducer = (state = initialState, action: IAlertsAction): IAlertState 
 const initialState: IAlertState = {
     list: [
         {
+            identifier: "",
             level: 1,
             source: "zouh",
             description: "",
             latitude: 1,
-            longitude: 1
+            longitude: 1,
+            webrtc: null
         }    
     ]
 }
