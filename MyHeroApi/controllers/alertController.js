@@ -38,9 +38,8 @@ module.exports.removeAlert = (req, res, next) => {
 }
 
 module.exports.addDataViewer = (req, res, next) => {
-    const id = req.body.id;
-
-    const found = AlertsData.find(element => element.id == id);
+    const identifier = req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
     AlertsData[indexOf] = { 
@@ -59,9 +58,8 @@ module.exports.addDataViewer = (req, res, next) => {
 }
 
 module.exports.removeDataViewer = (req, res, next) => {
-    const id = req.body.id;
-
-    const found = AlertsData.find(element => element.id == id);
+    const identifier = req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
     AlertsData[indexOf] = { 
@@ -80,17 +78,14 @@ module.exports.removeDataViewer = (req, res, next) => {
 }
 
 module.exports.getDataViewer = (req, res, next) => {
-    const id = req.query.id || req.body.id;
-
-    const found = AlertsData.find(element => element.id == id);
+    const identifier = req.query.id || req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
 
     res.status(200).json(AlertsData[indexOf].count);
-
-    //res.send(AlertsData[indexOf].count);
 }
 
-model.exports.returnAlertFromIdentifier = (req, res, next) => {
+module.exports.returnAlertFromIdentifier = (req, res, next) => {
     const identifier = req.query.id || req.body.id;
 
     const found = AlertsData.find(element => element.identifier == identifier);
@@ -111,22 +106,3 @@ module.exports.returnAlertsLenght = (req, res, next) => {
 // Karim@gmail.com
 // Lol73100
 
-/*
-
-let obj = [
-  { id: 2, name: "wdobiwfo", desc: "wudibwuifbwiuf" },
-  { id: 4, name: "wdobiwfo", desc: "wudibwuifbwiuf" },
-  { id: 6, name: "wdobiwfo", desc: "wudibwuifbwiuf" }
-]
-
-
-const found = obj.find(element => element.id == 4);
-const indexOf = obj.indexOf(found)
-
-
-console.log(indexOf);
-
-
-
-
-*/
