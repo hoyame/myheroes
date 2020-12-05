@@ -12,6 +12,7 @@ import {
     SET_CACHE_CREATE_ALERT_LEVEL, 
     SET_CACHE_SHOW_ALERT,
     SET_CACHE_USER,
+    SET_VIEWER_COUNT,
     IUser, 
     IUserSend,
     IUserHelp,
@@ -77,6 +78,11 @@ const UserReducer = (state = initialState, action: IUserActions): IUser => {
                 ...state,
                 userCache: action.payload.userCache
             }
+        case SET_VIEWER_COUNT:
+            return {
+                ...state,
+                countViewers: action.payload.count
+            }
         default: return state;
     }
 }
@@ -87,6 +93,7 @@ const initialState: IUser = {
     image: '',
     xp: 0,
     language: '',
+    countViewers: 0,
 
     statusSend: false,
     statusHelp: false,
