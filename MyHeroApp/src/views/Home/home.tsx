@@ -37,7 +37,7 @@ const HomeScreen = ({ navigation }) => {
         if (MyHeroAlerts.ViewerData.status == true) {
             dispatch(setViewerCount(MyHeroAlerts.ViewerData.count))
         }
-    }, 5000)
+    }, 30000)
     
     interface IAlertProps {
         title?: string;
