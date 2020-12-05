@@ -20,6 +20,7 @@ const EndAlertScreen = ({ navigation }) => {
                     borderRadius: 15,
                     padding: 10,
                     justifyContent: "center",
+                    alignItems: "center",
                     backgroundColor: "#0077be"
                 }}>
                     <Text style={{
