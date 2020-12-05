@@ -5,6 +5,7 @@ import {
     SET_IMAGE, 
     SET_XP, 
     SET_LANGUAGE,
+    SET_VIEWER_COUNT,
     SET_STATUS_SEND, 
     SET_STATUS_HELP, 
     SET_SEND_ALERT_DATA,
@@ -113,6 +114,22 @@ export const setXp = (data: number) => ({
     type: SET_XP,
     payload: {
         xp: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetViewerCount {
+    type: typeof SET_VIEWER_COUNT,
+    payload: {
+        count: number;
+    }
+}
+
+export const setViewerCount = (d: number) => ({
+    type: SET_VIEWER_COUNT,
+    payload: {
+        count: d
     }
 })
 
@@ -252,6 +269,7 @@ export type IUserActions =
     ISetImage | 
     ISetXp | 
     ISetLanguage |
+    ISetViewerCount |
     ISetSendAlertData |
     ISetStatusHelp |
     ISetStatusSend |
