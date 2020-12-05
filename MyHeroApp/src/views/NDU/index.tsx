@@ -20,6 +20,31 @@ const INPUT: TextStyle = {
 
 const NDUPage = ({ navigation }) => {
     const [search, setSearch] = useState("")
+    const [s, ss] = useState([
+        {
+            p: "France",
+            img: "https://www.countryflags.io/fr/flat/64.png",
+            samu: "15",
+            police: "17",
+            pompiers: "18",
+            ade: "112",   // européeen 
+            sme: "114",   // sourd / mal entendant
+        },
+        {
+            p: "Switzerland",
+            img: "https://www.countryflags.io/ch/flat/64.png",
+            samu: "144",
+            police: "117",
+            pompiers: "118",
+        },    
+        {
+            p: "Spain",
+            img: "https://www.countryflags.io/es/flat/64.png",
+            samu: "144",
+            police: "117",
+            pompiers: "118",
+        }
+    ])
 
     interface IProps {
         p?: string;
@@ -31,28 +56,22 @@ const NDUPage = ({ navigation }) => {
         sme?: string;
     }
 
-    const getContacts = () => {
-        let previousChar = '';
-        let char = '';
-        let childrens = [];
-
-        for (let i = 0; i < contacts.length; i++) {
-            const contact = contacts[i];
-            char = (contact.lastname
-                ? contact.lastname.substring(0, 1)
-                : contact.firstname.substring(0, 1)
-            ).toUpperCase();
-
-            if (char != previousChar) {
-                childrens.push(getSeparator(char));
-            }
-            previousChar = char;
-
-            childrens.push(getContact(contact));
-        }
-
-        return <ul id="contact-list">{childrens}</ul>;
-    };
+    var filterUsers = function(){
+        const keyword = search.toLowerCase();
+        const filtered_users = s.p.filter(function(user: string){
+            user = user.toLowerCase();
+            return user.indexOf(keyword) > -1; 
+        });
+        
+        ss(filtered_users);
+    }
+    
+    const tes = (e: any) => {
+        setSearch(e)
+        console.log(e);
+        filterUsers();
+    }
+      
 
     const Props: React.FC<IProps> = (props: IProps) => {
         return (
@@ -205,15 +224,20 @@ const NDUPage = ({ navigation }) => {
                     padding: 35,
                     paddingTop: 0
                 }}>
-                    <SearchBar
+                    {
+                        /*
+                        <SearchBar
                         value={search}
-                        onChangeText={setSearch}
+                        onChangeText={tes}
                         style={SEARCH}
                         inputStyle={INPUT}
                         placeholder={I18n.t("nduSearchPays")}
                         cancelText={I18n.t("nduSearch")}
                         theme="dark"
-                    />   
+                        />
+                        
+                        */
+                    }
 
                     <EuropeInfo />                     
                     
