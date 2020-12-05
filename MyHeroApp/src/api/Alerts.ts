@@ -187,11 +187,49 @@ export default abstract class MyHeroAlerts {
         this.ViewerData.status = false;
         this.ViewerData.count = 0;
     }
+
+    public static takeAlert(id: string) {
+        fetch(`${API_LINK}/alerts/add_data_viewer/?id=${id}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+        })
+            .then(function(res) {
+                console.log(res);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+    }
+
+    public static removeAlert(id: string) {
+        fetch(`${API_LINK}/alerts/remove_data_viewer/?id=${id}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+        })
+            .then(function(res) {
+                console.log(res);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+    }
 }
+
+setInterval(() => {
+    
+}, 10000)
 
 setInterval(() => {
     if (MyHeroAlerts.ViewerData.status == true) {
         MyHeroAlerts.getUsersCount();
     }
-}, 20000)
+}, 25000)
 
