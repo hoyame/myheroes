@@ -48,10 +48,18 @@ const Controller = () => {
   const Stack = createStackNavigator();
   const dispatch = useDispatch();
   const userInformation = useReduxState(state => state.user.name);
+  const userMail = useReduxState(state => state.user.mail);
+  const statusSend = useReduxState(state => state.user.send.status);
   const [initialize, setInitialize] = useState(false);
   const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
+
+  setTimeout(() => {
+    if (statusSend == true) {
+      MyHeroAlerts.setViewerDataStatus(userMail, true)
+    }
+  }, 2000)
 
   setInterval(() => {
     if (MyHeroAlerts.StatusUpdate == true) {
@@ -59,6 +67,7 @@ const Controller = () => {
 
       AlertsData.map((v, k) => {
         dispatch(addAlert({ 
+          identifier: v.identifier,
           latitude: v.latitude, 
           longitude: v.longitude, 
           source: v.source, 
