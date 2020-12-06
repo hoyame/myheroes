@@ -104,6 +104,8 @@ export default {
     gdps8: "Ettoufement adulte",
     gdps9: "Ettoufement Nourisson",
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     gdps111: "Mettre au repos",
 
     gdps112: "Observer les signes visibles",
@@ -128,9 +130,61 @@ export default {
     gdps1119: "1ére fois ?",
     gdps1120: "Alerter / Surveiller",
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    gdps221: "Préparation",
+    gdps222: "Retirer les lunettes si besoin.",
+    gdps223: "Rapprocher les jambres de la victime de l'axe du corps.",
+    gdps224: "Placer son bras le plus proche à angle droit de son corps. Plier son coude en gardant la paume de sa main tournée vers le haut.",
+    gdps225: "Se placer à genoux ou en trépied au niveau de son thorax.",
+    gdps226: "Saisir le bras opposé et amener les dos de sa main contre son oreille côté sauveteur.",
+    gdps227: "Maintenir le dos de sa main pressée",
+    gdps2277: "contre son oreille, paume contre paume.",
+    gdps228: "Attraper la jambe opposée avec l'autre main, juste derrière le genou, et la relever",
+    gdps229: "tout en gardant le pied au sol",
+    gdps2210: "S'eloigner du thorax si nécessaire.",
+    
+    gdps2211: "Retournement",
+    gdps2212: "Tourner la victime doucement en tirant sur la jambe relevée afin de la faire pivoter vers soi, jusqu'à ce que le genou touche le sol",
+    gdps2213: "La main reste sous la joue pour accompagner le mouvement de tête.",
+    gdps2214: "Dégager doucement la main située sous la tête de la victime tout en préservant la bascule de la lête en arrière, em maintenant son coude à l'aide de la main qui tenait le genou:",
+    
+    gdps2215: "Stabilisation",
+    gdps2216: "Ajuster la jambe située au-dessus pour que la hanche et le genou soient à angle droit afin de stabiliser la position.",
+    gdps2217: "Ouvrir la bouche sans mobiliser la tête.",
+    gdps2218: "Surveiller sa respiration",
+    gdps2219: "Sentir le soulèvement du thorax avec le plat de la main, ecouter les bruits provoqués par sa respiration.",
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    gdps331: "L'hémorragie est une perte abondante de sang qui ne s'arrête pas spontanément.",
+    gdps332: "Sa vie est menacée.",
+    gdps333: "Agir",
+    gdps334: "Comprimer",
+    gdps335: "Immédiatement et fortement l'endroit qui saigne.",
+    gdps336: "Allonger la victime et faire si besoin un pansement compressif réalisé avec une épaisseur de tissu propre maintenu par un bandage.",
+    gdps337: "Alerter les secours au 15, 18 ou 112, couvrir et surveiller.",
+    gdps338: "Si le saignement se poursuit, reprendre la compression manuelle par dessus le pansement:",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps441: "Membres :",
+    gdps442: "Douleur, gonflement et déformation.",
+    gdps443: "Colonne vertébrale :",
+    gdps444: "Douleur dans le dos ou la nuque.",
+    gdps445: "Une atteinte des organes sous-jacents est toujours possible et peut se révéler secondairement par d'autres signes (perte de connaissance, maux de tête persistants, vomissements, agitation, somnolence, douleur abdominale...).",
+    gdps446: "Ne pas mobiliser la victime",
+    gdps447: "Conseiller fermement de ne pas mobiliser la partie atteinte",
+    gdps448: "Alerter/Surveiller",
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps551: "Refroidir le plus tôt possible et au plus tard dans les 30 minutes",
+    gdps552: "Faire ruisseler de l'eau tempérée (entre 15 et 25°).",
+    gdps553: "Le refroidissement stoppe l'extension de la brûlure et soulage la douleur.",
+    gdps554: "Alerter/Surveiller",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Rechercher un pays",
     nduSearch: "Rechercher",
