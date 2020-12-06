@@ -51,14 +51,22 @@ const fetchApiCall = async () => {
 export default abstract class MyHeroAlerts {
     public static StatusUpdate: boolean = false;
     //public static AlertsData: IAlert[];
+    public static ViewerData = {
+        identifier: "",
+        count: 0,
+        status: false,
+        id: 0
+    }
 
     public static SendAlert(data: IAlert) {
         var params = {
+            identifier: data.identifier,
             level: data.level,
             source: data.source,
             latitude: data.latitude,
             longitude: data.longitude,
-            description: data.description
+            description: data.description,
+            webrtc: data.webrtc
         }
     
         fetch(`${API_LINK}/alerts/add`, {
@@ -68,11 +76,18 @@ export default abstract class MyHeroAlerts {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(params),
-        });
+        })
+
+            .then((res) => res.json)
+
+            .then((data: any) => {
+                console.log("fiobgfe", data.data)
+            })
     }
 
     public static DeleteAlert(data: IAlert) {
         var params = {
+            identifier: data.identifier,
             level: data.level,
             source: data.source,
             latitude: data.latitude,
@@ -137,17 +152,23 @@ export default abstract class MyHeroAlerts {
         this.StatusUpdate = arg
     }
 
-    public static getUsersCount(id: number) {
-        axios.get(`${API_LINK}/alerts/get_data_viewer/?id=${id}`)
+    public static getUsersCount() {
+        let identifier = this.ViewerData.identifier
+
+        axios.get(`/alerts/get_data_viewer/?id=${identifier}`)
 
         .then((response) => {
             const e = response;
             const status: number = e.status
 
             if (status === 200) {
-                const alerts = e.data || 0;
+                const nb = e.data || 0;
 
-                return alerts;
+                console.log(nb)
+
+                setTimeout(() => {
+                    this.ViewerData.count = nb;
+                }, 1500)
             }
         })
 
@@ -155,6 +176,57 @@ export default abstract class MyHeroAlerts {
             console.log("err g", err);
         })
     }
+
+    public static setViewerDataStatus(identifier: string, status: boolean) {
+        this.ViewerData.identifier = identifier
+        this.ViewerData.status = status;
+    }
+
+    public static cleanViewerData() {
+        this.ViewerData.identifier = '';
+        this.ViewerData.status = false;
+        this.ViewerData.count = 0;
+    }
+
+    public static takeAlert(id: string) {
+        fetch(`${API_LINK}/alerts/add_data_viewer/?id=${id}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+        })
+            .then(function(res) {
+                console.log(res);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+    }
+
+    public static removeAlert(id: string) {
+        fetch(`${API_LINK}/alerts/remove_data_viewer/?id=${id}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+        })
+            .then(function(res) {
+                console.log(res);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+    }
 }
 
-console.log(MyHeroAlerts.getUsersCount(1));
+
+setInterval(() => {
+    if (MyHeroAlerts.ViewerData.status == true) {
+        MyHeroAlerts.getUsersCount();
+    }
+}, 25000)
+

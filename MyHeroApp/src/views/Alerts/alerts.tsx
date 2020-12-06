@@ -71,7 +71,7 @@ const AlertScreen = ({ navigation }) => {
                             fontSize: 15,
                             marginTop: 0,
                             marginLeft: 10,
-                            color: "#94958B"
+                            color: "#ffffff"
                         }}>{I18n.t("par")} {props.source}</Text>
                     </View>
 

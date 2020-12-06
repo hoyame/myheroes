@@ -285,9 +285,15 @@ module.exports.uploadAvatar = (req, res, next) => {
 }
 
 module.exports.getUserData = (req, res, next) => {
+	const expressionReguliere = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 	const mail = req.query.mail;
+	let query;
 
-	let query = `SELECT * FROM users WHERE email=?`;
+	if (expressionReguliere.test(mail)) {
+		query = `SELECT * FROM users WHERE email=?`;
+	} else { 
+		query = `SELECT * FROM users WHERE pseudo=?`;
+	}
 
 	con.query(query, [mail], (err, result, fields) => {
 		if (err) {

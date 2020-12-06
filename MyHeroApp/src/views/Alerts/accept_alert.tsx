@@ -4,7 +4,7 @@ import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
-import { setHelpAlertData, setSendAlertData } from '../../data/actions/user';
+import { setHelpAlertData, setSendAlertData, setViewerCount } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import MyHeroAlerts from '../../api/Alerts';
 import I18n from '../../i18n/i18n';
@@ -60,6 +60,13 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
     const alertDataSend = useReduxState(state => state.user.send);
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const dispatch = useDispatch();
+    const count = useReduxState(state => state.user.countViewers)
+
+    setInterval(() => {
+        if (MyHeroAlerts.ViewerData.status == true) {
+            dispatch(setViewerCount(MyHeroAlerts.ViewerData.count))
+        }
+    }, 5000)
 
     const _storeData = async () => {
         try {
@@ -115,7 +122,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                             <Text style={{
                                 color: 'white',
                                 marginLeft: 5
-                            }}>.......</Text>
+                            }}>{count}</Text>
                         </View>
                         <View style={{
                             marginBottom: 10,
@@ -156,6 +163,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 <BottomComponent title={I18n.t("alertNotDanger")} onClick={() => {
                     _storeData()
                     dispatch(setSendAlertData({status: false, data: {
+                        identifier: "",
                         id: 0,
                         level: 0,
                         source: "",
@@ -164,7 +172,9 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         description: "",
                         webrtc: ""
                     }}))
+                    MyHeroAlerts.cleanViewerData();
                     MyHeroAlerts.DeleteAlert({
+                        identifier: alerts.data.identifier,
                         level: alerts.data.level,
                         source: alerts.data.source,
                         latitude: alerts.data.latitude,
@@ -180,6 +190,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 <BottomComponent title={I18n.t("alertSave")} onClick={() => {
                     _storeData()
                     dispatch(setSendAlertData({status: false, data: {
+                        identifier: "",
                         id: 0,
                         level: 0,
                         source: "",
@@ -188,7 +199,9 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         description: "",
                         webrtc: ""
                     }}))
+                    MyHeroAlerts.cleanViewerData();
                     MyHeroAlerts.DeleteAlert({
+                        identifier: alerts.data.identifier,
                         level: alerts.data.level,
                         source: alerts.data.source,
                         latitude: alerts.data.latitude,
@@ -290,7 +303,9 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 <View style={{marginBottom: 10}}></View>
                 <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
                     _storeData()
+                    MyHeroAlerts.removeAlert(alertDataHelp.identifier)
                     dispatch(setHelpAlertData({status: false, data: {
+                        identifier: "",
                         id: 0,
                         level: 0,
                         source: "",

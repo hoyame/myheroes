@@ -4,12 +4,17 @@ import * as RNLocalize from "react-native-localize";
 import en from "./locales/en";
 import fr from "./locales/fr";
 
-const locales = RNLocalize.getLocales();
+let language = "fr";
 
-if (Array.isArray(locales)) {
-  I18n.locale = locales[0].languageTag;
+export const setLanguage = (l: string) => {
+  let le = l.substr(0, 2);
+
+  console.log(le)
+  language = le
+  I18n.locale = language;
 }
 
+I18n.locale = language;
 I18n.fallbacks = true;
 I18n.translations = {
   en,

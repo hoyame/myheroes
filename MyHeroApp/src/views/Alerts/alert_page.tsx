@@ -1,20 +1,40 @@
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import React from 'react';
-import { AsyncStorage, Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
+import React, { useEffect, useState } from 'react';
+import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import { useDispatch } from 'react-redux';
+import MyHeroAlerts from '../../api/Alerts';
+import Users from '../../api/User';
 import AccountStats from '../../components/AccountStats';
 import AlertInformationProps from '../../components/AlertPropsDetails';
 import BottomComponent from '../../components/Bottom';
 import HeaderComponent from '../../components/Header/header';
-import { setHelpAlertData, setSendAlertData, setStatusHelp } from '../../data/actions/user';
+import { setCacheUser, setHelpAlertData, setSendAlertData, setStatusHelp } from '../../data/actions/user';
 import { useReduxState } from '../../data/store';
 import I18n from '../../i18n/i18n';
 
+
 const AlertPageScreen = ({ navigation }) => {
+    const userCache = useReduxState(state => state.user.userCache);
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const alertData = useReduxState(state => state.user.showAlert);
     const dispatch = useDispatch();
+    
+    
+    useEffect(() => {
+        console.log(alertData.source)
+    
+        if (userCache.status == false) {
+
+            Users.GetData(alertData.source, (e: any) => {
+                const rate = parseFloat(JSON.stringify(e.data[0].rate))
+                const xp = parseFloat(JSON.stringify(e.data[0].xp))
+                
+                dispatch(setCacheUser({ status: true,mail: "", name: "", image: "", xp: xp, rate: rate }));
+            }, () => null)
+        }
+    })
 
     const _storeData = async () => {
         try {
@@ -34,13 +54,13 @@ const AlertPageScreen = ({ navigation }) => {
                 paddingBottom: 35
             }}>               
                 <View style={{
-                    marginBottom: 10,
+                    marginBottom: 15,
                 }}>
-                    <AccountStats name={alertData.source} xp="5613" rate={5} img="https://cdn.discordapp.com/avatars/516712735484936193/e40f4e67193ef53a94ae1eed5d5ec902.png?size=128" />
+                    <AccountStats name={alertData.source} xp={userCache.xp} rate={userCache.rate} img={`http://146.59.227.90:3000/api/avatar/${alertData.source}?time=${new Date()}`} />
                 </View>
                 
                 <View style={{
-                    marginBottom: 10,
+                    marginBottom: 0,
                 }}>
                     <AlertInformationProps level={alertData.level} sender={alertData.source} avatar="" distance="510" />
                 </View>
@@ -55,7 +75,7 @@ const AlertPageScreen = ({ navigation }) => {
                     shadowOffset: { width: 0, height: 1 },
                     shadowOpacity: 0.5,
                     shadowRadius: 5, 
-                    marginBottom: 20
+                    marginBottom: 15
                 }}>
                     <Text style={{
                         fontSize: 20,
@@ -75,7 +95,9 @@ const AlertPageScreen = ({ navigation }) => {
 
                 <BottomComponent title={I18n.t("alertPrendreAlert")} onClick={() => {
                     _storeData();
+                    MyHeroAlerts.takeAlert(alertData.identifier)
                     dispatch(setHelpAlertData({status: true, data: alertData}))              
+                    dispatch(setCacheUser({ status: false, mail: "", name: "", image: "", xp: 0, rate: 0 }));
                     navigation.navigate('HelperAcceptAlertPage')  
                 }}/>
             </View>

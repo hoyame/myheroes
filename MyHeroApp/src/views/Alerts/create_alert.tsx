@@ -30,6 +30,7 @@ const CreateAlertScreen = ({ navigation }) => {
     
     const alertLevelSe = useReduxState(state => state.user.createAlertLevel);
     const nameSe = useReduxState(state => state.user.name);
+    const identifierSe = useReduxState(state => state.user.mail);
     const latitude = useReduxState(state => state.location.latitude);
     const longitude = useReduxState(state => state.location.longitude);
     const dispatch = useDispatch();
@@ -150,7 +151,9 @@ const CreateAlertScreen = ({ navigation }) => {
 
                             <BottomComponent title={I18n.t("alertLaunch")} onClick={() => {
                                 _storeData();
+                                MyHeroAlerts.setViewerDataStatus(identifierSe, true)
                                 MyHeroAlerts.SendAlert({
+                                    identifier: identifierSe,
                                     level: alertLevelSe,
                                     source: nameSe,
                                     latitude: latitude,
@@ -160,6 +163,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                 })
                                 navigation.navigate('SenderAcceptAlertPage') 
                                 dispatch(setSendAlertData({ status: true, data: {
+                                    identifier: identifierSe,
                                     level: alertLevelSe,
                                     source: nameSe,
                                     latitude: latitude,

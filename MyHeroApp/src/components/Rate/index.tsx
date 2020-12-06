@@ -11,11 +11,20 @@ interface IRate {
     title: string;
     placeholder: string;
     onClick?: any;
+
+    description: any;
+    rate: any;
+
+    setDescription: any;
+    setRate: any;
 }
 
 const RateComponent = (props: IRate) => {
-    const [rate, setRate] = useState(0);
-    const [description, setDescription] = useState('');
+    const rate = props.rate;
+    const description = props.description;
+
+    const setRate = props.setRate;
+    const setDescription = props.setDescription;
 
     interface IStars {
         rate: number

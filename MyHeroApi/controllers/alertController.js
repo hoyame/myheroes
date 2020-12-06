@@ -3,45 +3,47 @@ let AlertsData = []
 
 module.exports.addAlert = (req, res, next) => {
     const model = {
+        identifier: req.body.identifier,
         id: AlertsData.length + 1,
         level: req.body.level,
         source: req.body.source,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         description: req.body.description,
-        webid: req.body.webid,
+        webrtc: req.body.webid,
         count: 0
     }
     
     AlertsData.push(model);
     console.log(AlertsData)
 
-    res.send(AlertsData);
+    res.send(model);
 }
 
 module.exports.removeAlert = (req, res, next) => {
     const model = {
+        identifier: req.body.identifier,
         id: AlertsData.length + 1,
         level: req.body.level,
         source: req.body.source,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         description: req.body.description,
-        webid: req.body.webid
+        webrtc: req.body.webid
     }
 
-    AlertsData = AlertsData.filter(x => x.source != req.body.source);
+    AlertsData = AlertsData.filter(x => x.identifier != req.body.identifier);
 
     res.send(AlertsData);
 }
 
 module.exports.addDataViewer = (req, res, next) => {
-    const id = req.body.id;
-
-    const found = AlertsData.find(element => element.id == id);
+    const identifier = req.query.id || req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
     AlertsData[indexOf] = { 
+        identifier: AlertsData[indexOf].identifier,
         id: AlertsData[indexOf].id, 
         level: AlertsData[indexOf].level,
         source: AlertsData[indexOf].source,
@@ -56,12 +58,12 @@ module.exports.addDataViewer = (req, res, next) => {
 }
 
 module.exports.removeDataViewer = (req, res, next) => {
-    const id = req.body.id;
-
-    const found = AlertsData.find(element => element.id == id);
+    const identifier = req.query.id || req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
     AlertsData[indexOf] = { 
+        identifier: AlertsData[indexOf].identifier,
         id: AlertsData[indexOf].id, 
         level: AlertsData[indexOf].level,
         source: AlertsData[indexOf].source,
@@ -76,14 +78,19 @@ module.exports.removeDataViewer = (req, res, next) => {
 }
 
 module.exports.getDataViewer = (req, res, next) => {
-    const id = req.query.id || req.body.id;
-
-    const found = AlertsData.find(element => element.id == id);
+    const identifier = req.query.id || req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
 
     res.status(200).json(AlertsData[indexOf].count);
+}
 
-    //res.send(AlertsData[indexOf].count);
+module.exports.returnAlertFromIdentifier = (req, res, next) => {
+    const identifier = req.query.id || req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
+    const indexOf = AlertsData.indexOf(found)
+
+    res.status(200).json(AlertsData[indexOf]);
 }
 
 module.exports.returnAlerts = (req, res, next) => {
@@ -98,22 +105,4 @@ module.exports.returnAlertsLenght = (req, res, next) => {
 // Karim@gmail.com
 // Lol73100
 
-/*
-
-let obj = [
-  { id: 2, name: "wdobiwfo", desc: "wudibwuifbwiuf" },
-  { id: 4, name: "wdobiwfo", desc: "wudibwuifbwiuf" },
-  { id: 6, name: "wdobiwfo", desc: "wudibwuifbwiuf" }
-]
-
-
-const found = obj.find(element => element.id == 4);
-const indexOf = obj.indexOf(found)
-
-
-console.log(indexOf);
-
-
-
-
-*/
+// Acer@gmail.com

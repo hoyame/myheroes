@@ -5,6 +5,8 @@ export const SET_NAME = "SET_NAME";
 export const SET_RATE = "SET_RATE";
 export const SET_IMAGE = "SET_IMAGE";
 export const SET_XP = "SET_XP";
+export const SET_LANGUAGE = "SET_LANGUAGE";
+export const SET_VIEWER_COUNT = "SET_VIEWER_COUNT";
 
 export const SET_STATUS_SEND = "SET_STATUS";
 export const SET_STATUS_HELP = "SET_STATUS";
@@ -20,6 +22,7 @@ export const SET_HELP_ALERT_DATA = "SET_HELP_ALERT_DATA";
 export const SET_CACHE_CREATE_ALERT_LEVEL = "SET_CACHE_CREATE_ALERT_LEVEL";
 export const SET_CACHE_SHOW_ALERT = "SET_CACHE_SHOW_ALERT";
 export const SET_CACHE_NAVIGATION = "SET_CACHE_NAVIGATION";
+export const SET_CACHE_USER = "SET_CACHE_USER";
 
 
 export interface IUserSend {
@@ -32,12 +35,23 @@ export interface IUserHelp {
     data: IAlert
 }
 
+export interface IUserCache {
+    status: boolean;
+    mail: string;
+    name: string;
+    rate: number;
+    image: string;
+    xp: number;
+}
+
 export interface IUser {
     mail?: string;
     name: string;
     rate: number;
     image: string;
     xp: number;
+    language: string;
+    countViewers: number;
 
     statusSend: boolean;
     statusHelp: boolean;
@@ -48,4 +62,6 @@ export interface IUser {
     createAlertLevel: number;
     showAlert: IAlert;
     navCache: string;
+
+    userCache: IUserCache;
 }

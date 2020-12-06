@@ -4,6 +4,8 @@ import {
     SET_RATE, 
     SET_IMAGE, 
     SET_XP, 
+    SET_LANGUAGE,
+    SET_VIEWER_COUNT,
     SET_STATUS_SEND, 
     SET_STATUS_HELP, 
     SET_SEND_ALERT_DATA,
@@ -11,10 +13,12 @@ import {
     SET_CACHE_NAVIGATION,
     SET_CACHE_CREATE_ALERT_LEVEL, 
     SET_CACHE_SHOW_ALERT,
+    SET_CACHE_USER,
     IUser, 
     IUserSend,
     IUserHelp,
-    SET_MAIL
+    SET_MAIL,
+    IUserCache
 } from '../types/user';
 
 ////////////////////////////////////////////////////
@@ -30,6 +34,22 @@ export const setMail = (data: string) => ({
     type: SET_MAIL,
     payload: {
         mail: data
+    }
+})  
+
+////////////////////////////////////////////////////
+
+export interface ISetLanguage {
+    type: typeof SET_LANGUAGE;
+    payload: {
+        language: string;
+    }
+}
+
+export const setLanguage = (d: string) => ({
+    type: SET_LANGUAGE,
+    payload: {
+        language: d
     }
 })
 
@@ -94,6 +114,22 @@ export const setXp = (data: number) => ({
     type: SET_XP,
     payload: {
         xp: data
+    }
+})
+
+////////////////////////////////////////////////////
+
+export interface ISetViewerCount {
+    type: typeof SET_VIEWER_COUNT,
+    payload: {
+        count: number;
+    }
+}
+
+export const setViewerCount = (d: number) => ({
+    type: SET_VIEWER_COUNT,
+    payload: {
+        count: d
     }
 })
 
@@ -212,17 +248,34 @@ export const setCacheNav = (data: string) => ({
 
 ////////////////////////////////////////////////////
 
+export interface ISetCacheUser {
+    type: typeof SET_CACHE_USER,
+    payload: {
+        userCache: IUserCache
+    }
+}
+
+export const setCacheUser = (d: IUserCache) => ({
+    type: SET_CACHE_USER,
+    payload: {
+        userCache: d
+    }
+})
+
 export type IUserActions = 
     ISetMail |
     ISetName | 
     ISetRate | 
-    ISetImage |
-    ISetXp |
+    ISetImage | 
+    ISetXp | 
+    ISetLanguage |
+    ISetViewerCount |
     ISetSendAlertData |
     ISetStatusHelp |
     ISetStatusSend |
     ISetHelpAlertData |
     ISetCacheCreateAlertLevel |
     ISetCacheShowAlert |
-    ISetCacheNav
+    ISetCacheNav |
+    ISetCacheUser
 ;
