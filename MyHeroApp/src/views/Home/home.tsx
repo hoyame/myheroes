@@ -182,9 +182,9 @@ const HomeScreen = ({ navigation }) => {
         <View style={{
             display: "flex",
         }}>
-        <Animated.View style={{
-            opacity: fadeAnim 
-        }}>
+            <Animated.View style={{
+                opacity: fadeAnim 
+            }}>
                 <ScrollView>
                     <HeaderComponent navigation={navigation} />
 
