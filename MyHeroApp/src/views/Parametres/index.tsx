@@ -1,7 +1,7 @@
 import { faCircle, faFont, faHome, faLanguage, faLock, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Text, Image, TouchableOpacity, Platform, StyleSheet, ScrollView, Dimensions, Animated } from 'react-native';
 import Users from '../../api/User';
 import CheckBox from '@react-native-community/checkbox';
 import HeaderComponent from '../../components/Header/header';
@@ -60,6 +60,18 @@ const ParametresScreen = ({ navigation }) => {
         type: ''
     })
 
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+
+    const fadeIn = () => {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true, // <-- Add this
+      }).start();
+    };
+
+    fadeIn();
+    
     const _storeDataLanguage = async (d: string) => {
         try {
             await AsyncStorage.setItem('@language', d)
@@ -163,16 +175,20 @@ const ParametresScreen = ({ navigation }) => {
     if (languageS == true) {
         return (
             <>
-                <HeaderComponent title={I18n.t("settingsLanguage")} navigation={navigation} redirect="Parametres" onBackClick={() => setLanguageS(false)} />
+                <Animated.View style={{
+                    opacity: fadeAnim 
+                }}>                    
+                    <HeaderComponent title={I18n.t("settingsLanguage")} navigation={navigation} redirect="Parametres" onBackClick={() => setLanguageS(false)} />
 
-                <ScrollView>
-                    <View style={{
-                        paddingLeft: 35,
-                        paddingRight: 35
-                    }}>
-                        {returnLangues()}
-                    </View>
-                </ScrollView>
+                    <ScrollView>
+                        <View style={{
+                            paddingLeft: 35,
+                            paddingRight: 35
+                        }}>
+                            {returnLangues()}
+                        </View>
+                    </ScrollView>
+                </Animated.View>
             </>
         );
     }
