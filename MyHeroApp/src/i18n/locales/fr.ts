@@ -95,17 +95,42 @@ export default {
     avisRateApp: "Noter l'application",
     avisDescApp: "Avis",
 
-    gdpsInconsience: "Inconscience",
-    gdpsPLS: "La position laterale de securité",
-    gdpsMassageCardiaque: "Le massage cardiaque",
-    gdpsDefibrilateur: "Le défibrilateur automatisé",
-    gdpsEttouffementAdulte: "Ettouffement adulte",
-    gdpsEttouffementNourisson: "Ettouffement nourisson",
-    gdpsSaignementAbondant: "Saignement abondant",
-    gdpsBrulures: "Les brulures",
-    gdpsTraumatismeOs: "Traumatisme des os",
-    gdpsNoyade: "Noyade",
-    gdpsMalaise: "Le malaise",
+    gdps1: "Malaises",
+    gdps2: "Position laterale de securité",
+    gdps3: "Hemoragie",
+    gdps4: "Traumatismes",
+    gdps5: "Brulures",
+    gdps7: "Ventilation artificielle",
+    gdps8: "Ettoufement adulte",
+    gdps9: "Ettoufement Nourisson",
+
+    gdps111: "Mettre au repos",
+
+    gdps112: "Observer les signes visibles",
+    gdps113: "Difficulté de language ou de compréhension",
+    gdps114: "Pâleur intense",
+    gdps115: "Sueurs abondantes",
+    gdps116: "Faiblesse ou paralysie face/bras/jambes",
+    gdps117: "Perte de l'équilibre - chute",
+    
+    gdps118: "Ecouter les plaintes exprimées",
+    gdps119: "Douleur dans la poitrine ou abdominale",
+    gdps1110: "Froid",
+    gdps1111: "Diminution ou perte de la vision uni ou bilatérale",
+    gdps1112: "Mal de tête sévère et inhabituel",
+    gdps1113: "Difficulté respiratoire",
+
+    gdps1114: "Interroger la victime et son entourage",
+    gdps1115: "Age",
+    gdps1116: "Durée",
+    gdps1117: "Traitement",
+    gdps1118: "Maladie/Hospitalisée/Traumatisée",
+    gdps1119: "1ére fois ?",
+    gdps1120: "Alerter / Surveiller",
+
+
+
+
 
     nduSearchPays: "Rechercher un pays",
     nduSearch: "Rechercher",
