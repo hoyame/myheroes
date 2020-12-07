@@ -186,6 +186,51 @@ export default {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    gdps771: "Bouche a bouche",
+    gdps77111: "Plaquer la bouche pour éviter les fuites",
+    gdps772: "Insuffler progressivement en 1 seconde et jusqu'à ce que la poitrine commence à se soulever.",
+    gdps773: "Fermer les narines pour que l'air se n'echappe pas",
+    gdps774: "Tête basculée en arrière pour libérer les voie aériennes",
+    gdps775: "Préparation :",
+    gdps776: "Pincez le nez",
+    gdps777: "Ouvrir la bouche",
+    gdps778: "Insufflation :",
+    gdps779: "Plaquer la bouche ",
+    gdps7710: "Souffler progressivement en 1 seconde",
+    gdps7711: "Expiration :",
+    gdps7712: "Se redresser",
+    gdps7713: "Regarder la poitrine s'affaisser.",
+    gdps7714: "Bouche à bouche et nez",
+    gdps7715: "Amener la tête du nourrisson dans l'alignement du torse et élever le menton",
+    gdps7716: "Englober avec la bouche à la fois se bouche et son nez",
+    gdps7717: "Insuffler des volumes d'air moins importants que pour l'adulte.",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    gdps881: "Se mettre derrière la victime et passer les avants-bras sous les siens en encerclant sa poitrine.",
+    gdps882: "Placer un poing au millieu du sternum sans appuyer sur la pointe inférieure.",
+    gdps883: "Placer l'autre main sur la première sans appuyer les avants-bras sur les côtes.",
+    gdps884: "Tirer franchement en exerçant une pression vers l'arriere.",
+    gdps885: "Effectuer 1 à 5 compressions thoraciques.",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps991: "Claques dans le dos",
+    gdps992: "Maintenir sa tête et le placer à califourchon sur votre avant-bras.",
+    gdps993: "Le faire reopser sur votre cuisse avec la tête inclinée vers le bas.",
+    gdps994: "Donner 1 à 5 claques",
+    gdps995: "entre les deux omoplates avec le talon de la main ouverte.",
+    gdps996: "Retournement",
+    gdps997: "Placer votre avant-bras contre les dos du nourisson, votre main soutenant sa tête. ",
+    gdps998: "Le tourner pour que sa face soit côté ciel.", 
+    gdps999: "Poser votre avant-bras sur votre cuisse avec la tête inclinée vers le bas.",
+    gdps9910: "Compressions thoraciques",
+    gdps9911: "Placer la pulpe de deux doigts d'une main au millieu de la poitrine, sur la moitié inférieure du sternum",
+    gdps9912: "Effectuer 1 à 5 compressions",
+    gdps9913: "profondes et successives",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     nduSearchPays: "Rechercher un pays",
     nduSearch: "Rechercher",
     nduAmbulance: "Ambulance/Samu",
