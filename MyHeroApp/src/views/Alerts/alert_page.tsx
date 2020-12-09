@@ -16,6 +16,7 @@ import I18n from '../../i18n/i18n';
 
 
 const AlertPageScreen = ({ navigation }) => {
+    const userMail = useReduxState(state => state.user.mail);
     const userCache = useReduxState(state => state.user.userCache);
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const alertData = useReduxState(state => state.user.showAlert);
@@ -95,7 +96,7 @@ const AlertPageScreen = ({ navigation }) => {
 
                 <BottomComponent title={I18n.t("alertPrendreAlert")} onClick={() => {
                     _storeData();
-                    MyHeroAlerts.takeAlert(alertData.identifier)
+                    MyHeroAlerts.takeAlert(alertData.identifier, userMail)
                     dispatch(setHelpAlertData({status: true, data: alertData}))              
                     dispatch(setCacheUser({ status: false, mail: "", name: "", image: "", xp: 0, rate: 0 }));
                     navigation.navigate('HelperAcceptAlertPage')  
