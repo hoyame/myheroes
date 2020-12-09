@@ -236,6 +236,153 @@ const GDPSPage = ({ navigation }) => {
                             >
                             
                             </Image>
+
+                            <View style={{
+                                position: "absolute",
+                                top: 30
+                            }}>
+                                <View style={{
+                                    width: "90%",
+                                    marginLeft: 6
+                                }}>
+                                    <Text style={{
+                                        marginTop: 5,
+                                        fontSize: 30,
+                                        textAlign: "center",
+                                        color: "#ffffff"
+                                    }}>{I18n.t("gdps2")}</Text>
+                                </View>
+
+                                <View style={{
+                                    display: "flex",
+                                    flexDirection: "row"
+                                }}>
+                                    <View style={{
+                                        width: "50%",
+                                    }}>
+                                        <View style={{
+                                            marginTop: 10
+                                        }}>
+                                            <Text>{I18n.t("gdps221")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            marginTop: 4,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 10,
+                                            }}>{I18n.t("gdps222")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 10,
+                                            }}>{I18n.t("gdps223")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            marginTop: 113,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps225")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps226")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps227")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            width: 44,
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps227")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps228")}</Text>                         
+                                        </View>
+
+                                        <View style={{
+                                            width: 80,
+                                            marginTop: 0,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps229")}</Text>                         
+                                        </View>
+                                    </View>
+
+                                    <View style={{
+                                        position: "absolute",
+                                        top: "3%",
+                                        left: "65%"
+                                    }}>
+                                        <View style={{
+                                        }}>
+                                            <Text>{I18n.t("gdps2211")}</Text>                         
+                                        </View>
+
+                                        <View style={{                                
+                                            width: 145,
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps2212")}</Text>                         
+                                        </View>
+
+                                        <View style={{                                
+                                            width: 145,
+                                            marginTop: 3.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps2213")}</Text>                         
+                                        </View>
+
+                                        <View style={{                                
+                                            width: 145,
+                                            marginTop: 95.5,
+                                            marginLeft: -27,
+                                        }}>
+                                            <Text style={{
+                                                fontSize: 9.5,
+                                            }}>{I18n.t("gdps2215")}</Text>                         
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
                         </View>
                     </>
                 );    
