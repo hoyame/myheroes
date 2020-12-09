@@ -4,6 +4,10 @@ let AlertsUsersData = [];
 
 
 module.exports.addAlert = (req, res, next) => {
+    const identifier = req.body.identifier;
+    const found = AlertsData.find(element => element.identifier == identifier);
+    const indexOf = AlertsData.indexOf(found)
+
     const model = {
         identifier: req.body.identifier,
         id: AlertsData.length + 1,
@@ -17,7 +21,8 @@ module.exports.addAlert = (req, res, next) => {
     }
     
     AlertsData.push(model);
-    console.log(AlertsData)
+    console.log(AlertsData);
+    AlertsUsersData[indexOf] = [];
 
     res.send(model);
 }
@@ -45,8 +50,8 @@ module.exports.removeAlert = (req, res, next) => {
 }
 
 module.exports.addDataViewer = (req, res, next) => {
-    const source = req.query.source || req.body.source;
     const identifier = req.query.id || req.body.id;
+    const source = req.query.source || req.body.source;
     const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
       
