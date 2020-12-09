@@ -18,4 +18,7 @@ router.post('/alerts/remove_data_viewer', alertController.removeDataViewer);
 
 router.get('/alerts/get_data_viewer', alertController.getDataViewer)
 
+router.get('/alerts/get_data_viewer_users', alertController.getDataViewerUsers)
+
+
 module.exports = router;
