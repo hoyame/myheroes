@@ -23,6 +23,7 @@ module.exports.addAlert = (req, res, next) => {
     AlertsData.push(model);
     console.log(AlertsData);
     AlertsUsersData[indexOf] = [];
+    console.log(AlertsUsersData[indexOf]);
 
     res.send(model);
 }
