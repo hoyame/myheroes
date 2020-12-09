@@ -103,6 +103,14 @@ module.exports.getDataViewer = (req, res, next) => {
     res.status(200).json(AlertsData[indexOf].count);
 }
 
+module.exports.getDataViewerUsers = (req, res, next) => {
+    const identifier = req.query.id || req.body.id;
+    const found = AlertsData.find(element => element.identifier == identifier);
+    const indexOf = AlertsData.indexOf(found)
+
+    res.status(200).json(AlertsUsersData[indexOf]);
+}
+
 module.exports.returnAlertFromIdentifier = (req, res, next) => {
     const identifier = req.query.id || req.body.id;
     const found = AlertsData.find(element => element.identifier == identifier);
