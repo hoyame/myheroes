@@ -54,9 +54,7 @@ const styles = StyleSheet.create({
 
   
 export const SenderAcceptAlertPage = ({ navigation }) => {
-    const [isSelected, setSelection] = useState(false);
     const alerts = useReduxState(state => state.user.send);
-    const alertDataHelp = useReduxState(state => state.user.showAlert);
     const alertDataSend = useReduxState(state => state.user.send);
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const dispatch = useDispatch();
