@@ -188,8 +188,8 @@ export default abstract class MyHeroAlerts {
         this.ViewerData.count = 0;
     }
 
-    public static takeAlert(id: string) {
-        fetch(`${API_LINK}/alerts/add_data_viewer/?id=${id}`, {
+    public static takeAlert(id: string, source: string) {
+        fetch(`${API_LINK}/alerts/add_data_viewer/?id=${id}&source=${source}`, {
             method: 'POST',
             headers: {
               Accept: 'application/json',
