@@ -1,4 +1,6 @@
 let AlertsData = []
+let AlertsUsersData = [];
+
 
 
 module.exports.addAlert = (req, res, next) => {
@@ -21,6 +23,10 @@ module.exports.addAlert = (req, res, next) => {
 }
 
 module.exports.removeAlert = (req, res, next) => {
+    const identifier = req.body.identifier;
+    const found = AlertsData.find(element => element.identifier == identifier);
+    const indexOf = AlertsData.indexOf(found)
+    
     const model = {
         identifier: req.body.identifier,
         id: AlertsData.length + 1,
@@ -32,12 +38,14 @@ module.exports.removeAlert = (req, res, next) => {
         webrtc: req.body.webid
     }
 
+    AlertsUsersData[indexOf] = [];
     AlertsData = AlertsData.filter(x => x.identifier != req.body.identifier);
 
     res.send(AlertsData);
 }
 
 module.exports.addDataViewer = (req, res, next) => {
+    const source = req.query.source || req.body.source;
     const identifier = req.query.id || req.body.id;
     const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
@@ -53,6 +61,10 @@ module.exports.addDataViewer = (req, res, next) => {
         webid: AlertsData[indexOf].webid,
         count: AlertsData[indexOf].count + 1
     }
+
+    AlertsUsersData[indexOf].push(source);
+
+    console.log("AUD : ", AlertsUsersData[indexOf])
 
     res.send(AlertsData[indexOf]);
 }
