@@ -12,6 +12,7 @@ const myLatitude = 15;
 const myLongitude = 3;
 
 export let AlertsData: IAlert[] = [];
+export let AlertsDataUsers = [];
 
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
     var R = 6371; // Radius of the earth in km
@@ -221,12 +222,37 @@ export default abstract class MyHeroAlerts {
                 console.log("errror", err)
             })
     }
+
+    public static getUsersData() {
+        let identifier = this.ViewerData.identifier
+
+        axios.get(`/alerts/get_data_viewer_users/?id=${identifier}`)
+
+        .then((response) => {
+            const e = response;
+            const status: number = e.status
+
+            if (status === 200) {
+                const nb = e.data || 0;
+                console.log(nb)
+
+                setTimeout(() => {
+                    AlertsDataUsers = nb;
+                }, 1500)
+            }
+        })
+
+        .catch((err) => {
+            console.log("err g", err);
+        })
+    }
 }
 
 
 setInterval(() => {
     if (MyHeroAlerts.ViewerData.status == true) {
         MyHeroAlerts.getUsersCount();
+        MyHeroAlerts.getUsersData();
     }
-}, 25000)
+}, 100000)
 
