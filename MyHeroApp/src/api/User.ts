@@ -211,6 +211,36 @@ export default abstract class Users {
         ;
     }
 
+    public static AddRate(source: any, user: any, description: any, rate: any, cb: any) {
+        var params = {
+            source: source,
+            user: user,
+            description: description,
+            rate: rate
+        }
+        
+        let req = {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        }
+
+        fetch(`${API_LINK}/user/add_rate`, req)
+            .then(function(res) {
+                console.log(res);
+
+                cb(res.status);
+            })
+
+            .catch(function(err) {
+                console.log("errror", err)
+            })
+        ;
+    }    
+
     public static Disconnect() {
         const _storeData = async () => {
             try {
