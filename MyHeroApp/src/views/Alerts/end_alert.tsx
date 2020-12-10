@@ -105,7 +105,7 @@ const EndAlertScreen = ({ navigation }) => {
                             placeholder={I18n.t("alertDescHero")} 
                             onClick={() => {
                                 Users.AddRate(mailSource, cache, description, rate, () => {
-                                    navigation.navigation("Home")
+                                    navigation.navigation("Home");
                                 })
                             }} 
                             rate={rate}
