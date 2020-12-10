@@ -157,7 +157,6 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 </View>
 
                 <BottomComponent title={I18n.t("alertNotDanger")} onClick={() => {
-                    _storeData()
                     dispatch(setSendAlertData({status: false, data: {
                         identifier: "",
                         id: 0,
@@ -184,7 +183,6 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                 <View style={{marginBottom: 10}}></View>
                 
                 <BottomComponent title={I18n.t("alertSave")} onClick={() => {
-                    _storeData()
                     dispatch(setSendAlertData({status: false, data: {
                         identifier: "",
                         id: 0,
