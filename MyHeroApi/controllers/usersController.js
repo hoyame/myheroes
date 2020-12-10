@@ -199,13 +199,14 @@ module.exports.forgotPassword = (req, res, next) => {
 
 // add commentaire / rate
 module.exports.addRate = (req, res, next) => {
+	const source = req.body.source;
 	const user = req.body.user;
 	const rate = req.body.rate;
 	const description = req.body.description;
 	
-	let sql = `INSERT INTO users_data(user, rate, description) VALUES(?, ?, ?)`;
+	let sql = `INSERT INTO users_data(source, user, rate, description) VALUES(?, ?, ?, ?)`;
 
-	con.query(sql, [user, rate, description], function (err, result) {
+	con.query(sql, [source, user, rate, description], function (err, result) {
 		return res.json({
 			status: 'success',
 			result: {
