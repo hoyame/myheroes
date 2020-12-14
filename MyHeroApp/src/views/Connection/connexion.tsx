@@ -62,7 +62,6 @@ const ConnexionScreen = ({ navigation }) => {
             console.log('upload succes', res);
             setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`});
             dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`));
-
         })
         .catch((error) => {
             console.log('upload error', error);
@@ -512,7 +511,8 @@ const ConnexionScreen = ({ navigation }) => {
                                             dispatch(setRate(e.rate));
                                             dispatch(setXp(e.xp));
                                             dispatch(setImage(e.image));
-                
+                                            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${e.pseudo}?time=${new Date()}`));
+
                                             navigation.navigate('Home');
                                         }, () => {
                                             navigation.navigate('Connexion');
