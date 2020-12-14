@@ -16,10 +16,9 @@ const EndAlertScreen = ({ navigation }) => {
     const [s, SS] = useState(false);
     const [description, setDescription] = useState("");
     const [rate, setRate] = useState(0)
-    const [data, setData] = useState(["Karim", "Acemoy", "Acemoy", "Acemoy", "Acemoy", "Acemoy", "Acemoy", "Acemoy"])
+    const [data, setData] = useState([])
     const [cache, setCache] = useState("");
 
-    
     setTimeout(() => {
         if (AlertsDataUsers !== []) {
             setData(AlertsDataUsers);
