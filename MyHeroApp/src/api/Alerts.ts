@@ -237,6 +237,7 @@ export default abstract class MyHeroAlerts {
                 console.log(nb)
 
                 setTimeout(() => {
+                    AlertsDataUsers = [];
                     AlertsDataUsers = nb;
                 }, 1500)
             }
