@@ -48,10 +48,6 @@ static void InitializeFlipper(UIApplication *application) {
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   [GMSServices provideAPIKey:@"AIzaSyCzAnSXo5V-fgVr-su80F6YKPXJUfoDpR4"]; // add this line using the api key obtained from Google Console
-  // Place this code after "[self.window makeKeyAndVisible]" and before "return YES;"
-  UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
-  UIViewController *vc = [sb instantiateInitialViewController];
-  rootView.loadingView = vc.view;
   return YES;
 }
 
