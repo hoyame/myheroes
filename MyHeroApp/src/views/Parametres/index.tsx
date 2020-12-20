@@ -488,7 +488,9 @@ const ParametresScreen = ({ navigation }) => {
                 <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav')); setLanguageS(true) }} title={I18n.t("settingsLanguage")} icon={faLanguage} color="#1F7CEB" />
                 <ButtonComponent onClick={() => setMdpS(true)} title={I18n.t("settingsCSMDP")} icon={faLock} color="#FCCA1C" />
                 <ButtonComponent onClick={() => setPictureS(true)} title={I18n.t("settingsChangerAvatar")} icon={faUser} color="#FC9A21" />
-                <ButtonComponent onClick={() => setPseudoS(true)} title={I18n.t("settingsChangerPseudo")} icon={faFont} color="#B0F50A" />
+                {
+                // <ButtonComponent onClick={() => setPseudoS(true)} title={I18n.t("settingsChangerPseudo")} icon={faFont} color="#B0F50A" />
+                }   
                 <ButtonComponent onClick={() => disconnect()} title={I18n.t("settingsSeDeco")} icon={faSignOutAlt} color="#E63B25" />
                 
             </View>  
