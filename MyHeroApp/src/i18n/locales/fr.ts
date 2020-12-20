@@ -13,7 +13,7 @@ export default {
     menu: "Menu",
 
     connexion: "Connexion",
-    inscription: "Incription",
+    inscription: "Inscription",
     acceuil: "Général",
     carte: "Carte",
     alertes: "Alertes",
