@@ -92,10 +92,14 @@ const HomeScreen = ({ navigation }) => {
                 }}>
                     <View style={{}}>
                         <Text style={{
-                            fontSize: 22,
+                            fontSize: 20,
                             color: "#000000"
                         }}>{props.title}</Text>
-
+                        
+                        <Text style={{
+                            fontSize: 12,
+                            color: "#000000"
+                        }}>Maintenez pour plus d'informations</Text>
                     </View>
 
                     <View style={{
