@@ -19,6 +19,8 @@ target 'MyHeroApp' do
 
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
+  pod "Yoga", :path => "../node_modules/react-native/ReactCommon/yoga"
+
   pod 'GoogleMaps', '4.0.0'
 
   pod 'Google-Maps-iOS-Utils', '2.1.0'
@@ -37,10 +39,16 @@ target 'MyHeroApp' do
 
   pod 'react-native-background-timer', :path => '../node_modules/react-native-background-timer'
 
+  pod 'GoogleWebRTC'
+  
+  pod 'react-native-webrtc', :path => '../node_modules/react-native-webrtc'
+
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
   end
+
+
 
   # Enables Flipper.
   #

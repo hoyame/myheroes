@@ -127,6 +127,7 @@ PODS:
   - GoogleUtilities/SwizzlerTestHelpers (5.3.7)
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
+  - GoogleWebRTC (1.1.31999)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -427,6 +428,7 @@ DEPENDENCIES:
   - GoogleMaps (= 4.0.0)
   - GooglePlaces (= 4.0.0)
   - GoogleUtilities (= 5.3.7)
+  - GoogleWebRTC
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -484,6 +486,7 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - GoogleUtilities
+    - GoogleWebRTC
     - nanopb
     - OpenSSL-Universal
     - YogaKit
@@ -595,6 +598,7 @@ SPEC CHECKSUMS:
   GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
   GooglePlaces: ca8d4aba09ba79e0a829cf1dca03a41de6a09016
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
+  GoogleWebRTC: b39a78c4f5cc6b0323415b9233db03a2faa7b0f0
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   RCTRequired: 48884c74035a0b5b76dbb7a998bd93bcfc5f2047
@@ -636,6 +640,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 53731b5986ce46a1eda95e55a0c983fd9944bbe0
+PODFILE CHECKSUM: 93de9e52806737ca18b8c465c6c75b1614d9bd16
 
 COCOAPODS: 1.10.0
