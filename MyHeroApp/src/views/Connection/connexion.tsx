@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Alert } from "react-native";
+import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Alert, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faCircle, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -256,99 +256,281 @@ const ConnexionScreen = ({ navigation }) => {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <FondComponent />
-                    <TitleComponent />
-
-                    <View style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginBottom: 15
-                    }}>
-                        <TouchableOpacity onPress={() => { setConnexion(true); setInscription(false) }}>
-                            <View style={{
-                                paddingLeft: 14,
-                                paddingRight: 14,
-                                paddingTop: 10,
-                                paddingBottom: 10,
-                                borderRadius: 12,
-                                marginRight: 14,
-                                backgroundColor: connexion ? "#3497FD" : "transparent",
-                            }}>
-                                <Text style={{color: connexion ? "#ffffff": "#78849E"}}>
-                                    {I18n.t("connexion")}
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => { setConnexion(false); setInscription(true) }}>
-                            <View style={{
-                                paddingLeft: 14,
-                                paddingRight: 14,
-                                paddingTop: 10,
-                                paddingBottom: 10,
-                                borderRadius: 12,
-                                backgroundColor: inscription ? "#3497FD" : "transparent",
-                            }}>
-                                <Text style={{color: inscription ? "#ffffff": "#78849E"}}>
-                                    {I18n.t("inscription")}
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-
-                    <Text style={{
-                        fontSize: 35,
-                        textAlign: 'center',
-                        marginBottom: 5
-                    }}>{I18n.t("inscription")}</Text>
-
-                    <Text style={{
-                        marginBottom: 20
-                    }}>{I18n.t("inscriptionDesc")}</Text>
-
-                    <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
-                    <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                    <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                    <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
-                
-                    <View style={{
-                        marginTop: 5,
-                        display: "flex",
-                        flexDirection: "column"
-                    }}>
-                        <View style={{
+                    <KeyboardAvoidingView 
+                        behavior={Platform.OS == "ios" ? "padding" : "height"}
+                        style={{
+                            padding: 35,
+                            paddingTop: 0,
                             display: 'flex',
+                            flex: 1,
+                            alignSelf: 'center',
                             justifyContent: 'center',
-                            marginBottom: 15,
-                            flexDirection: 'row'
+                            alignItems: 'center'
+                        }}
+                    >
+                        <FondComponent />
+                        <TitleComponent />
+
+                        <View style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            marginBottom: 15
                         }}>
-                            <Text>{I18n.t("inscriptionVAC")}</Text>
-                            <TouchableOpacity onPress={() => navigation.navigate('Connexion')}>
-                                <Text style={{
-                                    color: "#3497FD"
-                                }}>{I18n.t("connexionTES")}</Text>
+                            <TouchableOpacity onPress={() => { setConnexion(true); setInscription(false) }}>
+                                <View style={{
+                                    paddingLeft: 14,
+                                    paddingRight: 14,
+                                    paddingTop: 10,
+                                    paddingBottom: 10,
+                                    borderRadius: 12,
+                                    marginRight: 14,
+                                    backgroundColor: connexion ? "#3497FD" : "transparent",
+                                }}>
+                                    <Text style={{color: connexion ? "#ffffff": "#78849E"}}>
+                                        {I18n.t("connexion")}
+                                    </Text>
+                                </View>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => { setConnexion(false); setInscription(true) }}>
+                                <View style={{
+                                    paddingLeft: 14,
+                                    paddingRight: 14,
+                                    paddingTop: 10,
+                                    paddingBottom: 10,
+                                    borderRadius: 12,
+                                    backgroundColor: inscription ? "#3497FD" : "transparent",
+                                }}>
+                                    <Text style={{color: inscription ? "#ffffff": "#78849E"}}>
+                                        {I18n.t("inscription")}
+                                    </Text>
+                                </View>
                             </TouchableOpacity>
                         </View>
 
-                        {errorS && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR1")}</Text>}
-                        {errorM && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR2")}</Text>}
-                        {errorU && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR3")}</Text>}
+                        <Text style={{
+                            fontSize: 35,
+                            textAlign: 'center',
+                            marginBottom: 5
+                        }}>{I18n.t("inscription")}</Text>
 
-                        <TouchableOpacity onPress={() => {
-                            setStatus(true);
+                        <Text style={{
+                            marginBottom: 20
+                        }}>{I18n.t("inscriptionDesc")}</Text>
 
-                            if (state.password !== "" && state.cPassword !== "" && state.name !== "" && state.mail !== "") {
-                                if (state.password === state.cPassword) {
-                                    Users.Register({
-                                        pseudo: state.name,
+                        <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
+                        <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                        <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                        <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+                    
+                        <View style={{
+                            marginTop: 5,
+                            display: "flex",
+                            flexDirection: "column"
+                        }}>
+                            <View style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                marginBottom: 15,
+                                flexDirection: 'row'
+                            }}>
+                                <Text>{I18n.t("inscriptionVAC")}</Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('Connexion')}>
+                                    <Text style={{
+                                        color: "#3497FD"
+                                    }}>{I18n.t("connexionTES")}</Text>
+                                </TouchableOpacity>
+                            </View>
+
+                            {errorS && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR1")}</Text>}
+                            {errorM && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR2")}</Text>}
+                            {errorU && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR3")}</Text>}
+
+                            <TouchableOpacity onPress={() => {
+                                setStatus(true);
+
+                                if (state.password !== "" && state.cPassword !== "" && state.name !== "" && state.mail !== "") {
+                                    if (state.password === state.cPassword) {
+                                        Users.Register({
+                                            pseudo: state.name,
+                                            email: state.mail,
+                                            password: state.password
+                                        }, (res: any) => {
+                                            if (res == 200) {
+                                                setTimeout(() => {
+                                                    setStatus(false);
+                                                    _storeData();
+        
+                                                    setTimeout(() => {
+                                                        Users.Load((e: any) => {
+                                                            dispatch(setMail(e.mail));
+                                                            dispatch(setName(e.pseudo));
+                                                            dispatch(setRate(e.rate));
+                                                            dispatch(setXp(e.xp));
+                                                            dispatch(setImage(e.image));
+        
+                                                            //navigation.navigate('Home');
+                                                            setPictureS(true)
+                                                        }, () => {
+                                                            navigation.navigate('Connexion');
+                                                        }, () => {
+                                                            Alert.alert(I18n.t("errorServMH"));
+                                                            navigation.navigate('Connexion');
+                                                        })
+                                                    }, 2500)
+                                                }, 2500)
+                                            } else {
+                                                setTimeout(() => {
+                                                    setStatus(false);
+                                                    setErrorU(true);
+                                                }, 3000)
+                                            }
+                                        })
+                                    } else {
+                                        setTimeout(() => {
+                                            setStatus(false);
+                                            setError(true);
+                                        }, 3000) 
+                                    }
+                                } else {
+                                    setTimeout(() => {
+                                        setStatus(false);
+                                        setErrorM(true);
+                                    }, 3000)
+                                }
+                            }}>
+                                <View style={{
+                                    height: 60, 
+                                    width: screenWidth,
+                                    borderRadius:15,
+                                    marginTop: 5,
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    backgroundColor: '#3497FD'           
+                                }}>
+                                    <Text style={{
+                                        fontSize: 25,
+                                        color: "#ffffff",
+                                    }}>{I18n.t("connexionReg")}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </KeyboardAvoidingView>
+                </View>
+            </>
+        );
+    }   
+
+    return (
+        <>
+     
+                    <View style={{
+                        padding: 35,
+                        display: 'flex',
+                        flex: 1,
+                        alignSelf: 'center',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <KeyboardAvoidingView 
+                            behavior={Platform.OS == "ios" ? "padding" : "height"}
+                            style={{
+                                padding: 35,
+                                paddingTop: 0,
+                                display: 'flex',
+                                flex: 1,
+                                alignSelf: 'center',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}
+                        >
+                                
+                            <FondComponent />
+                            <TitleComponent />
+
+                            <View style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                marginBottom: 30
+                            }}>
+                                <TouchableOpacity onPress={() => { setConnexion(true); setInscription(false) }}>
+                                    <View style={{
+                                        paddingLeft: 14,
+                                        paddingRight: 14,
+                                        paddingTop: 10,
+                                        paddingBottom: 10,
+                                        borderRadius: 12,
+                                        marginRight: 14,
+                                        backgroundColor: connexion ? "#3497FD" : "transparent",
+                                    }}>
+                                        <Text style={{color: connexion ? "#ffffff": "#78849E"}}>
+                                            {I18n.t("connexion")}
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity onPress={() => { setConnexion(false); setInscription(true) }}>
+                                    <View style={{
+                                        paddingLeft: 14,
+                                        paddingRight: 14,
+                                        paddingTop: 10,
+                                        paddingBottom: 10,
+                                        borderRadius: 12,
+                                        backgroundColor: inscription ? "#3497FD" : "transparent",
+                                    }}>
+                                        <Text style={{color: inscription ? "#ffffff": "#78849E"}}>
+                                            {I18n.t("inscription")}
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
+                            <Text style={{
+                                fontSize: 35,
+                                textAlign: 'center',
+                                marginBottom: 10
+                            }}>{I18n.t("connexion")}</Text>
+                            
+                            <Text style={{
+                                marginBottom: 30
+                            }}>{I18n.t("connexionDesc")}</Text>
+
+                            <InputComponent name={I18n.t("connexoinIdentifiant")} placeholder={I18n.t("connexoinIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                            <InputComponent password={true} name={I18n.t("connexoinMDP")} placeholder={I18n.t("connexoinMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                    
+                            <View style={{
+                                marginTop: 15,
+                                display: "flex",
+                                flexDirection: "column"
+                            }}>
+                                <View style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    marginBottom: 15,
+                                    flexDirection: 'row'
+                                }}>
+                                    <Text>{I18n.t("connexionVousAvezPasCompte")}</Text>
+                                    <TouchableOpacity onPress={() => navigation.navigate('Inscription')}>
+                                        <Text style={{
+                                            color: "#3497FD"
+                                        }}>{I18n.t("connexionReg")}</Text>
+                                    </TouchableOpacity>
+                                </View>
+
+                                {error && <Text style={{color: 'red', textAlign: "center", marginBottom: 10}}>Identifiant ou/et mot de passe erronée</Text>}
+
+                                <TouchableOpacity onPress={() => {
+                                    setStatus(true);
+                                    
+                                    Users.Login({
+                                        pseudo: state.mail,
                                         email: state.mail,
-                                        password: state.password
+                                        password: state.password,
                                     }, (res: any) => {
                                         if (res == 200) {
                                             setTimeout(() => {
-                                                setStatus(false);
                                                 _storeData();
-    
+                                                
                                                 setTimeout(() => {
                                                     Users.Load((e: any) => {
                                                         dispatch(setMail(e.mail));
@@ -356,9 +538,9 @@ const ConnexionScreen = ({ navigation }) => {
                                                         dispatch(setRate(e.rate));
                                                         dispatch(setXp(e.xp));
                                                         dispatch(setImage(e.image));
-    
-                                                        //navigation.navigate('Home');
-                                                        setPictureS(true)
+                                                        dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${e.pseudo}?time=${new Date()}`));
+                                                        
+                                                        navigation.navigate('Home');
                                                     }, () => {
                                                         navigation.navigate('Connexion');
                                                     }, () => {
@@ -370,183 +552,30 @@ const ConnexionScreen = ({ navigation }) => {
                                         } else {
                                             setTimeout(() => {
                                                 setStatus(false);
-                                                setErrorU(true);
+                                                setError(true);
                                             }, 3000)
                                         }
                                     })
-                                } else {
-                                    setTimeout(() => {
-                                        setStatus(false);
-                                        setError(true);
-                                    }, 3000) 
-                                }
-                            } else {
-                                setTimeout(() => {
-                                    setStatus(false);
-                                    setErrorM(true);
-                                }, 3000)
-                            }
-                        }}>
-                            <View style={{
-                                height: 60, 
-                                width: screenWidth,
-                                borderRadius:15,
-                                marginTop: 5,
-                                justifyContent: "center",
-                                alignItems: "center",
-                                backgroundColor: '#3497FD'           
-                            }}>
-                                <Text style={{
-                                    fontSize: 25,
-                                    color: "#ffffff",
-                                }}>{I18n.t("connexionReg")}</Text>
+                                }}>
+                                    <View style={{
+                                        height: 60, 
+                                        width: screenWidth,
+                                        borderRadius:15,
+                                        marginTop: 5,
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        backgroundColor: '#3497FD'           
+                                    }}>
+                                        <Text style={{
+                                            fontSize: 25,
+                                            color: "#ffffff",
+                                        }}>{I18n.t("connexionTES")}</Text>
+                                    </View>
+                                </TouchableOpacity>
                             </View>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </>
-        );
-    }   
-
-    return (
-        <>
-            <View style={{
-                padding: 35,
-                display: 'flex',
-                flex: 1,
-                alignSelf: 'center',
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}>
-                <FondComponent />
-                <TitleComponent />
-
-                <View style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginBottom: 30
-                }}>
-                    <TouchableOpacity onPress={() => { setConnexion(true); setInscription(false) }}>
-                        <View style={{
-                            paddingLeft: 14,
-                            paddingRight: 14,
-                            paddingTop: 10,
-                            paddingBottom: 10,
-                            borderRadius: 12,
-                            marginRight: 14,
-                            backgroundColor: connexion ? "#3497FD" : "transparent",
-                        }}>
-                            <Text style={{color: connexion ? "#ffffff": "#78849E"}}>
-                                {I18n.t("connexion")}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => { setConnexion(false); setInscription(true) }}>
-                        <View style={{
-                            paddingLeft: 14,
-                            paddingRight: 14,
-                            paddingTop: 10,
-                            paddingBottom: 10,
-                            borderRadius: 12,
-                            backgroundColor: inscription ? "#3497FD" : "transparent",
-                        }}>
-                            <Text style={{color: inscription ? "#ffffff": "#78849E"}}>
-                                {I18n.t("inscription")}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
-                <Text style={{
-                    fontSize: 35,
-                    textAlign: 'center',
-                    marginBottom: 10
-                }}>{I18n.t("connexion")}</Text>
-                
-                <Text style={{
-                    marginBottom: 30
-                }}>{I18n.t("connexionDesc")}</Text>
-
-                <InputComponent name={I18n.t("connexoinIdentifiant")} placeholder={I18n.t("connexoinIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                <InputComponent password={true} name={I18n.t("connexoinMDP")} placeholder={I18n.t("connexoinMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-        
-                <View style={{
-                    marginTop: 15,
-                    display: "flex",
-                    flexDirection: "column"
-                }}>
-                    <View style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        marginBottom: 15,
-                        flexDirection: 'row'
-                    }}>
-                        <Text>{I18n.t("connexionVousAvezPasCompte")}</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('Inscription')}>
-                            <Text style={{
-                                color: "#3497FD"
-                            }}>{I18n.t("connexionReg")}</Text>
-                        </TouchableOpacity>
+                        </KeyboardAvoidingView>
                     </View>
 
-                    {error && <Text style={{color: 'red', textAlign: "center", marginBottom: 10}}>Identifiant ou/et mot de passe erronée</Text>}
-
-                    <TouchableOpacity onPress={() => {
-                        setStatus(true);
-
-                        Users.Login({
-                            pseudo: state.mail,
-                            email: state.mail,
-                            password: state.password,
-                        }, (res: any) => {
-                            if (res == 200) {
-                                setTimeout(() => {
-                                    _storeData();
-                
-                                    setTimeout(() => {
-                                        Users.Load((e: any) => {
-                                            dispatch(setMail(e.mail));
-                                            dispatch(setName(e.pseudo));
-                                            dispatch(setRate(e.rate));
-                                            dispatch(setXp(e.xp));
-                                            dispatch(setImage(e.image));
-                                            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${e.pseudo}?time=${new Date()}`));
-
-                                            navigation.navigate('Home');
-                                        }, () => {
-                                            navigation.navigate('Connexion');
-                                        }, () => {
-                                            Alert.alert(I18n.t("errorServMH"));
-                                            navigation.navigate('Connexion');
-                                        })
-                                    }, 2500)
-                                }, 2500)
-                            } else {
-                                setTimeout(() => {
-                                    setStatus(false);
-                                    setError(true);
-                                }, 3000)
-                            }
-                        })
-                    }}>
-                        <View style={{
-                            height: 60, 
-                            width: screenWidth,
-                            borderRadius:15,
-                            marginTop: 5,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: '#3497FD'           
-                        }}>
-                            <Text style={{
-                                fontSize: 25,
-                                color: "#ffffff",
-                            }}>{I18n.t("connexionTES")}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </View>
         </>
     );
 }
