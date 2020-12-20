@@ -284,7 +284,7 @@ const ParametresScreen = ({ navigation }) => {
                 <Text style={{
                     color: "#000000",
                     fontSize: 35,
-                    width: 200,
+                    width: 225,
                     marginBottom: 35,
                     textAlign: "center"
                 }}>{I18n.t("settingsMDP1")}</Text>
@@ -447,12 +447,15 @@ const ParametresScreen = ({ navigation }) => {
     }
 
     return (
-        <>
+        <View style={{
+            display: "flex", 
+            justifyContent: "center",
+        }}>
             <HeaderComponent title={I18n.t("parametres")} navigation={navigation} />
 
             <View style={{
                 padding: 35,
-                paddingTop: 0
+                paddingTop: 0,
             }}>
                 <View style={{
                     display: "flex",
@@ -480,7 +483,7 @@ const ParametresScreen = ({ navigation }) => {
 
                     <Text style={{
                         fontSize: 17.5,
-                        marginBottom: 15,
+                        marginBottom: 20,
                         color: "#454F63"
                     }}>{mail}</Text>
                 </View>
@@ -494,7 +497,7 @@ const ParametresScreen = ({ navigation }) => {
                 <ButtonComponent onClick={() => disconnect()} title={I18n.t("settingsSeDeco")} icon={faSignOutAlt} color="#E63B25" />
                 
             </View>  
-        </>
+        </View>
     );
 }
 
