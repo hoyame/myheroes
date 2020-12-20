@@ -124,7 +124,9 @@ export abstract class MyHeroService {
         }
       } else {
         Geolocation.requestAuthorization()
-        this.getLocalisation();
+        setTimeout(() => {
+          this.getLocalisation();
+        }, 5500)
       }
     }
     
