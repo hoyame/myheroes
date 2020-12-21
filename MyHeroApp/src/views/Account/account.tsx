@@ -253,7 +253,7 @@ const AccountScreen = ({ navigation }) => {
                         fontSize: 17.5,
                         marginBottom: 12.5,
                         color: "#454F63"
-                    }}>Sevran, FR</Text>
+                    }}>Utilisateur</Text>
 
                     <ReturnStars rate={rate} />
 

@@ -3,6 +3,8 @@ import * as RNLocalize from "react-native-localize";
 
 import en from "./locales/en";
 import fr from "./locales/fr";
+import es from "./locales/es";
+import it from "./locales/it";
 
 let language = "fr";
 
@@ -18,7 +20,9 @@ I18n.locale = language;
 I18n.fallbacks = true;
 I18n.translations = {
   en,
-  fr
+  fr,
+  it,
+  es,
 };
 
 export default I18n;

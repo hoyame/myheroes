@@ -256,4 +256,7 @@ export default {
     faq2Desc: "L'application MyHeroes a pour objectif d'aider la population le plusrapidement possible quelque coit leur situation qu'elle soit la gravitéqu'elle encours. Grace a MyHeroes, que MyHero peut arriver sur place sur placeen quelque secondes tandis que les secours sont la en quelques minutes.Parfois il suffit de quelques secondes pour sauver une vie ou empecher une aggressionet MyHeroes est la pour ça.",
     faq3: "Services",
     faq3Desc: "L'application MyHeroes propose que toute les personnes s'entraide les unes aux autres grace a une geolocalisation qui permet de voir les perosnnes en danger a proximité. MyHeroes apprendaux gens comment se comporter en cas de grave danger grace aux gestes de premier secours et qui appeler au plus vite grace aux numeros d'urgence. MyHeroes permet de gagner des points pour chaque sauvetage, plus vous avez de point, plus vous montez de niveau et plus vous êtes un grand/grande heros/heroinepour la nation",
+
+    cgu: ""
+
 };
