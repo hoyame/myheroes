@@ -217,7 +217,7 @@ const HomeScreen = ({ navigation }) => {
                                     }}>
                                     
                                     <View style={{
-                                        height: 165,
+                                        height: 180,
                                         width: screenWidth,
                                         alignItems: "center",
                                         justifyContent: "center",
