@@ -1,5 +1,5 @@
 import { faSun } from "@fortawesome/free-regular-svg-icons";
-import { faAlignLeft, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faAlignLeft, faArrowLeft, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React, { Component, useState } from "react";
 import { Platform, View, Text, Dimensions, Image, TouchableHighlight } from "react-native";
@@ -214,7 +214,7 @@ const MapScreen = ({ navigation }) => {
                         borderRadius: 50,
                         backgroundColor: "#E1E1E1"
                     }}>
-                        <FontAwesomeIcon icon={faAlignLeft} size={25} style={{
+                        <FontAwesomeIcon icon={faArrowLeft} size={25} style={{
                             marginTop: 20,
                             justifyContent: "center"
                         }} />

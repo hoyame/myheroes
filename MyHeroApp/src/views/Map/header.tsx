@@ -4,7 +4,7 @@ import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { Dimensions } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faBars, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faAlignLeft, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useReduxState } from '../../data/store';
 
 interface IHeader {
@@ -47,7 +47,7 @@ const HeaderComponent = (props: IHeader) => {
                         borderRadius: 50,
                         backgroundColor: "#E1E1E1"
                     }}>
-                        <FontAwesomeIcon icon={faAlignLeft} size={25} style={{
+                        <FontAwesomeIcon icon={faArrowLeft} size={25} style={{
                             marginTop: 20,
                             justifyContent: "center"
                         }} />
