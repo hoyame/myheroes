@@ -257,7 +257,7 @@ export default {
     faq3: "Services",
     faq3Desc: "L'application MyHeroes propose que toute les personnes s'entraide les unes aux autres grace a une geolocalisation qui permet de voir les perosnnes en danger a proximité. MyHeroes apprendaux gens comment se comporter en cas de grave danger grace aux gestes de premier secours et qui appeler au plus vite grace aux numeros d'urgence. MyHeroes permet de gagner des points pour chaque sauvetage, plus vous avez de point, plus vous montez de niveau et plus vous êtes un grand/grande heros/heroinepour la nation",
 
-
+    cgu: "Conditions generales d'utilisation",
     cgu1: "Article 1 - Définitions",
     cgu2: "Article 2 - Mentions imposées par la loi de confiance dans l’économie numérique et objet de l'application ",
     cgu3: "Article 3 - Caractéristiques des produits proposés",
