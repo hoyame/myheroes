@@ -6,7 +6,7 @@ export default {
     descDescription: "Description de l'alerte",
     par: "Par",
     chargement: "Chargement",
-    welcomeMH: "Bienvenue sur MyHeroes",
+    welcomeMH: "Bienvenue sur MyHero",
     continuer: "Continuer",
     annuler: "Annuler",
    
@@ -18,13 +18,13 @@ export default {
     carte: "Carte",
     alertes: "Alertes",
     avis: "Avis",
-    parametres: "Paramètres",
+    parametres: "Parametres",
     account: "Mon compte",
     faq: "F.A.Q",
     confidentiality: "Confidentialité",
     apropos: "A propos",
     gdps: "Gestes de premier secours",
-    ndu: "Numéros d'urgence",
+    ndu: "Numeros d'urgence",
 
     connexionEC: "Connexion en cours",
     connexionDesc: "Se connecter a son compte",
@@ -43,11 +43,11 @@ export default {
 
     inscriptionPseudo: "Pseudo",
     inscriptionIdentifiant: "Identifiant",
-    inscriptionDescIdentifiant: "Mail ou Téléphone",
+    inscriptionDescIdentifiant: "Mail ou Télphone",
     inscriptionMDP: "Mot de passe",
     inscriptionCMDP: "Confirmer son mot de passe",
     inscriptionVAC: "Vous avez un compte ? ",
-    inscriprionERR1: "Les deux mots de passe ne correspondent pas",
+    inscriprionERR1: "Les deux mot de passe ne correspondent pas",
     inscriprionERR2: "Les formulaires n'ont pas été remplis correctement",
     inscriprionERR3: "Une erreur inconnue est survenue, veuillez ressayer plus tard",
 
@@ -55,20 +55,20 @@ export default {
     desccarte: "Carte avec les alertes",
     descalertes: "Listes des alertes",
     descavis: "Votre avis sur l'application",
-    descparametres: "Paramètres du compte",
+    descparametres: "Parametres du compte",
     descaccount: "Mon compte",
     descfaq: "Foire aux questions",
     descconfidentiality: "Confidentialité",
     descapropos: "A propos",
     descgdps: "Gestes de premier secours",
-    descndu: "Numéros d'urgence",
+    descndu: "Numeros d'urgence",
 
     accountTrophes: "Trophées",
     accountAvis: "Avis",
 
-    alertAvisHero: "Avis sur votre héros",
-    alertDescHero: "Avis sur votre héros",
-    alertThanks: "Merci d'avoir utilisé MyHeroes, votre alerte a été supprimée.",
+    alertAvisHero: "Avis sur votre hero",
+    alertDescHero: "Avis sur votre hero",
+    alertThanks: "Merci d'avoir utilisé MyHeroes, votre alerte a été supprimé.",
     alertGrave: "Grave",
     alertMoyen: "Moyen",
     alertFaible: "Faible",
@@ -79,7 +79,7 @@ export default {
     alertInProgressDesc: "Page de l'alerte",
     alertT: "Alerte",
     alertMy: "Votre alerte",
-    alertWarn: "Lancer de fausses alertes peut entrainer des sanctions !",
+    alertWarn: "Lancer des fausses alertes peut entrainer des sanctions !",
     alertLaunch: "Lancer une alerte",
     alertNotDispo: "Aucune alerte disponible",
     alertReturnAcceuil: "Retour a l'acceuil",
@@ -87,7 +87,7 @@ export default {
     alertApercCam: "Aperçu camera",
     alertNotDanger: "Annuler l'alerte",
     alertSave: "Fermer l'alerte",
-    alertLancerItt: "Lancer l'itinéraire",
+    alertLancerItt: "Lancer l'itineraire",
     alertAbbandoner: "Abbandoner l'alerte",
     alertIDAlert: "ID de l'alerte",
     alertPrendreAlert: "Prendre l'alerte",
@@ -96,14 +96,139 @@ export default {
     avisDescApp: "Avis",
 
     gdps1: "Malaises",
-    gdps2: "Position latérale de securité",
-    gdps3: "Hémoragie",
+    gdps2: "Position laterale de securité",
+    gdps3: "Hemoragie",
     gdps4: "Traumatismes",
-    gdps5: "Brûlures",
+    gdps5: "Brulures",
     gdps7: "Ventilation artificielle",
     gdps8: "Ettoufement adulte",
     gdps9: "Ettoufement Nourisson",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps111: "Mettre au repos",
+
+    gdps112: "Observer les signes visibles",
+    gdps113: "Difficulté de language ou de compréhension",
+    gdps114: "Pâleur intense",
+    gdps115: "Sueurs abondantes",
+    gdps116: "Faiblesse ou paralysie face/bras/jambes",
+    gdps117: "Perte de l'équilibre - chute",
     
+    gdps118: "Ecouter les plaintes exprimées",
+    gdps119: "Douleur dans la poitrine ou abdominale",
+    gdps1110: "Froid",
+    gdps1111: "Diminution ou perte de la vision uni ou bilatérale",
+    gdps1112: "Mal de tête sévère et inhabituel",
+    gdps1113: "Difficulté respiratoire",
+
+    gdps1114: "Interroger la victime et son entourage",
+    gdps1115: "Age",
+    gdps1116: "Durée",
+    gdps1117: "Traitement",
+    gdps1118: "Maladie/Hospitalisée/Traumatisée",
+    gdps1119: "1ére fois ?",
+    gdps1120: "Alerter / Surveiller",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps221: "Préparation",
+    gdps222: "Retirer les lunettes si besoin.",
+    gdps223: "Rapprocher les jambres de la victime de l'axe du corps.",
+    gdps224: "Placer son bras le plus proche à angle droit de son corps. Plier son coude en gardant la paume de sa main tournée vers le haut.",
+    gdps225: "Se placer à genoux ou en trépied au niveau de son thorax.",
+    gdps226: "Saisir le bras opposé et amener les dos de sa main contre son oreille côté sauveteur.",
+    gdps227: "Maintenir le dos de sa main pressée",
+    gdps2277: "contre son oreille, paume contre paume.",
+    gdps228: "Attraper la jambe opposée avec l'autre main, juste derrière le genou, et la relever",
+    gdps229: "tout en gardant le pied au sol",
+    gdps2210: "S'eloigner du thorax si nécessaire.",
+    
+    gdps2211: "Retournement",
+    gdps2212: "Tourner la victime doucement en tirant sur la jambe relevée afin de la faire pivoter vers soi, jusqu'à ce que le genou touche le sol",
+    gdps2213: "La main reste sous la joue pour accompagner le mouvement de tête.",
+    gdps2214: "Dégager doucement la main située sous la tête de la victime tout en préservant la bascule de la lête en arrière, em maintenant son coude à l'aide de la main qui tenait le genou:",
+    
+    gdps2215: "Stabilisation",
+    gdps2216: "Ajuster la jambe située au-dessus pour que la hanche et le genou soient à angle droit afin de stabiliser la position.",
+    gdps2217: "Ouvrir la bouche sans mobiliser la tête.",
+    gdps2218: "Surveiller sa respiration",
+    gdps2219: "Sentir le soulèvement du thorax avec le plat de la main, ecouter les bruits provoqués par sa respiration.",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps331: "L'hémorragie est une perte abondante de sang qui ne s'arrête pas spontanément.",
+    gdps332: "Sa vie est menacée.",
+    gdps333: "Agir",
+    gdps334: "Comprimer",
+    gdps335: "Immédiatement et fortement l'endroit qui saigne.",
+    gdps336: "Allonger la victime et faire si besoin un pansement compressif réalisé avec une épaisseur de tissu propre maintenu par un bandage.",
+    gdps337: "Alerter les secours au 15, 18 ou 112, couvrir et surveiller.",
+    gdps338: "Si le saignement se poursuit, reprendre la compression manuelle par dessus le pansement:",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps441: "Membres :",
+    gdps442: "Douleur, gonflement et déformation.",
+    gdps443: "Colonne vertébrale :",
+    gdps444: "Douleur dans le dos ou la nuque.",
+    gdps445: "Une atteinte des organes sous-jacents est toujours possible et peut se révéler secondairement par d'autres signes (perte de connaissance, maux de tête persistants, vomissements, agitation, somnolence, douleur abdominale...).",
+    gdps446: "Ne pas mobiliser la victime",
+    gdps447: "Conseiller fermement de ne pas mobiliser la partie atteinte",
+    gdps448: "Alerter/Surveiller",
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps551: "Refroidir le plus tôt possible et au plus tard dans les 30 minutes",
+    gdps552: "Faire ruisseler de l'eau tempérée (entre 15 et 25°).",
+    gdps553: "Le refroidissement stoppe l'extension de la brûlure et soulage la douleur.",
+    gdps554: "Alerter/Surveiller",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps771: "Bouche a bouche",
+    gdps77111: "Plaquer la bouche pour éviter les fuites",
+    gdps772: "Insuffler progressivement en 1 seconde et jusqu'à ce que la poitrine commence à se soulever.",
+    gdps773: "Fermer les narines pour que l'air se n'echappe pas",
+    gdps774: "Tête basculée en arrière pour libérer les voie aériennes",
+    gdps775: "Préparation :",
+    gdps776: "Pincez le nez",
+    gdps777: "Ouvrir la bouche",
+    gdps778: "Insufflation :",
+    gdps779: "Plaquer la bouche ",
+    gdps7710: "Souffler progressivement en 1 seconde",
+    gdps7711: "Expiration :",
+    gdps7712: "Se redresser",
+    gdps7713: "Regarder la poitrine s'affaisser.",
+    gdps7714: "Bouche à bouche et nez",
+    gdps7715: "Amener la tête du nourrisson dans l'alignement du torse et élever le menton",
+    gdps7716: "Englober avec la bouche à la fois se bouche et son nez",
+    gdps7717: "Insuffler des volumes d'air moins importants que pour l'adulte.",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    gdps881: "Se mettre derrière la victime et passer les avants-bras sous les siens en encerclant sa poitrine.",
+    gdps882: "Placer un poing au millieu du sternum sans appuyer sur la pointe inférieure.",
+    gdps883: "Placer l'autre main sur la première sans appuyer les avants-bras sur les côtes.",
+    gdps884: "Tirer franchement en exerçant une pression vers l'arriere.",
+    gdps885: "Effectuer 1 à 5 compressions thoraciques.",
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    gdps991: "Claques dans le dos",
+    gdps992: "Maintenir sa tête et le placer à califourchon sur votre avant-bras.",
+    gdps993: "Le faire reopser sur votre cuisse avec la tête inclinée vers le bas.",
+    gdps994: "Donner 1 à 5 claques",
+    gdps995: "entre les deux omoplates avec le talon de la main ouverte.",
+    gdps996: "Retournement",
+    gdps997: "Placer votre avant-bras contre les dos du nourisson, votre main soutenant sa tête. ",
+    gdps998: "Le tourner pour que sa face soit côté ciel.", 
+    gdps999: "Poser votre avant-bras sur votre cuisse avec la tête inclinée vers le bas.",
+    gdps9910: "Compressions thoraciques",
+    gdps9911: "Placer la pulpe de deux doigts d'une main au millieu de la poitrine, sur la moitié inférieure du sternum",
+    gdps9912: "Effectuer 1 à 5 compressions",
+    gdps9913: "profondes et successives",
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Rechercher un pays",
@@ -113,24 +238,24 @@ export default {
     nduPompiers: "Pompiers",
     
     settingsAvatar: "Photo de profil",
-    settingsDesc: "Paramètres du compte",
+    settingsDesc: "Parametres du compte",
     settingsCSMDP: "Changer son mot de passe",
     settingsChk1: "Notification d'alertes",
     settingsChangerAvatar: "Changer sa photo",
     settingsChangerPseudo: "Changer son pseudo",
     settingsLanguage: "Langue",
-    settingsSeDeco: "Se déconnecter",
+    settingsSeDeco: "Se deconnecter",
     settingsMDP1: "Changer son mot de passe",
     settingsMDP2: "Veuillez remplir les formulaires",
 
     settingsPseudo1: "Changer son pseudo",
 
     faq1: "Historique",
-    faq1Desc: "Crée en 2019 par SAIDAT Wahib, l'application MyHeroes a pour but de sauver la population quelque soit leur situation.L'équipe composée du directeur SAIDAT Wahib et de son développeur Hoyame Zouhari ont décidé d'apporter une assistance rapide suite a tout les événements qui ont conduit à des manifestations ( terrorisme, metoo, aggressions scolaires, etc...)",
+    faq1Desc: "Crée en 2019 par SAIDAT Wahib, l'application MyHeroes dea pour but de sauver la population quelque soit leur situation.L'equipe composé du directeur SAIDAT Wahib et de son développeur Hoyame Zouhari ont décidé d'apporter une assistance rapide suite atout les mouvements mauvais qu'il y'a eu ( terrorisme, metou, aggressions scolaires, etc...)",
     faq2: "Objectif",
-    faq2Desc: "L'application MyHeroes a pour objectif d'aider la population le plus rapidement possible quelque soit leur situation, qu'elle que soit la gravité qu'elle encourt. Grâce à MyHeroes, Un Héros peut arriver sur place en quelque secondes tandis que les secours sont la en quelques minutes. Parfois il suffit de quelques secondes pour sauver une vie ou empêcher une aggression et MyHeroes est la pour ça.",
+    faq2Desc: "L'application MyHeroes a pour objectif d'aider la population le plusrapidement possible quelque coit leur situation qu'elle soit la gravitéqu'elle encours. Grace a MyHeroes, que MyHero peut arriver sur place sur placeen quelque secondes tandis que les secours sont la en quelques minutes.Parfois il suffit de quelques secondes pour sauver une vie ou empecher une aggressionet MyHeroes est la pour ça.",
     faq3: "Services",
-    faq3Desc: "L'application MyHeroes propose que toute les personnes s'entraident les unes avec les autres grace à une géolocalisation qui permet de voir les perosnnes en danger a proximité. MyHeroes apprend aux gens comment se comporter en cas de grave danger grâce aux gestes de premiers secours et qui appeler au plus vite grâce aux numéros d'urgence. MyHeroes permet de gagner des points pour chaque sauvetage, plus vous avez de point, plus vous montez de niveau et plus vous êtes un(e) grand(e) héros/héroine pour la nation",
+    faq3Desc: "L'application MyHeroes propose que toute les personnes s'entraide les unes aux autres grace a une geolocalisation qui permet de voir les perosnnes en danger a proximité. MyHeroes apprendaux gens comment se comporter en cas de grave danger grace aux gestes de premier secours et qui appeler au plus vite grace aux numeros d'urgence. MyHeroes permet de gagner des points pour chaque sauvetage, plus vous avez de point, plus vous montez de niveau et plus vous êtes un grand/grande heros/heroinepour la nation",
 
     cgu: "Conditions generales d'utilisation",
     cgu1: "Article 1 - Définitions",
