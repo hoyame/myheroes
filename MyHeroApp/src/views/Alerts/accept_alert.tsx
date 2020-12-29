@@ -225,9 +225,9 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
     };
    
     let description = alertDataHelp.description
-
+ 
     if (description == "") {
-        description = "Pas de description";
+        description = I18n.t("notDesc");
     } 
 
     return (

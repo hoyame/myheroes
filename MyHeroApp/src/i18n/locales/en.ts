@@ -9,8 +9,11 @@ export default {
     welcomeMH: "Welcome to MyHeroes",
     continuer: "Continue",
     annuler: "Cancel",
-   
+    publier: "Publish",
     menu: "Menu",
+    notDesc: "Not a description",
+    maintPourPInfo: "Hold for more information",
+
 
     connexion: "Connection",
     inscription: "Registration",

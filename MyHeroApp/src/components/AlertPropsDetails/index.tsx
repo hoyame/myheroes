@@ -19,18 +19,18 @@ const AlertInformationProps = (props: IAlertInformation) => {
     switch (props.level) {
         case 1: 
             color = "#ffd100" 
-            title = "Faible"
-            description = "(Perdu, nuisance, autre...)" 
+            title = I18n.t("alertFaible")
+            description = I18n.t("alertDescFaible")
             break;
         case 2: 
             color = "#ff9600" 
-            title = "Moyen"
-            description = "(En panne, coincé, vol...)" 
+            title = I18n.t("alertMoyen")
+            description = I18n.t("alertDescMoyen")
             break 
         case 3:
             color = "#d80000" 
-            title = "Grave"
-            description = "(Accident, agression, malaise...)" 
+            title = I18n.t("alertGrave")
+            description = I18n.t("alertDescGrave")
             break 
         default: break
     }

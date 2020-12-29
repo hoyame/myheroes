@@ -99,7 +99,7 @@ const HomeScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 12,
                             color: "#000000"
-                        }}>Maintenez pour plus d'informations</Text>
+                        }}>{I18n.t("maintPourPInfo")}</Text>
                     </View>
 
                     <View style={{

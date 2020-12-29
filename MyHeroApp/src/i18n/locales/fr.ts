@@ -9,8 +9,10 @@ export default {
     welcomeMH: "Bienvenue sur MyHeroes",
     continuer: "Continuer",
     annuler: "Annuler",
-   
+    publier: "Publier",
     menu: "Menu",
+    notDesc: "Pas de description",
+    maintPourPInfo: "Maintenez pour plus d'informations",
 
     connexion: "Connexion",
     inscription: "Inscription",
@@ -88,7 +90,7 @@ export default {
     alertNotDanger: "Annuler l'alerte",
     alertSave: "Fermer l'alerte",
     alertLancerItt: "Lancer l'itinéraire",
-    alertAbbandoner: "Abbandoner l'alerte",
+    alertAbbandoner: "Abandonner l'alerte",
     alertIDAlert: "ID de l'alerte",
     alertPrendreAlert: "Prendre l'alerte",
 

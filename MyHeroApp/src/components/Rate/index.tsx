@@ -6,6 +6,7 @@ import { faFileAlt, faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import InputComponent from '../../views/Alerts/input';
+import I18n from '../../i18n/i18n';
 
 interface IRate {
     title: string;
@@ -246,7 +247,7 @@ const RateComponent = (props: IRate) => {
                             <Text style={{
                                 fontSize: 25,
                                 color: "#ffffff",
-                            }}>Publier</Text>
+                            }}>{I18n.t("publier")}</Text>
                         </View>
                 </TouchableOpacity>
             </View>

@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { setLocalisation } from './data/actions/localisation';
 import { MyHeroService } from './api/Service';
 import { useDispatch } from 'react-redux';
-import 'react-native-gesture-handler';
 import HeaderComponent from './components/Header/header';
 import NavbarComponent from './components/Navbar/navbar';
 import HomeScreen from './views/Home/home';
@@ -14,7 +13,6 @@ import NavScreen from './views/Nav/nav';
 import MapScreen from './views/Map/map';
 import AccountScreen from './views/Account/account';
 import ConnexionScreen from './views/Connection/connexion';
-import InscriptionScreen from './views/Inscription/inscription';
 import AlertPageScreen from './views/Alerts/alert_page';
 import CreateAlertScreen from './views/Alerts/create_alert';
 import { SenderAcceptAlertPage, HelperAcceptAlertPage } from './views/Alerts/accept_alert';
@@ -42,6 +40,7 @@ import { API_LINK, API_LINK_CDN } from './App';
 import ViewStream from './views/Alerts/view_stream';
 import * as RNLocalize from "react-native-localize";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import 'react-native-gesture-handler';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
