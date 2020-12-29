@@ -12,7 +12,7 @@ import {
   registerGlobals
 } from 'react-native-webrtc';
 
-import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from "react-native-push-notification";
 
 export const TURN_SERVER_URL = '146.59.227.90:3478';
@@ -196,24 +196,28 @@ export abstract class MyHeroService {
     }
 
     public static sendNotification(title: string, content: string) {
-      PushNotification.deleteChannel("myhero");
+      if (Platform.OS == "android") {        
+        PushNotification.deleteChannel("myhero");
+        
+        PushNotification.createChannel(
+          {
+            channelId: "myhero", // (required)
+            channelName: "MyHeroes", // (required)
+          },
+          (created) => {       
+            PushNotification.localNotification({
+              /* Android Only Properties */          
+              channelId: "myhero", // (required) channelId, if the channel doesn't exist, it will be created with options passed above (importance, vibration, sound). Once the channel is created, the channel will not be update. Make sure your channelId is different if you change these options. If you have created a custom channel, it will apply options of the channel.
+              vibration: 1000, // vibration length in milliseconds, ignored if vibrate=false, default: 1000      
+              alertAction: "view", // (optional) default: view
+              category: "", // (optional) default: empty string
+              title: title, // (optional)
+              message: content, // (required)
+            });
+          }
+        );
+      } else if (Platform.OS == "ios") {
 
-      PushNotification.createChannel(
-        {
-          channelId: "myhero", // (required)
-          channelName: "MyHeroes", // (required)
-        },
-        (created) => {       
-          PushNotification.localNotification({
-            /* Android Only Properties */          
-            channelId: "myhero", // (required) channelId, if the channel doesn't exist, it will be created with options passed above (importance, vibration, sound). Once the channel is created, the channel will not be update. Make sure your channelId is different if you change these options. If you have created a custom channel, it will apply options of the channel.
-            vibration: 1000, // vibration length in milliseconds, ignored if vibrate=false, default: 1000      
-            alertAction: "view", // (optional) default: view
-            category: "", // (optional) default: empty string
-            title: title, // (optional)
-            message: content, // (required)
-          });
-        }
-    );
+      }
     }
 }

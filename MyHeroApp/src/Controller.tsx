@@ -41,6 +41,7 @@ import { addAlert, getAlert } from './data/actions/alerts';
 import { API_LINK, API_LINK_CDN } from './App';
 import ViewStream from './views/Alerts/view_stream';
 import * as RNLocalize from "react-native-localize";
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -50,6 +51,7 @@ const Controller = () => {
   const userInformation = useReduxState(state => state.user.name);
   const userMail = useReduxState(state => state.user.mail);
   const statusSend = useReduxState(state => state.user.send.status);
+  const alerts = useReduxState(state => state.alerts.list);
   const [initialize, setInitialize] = useState(false);
   const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
@@ -65,6 +67,9 @@ const Controller = () => {
     if (MyHeroAlerts.StatusUpdate == true) {
       dispatch(getAlert(false));
 
+      console.log(AlertsData);
+      console.log(alerts)
+
       AlertsData.map((v, k) => {
         dispatch(addAlert({ 
           identifier: v.identifier,
@@ -78,6 +83,12 @@ const Controller = () => {
       })
       
       MyHeroAlerts.SetStatusUpdate(false);
+
+      if (alerts.length !== 0) { 
+        PushNotificationIOS.presentLocalNotification({
+          alertBody: "Alertes disponibles"
+        });
+      }
     }
   }, 20000);
 
