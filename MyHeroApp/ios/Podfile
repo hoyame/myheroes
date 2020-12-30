@@ -46,6 +46,8 @@ target 'MyHeroApp' do
   pod 'React-RCTPushNotification', :path => '../node_modules/react-native/Libraries/PushNotificationIOS'
 
 
+  pod 'react-native-restart', :path => '../node_modules/react-native-restart'
+
   target 'MyHeroAppTests' do
     inherit! :complete
     # Pods for testing
