@@ -9,7 +9,7 @@ import InputComponent from '../../components/Input/input';
 import { useReduxState } from '../../data/store';
 import ImagePicker from "react-native-image-picker";
 import { MyHeroService } from '../../api/Service';
-import I18n, { setLanguage } from '../../i18n/i18n';
+import I18n, { returnLanguage, setLanguage } from '../../i18n/i18n';
 import { Langues } from '../../data/langues';
 import ButtonComponent from '../../components/Button';
 import FondComponent from '../../components/Fond';
@@ -47,6 +47,8 @@ const ParametresScreen = ({ navigation }) => {
     const name = useReduxState(state => state.user.name);
     const mail = useReduxState(state => state.user.mail) || '';
     const xp = useReduxState(state => state.user.xp);
+    const language = returnLanguage();
+
     const [pictureS, setPictureS] = useState(false);
     const [mdpS, setMdpS] = useState(false);
     const [pseudoS, setPseudoS] = useState(false);
@@ -173,6 +175,34 @@ const ParametresScreen = ({ navigation }) => {
       }
 
     if (languageS == true) {
+        let l = 0;
+
+        console.log("f3uf9bfb" ,language)
+
+        switch (language) {
+            case "fr": 
+                l = 0;
+                break;
+            case "it":
+                l = 1;
+                break;
+            case "en":
+                l = 2;
+                break;
+            case "es":
+                l = 3;
+                break;
+            case "de":
+                l = 4;
+                break;
+            case "pt":
+                l = 5;
+                break;
+            default:
+                l = 0;
+                break
+        }
+
         return (
             <>
                 <Animated.View style={{
@@ -185,6 +215,33 @@ const ParametresScreen = ({ navigation }) => {
                             paddingLeft: 35,
                             paddingRight: 35
                         }}>
+                            <View style={{
+                                display: 'flex',
+                                flexDirection: "row",
+                                height: 63,
+                                backgroundColor: '#1d1d1d',
+                                marginBottom: 25,
+                                borderRadius: 15,
+                                alignItems: "center",
+                            }}>
+                                <View style={{
+                                    marginLeft: 10,
+                                    height: 65,
+                                    width: 65,
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}>
+                                    <Image key={Date.now()}  source={{uri: Langues[l].img}} style={{
+                                        height: 35,
+                                        width: 45,
+                                        marginRight: 10,
+                                        borderRadius: 12
+                                    }} />    
+                                </View> 
+
+                                <Text style={{fontSize: 25, color: "#ffffff"}}>{Langues[l].name}</Text>  
+                            </View>
+
                             {returnLangues()}
                         </View>
                     </ScrollView>

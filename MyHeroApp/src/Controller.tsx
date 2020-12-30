@@ -89,8 +89,6 @@ const Controller = () => {
       
       MyHeroAlerts.SetStatusUpdate(false);
 
-      console.log(alerts.length);
-
       if (alerts.length > 3) { 
         PushNotificationIOS.presentLocalNotification({
           alertBody: "Alertes disponibles"

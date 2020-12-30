@@ -11,12 +11,13 @@ let language = "fr";
 
 export const setLanguage = (l: string) => {
   let le = l.substr(0, 2);
-
   console.log(le)
-  language = le
+  language = le;
   I18n.locale = language;
+}
 
-
+export const returnLanguage = () => {
+  return I18n.locale;
 }
 
 I18n.locale = language;
