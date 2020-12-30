@@ -3,7 +3,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <React/RCTPushNotificationManager.h>
 #import <RNCPushNotificationIOS.h>
 
 #ifdef FB_SONARKIT_ENABLED
