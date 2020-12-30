@@ -55,7 +55,16 @@ const Controller = () => {
   const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
+  const [refreshing, setRefreshing] = React.useState(false);
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    setTimeout(() => {
+      setRefreshing(false)
+    }, 1500) 
+  }, []);
+  
   setTimeout(() => {
     if (statusSend == true) {
       MyHeroAlerts.setViewerDataStatus(userMail, true)
@@ -103,6 +112,7 @@ const Controller = () => {
         try {
           if (ALanguage !== "") {
             setLanguage(ALanguage);
+            onRefresh();
           } else {
             console.log("err lang")
 
@@ -110,6 +120,7 @@ const Controller = () => {
 
             if (Array.isArray(locales)) {
               setLanguage(locales[0].languageTag);
+              onRefresh();
             }
           }
         } catch {
@@ -119,9 +130,9 @@ const Controller = () => {
 
           if (Array.isArray(locales)) {
             setLanguage(locales[0].languageTag);
+            onRefresh();
           }
         }
-
 
         try {
           if (AMail !== "") {
@@ -226,7 +237,5 @@ const Controller = () => {
     </>
   );
 }
-
-
 
 export default Controller;
