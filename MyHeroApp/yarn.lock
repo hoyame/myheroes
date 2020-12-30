@@ -6025,6 +6025,11 @@ react-native-reanimated@^1.13.1:
   dependencies:
     fbjs "^1.0.0"
 
+react-native-restart@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/react-native-restart/-/react-native-restart-0.0.20.tgz#6ed0244eb1e9a8d81cf7cadfb1f90dd4bb0754ec"
+  integrity sha512-lpWqKvfKaCfolosRHHH9+hDdjqMntEedRiLdVqmwNJejjfA4gUH+VEn0uhSaVueBgQJl5525X6B/0bSP55g+iQ==
+
 react-native-rnmk-switch@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/react-native-rnmk-switch/-/react-native-rnmk-switch-0.0.2.tgz#03086d68b729d5f8fb8a45df9aedfe674cadfcc6"
