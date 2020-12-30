@@ -66,9 +66,6 @@ const Controller = () => {
     if (MyHeroAlerts.StatusUpdate == true) {
       dispatch(getAlert(false));
 
-      console.log(AlertsData);
-      console.log(alerts)
-
       AlertsData.map((v, k) => {
         dispatch(addAlert({ 
           identifier: v.identifier,
