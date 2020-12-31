@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Animated, Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/headerTw';
-import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell, faCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell, faCircle, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
@@ -478,10 +478,26 @@ const HomeScreen = ({ navigation }) => {
                                 width: screenWidth,
                                 backgroundColor: '#e1e1e1',
                             }}>
-                                <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170: 135} width={screenWidth} />
+                                <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170 : 135} width={screenWidth} />
+                                <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
+                                    <View style={{
+                                        position: "absolute",
+                                        top: -160,
+                                        right: 10,
+                                        height: 30,
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        borderRadius: 50,
+                                        width: 30,
+                                        backgroundColor: "#fff"
+                                    }}>
+                                        <FontAwesomeIcon icon={faArrowRight} size={15} style={{
+                                            justifyContent: "center"
+                                        }} />
+                                    </View>
+                                </TouchableOpacity>
                             </View>
                         </TouchableOpacity>
-
                         
                         <View style={{marginTop: 15}}>
                             <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('GDPS')}} fontAwesome={faFirstAid} color="#008b00" title={I18n.t("gdps")} />

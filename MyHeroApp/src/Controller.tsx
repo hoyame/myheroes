@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, Alert, Dimensions, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Animated, Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { setLocalisation } from './data/actions/localisation';
@@ -41,6 +41,7 @@ import ViewStream from './views/Alerts/view_stream';
 import * as RNLocalize from "react-native-localize";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import 'react-native-gesture-handler';
+import { Langues } from './data/langues';
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -51,11 +52,13 @@ const Controller = () => {
   const userMail = useReduxState(state => state.user.mail);
   const statusSend = useReduxState(state => state.user.send.status);
   const alerts = useReduxState(state => state.alerts.list);
+  const language = useReduxState(state => state.user.language);
   const [initialize, setInitialize] = useState(false);
   const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
   const [refreshing, setRefreshing] = React.useState(false);
+  const [languageS, setLanguageS] = useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -123,6 +126,11 @@ const Controller = () => {
               onRefresh();
             }
           }
+
+          if (ALanguage == "") {
+            setLanguageS(true);
+          }
+
         } catch {
           console.log("err lang")
 
@@ -205,6 +213,78 @@ const Controller = () => {
         </View>
     );
   }
+
+  const _storeDataLanguage = async (d: string) => {
+      try {
+          await AsyncStorage.setItem('@language', d)
+      } catch (error) {
+          console.log("error", error)
+      }
+  };
+
+  const returnLangues = () => {
+    return Langues.map((v, k) => {
+        return (
+            <TouchableOpacity key={k} onPress={() => {
+                _storeDataLanguage(v.id);
+                setLanguage(v.id);
+                setLanguageS(false);
+            }} >
+                <View style={{
+                    display: 'flex',
+                    flexDirection: "row",
+                    height: 63,
+                    backgroundColor: '#ffffff',
+                    marginBottom: 10,
+                    borderRadius: 15,
+                    alignItems: "center",
+                }}>
+                    <View style={{
+                        marginLeft: 10,
+                        height: 65,
+                        width: 65,
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}>
+                        <Image key={Date.now()}  source={{uri: v.img}} style={{
+                            height: 35,
+                            width: 45,
+                            marginRight: 10,
+                            borderRadius: 12
+                        }} />    
+                    </View> 
+
+                    <Text style={{fontSize: 25}}>{v.name}</Text>  
+                </View>
+            </TouchableOpacity>
+        );
+    })
+  }
+
+  if (languageS == true) {
+    return (
+      <>        
+          <ScrollView>
+                <View style={{
+                  display: "flex",
+                  flex: 1,
+                  justifyContent: "center",
+                  paddingTop: 90,
+                  paddingLeft: 35,
+                  paddingRight: 35,
+                }}>
+                  <Text style={{
+                    fontSize: 30,
+                    marginBottom: 20,
+                  }}>Languages</Text>
+
+                  {returnLangues()}
+              </View>
+          </ScrollView>
+      </>
+  );
+  }
+
 
   return (
     <>

@@ -164,7 +164,6 @@ const HeaderComponent = (props: IHeader) => {
                         <TouchableOpacity
                             onPress={() => props.navigation.navigate('Account')}
                         >                
-
                             <View style={{
                                 height: 65,
                                 width: 175,
@@ -243,13 +242,25 @@ const HeaderComponent = (props: IHeader) => {
                 }
             }>
                 <View style={{
+                    display: "flex",
+                    flexDirection: "row",
                     marginBottom: 20,
+                    alignItems: "center",
                     justifyContent: "center",
                     height: 40,
-                    width: 120,
+                    width: 170,
                     borderRadius: 10,
                     backgroundColor: '#1d1d1d'
                 }}>
+                    <Image 
+                        source={{uri: "https://cdn.discordapp.com/attachments/650778484523794456/789992516505305098/Sans_titre_-_1.jpg"}} 
+                        style={{
+                            height: 25,
+                            width: 25,
+                            marginRight: 10
+                        }}
+                    />
+
                     <Text style={{
                         fontSize: 20,
                         fontWeight: "700",
