@@ -20,6 +20,8 @@ const GDPSPage = ({ navigation }) => {
     }
 
     if (state == true) {
+        let langue = "en"
+
         switch (page) {
             case 1: // malaises
                 return (
@@ -34,188 +36,9 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/malaises.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/malaises.jpg`)} 
                             >
                             </Image>
-
-                            <View style={{
-                                position: "absolute",
-                                top: 30
-                            }}>
-
-                                <View style={{
-                                    width: "100%"
-                                }}>
-                                    <Text style={{
-                                        marginTop: 5,
-                                        fontSize: 30,
-                                        textAlign: "center",
-                                        color: "#ffffff"
-                                    }}>{I18n.t("gdps1")}</Text>
-                                </View>
-                            
-                                <View>
-                                    <Text style={{
-                                        marginTop: 30,
-                                        fontSize: 10,
-                                        marginLeft: "40%",
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps111")}</Text>
-                                </View>
-
-                                <View>
-                                    <Text style={{
-                                        marginTop: 55,
-                                        fontSize: 10,
-                                        marginLeft: "5%",
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps112")}</Text>
-                                </View>
-
-                                <View style={{width: 80, marginLeft: "-12.5%"}}>
-                                    <Text style={{
-                                        marginTop: 65,
-                                        fontSize: 9,
-                                        marginLeft: "-5%",
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps113")}</Text>
-                                </View>
-
-                                <View style={{width: 40, marginLeft: "35%"}}>
-                                    <Text style={{
-                                        marginTop: -60,
-                                        fontSize: 9,
-                                        marginLeft: "15%",
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps114")}</Text>
-                                </View>
-
-                                <View style={{width: 60, marginLeft: "30%"}}>
-                                    <Text style={{
-                                        marginTop: -20,
-                                        fontSize: 9,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps115")}</Text>
-                                </View>
-
-                                <View style={{width: 60, marginLeft: "47%"}}>
-                                    <Text style={{
-                                        marginTop: -95,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps116")}</Text>
-                                </View>
-
-                                <View style={{width: 60, position: "absolute", top: 260, right: -40}}>
-                                    <Text style={{
-                                        marginTop: -35,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps117")}</Text>
-                                </View>
-
-                                {
-                                    ////////////////////////////////////////
-                                }
-
-                                <View style={{marginTop: 55, marginLeft: 10 }}>
-                                    <Text style={{
-                                        marginTop: -35,
-                                        fontSize: 10,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps118")}</Text>
-                                </View>
-
-                                <View style={{width: 60, marginLeft: "-3%"}}>
-                                    <Text style={{
-                                        marginTop: -3,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps119")}</Text>
-                                </View>
-
-                                <View style={{width: 60, marginLeft: "15%"}}>
-                                    <Text style={{
-                                        marginTop: 40,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1110")}</Text>
-                                </View>
-
-                                <View style={{width: 60, marginLeft: "40%"}}>
-                                    <Text style={{
-                                        marginTop: -40,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1111")}</Text>
-                                </View>
-
-                                <View style={{width: 60, position: "absolute", top: 370, right: -40}}>
-                                    <Text style={{
-                                        marginTop: -75,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1112")}</Text>
-                                </View>
-
-                                <View style={{width: 60, position: "absolute", top: 430, right: 7.5}}>
-                                    <Text style={{
-                                        marginTop: -75,
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1113")}</Text>
-                                </View>
-
-                                <View style={{marginTop: 20, marginLeft: "5%"}}>
-                                    <Text style={{
-                                        
-                                        fontSize: 10,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1114")}</Text>
-                                </View>
-
-                                <View style={{width: 45, marginTop: 27.5, marginLeft: "-7.5%"}}>
-                                    <Text style={{
-                                        fontSize: 10,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1115")}</Text>
-                                </View>
-
-                                <View style={{width: 45, marginTop: 19, marginLeft: "11%"}}>
-                                    <Text style={{
-                                        fontSize: 10,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1116")}</Text>
-                                </View>
-
-                                <View style={{width: 55, marginTop: -45, marginLeft: "21%"}}>
-                                    <Text style={{
-                                        fontSize: 10,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1117")}</Text>
-                                </View>
-
-                                <View style={{position: "absolute", width: 60, top: 470, right: 60}}>
-                                    <Text style={{
-                                        fontSize: 8,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1118")}</Text>
-                                </View>
-
-                                <View style={{position: "absolute", width: 60, top: 433, right: 37}}>
-                                    <Text style={{
-                                        fontSize: 9,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1119")}</Text>
-                                </View>
-
-                                <View style={{position: "absolute", width: 60, top: 483, right: -40}}>
-                                    <Text style={{
-                                        fontSize: 9,
-                                        color: "#000000"
-                                    }}>{I18n.t("gdps1120")}</Text>
-                                </View>
-                            </View>
                         </View>
                     </>
                 );    
@@ -232,157 +55,10 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/pls.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/pls.jpg`)} 
                             >
-                            
+                
                             </Image>
-
-                            <View style={{
-                                position: "absolute",
-                                top: 30
-                            }}>
-                                <View style={{
-                                    width: "90%",
-                                    marginLeft: 6
-                                }}>
-                                    <Text style={{
-                                        marginTop: 5,
-                                        fontSize: 30,
-                                        textAlign: "center",
-                                        color: "#ffffff"
-                                    }}>{I18n.t("gdps2")}</Text>
-                                </View>
-
-                                <View style={{
-                                    display: "flex",
-                                    flexDirection: "row"
-                                }}>
-                                    <View style={{
-                                        width: "50%",
-                                    }}>
-                                        <View style={{
-                                            marginTop: 10
-                                        }}>
-                                            <Text>{I18n.t("gdps221")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            marginTop: 4,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 10,
-                                            }}>{I18n.t("gdps222")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 10,
-                                            }}>{I18n.t("gdps223")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            marginTop: 113,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps225")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps226")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps227")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            width: 44,
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps227")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps228")}</Text>                         
-                                        </View>
-
-                                        <View style={{
-                                            width: 80,
-                                            marginTop: 0,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps229")}</Text>                         
-                                        </View>
-                                    </View>
-
-                                    <View style={{
-                                        position: "absolute",
-                                        top: "3%",
-                                        left: "65%"
-                                    }}>
-                                        <View style={{
-                                        }}>
-                                            <Text>{I18n.t("gdps2211")}</Text>                         
-                                        </View>
-
-                                        <View style={{                                
-                                            width: 145,
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps2212")}</Text>                         
-                                        </View>
-
-                                        <View style={{                                
-                                            width: 145,
-                                            marginTop: 3.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps2213")}</Text>                         
-                                        </View>
-
-                                        <View style={{                                
-                                            width: 145,
-                                            marginTop: 95.5,
-                                            marginLeft: -27,
-                                        }}>
-                                            <Text style={{
-                                                fontSize: 9.5,
-                                            }}>{I18n.t("gdps2215")}</Text>                         
-                                        </View>
-                                    </View>
-                                </View>
-                            </View>
                         </View>
                     </>
                 );    
@@ -399,7 +75,7 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/hemoragie.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/hemoragie.jpg`)} 
                             >
                             
                             </Image>
@@ -419,7 +95,7 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/traumatismes.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/traumatismes.jpg`)} 
                             >
                             
                             </Image>
@@ -439,7 +115,7 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/brulures.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/brulures.jpg`)} 
                             >
                             
                             </Image>
@@ -459,7 +135,7 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/ventilation-artificielle.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/ventilation-artificielle.jpg`)} 
                             >
                             
                             </Image>
@@ -479,7 +155,7 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/ettoufement_adulte.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/ettoufement_adulte.jpg`)} 
                             >
                             
                             </Image>
@@ -499,7 +175,7 @@ const GDPSPage = ({ navigation }) => {
                             <Image 
                                 key={Date.now()} 
                                 style={{height: '80%', width: '100%', }} 
-                                source={require('../../assets/gdps/ettoufement_nourisson.jpg')} 
+                                source={require(`../../assets/gdps/${langue}/ettoufement_nourisson.jpg`)} 
                             >
                             
                             </Image>
@@ -508,7 +184,7 @@ const GDPSPage = ({ navigation }) => {
                 );  
             default: return (
                 <>
-                    <Text>Erreur 200</Text>
+                    <Text>Erreur 800</Text>
                 </>
             )
             
