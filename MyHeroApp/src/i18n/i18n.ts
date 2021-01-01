@@ -6,6 +6,7 @@ import fr from "./locales/fr";
 import es from "./locales/es";
 import de from "./locales/de";
 import it from "./locales/it";
+import pt from "./locales/pt";
 
 let language = "fr";
 
@@ -27,7 +28,8 @@ I18n.translations = {
   fr,
   es,
   de,
-  it
+  it,
+  pt
 };
 
 export default I18n;
