@@ -21,5 +21,26 @@ export const data = [
         "samu": "144",
         "police": "117",
         "pompiers": "118",
+    },
+    {
+        "p": "Italia",
+        "img": "https://www.countryflags.io/it/flat/64.png",
+        "samu": "114",
+        "police": "113",
+        "pompiers": "115",
+    },
+    {
+        "p": "Deutschland",
+        "img": "https://www.countryflags.io/de/flat/64.png",
+        "samu": "030 197 27",
+        "police": "110",
+        "pompiers": "112",
+    },
+    {
+        "p": "Portugal",
+        "img": "https://www.countryflags.io/pt/flat/64.png",
+        "samu": "117",
+        "police": "107",
+        "pompiers": "105",
     }
 ]
