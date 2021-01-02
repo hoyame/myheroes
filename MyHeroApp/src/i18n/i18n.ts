@@ -17,9 +17,6 @@ export const setLanguage = (l: string) => {
   I18n.locale = language;
 }
 
-export const returnLanguage = () => {
-  return I18n.locale;
-}
 
 I18n.locale = language;
 I18n.fallbacks = true;
@@ -31,5 +28,9 @@ I18n.translations = {
   it,
   pt
 };
+
+export const returnLanguage = () => {
+  return language;
+}
 
 export default I18n;

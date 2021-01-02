@@ -186,7 +186,7 @@ const ParametresScreen = ({ navigation }) => {
             case "it":
                 l = 1;
                 break;
-            case "en":
+            case "gb":
                 l = 2;
                 break;
             case "es":
