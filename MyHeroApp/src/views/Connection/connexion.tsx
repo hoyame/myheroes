@@ -256,6 +256,8 @@ const ConnexionScreen = ({ navigation }) => {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
+                    <ScrollView>  
+
                     <KeyboardAvoidingView 
                         behavior={Platform.OS == "ios" ? "padding" : "height"}
                         style={{
@@ -416,6 +418,7 @@ const ConnexionScreen = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </KeyboardAvoidingView>
+                    </ScrollView> 
                 </View>
             </>
         );
@@ -432,6 +435,7 @@ const ConnexionScreen = ({ navigation }) => {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
+                        <ScrollView> 
                         <KeyboardAvoidingView 
                             behavior={Platform.OS == "ios" ? "padding" : "height"}
                             style={{
@@ -574,6 +578,7 @@ const ConnexionScreen = ({ navigation }) => {
                                 </TouchableOpacity>
                             </View>
                         </KeyboardAvoidingView>
+                        </ScrollView> 
                     </View>
 
         </>
