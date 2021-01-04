@@ -76,7 +76,7 @@ export default {
     alertFaible: "Faible",
     alertDescGrave: "(Accident, agression, malaise...)",
     alertDescMoyen: "(En panne, coincé, vol...)",
-    alertDescFaible: "(Perdu, nuisance, autre...)",
+    alertDescFaible: "(Perdu, animaux perdu, autre...)",
     alertInProgress: "Alerte en cours",
     alertInProgressDesc: "Page de l'alerte",
     alertT: "Alerte",
@@ -128,7 +128,7 @@ export default {
     settingsPseudo1: "Changer son pseudo",
 
     faq1: "Historique",
-    faq1Desc: "Crée en 2019 par SAIDAT Wahib, l'application MyHeroes a pour but de sauver la population quelque soit leur situation.L'équipe composée du directeur SAIDAT Wahib et de son développeur Hoyame Zouhari ont décidé d'apporter une assistance rapide suite a tout les événements qui ont conduit à des manifestations ( terrorisme, metoo, aggressions scolaires, etc...)",
+    faq1Desc: "Crée en 2019 par SAIDAT Wahib, l'application MyHeroes a pour but de venir en aide la population quelque soit leur situation.L'équipe composée du directeur SAIDAT Wahib et de son développeur Hoyame Zouhari ont décidé d'apporter une assistance rapide suite a tout les événements qui ont conduit à des manifestations ( terrorisme, metoo, aggressions scolaires, etc...)",
     faq2: "Objectif",
     faq2Desc: "L'application MyHeroes a pour objectif d'aider la population le plus rapidement possible quelque soit leur situation, qu'elle que soit la gravité qu'elle encourt. Grâce à MyHeroes, Un Héros peut arriver sur place en quelque secondes tandis que les secours sont la en quelques minutes. Parfois il suffit de quelques secondes pour sauver une vie ou empêcher une aggression et MyHeroes est la pour ça.",
     faq3: "Services",
