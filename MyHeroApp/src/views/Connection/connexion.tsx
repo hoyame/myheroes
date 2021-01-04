@@ -17,6 +17,7 @@ import ImagePicker from "react-native-image-picker";
 import { useReduxState } from '../../data/store';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const ConnexionScreen = ({ navigation }) => {
     const name = useReduxState(state => state.user.name);
@@ -248,8 +249,12 @@ const ConnexionScreen = ({ navigation }) => {
     if (inscription == true) {
         return (
             <>
+                <ScrollView>
+
                 <View style={{
+                    height: screenHeight,
                     padding: 35,
+                    paddingTop: 0,
                     display: 'flex',
                     flex: 1,
                     alignSelf: 'center',
@@ -257,19 +262,6 @@ const ConnexionScreen = ({ navigation }) => {
                     alignItems: 'center'
                 }}>
 
-                    <KeyboardAvoidingView 
-                        behavior={Platform.OS == "ios" ? "padding" : "height"}
-                        style={{
-                            paddingTop: 0,
-                            padding: 35,
-                            display: 'flex',
-                            flex: 1,
-                            alignSelf: 'center',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <ScrollView>  
                         <FondComponent />
                         <TitleComponent />
 
@@ -350,7 +342,7 @@ const ConnexionScreen = ({ navigation }) => {
 
                             <TouchableOpacity onPress={() => {
                                 setStatus(true);
-
+                                
                                 if (state.password !== "" && state.cPassword !== "" && state.name !== "" && state.mail !== "") {
                                     if (state.password === state.cPassword) {
                                         Users.Register({
@@ -362,7 +354,7 @@ const ConnexionScreen = ({ navigation }) => {
                                                 setTimeout(() => {
                                                     setStatus(false);
                                                     _storeData();
-        
+                                                    
                                                     setTimeout(() => {
                                                         Users.Load((e: any) => {
                                                             dispatch(setMail(e.mail));
@@ -370,7 +362,7 @@ const ConnexionScreen = ({ navigation }) => {
                                                             dispatch(setRate(e.rate));
                                                             dispatch(setXp(e.xp));
                                                             dispatch(setImage(e.image));
-        
+                                                            
                                                             //navigation.navigate('Home');
                                                             setPictureS(true)
                                                         }, () => {
@@ -417,9 +409,8 @@ const ConnexionScreen = ({ navigation }) => {
                                 </View>
                             </TouchableOpacity>
                         </View>
-                    </ScrollView> 
-                    </KeyboardAvoidingView>
                 </View>
+                </ScrollView>
             </>
         );
     }   
@@ -427,28 +418,18 @@ const ConnexionScreen = ({ navigation }) => {
     return (
         <>
      
+                <ScrollView>
                     <View style={{
+                        height: screenHeight,
                         padding: 35,
+                        paddingTop: 0,
                         display: 'flex',
                         flex: 1,
                         alignSelf: 'center',
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <KeyboardAvoidingView 
-                            behavior={Platform.OS == "ios" ? "padding" : "height"}
-                            style={{
-                                padding: 35,
-                                paddingTop: 0,
-                                display: 'flex',
-                                flex: 1,
-                                alignSelf: 'center',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <ScrollView> 
-                                
+          
                             <FondComponent />
                             <TitleComponent />
 
@@ -577,9 +558,9 @@ const ConnexionScreen = ({ navigation }) => {
                                     </View>
                                 </TouchableOpacity>
                             </View>
-                        </ScrollView> 
-                        </KeyboardAvoidingView>
+
                     </View>
+                </ScrollView>
 
         </>
     );
