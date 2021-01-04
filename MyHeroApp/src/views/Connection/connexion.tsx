@@ -256,13 +256,12 @@ const ConnexionScreen = ({ navigation }) => {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <ScrollView>  
 
                     <KeyboardAvoidingView 
                         behavior={Platform.OS == "ios" ? "padding" : "height"}
                         style={{
-                            padding: 35,
                             paddingTop: 0,
+                            padding: 35,
                             display: 'flex',
                             flex: 1,
                             alignSelf: 'center',
@@ -270,6 +269,7 @@ const ConnexionScreen = ({ navigation }) => {
                             alignItems: 'center'
                         }}
                     >
+                        <ScrollView>  
                         <FondComponent />
                         <TitleComponent />
 
@@ -417,8 +417,8 @@ const ConnexionScreen = ({ navigation }) => {
                                 </View>
                             </TouchableOpacity>
                         </View>
-                    </KeyboardAvoidingView>
                     </ScrollView> 
+                    </KeyboardAvoidingView>
                 </View>
             </>
         );
@@ -435,7 +435,6 @@ const ConnexionScreen = ({ navigation }) => {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <ScrollView> 
                         <KeyboardAvoidingView 
                             behavior={Platform.OS == "ios" ? "padding" : "height"}
                             style={{
@@ -448,6 +447,7 @@ const ConnexionScreen = ({ navigation }) => {
                                 alignItems: 'center'
                             }}
                         >
+                            <ScrollView> 
                                 
                             <FondComponent />
                             <TitleComponent />
@@ -577,8 +577,8 @@ const ConnexionScreen = ({ navigation }) => {
                                     </View>
                                 </TouchableOpacity>
                             </View>
-                        </KeyboardAvoidingView>
                         </ScrollView> 
+                        </KeyboardAvoidingView>
                     </View>
 
         </>
