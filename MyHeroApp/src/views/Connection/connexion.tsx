@@ -15,6 +15,7 @@ import FondComponent from '../../components/Fond';
 import TitleComponent from '../../components/Title';
 import ImagePicker from "react-native-image-picker";
 import { useReduxState } from '../../data/store';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -249,7 +250,7 @@ const ConnexionScreen = ({ navigation }) => {
     if (inscription == true) {
         return (
             <>
-                <ScrollView>
+                <KeyboardAwareScrollView>
 
                 <View style={{
                     height: screenHeight,
@@ -409,8 +410,8 @@ const ConnexionScreen = ({ navigation }) => {
                                 </View>
                             </TouchableOpacity>
                         </View>
-                </View>
-                </ScrollView>
+                    </View>
+                </KeyboardAwareScrollView>
             </>
         );
     }   
@@ -418,7 +419,7 @@ const ConnexionScreen = ({ navigation }) => {
     return (
         <>
      
-                <ScrollView>
+                <KeyboardAwareScrollView>
                     <View style={{
                         height: screenHeight,
                         padding: 35,
@@ -560,7 +561,7 @@ const ConnexionScreen = ({ navigation }) => {
                             </View>
 
                     </View>
-                </ScrollView>
+                </KeyboardAwareScrollView>
 
         </>
     );
