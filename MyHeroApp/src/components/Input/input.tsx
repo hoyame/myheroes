@@ -30,7 +30,7 @@ const InputComponent = (props: IInput) => {
             flexDirection: "row",
             height: height, 
             width: screenWidth,
-            backgroundColor:"white",
+            backgroundColor: "white",
             borderRadius:15,
             padding:10,
             elevation:10,
@@ -54,6 +54,7 @@ const InputComponent = (props: IInput) => {
                         fontSize: 17.5
                     }}
                     placeholder={props.placeholder}
+                    placeholderTextColor="#757575"
                     onChangeText={text => props.onChange(text)}
                     value={props.value}
                     secureTextEntry={props.password == true ? true : false }

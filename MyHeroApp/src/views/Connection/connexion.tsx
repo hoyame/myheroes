@@ -313,10 +313,10 @@ const ConnexionScreen = ({ navigation }) => {
                             marginBottom: 20
                         }}>{I18n.t("inscriptionDesc")}</Text>
 
-                        <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo")} value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
-                        <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                        <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                        <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP")} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
+                        <InputComponent name={I18n.t("inscriptionPseudo")} placeholder={I18n.t("inscriptionPseudo") + "                                                  "} value={state.name} icon={faUser} onChange={(v: string) => setState({...state, name: v})} />
+                        <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant") + "                                                  "} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                        <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP") + "                                                  "} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                        <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP") + "                                                  "} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
                     
                         <View style={{
                             marginTop: 5,
@@ -481,8 +481,8 @@ const ConnexionScreen = ({ navigation }) => {
                                 marginBottom: 30
                             }}>{I18n.t("connexionDesc")}</Text>
 
-                            <InputComponent name={I18n.t("connexoinIdentifiant")} placeholder={I18n.t("connexoinIdentifiant")} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
-                            <InputComponent password={true} name={I18n.t("connexoinMDP")} placeholder={I18n.t("connexoinMDP")} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
+                            <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant") + "                                                  "} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
+                            <InputComponent password={true} name={I18n.t("connexoinMDP")} placeholder={I18n.t("connexoinMDP") + "                                                  "} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                     
                             <View style={{
                                 marginTop: 15,

@@ -24,37 +24,39 @@ const FAQScreen = ({ navigation }) => {
                         marginBottom: 15
                     }}>
                         <Text style={{ fontSize: 15, fontWeight: "bold", marginBottom: 10 }}>
-                            Que se passe t-il si il y'a personne autour de moi qui a l'application pour me sauver ?
+                            Que se passe t-il si il y'a personne autour de moi qui a l'application pour me venir en aide ?
                         </Text>
 
                         <Text style={{ fontSize: 13, fontWeight: "normal", marginBottom: 20 }}>
-                            MyHeroes dispose d'une technologie d'elargissement du permietre de recherche automatique.
+                            MyHeroes dispose d'une technologie d'élargissement du périmètre de recherche automatique.
                         </Text>
 
                         {/* {/* *} */}
 
                         <Text style={{ fontSize: 15, fontWeight: "bold", marginBottom: 10 }}>
-                            Quand j'envoie une alerte est-ce que plusieurs personnes de prendre mon alerte ?
+                            Quand j'envoie une alerte est-ce que plusieurs personnes peuvent prendre mon alerte ?
                         </Text>
 
                         <Text style={{ fontSize: 13, fontWeight: "normal", marginBottom: 20 }}>
-                            MyHeroes permet a plusieur Hero de prendre votre alerte.
+                            MyHeroes permet a plusieurs heroes de prendre votre alerte.
                         </Text>
 
                         {/* {/* *} */}
 
                         <Text style={{ fontSize: 15, fontWeight: "bold", marginBottom: 10 }}>
-                            Jusqu'ou la technologie d'elargissement de perimetre vaut-elle ?
+                            Jusqu'ou la technologie d'élargissement de perimetre peut-elle aller ?
                         </Text>
 
                         <Text style={{ fontSize: 13, fontWeight: "normal", marginBottom: 20 }}>
-                            MyHeroes permet d'elargir jusqu'a qu'il trouve 10 personnes qui recoivent votre alerte.
+                            La technologie d'élargissement permet d'elargir jusqu'a ce qu'elle trouve 10 personnes qui recoivent votre alerte.
                         </Text>
                     </View>
 
                     <InputComponent height={60} name="Question" placeholder="Question" value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
 
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => {
+
+                    }}>
                         <View style={{
                             height: 60, 
                             borderRadius:15,

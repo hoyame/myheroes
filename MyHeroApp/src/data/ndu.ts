@@ -32,7 +32,7 @@ export const data = [
     {
         "p": "Deutschland",
         "img": "https://www.countryflags.io/de/flat/64.png",
-        "samu": "030 197 27",
+        "samu": "112",
         "police": "110",
         "pompiers": "112",
     },
