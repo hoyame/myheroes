@@ -337,8 +337,9 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
 
                 <BottomComponent title={I18n.t("alertApercCam")} onClick={() => navigation.navigate('ViewStream')}/>
                 <View style={{marginBottom: 10}}></View>
-                <BottomComponent title={I18n.t("alertLancerItt")} onClick={() => Linking.openURL(`http://maps.google.com/maps?q=loc:${alerts.data.latitude},${alerts.data.longitude}`)}/>
+                <BottomComponent title={I18n.t("alertLancerItt")} onClick={() => Linking.openURL(`https://www.google.es/maps?q=${alerts.data.latitude},${alerts.data.longitude}`)}/>
                 <View style={{marginBottom: 10}}></View>
+                
                 <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
                     _storeData()
                     MyHeroAlerts.removeAlert(alertDataHelp.identifier)
