@@ -3,6 +3,7 @@ import { IAlert } from "../data/types/alerts";
 import { MyHeroService } from "./Service";
 import axios from 'axios';
 import { useReduxState } from "../data/store";
+import Users from "./User";
 
 const myHeaders = new Headers();
 //const myLatitude = useReduxState(state => state.location.latitude);
@@ -233,13 +234,23 @@ export default abstract class MyHeroAlerts {
             const status: number = e.status
 
             if (status === 200) {
+                AlertsDataUsers = [];
                 const nb = e.data || 0;
                 console.log(nb)
 
-                setTimeout(() => {
-                    AlertsDataUsers = [];
-                    AlertsDataUsers = nb;
-                }, 1500)
+                nb.map((v, k) => {
+                    Users.GetData(v, (e: any) => {
+                        const data = JSON.stringify(e.data[0])
+                        const status: number = e.status
+                        const pseudo = e.data[0].pseudo
+                    
+                        if (status == 200) {
+                            AlertsDataUsers.push(pseudo)
+                        } else {
+                            AlertsDataUsers.push(v);
+                        }
+                    }, () => {})
+                })
             }
         })
 
