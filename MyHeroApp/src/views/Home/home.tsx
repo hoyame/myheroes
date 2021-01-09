@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Animated, Dimensions, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/headerTw';
-import { faExclamationCircle, faUser, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faFileAlt, faQuestionCircle, faBell, faCircle, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faExclamationCircle, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faBell, faCircle, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faQuestionCircle, faFileAlt } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import MapComponent from '../Map/service';
 import { useReduxState } from '../../data/store';
 import { PulseIndicator } from 'react-native-indicators';
@@ -394,79 +395,91 @@ const HomeScreen = ({ navigation }) => {
                             { statusSend == true &&
                                 <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate("SenderAcceptAlertPage")}}>
                                     <View style={{
+                                        display: "flex",
+                                        flexDirection: "row",
                                         padding: 5,
                                         height: 165,
                                         width: screenWidth,
                                         borderRadius: 15,
+                                        marginTop: 10,
                                         marginBottom: 7.5,
                                         backgroundColor: returnColor(createAlertLevel)
                                     }}>
                                         <View style={{
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            
-                                            margin: 10
-                                        }}>
-                                            <PulseIndicator color='white' />
-
-                                            <Text style={{
-                                                marginTop: 6,
-                                                marginLeft: 5,
-                                                color: 'white',
-                                                fontSize: 20
-                                            }}>{I18n.t("alertInProgress")}</Text>
-                                            </View>
-
-                                        <View style={{
-                                            marginLeft: 30
+                                            width: "70%"
                                         }}>
                                             <View style={{
-                                                marginBottom: 10,
                                                 display: "flex",
-                                                flexDirection: "row"
+                                                flexDirection: "row",
+                                                margin: 10
                                             }}>
-                                                <FontAwesomeIcon icon={faUser} style={{
+                                                <PulseIndicator color='white' />
+                                                <Text style={{
+                                                    marginTop: 6,
+                                                    marginLeft: 5,
+                                                    color: 'white',
+                                                    fontSize: 20
+                                                }}>{I18n.t("alertInProgress")}</Text>
+                                            </View>
+                                            <View style={{
+                                                marginLeft: 30
+                                            }}>
+                                                <View style={{
+                                                    marginBottom: 10,
+                                                    width: screenWidth - 80,
+                                                    display: "flex",
+                                                    flexDirection: "row"
+                                                }}>
+                                                    <FontAwesomeIcon icon={faQuestionCircle} style={{
+                                                        color: 'white'
+                                                    }} />
+                                                    
+                                                    <Text style={{
+                                                        color: 'white',
+                                                        marginLeft: 5
+                                                    }}>En attente</Text>
+                                                </View>
+                                                <View style={{
+                                                    width: screenWidth - 80,
+                                                    display: "flex",
+                                                    flexDirection: "row"
+                                                }}>
+                                                    <FontAwesomeIcon icon={faFileAlt} style={{
+                                                        color: 'white'
+                                                    }} />
+                                                    <Text style={{
+                                                        color: 'white',
+                                                        marginLeft: 5
+                                                    }}>{alertDataSend.data.description}</Text>
+                                                </View>
+                                            </View>
+                                        </View>
+                                        <View style={{
+                                            marginTop: 10,
+                                            alignItems: "center",
+                                        }}>
+                                            <View style={{
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                alignItems: "center"
+                                            }}>  
+                                                <FontAwesomeIcon icon={faUser} size={30} style={{
                                                     color: 'white'
                                                 }} />
 
                                                 <Text style={{
                                                     color: 'white',
-                                                    marginLeft: 5
+                                                    marginLeft: 7.5,
+                                                    fontSize: 45
                                                 }}>{count}</Text>
                                             </View>
 
-                                            <View style={{
-                                                marginBottom: 10,
-                                                width: screenWidth - 80,
-                                                display: "flex",
-                                                flexDirection: "row"
-                                            }}>
-                                                <FontAwesomeIcon icon={faQuestionCircle} style={{
-                                                    color: 'white'
-                                                }} />
-
-                                                <Text style={{
-                                                    color: 'white',
-                                                    marginLeft: 5
-                                                }}>En attente</Text>
-                                            </View>
-
-                                            <View style={{
-                                                width: screenWidth - 80,
-                                                display: "flex",
-                                                flexDirection: "row"
-                                            }}>
-                                                <FontAwesomeIcon icon={faFileAlt} style={{
-                                                    color: 'white'
-                                                }} />
-
-                                                <Text style={{
-                                                    color: 'white',
-                                                    marginLeft: 5
-                                                }}>{alertDataSend.data.description}</Text>
-                                            </View>
+                                            <Text style={{
+                                                color: "#ffffff",
+                                                fontSize: 20,
+                                            }}>Heroes</Text>
                                         </View>
-                                    </View>  
+                                    </View> 
                                 </TouchableOpacity>
                             }
             

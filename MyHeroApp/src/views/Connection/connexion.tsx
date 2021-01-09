@@ -264,6 +264,15 @@ const ConnexionScreen = ({ navigation }) => {
                 }}>
 
                         <FondComponent />
+                        <Image 
+                            source={{uri: "https://cdn.discordapp.com/attachments/650778484523794456/789992516505305098/Sans_titre_-_1.jpg"}} 
+                            style={{
+                                height: 105,
+                                width: 115,
+                                marginBottom: 10,
+                                borderRadius: 10
+                            }}
+                        />
                         <TitleComponent />
 
                         <View style={{
@@ -330,7 +339,7 @@ const ConnexionScreen = ({ navigation }) => {
                                 flexDirection: 'row'
                             }}>
                                 <Text>{I18n.t("inscriptionVAC")}</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate('Connexion')}>
+                                <TouchableOpacity onPress={() => {setConnexion(true); setInscription(false)}}>
                                     <Text style={{
                                         color: "#3497FD"
                                     }}>{I18n.t("connexionTES")}</Text>
@@ -432,6 +441,15 @@ const ConnexionScreen = ({ navigation }) => {
                     }}>
           
                             <FondComponent />
+                            <Image 
+                                source={{uri: "https://cdn.discordapp.com/attachments/650778484523794456/789992516505305098/Sans_titre_-_1.jpg"}} 
+                                style={{
+                                    height: 105,
+                                    width: 115,
+                                    marginBottom: 10,
+                                    borderRadius: 10
+                                }}
+                            />
                             <TitleComponent />
 
                             <View style={{
@@ -496,7 +514,7 @@ const ConnexionScreen = ({ navigation }) => {
                                     flexDirection: 'row'
                                 }}>
                                     <Text>{I18n.t("connexionVousAvezPasCompte")}</Text>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Inscription')}>
+                                    <TouchableOpacity onPress={() => {setConnexion(false); setInscription(true)}}>
                                         <Text style={{
                                             color: "#3497FD"
                                         }}>{I18n.t("connexionReg")}</Text>
