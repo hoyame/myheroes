@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MyHeroAlerts, { AlertsDataUsers } from '../../api/Alerts';
 import Users from '../../api/User';
+import { API_LINK } from '../../App';
 import HeaderComponent from '../../components/Header/header';
 import RateComponent from '../../components/Rate';
 import { useReduxState } from '../../data/store';
@@ -18,8 +19,24 @@ const EndAlertScreen = ({ navigation }) => {
     const [rate, setRate] = useState(0)
     const [data, setData] = useState([])
     const [cache, setCache] = useState("");
+    
+    const sendXp = () => {
+        var params = {
+            users: AlertsDataUsers,
+        }
+    
+        fetch(`${API_LINK}/app/add_xp`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        })
+    }
 
     setTimeout(() => {
+        sendXp();
         if (AlertsDataUsers !== []) {
             setData(AlertsDataUsers);
         }
@@ -28,7 +45,7 @@ const EndAlertScreen = ({ navigation }) => {
     const returnUsers = () => {
         return data.map((v, k) => {
             return (
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity key={k} onPress={() => {
                     setCache(v)
                     SS(true)
                 }}>
@@ -65,7 +82,6 @@ const EndAlertScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 25
                         }}>{v}</Text>
-
                     </View>
                 </TouchableOpacity>
             );
