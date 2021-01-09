@@ -4,13 +4,33 @@ import { View, Text, Dimensions, ScrollView, TouchableOpacity } from 'react-nati
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../Alerts/input';
 import I18n from '../../i18n/i18n';
+import { API_LINK } from '../../App';
+import { useReduxState } from '../../data/store';
 
 const FAQScreen = ({ navigation }) => {
     const screenHeight = Math.round(Dimensions.get('window').height - 150);
+    const userMail = useReduxState(state => state.user.mail);
+
     const [state, setState] = useState({
         description: ""
     })
     
+    const sendQuestion = () => {
+        var params = {
+            source: userMail,
+            content: state.description,
+        }
+    
+        fetch(`${API_LINK}/app/add_faq`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        })
+    }
+
     return (
         <>
             <HeaderComponent title={I18n.t("faq")} navigation={navigation} />
@@ -55,7 +75,8 @@ const FAQScreen = ({ navigation }) => {
                     <InputComponent height={60} name="Question" placeholder="Question" value={state.description} icon={faFileAlt} onChange={(v: string) => setState({...state, description: v})} />
 
                     <TouchableOpacity onPress={() => {
-
+                        sendQuestion();
+                        navigation.navigate("Home")
                     }}>
                         <View style={{
                             height: 60, 
