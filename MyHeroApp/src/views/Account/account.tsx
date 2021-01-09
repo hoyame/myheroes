@@ -246,14 +246,15 @@ const AccountScreen = ({ navigation }) => {
 
                     <Text style={{
                         fontSize: 25,
+                        marginBottom: 5,
                         color: "#454F63"
                     }}>{name}</Text>
 
                     <Text style={{
                         fontSize: 17.5,
-                        marginBottom: 12.5,
+                        marginBottom: 10,
                         color: "#454F63"
-                    }}>Utilisateur</Text>
+                    }}>{xp} XP</Text>
 
                     <ReturnStars rate={rate} />
 
