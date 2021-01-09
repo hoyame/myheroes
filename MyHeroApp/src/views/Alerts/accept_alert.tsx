@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity, Linking, Image } from 'react-native';
 import AccountStats from '../../components/AccountStats';
 import HeaderComponent from '../../components/Header/header';
 import AlertInformationProps from '../../components/AlertPropsDetails';
@@ -257,6 +257,8 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 paddingRight: 35,
             }}>
                 <View style={{
+                    display: "flex",
+                    flexDirection: "row",
                     padding: 5,
                     height: 165,
                     width: screenWidth,
@@ -265,48 +267,149 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     backgroundColor: returnColor(alertDataHelp.level),
                 }}>
                     <View style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        margin: 10
+                        width: "75%"
                     }}>
-                        <PulseIndicator color='white' />
-                        <Text style={{
-                            marginTop: 6,
-                            marginLeft: 5,
-                            color: 'white',
-                            fontSize: 20
-                        }}>{I18n.t("alertInProgress")}</Text>
+                        <View style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            margin: 10
+                        }}>
+                            <PulseIndicator color='white' />
+                            <Text style={{
+                                marginTop: 6,
+                                marginLeft: 5,
+                                color: 'white',
+                                fontSize: 20
+                            }}>{I18n.t("alertInProgress")}</Text>
+                        </View>
+                        <View style={{
+                            marginLeft: 30
+                        }}>
+                            <View style={{
+                                marginBottom: 10,
+                                display: "flex",
+                                flexDirection: "row"
+                            }}>
+                                <FontAwesomeIcon icon={faUser} style={{
+                                    color: 'white'
+                                }} />
+                                <Text style={{
+                                    color: 'white',
+                                    marginLeft: 5
+                                }}>{alertDataHelp.source}</Text>
+                            </View>
+                            <View style={{
+                                width: screenWidth - 80,
+                                display: "flex",
+                                flexDirection: "row"
+                            }}>
+                                <FontAwesomeIcon icon={faFileAlt} style={{
+                                    color: 'white'
+                                }} />
+                                <Text style={{
+                                    color: 'white',
+                                    marginLeft: 5
+                                }}>{<View style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    padding: 5,
+                                    height: 165,
+                                    width: screenWidth,
+                                    borderRadius: 15,
+                                    marginBottom: 10,
+                                    backgroundColor: returnColor(alertDataHelp.level),
+                                }}>
+                                    <View style={{
+                                        width: "75%"
+                                    }}>
+                                        <View style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            margin: 10
+                                        }}>
+                                            <PulseIndicator color='white' />
+                                            <Text style={{
+                                                marginTop: 6,
+                                                marginLeft: 5,
+                                                color: 'white',
+                                                fontSize: 20
+                                            }}>{I18n.t("alertInProgress")}</Text>
+                                        </View>
+                                        <View style={{
+                                            marginLeft: 30
+                                        }}>
+                                            <View style={{
+                                                marginBottom: 10,
+                                                display: "flex",
+                                                flexDirection: "row"
+                                            }}>
+                                                <FontAwesomeIcon icon={faUser} style={{
+                                                    color: 'white'
+                                                }} />
+                                                <Text style={{
+                                                    color: 'white',
+                                                    marginLeft: 5
+                                                }}>{alertDataHelp.source}</Text>
+                                            </View>
+                                            <View style={{
+                                                width: screenWidth - 80,
+                                                display: "flex",
+                                                flexDirection: "row"
+                                            }}>
+                                                <FontAwesomeIcon icon={faFileAlt} style={{
+                                                    color: 'white'
+                                                }} />
+                                                <Text style={{
+                                                    color: 'white',
+                                                    marginLeft: 5
+                                                }}>{description}</Text>
+                                            </View>
+                                        </View>
+                                    </View>
+                                    <View style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        marginTop: 20,
+                                    }}>
+                                        <Image
+                                            key={Date.now()} 
+                
+                                            style={{
+                
+                                                height: 60,
+                                                width: 60,
+                                                borderRadius: 10,
+                                            }}
+                                        
+                                            source={{
+                                                uri: `http://146.59.227.90:3000/api/avatar/${alertDataHelp.source}?time=${new Date()}`,
+                                            }}
+                                        />
+                                    </View>    
+                                </View>  }</Text>
+                            </View>
+                        </View>
                     </View>
                     <View style={{
-                        marginLeft: 30
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: 20,
                     }}>
-                        <View style={{
-                            marginBottom: 10,
-                            display: "flex",
-                            flexDirection: "row"
-                        }}>
-                            <FontAwesomeIcon icon={faUser} style={{
-                                color: 'white'
-                            }} />
-                            <Text style={{
-                                color: 'white',
-                                marginLeft: 5
-                            }}>{alertDataHelp.source}</Text>
-                        </View>
-                        <View style={{
-                            width: screenWidth - 80,
-                            display: "flex",
-                            flexDirection: "row"
-                        }}>
-                            <FontAwesomeIcon icon={faFileAlt} style={{
-                                color: 'white'
-                            }} />
-                            <Text style={{
-                                color: 'white',
-                                marginLeft: 5
-                            }}>{description}</Text>
-                        </View>
-                    </View>
+                        <Image
+                            key={Date.now()} 
+
+                            style={{
+
+                                height: 60,
+                                width: 60,
+                                borderRadius: 10,
+                            }}
+                        
+                            source={{
+                                uri: `http://146.59.227.90:3000/api/avatar/${alertDataHelp.source}?time=${new Date()}`,
+                            }}
+                        />
+                    </View>    
                 </View>  
 
                 <BottomComponent title={I18n.t("alertApercCam")} onClick={() => navigation.navigate('ViewStream')}/>

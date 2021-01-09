@@ -2,7 +2,7 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import I18n from '../../i18n/i18n';
 import React from 'react';
-import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import { useDispatch } from 'react-redux';
 import HeaderComponent from '../../components/Header/header';
 import { setCacheShowAlert } from '../../data/actions/user';
@@ -78,14 +78,23 @@ const AlertScreen = ({ navigation }) => {
                     <View style={{
                         height: 55,
                         width: 55,
-                        margin: 7.5, 
+                        justifyContent: "center",
+                        marginRight: 7.5, 
                         borderRadius: 50,
-                        opacity: 0.60,
                     }}>
-                        <FontAwesomeIcon icon={faExclamationCircle} size={35} style={{
-                          margin: 10,
-                          color: "#ffffff"
-                        }}></FontAwesomeIcon>
+                        <Image
+                            key={Date.now()} 
+
+                            style={{
+                                height: 50,
+                                width: 50,
+                                borderRadius: 50,
+                            }}
+                        
+                            source={{
+                                uri: `http://146.59.227.90:3000/api/avatar/${props.source}?time=${new Date()}`,
+                            }}
+                        />
                     </View>
                 </View>
             </TouchableOpacity>
