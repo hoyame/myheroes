@@ -359,6 +359,27 @@ module.exports.returnRateUser = (req, res, next) => {
 	})
 }
 
+module.exports.addXp = (req, res, next) => {
+	const users = req.query.users;
+
+	users.map((v, k) => {
+		const query = `SELECT xp FROM users WHERE pseudo=?`
+
+		con.query(query, [v], (err, result, fields) => {
+			let oldXp = result;
+			let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
+
+			con.query(query2, [oldXp + 15, v], (err, result, fields) => {		
+				return res.json({
+					status: 'success',
+					result: result,
+				});
+			});
+		})
+	})
+}
+
+
 setInterval(() => { 
 	console.log(`[MyHeroApi] : Refresh`)
 	let query = `SELECT a FROM refresh`;

@@ -82,4 +82,7 @@ router.get('/user/get', usersController.getUserData);
 
 router.get('/user/get_rate', usersController.returnRateUser);
 
+router.get('/user/add_xp', usersController.addXp);
+
+
 module.exports = router;
