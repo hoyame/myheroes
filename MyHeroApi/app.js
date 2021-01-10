@@ -13,11 +13,11 @@ const helmet = require('helmet');
 
 io.on('connection', function(client) {
     console.log('Client connected...');
-    
+	
     client.on('join', function(data) {
+		io.sockets.emit('users_count', data);
     	console.log(data);
     });
-
 });
 
 app.use(helmet());
