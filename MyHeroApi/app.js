@@ -11,10 +11,13 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
 
+io.on('connection', function(client) {
+    console.log('Client connected...');
+    
+    client.on('join', function(data) {
+    	console.log(data);
+    });
 
-io.on('connection', client => {
-	client.on('event', data => { /* … */ });
-	client.on('disconnect', () => { /* … */ });
 });
 
 app.use(helmet());
