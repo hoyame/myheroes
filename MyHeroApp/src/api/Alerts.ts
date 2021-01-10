@@ -12,7 +12,7 @@ const myHeaders = new Headers();
 const myLatitude = 15;
 const myLongitude = 3;
 
-export let AlertsData: IAlert[] = [];
+export let AlertsData = [];
 export let AlertsDataUsers = [];
 
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
@@ -137,6 +137,7 @@ export default abstract class MyHeroAlerts {
                         let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
                         //if (dist < 50) {
                             AlertsData.push(v);
+                            
                         //}
                     })
 
