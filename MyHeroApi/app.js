@@ -4,12 +4,12 @@ const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const io = require('socket.io');
-
 const helmet = require('helmet');
 
-
 const app = express();
+
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 io.on('connection', client => {
 	client.on('event', data => { console.log("fff") });
