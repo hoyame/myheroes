@@ -8,8 +8,8 @@ const helmet = require('helmet');
 
 const app = express();
 
-const server = require('http').Server(app);
-var io = require('socket.io').listen(server);
+const server = app.listen(3333);
+const io = require('socket.io').listen(server);
 
 io.on('connection', (socket) =>{
 	console.log(`Connecté au client ${socket.id}`)
