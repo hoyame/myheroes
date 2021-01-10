@@ -8,7 +8,7 @@ const helmet = require('helmet');
 
 const app = express();
 
-const server = app.listen(3333);
+const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
 
 io.on('connection', (socket) =>{
@@ -101,11 +101,11 @@ app.post('/api/upload', (req, res) => {
 
 // Run the server
 const port = process.env.PORT || 3333;
-app.listen(port, () =>
-	console.log(`[MyHeroApi] : Started on ${port}`)
-);
+//app.listen(port, () =>
+//	console.log(`[MyHeroApi] : Started on ${port}`)
+//);
 
 
-
+server.listen(3333)
 
 //https.createServer(options, app).listen(3335);
