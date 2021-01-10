@@ -6,6 +6,7 @@ import InputComponent from '../Alerts/input';
 import I18n from '../../i18n/i18n';
 import { API_LINK } from '../../App';
 import { useReduxState } from '../../data/store';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 const FAQScreen = ({ navigation }) => {
     const screenHeight = Math.round(Dimensions.get('window').height - 150);
@@ -35,7 +36,7 @@ const FAQScreen = ({ navigation }) => {
         <>
             <HeaderComponent title={I18n.t("faq")} navigation={navigation} />
 
-            <ScrollView>
+            <KeyboardAwareScrollView>
                 <View style={{
                     paddingLeft: 35,
                     paddingRight: 35,
@@ -93,7 +94,7 @@ const FAQScreen = ({ navigation }) => {
                         </View>
                     </TouchableOpacity>
                 </View>
-            </ScrollView>
+            </KeyboardAwareScrollView>
         </>
     );
 }
