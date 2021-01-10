@@ -11,10 +11,9 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-io.on('connection', client => {
-	client.on('event', data => { console.log("fff") });
-	client.on('disconnect', () => { console.log("dddd") });
-});
+io.on('connection', (socket) =>{
+	console.log(`Connecté au client ${socket.id}`)
+})
 
 app.use(helmet());
 app.use(morgan('tiny'));
