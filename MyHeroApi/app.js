@@ -1,19 +1,21 @@
 require('dotenv').config();
+const server = require('http').createServer();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
 const bodyParser = require('body-parser');
+const io = require('socket.io')(server);
+
 const helmet = require('helmet');
+
 
 const app = express();
 
-const server = require('http').createServer(app);
-const io = require('socket.io').listen(server);
-
-io.on('connection', (socket) =>{
-	console.log(`Connecté au client ${socket.id}`)
-})
+io.on('connection', client => {
+	client.on('event', data => { /* … */ });
+	client.on('disconnect', () => { /* … */ });
+});
 
 app.use(helmet());
 app.use(morgan('tiny'));
@@ -101,11 +103,11 @@ app.post('/api/upload', (req, res) => {
 
 // Run the server
 const port = process.env.PORT || 3333;
-//app.listen(port, () =>
-//	console.log(`[MyHeroApi] : Started on ${port}`)
-//);
+app.listen(port, () =>
+	console.log(`[MyHeroApi] : Started on ${port}`)
+);
 
 
-server.listen(3333)
+
 
 //https.createServer(options, app).listen(3335);
