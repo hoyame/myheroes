@@ -269,11 +269,10 @@ const ConnexionScreen = ({ navigation }) => {
                             style={{
                                 height: 105,
                                 width: 115,
-                                marginBottom: 10,
+                                marginBottom: 15,
                                 borderRadius: 10
                             }}
                         />
-                        <TitleComponent />
 
                         <View style={{
                             display: "flex",
@@ -446,11 +445,10 @@ const ConnexionScreen = ({ navigation }) => {
                                 style={{
                                     height: 105,
                                     width: 115,
-                                    marginBottom: 10,
+                                    marginBottom: 15,
                                     borderRadius: 10
                                 }}
                             />
-                            <TitleComponent />
 
                             <View style={{
                                 display: "flex",
