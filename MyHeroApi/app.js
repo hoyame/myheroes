@@ -1,11 +1,10 @@
 require('dotenv').config();
-const server = require('http').createServer();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const io = require('socket.io')(server);
+const io = require('socket.io');
 
 const helmet = require('helmet');
 
