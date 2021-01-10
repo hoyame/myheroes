@@ -42,6 +42,9 @@ import * as RNLocalize from "react-native-localize";
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import 'react-native-gesture-handler';
 import { Langues } from './data/langues';
+import SocketIOClient from 'socket.io-client/dist/socket.io.js'
+
+export const socket = SocketIOClient('http://146.59.227.90:3333');
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -67,6 +70,17 @@ const Controller = () => {
       setRefreshing(false)
     }, 1500) 
   }, []);
+
+  useEffect(() => {
+
+    socket.on('connect', function(data) {
+      socket.emit('join', 'Hello World from client');
+      
+      socket.on('users_count', function(data){
+        console.log("testtttt", data);
+      });
+    });
+  })
   
   setTimeout(() => {
     if (statusSend == true) {
@@ -76,26 +90,34 @@ const Controller = () => {
 
   setInterval(() => {
     if (MyHeroAlerts.StatusUpdate == true) {
-      dispatch(getAlert(false));
+      let lenghtAlerts = AlertsData.length;
+      console.log("efonfoin")
 
-      AlertsData.map((v, k) => {
-        dispatch(addAlert({ 
-          identifier: v.identifier,
-          latitude: v.latitude, 
-          longitude: v.longitude, 
-          source: v.source, 
-          level: v.level, 
-          description: v.description,
-          webrtc: v.webrtc 
-        }))
-      })
-      
-      MyHeroAlerts.SetStatusUpdate(false);
+      console.log(1, lenghtAlerts);
+      console.log(2, alerts.length);
 
-      if (alerts.length >= 1) { 
+      if (lenghtAlerts === alerts.length) {
+        return
+      } else {          
+        dispatch(getAlert(false));
+          
+        AlertsData.map((v, k) => {
+          dispatch(addAlert({ 
+            identifier: v.identifier,
+            latitude: v.latitude, 
+            longitude: v.longitude, 
+            source: v.source, 
+            level: v.level, 
+            description: v.description,
+            webrtc: v.webrtc 
+          }))
+        })
+        
+        MyHeroAlerts.SetStatusUpdate(false);
+        
         PushNotificationIOS.presentLocalNotification({
           alertBody: "Alertes disponibles"
-        });
+        });    
       }
     }
   }, 50000);
@@ -105,6 +127,8 @@ const Controller = () => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
       }
+
+
     }, 5000)
 
     setTimeout(async () => {
