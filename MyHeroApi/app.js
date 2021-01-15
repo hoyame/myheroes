@@ -20,6 +20,10 @@ io.on('connection', function(client) {
     });
 });
 
+setInterval(() => {
+	io.sockets.emit('users_count', 12345)
+}, 5000)
+
 app.use(helmet());
 app.use(morgan('tiny'));
 app.use(
