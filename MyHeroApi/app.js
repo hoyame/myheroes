@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-export const io = require('socket.io')(server);
+const io = require('socket.io')(server);
 const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
@@ -19,11 +19,11 @@ io.on('connection', function(client) {
     });
 });
 
-const sendAlertsAdd = (tbl) => {
+module.exports.sendAlertsAdd = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
 }
 
-const sendAlertsRemove = (tbl) => {
+module.exports.sendAlertsRemove = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
 }
 

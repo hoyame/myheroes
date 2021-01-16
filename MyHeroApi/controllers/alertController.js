@@ -1,7 +1,7 @@
 let AlertsData = []
 let AlertsUsersData = [];
-const sendAlertsAdd = require("../app");
-const sendAlertsRemove = require("../app");
+
+const app = require('../app');
 
 module.exports.addAlert = (req, res, next) => {
     const identifier = req.body.identifier;
@@ -25,7 +25,7 @@ module.exports.addAlert = (req, res, next) => {
     AlertsUsersData[indexOf] = [];
     console.log(AlertsUsersData[indexOf]);
 
-    sendAlertsAdd(AlertsData);
+    app.sendAlertsAdd(AlertsData);
     res.send(model);
 }
 
@@ -48,7 +48,7 @@ module.exports.removeAlert = (req, res, next) => {
     AlertsUsersData[indexOf] = [];
     AlertsData = AlertsData.filter(x => x.identifier != req.body.identifier);
 
-    sendAlertsRemove(AlertsData);
+    app.sendAlertsRemove(AlertsData);
     res.send(AlertsData);
 }
 
