@@ -20,11 +20,11 @@ io.on('connection', function(client) {
     });
 });
 
-export function sendAlertsAdd(tbl) {
+export const sendAlertsAdd = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
 }
 
-export function sendAlertsRemove(tbl) {
+export const sendAlertsRemove = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
 }
 
