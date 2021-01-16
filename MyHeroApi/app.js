@@ -2,12 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+export const io = require('socket.io')(server);
 const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
 const bodyParser = require('body-parser');
-
 const helmet = require('helmet');
 
 
@@ -20,11 +19,11 @@ io.on('connection', function(client) {
     });
 });
 
-export const sendAlertsAdd = (tbl) => {
+const sendAlertsAdd = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
 }
 
-export const sendAlertsRemove = (tbl) => {
+const sendAlertsRemove = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
 }
 
