@@ -8,14 +8,14 @@ const morgan = require('morgan');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const alertController = require('./controllers/alertController');
 
 
 io.on('connection', function(client) {
     console.log('Client connected...');
 	
     client.on('join', function(data) {
-		io.sockets.emit('users_count', data);
-    	console.log(data);
+		alertController.returnAlerts();
     });
 });
 
@@ -25,6 +25,10 @@ module.exports.sendAlertsAdd = (tbl) => {
 
 module.exports.sendAlertsRemove = (tbl) => {
     io.sockets.emit('add_alerts', tbl);
+}
+
+module.exports.sendAlertsGet = (tbl) => {
+    io.sockets.emit('get_alerts', tbl);
 }
 
 setInterval(() => {

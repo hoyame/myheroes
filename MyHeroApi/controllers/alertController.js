@@ -71,9 +71,7 @@ module.exports.addDataViewer = (req, res, next) => {
     }
 
     AlertsUsersData[indexOf].push(source);
-
     console.log("AUD : ", AlertsUsersData[indexOf])
-
     res.send(AlertsData[indexOf]);
 }
 
@@ -122,7 +120,7 @@ module.exports.returnAlertFromIdentifier = (req, res, next) => {
 }
 
 module.exports.returnAlerts = (req, res, next) => {
-    res.send(AlertsData);
+    app.sendAlertsGet(AlertsData);
 }
 
 module.exports.returnAlertsLenght = (req, res, next) => {
