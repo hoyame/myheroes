@@ -20,6 +20,14 @@ io.on('connection', function(client) {
     });
 });
 
+export function sendAlertsAdd(tbl) {
+    io.sockets.emit('add_alerts', tbl);
+}
+
+export function sendAlertsRemove(tbl) {
+    io.sockets.emit('add_alerts', tbl);
+}
+
 setInterval(() => {
 	io.sockets.emit('users_count', 12345)
 }, 5000)
