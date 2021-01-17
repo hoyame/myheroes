@@ -125,7 +125,7 @@ const AlertScreen = ({ navigation }) => {
                     <View style={{
                         height: 60,
                         marginBottom: 15,
-                        borderRadius: 8,
+                        borderRadius: 15,
                         padding: 10,
                         justifyContent: "center",
                         backgroundColor: "#0077be"

@@ -10,7 +10,14 @@ import BackgroundTimer from 'react-native-background-timer';
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import PushNotification from "react-native-push-notification";
 import { PersistGate } from 'redux-persist/integration/react';
+import io from 'socket.io-client';
 
+const SOCKET_URL = 'http://146.59.227.90:3333';
+
+export const socket = io.connect(SOCKET_URL, {
+  transports: ['websocket'],
+  reconnectionAttempts: 15 //Nombre de fois qu'il doit réessayer de se connecter
+});
 
 PushNotification.configure({
   // (optional) Called when Token is generated (iOS and Android)
@@ -50,18 +57,39 @@ PushNotification.configure({
   requestPermissions: true,
 });
 
-
 export const API_LINK = "http://146.59.227.90:3333";
 export const API_LINK_CDN = "http://146.59.227.90:3000";
 
 const App = () => {
+  
+  useEffect(() => {
+    socket.on('connect', function(data) {
+      socket.emit('join', 0);
+    });
+
+    socket.on('add_alerts', function(data){
+      console.log("add_alerts");
+      MyHeroService.sendNotification('Alertes', 'Des alertes sont disponibles');
+      MyHeroAlerts.GetAlerts(data);
+    });
+
+    socket.on('remove_alerts', function(data){
+      console.log("remove_alerts");
+      MyHeroAlerts.GetAlerts(data);
+    });
+
+    socket.on('get_alerts', function(data){
+      console.log("get_alerts");
+      MyHeroAlerts.GetAlerts(data);
+    });
+  })
+  
   useEffect(() => {
     if (Platform.OS == "ios") {
       setTimeout(() => {
         MyHeroService.requestLocationPermission();
         MyHeroService.requestCamAudioPermission();
         MyHeroService.initialize();
-        MyHeroAlerts.GetAlerts();
       }, 1000)
       return
     } else {
@@ -70,7 +98,6 @@ const App = () => {
           MyHeroService.requestLocationPermission();
           MyHeroService.requestCamAudioPermission();
           MyHeroService.initialize();
-          MyHeroAlerts.GetAlerts();
         }, 1000)
       } catch {
         return
@@ -88,7 +115,7 @@ const App = () => {
 }
 
 BackgroundTimer.runBackgroundTimer(() => { 
-  MyHeroAlerts.GetAlerts();
+  //MyHeroAlerts.GetAlerts();
 }, 200000);
 
 

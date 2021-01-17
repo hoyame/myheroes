@@ -117,38 +117,24 @@ export default abstract class MyHeroAlerts {
         ;
     }
 
-    public static GetAlerts() {
+    public static GetAlerts(tbl: any) {
         this.StatusUpdate = true;
-        axios.get(`${API_LINK}/alerts/get`)
+        
+        const alerts = tbl || [];
 
-        .then((response) => {
-            const e = response;
-            const status: number = e.status
-
-            if (status === 200) {
-                const alerts = e.data || [];
-
-                if (AlertsData.length === alerts.length) {
-                    return false
-                } else if (AlertsData.length !== alerts.length) {
-                    AlertsData = [];
+        if (AlertsData.length === alerts.length) {
+            return false
+        } else if (AlertsData.length !== alerts.length) {
+            AlertsData = [];
                     
-                    alerts.map((v: IAlert, k: any) => {
-                        let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
-                        //if (dist < 50) {
-                            AlertsData.push(v);
-                            
-                        //}
-                    })
+            alerts.map((v: IAlert, k: any) => {
+                let dist = getDistanceFromLatLonInKm(myLatitude, myLongitude, v.latitude, v.longitude);
+                //if (dist < 50) {
+                    AlertsData.push(v);       
+                //}
+            })
 
-                    MyHeroService.sendNotification('Alertes', 'Des alertes sont disponibles')
-                }
-            }
-        })
-
-        .catch((err) => {
-            console.log("err", err);
-        })
+        }
     }
 
     public static SetStatusUpdate(arg: boolean) {

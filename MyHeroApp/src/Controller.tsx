@@ -43,8 +43,15 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import 'react-native-gesture-handler';
 import { Langues } from './data/langues';
 import SocketIOClient from 'socket.io-client/dist/socket.io.js'
+import io from 'socket.io-client';
 
-export const socket = SocketIOClient('http://146.59.227.90:3333');
+const SOCKET_URL = 'http://146.59.227.90:3333';
+
+export const socket = io.connect(SOCKET_URL, {
+  transports: ['websocket'],
+  reconnectionAttempts: 15 //Nombre de fois qu'il doit réessayer de se connecter
+});
+
 
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
@@ -71,17 +78,6 @@ const Controller = () => {
     }, 1500) 
   }, []);
 
-  useEffect(() => {
-
-    socket.on('connect', function(data) {
-      socket.emit('join', 'Hello World from client');
-      
-      socket.on('users_count', function(data){
-        console.log("testtttt", data);
-      });
-    });
-  })
-  
   setTimeout(() => {
     if (statusSend == true) {
       MyHeroAlerts.setViewerDataStatus(userMail, true)
@@ -91,11 +87,7 @@ const Controller = () => {
   setInterval(() => {
     if (MyHeroAlerts.StatusUpdate == true) {
       let lenghtAlerts = AlertsData.length;
-      console.log("efonfoin")
-
-      console.log(1, lenghtAlerts);
-      console.log(2, alerts.length);
-
+   
       if (lenghtAlerts === alerts.length) {
         return
       } else {          
@@ -113,22 +105,16 @@ const Controller = () => {
           }))
         })
         
-        MyHeroAlerts.SetStatusUpdate(false);
-        
-        PushNotificationIOS.presentLocalNotification({
-          alertBody: "Alertes disponibles"
-        });    
+        MyHeroAlerts.SetStatusUpdate(false)
       }
     }
-  }, 50000);
+  }, 1000);
 
   useEffect(() => {
     setTimeout(() => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
       }
-
-
     }, 5000)
 
     setTimeout(async () => {
@@ -341,9 +327,5 @@ const Controller = () => {
     </>
   );
 }
-
-setInterval(() => {
-  MyHeroAlerts.GetAlerts();
-}, 100000)
 
 export default Controller;

@@ -217,7 +217,9 @@ export abstract class MyHeroService {
           }
         );
       } else if (Platform.OS == "ios") {
-
+        PushNotificationIOS.presentLocalNotification({
+          alertBody: content
+        });    
       }
     }
 }
