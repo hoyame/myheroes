@@ -523,7 +523,7 @@ const HomeScreen = ({ navigation }) => {
                                 <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
                                     <View style={{
                                         position: "absolute",
-                                        top: -160,
+                                        top: Dimensions.get('window').height > 695 ? -160 : -120,
                                         right: 10,
                                         height: 30,
                                         justifyContent: "center",
