@@ -24,7 +24,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 }
 
 module.exports.sendAlertsRemove = (tbl) => {
-    io.sockets.emit('add_alerts', tbl);
+    io.sockets.emit('remove_alerts', tbl);
 }
 
 module.exports.sendAlertsGet = (tbl) => {
