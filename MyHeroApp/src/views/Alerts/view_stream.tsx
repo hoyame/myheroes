@@ -1,20 +1,10 @@
 import React, { Component, useEffect, useState} from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import I18n from '../../i18n/i18n';
-import {
-    RTCPeerConnection,
-    RTCIceCandidate,
-    RTCSessionDescription,
-    RTCView,
-    MediaStream,
-    MediaStreamTrack,
-    mediaDevices,
-    registerGlobals
-} from 'react-native-webrtc';
+
 import HeaderComponent from '../../components/Header/header';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Button } from 'react-native';
-import WebRTC from '../../utils/WebRTC';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -85,13 +75,6 @@ const ViewStream = ({ navigation }) => {
             alignSelf: 'center'
           }}>
 
-            <RTCView
-                streamURL={state.remoteStreamURL}
-                style={{ 
-                  width: screenWidth - 25, 
-                  height: screenHeight, 
-                }} 
-            />
           </View>
         </>
     );

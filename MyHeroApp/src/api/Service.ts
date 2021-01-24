@@ -1,16 +1,6 @@
 import Geolocation from '@react-native-community/geolocation';
 import { PermissionsAndroid, Platform } from 'react-native';
 import axios, { AxiosInstance } from 'axios';
-import {
-  RTCPeerConnection,
-  RTCIceCandidate,
-  RTCSessionDescription,
-  RTCView,
-  MediaStream,
-  MediaStreamTrack,
-  mediaDevices,
-  registerGlobals
-} from 'react-native-webrtc';
 
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from "react-native-push-notification";
@@ -18,26 +8,6 @@ import PushNotification from "react-native-push-notification";
 export const TURN_SERVER_URL = '146.59.227.90:3478';
 export const TURN_SERVER_USERNAME = 'username';
 export const TURN_SERVER_CREDENTIAL = 'password';
-
-const configuration = { 
-  "iceServers": [
-    { 
-      url: "stun:stun.l.google.com:19302"
-    },
-    /*
-    {
-      urls: 'turn:' + TURN_SERVER_URL + '?transport=tcp',
-      username: TURN_SERVER_USERNAME,
-      credential: TURN_SERVER_CREDENTIAL
-    },
-    {
-      urls: 'turn:' + TURN_SERVER_URL + '?transport=udp',
-      username: TURN_SERVER_USERNAME,
-      credential: TURN_SERVER_CREDENTIAL
-    }
-    */
-  ] 
-};
 
 const pc = new RTCPeerConnection(configuration);
 
@@ -159,40 +129,7 @@ export abstract class MyHeroService {
     }
 
     public static initConnexionStream() {
-      const isFront = true
-
-      mediaDevices.enumerateDevices().then(sourceInfos => {
-        console.log(sourceInfos);
-        let videoSourceId;
-        for (let i = 0; i < sourceInfos.length; i++) {
-          const sourceInfo = sourceInfos[i];
-          if(sourceInfo.kind == "videoinput" && sourceInfo.facing == (isFront ? "front" : "environment")) {
-            videoSourceId = sourceInfo.deviceId;
-          }
-        }
-        mediaDevices.getUserMedia({
-          audio: true,
-          video: {
-            //width: 640,
-            //height: 480,
-            //frameRate: 30
-            facingMode: (isFront ? "user" : "environment"),
-            deviceId: videoSourceId
-          }
-        })
-        .then((stream: any) => {
-          // Got stream!
-          console.log('succes connexion webtrc')
-          return stream.toURL()
-        })
-        .catch(error => {
-          // Log error
-          return ''
-
-        });
-      });
-
-      return ''
+        return ''
     }
 
     public static sendNotification(title: string, content: string) {

@@ -40,11 +40,8 @@ target 'MyHeroApp' do
   pod 'react-native-background-timer', :path => '../node_modules/react-native-background-timer'
 
   pod 'GoogleWebRTC'
-  
-  pod 'react-native-webrtc', :path => '../node_modules/react-native-webrtc'
 
   pod 'React-RCTPushNotification', :path => '../node_modules/react-native/Libraries/PushNotificationIOS'
-
 
   pod 'react-native-restart', :path => '../node_modules/react-native-restart'
 
