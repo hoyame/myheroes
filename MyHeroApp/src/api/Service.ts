@@ -9,7 +9,6 @@ export const TURN_SERVER_URL = '146.59.227.90:3478';
 export const TURN_SERVER_USERNAME = 'username';
 export const TURN_SERVER_CREDENTIAL = 'password';
 
-const pc = new RTCPeerConnection(configuration);
 
 const apiLink = 'http://146.59.227.90:3333/';
 axios.defaults.baseURL = apiLink;
