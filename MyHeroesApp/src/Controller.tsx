@@ -52,7 +52,6 @@ export const socket = io.connect(SOCKET_URL, {
   reconnectionAttempts: 15 //Nombre de fois qu'il doit réessayer de se connecter
 });
 
-
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height);
