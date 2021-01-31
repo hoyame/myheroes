@@ -1,7 +1,7 @@
 export default {
     hello: "Hello",
     errorServMH: "Les serveurs MyHeroes sont actuellement indisponibles",
-    initMHServ: "Initialisation de",
+    initMHServ: "Chargement en cours",
     description: "Description",
     descDescription: "Description de l'alerte",
     par: "Par",

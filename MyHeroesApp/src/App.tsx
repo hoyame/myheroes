@@ -6,13 +6,28 @@ import { store, persistor } from './data/store';
 import { MyHeroService } from './api/Service';
 import MyHeroAlerts from './api/Alerts';
 import BackgroundTimer from 'react-native-background-timer';
-
+import firebase from '@react-native-firebase/app';
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import PushNotification from "react-native-push-notification";
 import { PersistGate } from 'redux-persist/integration/react';
 import io from 'socket.io-client';
+import messaging from '@react-native-firebase/messaging';
 
 const SOCKET_URL = 'http://146.59.227.90:3333';
+
+const credentials = {
+  clientId: '911354456695-uteuqkfb2vq4s32s73su4ho6eo90g6te.apps.googleusercontent.com',
+  appId: '1:911354456695:ios:296e5119c945f0013d3472',
+  apiKey: 'AIzaSyBKzpbK2HMO47R822icS8cV77dwhyIjHiQ',
+  databaseURL: 'https://myhero-291513.firebaseio.com',
+  storageBucket: 'myhero-291513.appspot.com',
+  messagingSenderId: '911354456695',
+  projectId: 'myhero-291513',
+};
+
+const config = {
+  name: 'SECONDARY_APP',
+};
 
 export const socket = io.connect(SOCKET_URL, {
   transports: ['websocket'],
@@ -61,7 +76,6 @@ export const API_LINK = "http://146.59.227.90:3333";
 export const API_LINK_CDN = "http://146.59.227.90:3000";
 
 const App = () => {
-  
   useEffect(() => {
     socket.on('connect', function(data) {
       socket.emit('join', 0);
@@ -78,12 +92,48 @@ const App = () => {
       MyHeroAlerts.GetAlerts(data);
     });
 
-    socket.on('get_alerts', function(data){
+    socket.on('get_alerts', function(data: any){
       console.log("get_alerts");
       MyHeroAlerts.GetAlerts(data);
     });
   })
   
+  useEffect(() => {
+    firebase.initializeApp(credentials);
+  })
+
+  setTimeout(() => {
+    firebase.messaging().getToken()
+    .then(fcmToken => {
+      if (fcmToken) {
+          console.log("token = ", fcmToken)
+      } else {
+        // user doesn't have a device token yet
+      } 
+    });
+
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log(
+        'Notification caused app to open from background state:',
+        remoteMessage.notification,
+        );
+        
+      });
+      
+      // Check whether an initial notification is available
+      messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log(
+            'Notification caused app to open from quit state:',
+            remoteMessage.notification,
+            );
+          }
+          console.log("ddddd", true)
+        });
+  }, 5000)
+
   useEffect(() => {
     if (Platform.OS == "ios") {
       setTimeout(() => {

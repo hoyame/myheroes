@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, Alert, Animated, Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Animated, Dimensions, Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { setLocalisation } from './data/actions/localisation';
@@ -66,7 +66,7 @@ const Controller = () => {
   const [isNewUser, setNewUser] = useState(true);
   const [nameA, setAName] = useState('');
   const [mailA, setAMail] = useState('');
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [languageS, setLanguageS] = useState(false);
 
   const onRefresh = React.useCallback(() => {
@@ -127,7 +127,6 @@ const Controller = () => {
             onRefresh();
           } else {
             console.log("err lang")
-
             const locales = RNLocalize.getLocales();
 
             if (Array.isArray(locales)) {
@@ -197,6 +196,8 @@ const Controller = () => {
     }, 3000)
   });
 
+  
+
   if (initialize == false) {
     return (
         <View style={{
@@ -206,19 +207,32 @@ const Controller = () => {
             justifyContent: "center",
             alignItems: "center"
         }}>
-            <Text style={{
-                color: "#3497FD",
-                fontSize: 30,
-                textAlign: "center"
-            }}>{I18n.t("initMHServ")}</Text>
+            <ImageBackground     
+                resizeMode="repeat"
+                source={{uri: "https://cdn.discordapp.com/attachments/785109841416683520/805510989868040242/1.png"}} 
+                style={{      
+                  position: 'absolute',
+                  height: screenHeight,
+                  width: screenWidth,
+                }
+            }>
+            </ImageBackground>
 
+            <Image 
+              source={{uri: "https://cdn.discordapp.com/attachments/785109841416683520/805546399299141662/myhero.png"}}
+              style={{
+                marginTop: -90,
+                height: 300,
+                width: 300
+              }}
+            > 
+
+            </Image>
             <Text style={{
-                color: "#3497FD",
+                color: "#fff",
                 fontSize: 30,
-                marginBottom: 30,
                 textAlign: "center"
-            }}>MyHeroServices</Text>
-              <WaveIndicator color='#3497FD' size={40} />
+            }}>{I18n.t("initMHServ")}...</Text>
         </View>
     );
   }
