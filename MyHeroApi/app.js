@@ -27,13 +27,11 @@ io.on('connection', function(client) {
 });
 
 module.exports.sendAlertsAdd = (tbl) => {
-	var topic = 'Alertes';
 
 	var message = {
-	data: {
-		score: 'Alertes Disponibles',
-	},
-	topic: topic
+		data: {
+			score: 'Alertes Disponibles',
+		},
 	};
 
 // Send a message to devices subscribed to the provided topic.
