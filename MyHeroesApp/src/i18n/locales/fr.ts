@@ -13,7 +13,7 @@ export default {
     menu: "Menu",
     notDesc: "Pas de description",
     maintPourPInfo: "Maintenez pour plus d'informations",
-
+    userWarn: "Appuyez ci-dessous pour plus d'informations.",
     connexion: "Connexion",
     inscription: "Inscription",
     acceuil: "Général",
