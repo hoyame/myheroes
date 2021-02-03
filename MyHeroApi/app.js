@@ -27,12 +27,12 @@ io.on('connection', function(client) {
 });
 
 module.exports.sendAlertsAdd = (tbl) => {
-
 	var message = {
 		notification: {
 			title: '$FooCorp up 1.43% on the day',
 			body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.'
 		},
+		topic: "Alertes"
 	};
 
 // Send a message to devices subscribed to the provided topic.
