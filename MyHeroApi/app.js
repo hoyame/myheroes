@@ -11,9 +11,11 @@ const helmet = require('helmet');
 const alertController = require('./controllers/alertController');
 const admin = require('firebase-admin');
 
+var serviceAccount = require("./myhero-291513-firebase-adminsdk-4hd76-ae7d7ea163.json");
+
 admin.initializeApp({
-	credential: admin.credential.applicationDefault(),
-	databaseURL: 'https://myhero-291513.firebaseio.com'
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL: "https://myhero-291513.firebaseio.com"
 });
 
 io.on('connection', function(client) {
