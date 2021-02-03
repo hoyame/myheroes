@@ -48,7 +48,7 @@
     "react-native-blur": "^3.2.2",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-google-maps": "^1.0.0",
-    "react-native-image-picker": "^2.3.4",
+    "react-native-image-picker": "2.3.4",
     "react-native-indicators": "^0.17.0",
     "react-native-keyboard-aware-scrollview": "^2.1.0",
     "react-native-localize": "^1.4.3",

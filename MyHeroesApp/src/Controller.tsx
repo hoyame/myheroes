@@ -231,8 +231,9 @@ const Controller = () => {
             <Text style={{
                 color: "#fff",
                 fontSize: 30,
+                fontWeight: "100",
                 textAlign: "center"
-            }}>{I18n.t("initMHServ")}...</Text>
+            }}>{I18n.t("initMHServ")} ...</Text>
         </View>
     );
   }

@@ -369,7 +369,7 @@ module.exports.addXp = (req, res, next) => {
 			let oldXp = result;
 			let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
 
-			con.query(query2, [oldXp + 15, v], (err, result, fields) => {		
+			con.query(query2, [oldXp + 10, v], (err, result, fields) => {		
 				return res.json({
 					status: 'success',
 					result: result,

@@ -8,6 +8,9 @@ target 'MyHeroesApp' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'MyHeroesAppTests' do
     inherit! :complete
     # Pods for testing

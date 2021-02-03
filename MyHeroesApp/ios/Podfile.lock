@@ -341,8 +341,8 @@ PODS:
     - React
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-image-picker (2.4.0):
-    - React
+  - react-native-image-picker (2.3.4):
+    - React-Core
   - react-native-maps (0.27.1):
     - React
   - react-native-restart (0.0.20):
@@ -677,7 +677,7 @@ SPEC CHECKSUMS:
   react-native-background-timer: 17ea5e06803401a379ebf1f20505b793ac44d0fe
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
-  react-native-image-picker: 4e63090db19a528e36c0cc07d1423c8c0cb4c4ef
+  react-native-image-picker: c6d75c4ab2cf46f9289f341242b219cb3c1180d3
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
   react-native-restart: a01029aadfe8e71f9e8205fdb17da2f0a4472d50
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
@@ -706,6 +706,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d8170c4d6a9426573cf0c4a0d6fc98f763685d8f
+PODFILE CHECKSUM: b6b10f76d10135fce370917a2248c7b464c3cc0e
 
 COCOAPODS: 1.10.0
