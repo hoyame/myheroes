@@ -9,7 +9,12 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const alertController = require('./controllers/alertController');
+const admin = require('firebase-admin');
 
+admin.initializeApp({
+	credential: admin.credential.applicationDefault(),
+	databaseURL: 'https://myhero-291513.firebaseio.com'
+});
 
 io.on('connection', function(client) {
     console.log('Client connected...');
@@ -20,6 +25,25 @@ io.on('connection', function(client) {
 });
 
 module.exports.sendAlertsAdd = (tbl) => {
+	var topic = 'Alertes';
+
+	var message = {
+	data: {
+		score: 'Alertes Disponibles',
+	},
+	topic: topic
+	};
+
+// Send a message to devices subscribed to the provided topic.
+	admin.messaging().send(message)
+	.then((response) => {
+		// Response is a message ID string.
+		console.log('Successfully sent message:', response);
+	})
+	.catch((error) => {
+		console.log('Error sending message:', error);
+	});
+
     io.sockets.emit('add_alerts', tbl);
 }
 

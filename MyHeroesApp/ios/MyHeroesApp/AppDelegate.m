@@ -6,6 +6,8 @@
 #import <UserNotifications/UserNotifications.h>
 #import <RNCPushNotificationIOS.h>
 
+@import Firebase; // add the import
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -48,6 +50,11 @@ static void InitializeFlipper(UIApplication *application) {
   
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
+  
+  if ([FIRApp defaultApp] == nil) {
+  [FIRApp configure];
+  }
+  
   return YES;
 }
 
