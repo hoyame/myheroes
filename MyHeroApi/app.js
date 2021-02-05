@@ -29,8 +29,8 @@ io.on('connection', function(client) {
 module.exports.sendAlertsAdd = (tbl) => {
 	var message = {
 		notification: {
-			title: '$FooCorp up 1.43% on the day',
-			body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.'
+			title: 'Alertes',
+			body: 'Alertes Disponibles'
 		},
 		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
 
