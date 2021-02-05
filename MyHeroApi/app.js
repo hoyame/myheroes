@@ -32,7 +32,8 @@ module.exports.sendAlertsAdd = (tbl) => {
 			title: '$FooCorp up 1.43% on the day',
 			body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.'
 		},
-		topic: "ios"
+		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
+
 	};
 
 // Send a message to devices subscribed to the provided topic.
