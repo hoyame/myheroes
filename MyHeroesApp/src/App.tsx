@@ -104,13 +104,16 @@ const App = () => {
 
   setTimeout(() => {
     firebase.messaging().getToken()
-    .then(fcmToken => {
-      if (fcmToken) {
-          console.log("token = ", fcmToken)
-      } else {
-        // user doesn't have a device token yet
-      } 
-    });
+      .then(fcmToken => {
+        if (fcmToken) {
+            console.log("token = ", fcmToken)
+        } else {
+          // user doesn't have a device token yet
+        } 
+      })
+    ;
+
+    firebase.messaging().subscribeToTopic("all");
 
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log(
