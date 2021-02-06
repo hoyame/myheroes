@@ -214,8 +214,6 @@ const AccountScreen = ({ navigation }) => {
     }
 
     const returnBadgesWithXp = (num: number) => {
-            console.log(num)
-
             if (num < 100) {
                 return (
                     <>
