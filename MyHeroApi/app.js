@@ -30,7 +30,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 	var message = {
 		notification: {
 			title: 'Alertes',
-			body: 'Alertes Disponibles'
+			body: 'Une alerte est disponibles'
 		},
 		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
 

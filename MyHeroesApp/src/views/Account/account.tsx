@@ -1,4 +1,4 @@
-import { faBaby, faBed, faBiking, faBlind, faBold, faCut, faHome, faJedi, faKhanda, faMedal, faMeteor, faShieldAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faBaby, faBed, faBiking, faBlind, faBold, faCut, faHome, faJedi, faKhanda, faMedal, faMeteor, faShieldAlt, faTimesCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
@@ -214,21 +214,28 @@ const AccountScreen = ({ navigation }) => {
     }
 
     const returnBadgesWithXp = (num: number) => {
-        switch (num) {
-            case 100: 
+            console.log(num)
+
+            if (num < 100) {
+                return (
+                    <>
+                        <FontAwesomeIcon icon={faTimesCircle} size={25} style={{color: "red", marginRight: 7.5}} />
+                   </>
+                )
+            } else if (num >= 100 && num <= 500) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
                    </>
                 )
-            case 500:  
+            } else if (num >= 500 && num <= 1000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
                         <FontAwesomeIcon icon={faMeteor} size={25} style={{color: "#FCCA1C", marginRight: 7.5}} />
                     </>
                 )
-            case 1000:  
+            } else if (num >= 1000 && num <= 5000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -236,7 +243,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faMedal} size={25} style={{color: "#1F7CEB", marginRight: 7.5}} />
                     </>
                 )
-            case 5000:  
+            } else if (num >= 5000 && num <= 10000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -245,7 +252,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faTrophy} size={25} style={{color: "#B0F50A", marginRight: 7.5}} />
                     </>
                 )
-            case 10000:  
+            } else if (num >= 10000 && num < 100000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -255,7 +262,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faShieldAlt} size={25} style={{color: "#E63B25", marginRight: 7.5}} />
                     </>
                 )
-            case 100000:  
+            } else if (num >= 100000 && num <= 1000000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -266,7 +273,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faKhanda} size={25} style={{color: "#FC9A21", marginRight: 7.5}} />
                     </>
                 )
-            case 1000000:  
+            } else if (num >= 1000000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -278,9 +285,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faJedi} size={25} style={{color: "#008B00", marginRight: 7.5}} />
                     </>
                 )
-            default: 
-                return <></>
-        }
+            }
     }
 
     return (
@@ -358,7 +363,7 @@ const AccountScreen = ({ navigation }) => {
                                     display: "flex",
                                     flexDirection: 'row'
                                 }}>
-                                    {returnBadgesWithXp(1000000)}
+                                    {returnBadgesWithXp(xp)}
                                 </View>
                             : 
                                 <View style={{
