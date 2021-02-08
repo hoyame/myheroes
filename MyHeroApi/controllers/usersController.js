@@ -379,7 +379,6 @@ module.exports.addXp = (req, res, next) => {
 	})
 }
 
-
 setInterval(() => { 
 	console.log(`[MyHeroApi] : Refresh`)
 	let query = `SELECT a FROM refresh`;

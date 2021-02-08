@@ -1,6 +1,8 @@
 let AlertsData = []
 let AlertsUsersData = [];
 
+let InfoData = []
+
 const app = require('../app');
 
 module.exports.addAlert = (req, res, next) => {
@@ -95,6 +97,7 @@ module.exports.removeDataViewer = (req, res, next) => {
     res.send(AlertsData[indexOf]);
 }
 
+
 module.exports.getDataViewer = (req, res, next) => {
     const identifier = req.query.id || req.body.id;
     const found = AlertsData.find(element => element.identifier == identifier);
@@ -126,6 +129,23 @@ module.exports.returnAlerts = (req, res, next) => {
 module.exports.returnAlertsLenght = (req, res, next) => {
     let lenght = AlertsData.length
     res.send(lenght.toString());
+}
+
+//////////////////////////////////////////////////////////
+
+module.exports.addList = (req, res, next) => {
+    const model = {
+        identifier: req.body.identifier,
+        rate: req.body.rate,
+        message: req.body.message,
+    }
+    
+    console.log(InfoData);    
+    app.sendListNotif(model);
+}
+
+module.exports.returnList = (req, res, next) => {
+    res.send(InfoData);
 }
 
 // Karim@gmail.com

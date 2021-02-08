@@ -26,6 +26,26 @@ io.on('connection', function(client) {
     });
 });
 
+
+module.exports.sendListNotif = (tbl) => {
+	var message = {
+		notification: {
+			title: 'Information',
+			body: 'Une info a été envoyée'
+		},
+		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
+	};
+
+	admin.messaging().send(message)
+		.then((response) => {
+			console.log('Successfully sent message:', response);
+		})
+		.catch((error) => {
+			console.log('Error sending message:', error);
+		})
+	;
+}
+
 module.exports.sendAlertsAdd = (tbl) => {
 	var message = {
 		notification: {
@@ -33,18 +53,16 @@ module.exports.sendAlertsAdd = (tbl) => {
 			body: 'Une alerte est disponibles'
 		},
 		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
-
 	};
 
-// Send a message to devices subscribed to the provided topic.
 	admin.messaging().send(message)
-	.then((response) => {
-		// Response is a message ID string.
-		console.log('Successfully sent message:', response);
-	})
-	.catch((error) => {
-		console.log('Error sending message:', error);
-	});
+		.then((response) => {
+			console.log('Successfully sent message:', response);
+		})
+		.catch((error) => {
+			console.log('Error sending message:', error);
+		})
+	;
 
     io.sockets.emit('add_alerts', tbl);
 }
