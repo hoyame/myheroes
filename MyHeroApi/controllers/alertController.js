@@ -135,9 +135,11 @@ module.exports.returnAlertsLenght = (req, res, next) => {
 
 module.exports.addList = (req, res, next) => {
     const model = {
-        identifier: req.body.identifier,
+        source: req.body.name,
         rate: req.body.rate,
-        message: req.body.message,
+        description: req.body.description,
+        latitude: req.body.latitude, 
+        longitude: req.body.longitude
     }
     
     InfoData.push(model)
