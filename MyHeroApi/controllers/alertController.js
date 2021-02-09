@@ -140,6 +140,7 @@ module.exports.addList = (req, res, next) => {
         message: req.body.message,
     }
     
+    InfoData.push(model)
     console.log(InfoData);    
     app.sendListNotif(model);
 }

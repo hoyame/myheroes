@@ -21,7 +21,7 @@ router.get('/alerts/get_data_viewer', alertController.getDataViewer);
 router.get('/alerts/get_data_viewer_users', alertController.getDataViewerUsers);
 
 
-router.get('/list/add', alertController.addList);
+router.post('/list/add', alertController.addList);
 
 router.get('/list/get', alertController.returnList);
 
