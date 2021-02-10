@@ -135,7 +135,7 @@ module.exports.returnAlertsLenght = (req, res, next) => {
 
 module.exports.addList = (req, res, next) => {
     const model = {
-        source: req.body.name,
+        name: req.body.name,
         rate: req.body.rate,
         description: req.body.description,
         latitude: req.body.latitude, 
