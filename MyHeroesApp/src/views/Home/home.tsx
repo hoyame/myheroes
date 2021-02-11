@@ -517,7 +517,7 @@ const HomeScreen = ({ navigation }) => {
                                 marginTop: 7.5,
                                 borderRadius: 10,
                                 width: screenWidth,
-                                backgroundColor: '#e1e1e1',
+                                backgroundColor: '#ffffff',
                             }}>
                                 <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170 : 135} width={screenWidth} />
                                 <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
@@ -534,7 +534,7 @@ const HomeScreen = ({ navigation }) => {
                                     }}>
                                         <FontAwesomeIcon icon={faArrowRight} size={15} style={{
                                             justifyContent: "center"
-                                        }} />
+                                        }}/>
                                     </View>
                                 </TouchableOpacity>
                             </View>
