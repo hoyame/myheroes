@@ -148,7 +148,6 @@ const AccountScreen = ({ navigation }) => {
     const AvisProps = (props: IAvis) => {
         return (
             <View style={{
-                height: 150,
                 width: screenWidth,
                 marginBottom: 10,
                 borderRadius: 15,
@@ -293,7 +292,7 @@ const AccountScreen = ({ navigation }) => {
             <View style={{
                 marginTop: -30,
                 paddingLeft: 35,
-                paddingRight: 35,
+                paddingRight: 33,
                 paddingBottom: 35
             }}>
                 <ScrollView>
