@@ -122,106 +122,6 @@ const HeaderComponent = (props: IHeader) => {
         }
     }
 
-    
-    if (name == "") {
-        return (
-            <>
-                <View style={{
-                    marginTop: 20,
-                    padding: 35,
-                }}>
-                    <View style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        width: screenWidth
-                    }}>
-                        <TouchableHighlight
-                            style={{
-                                borderRadius: 50
-                            }}
-
-                            activeOpacity={0.5}
-                            underlayColor="#bebebe"
-                            onPress={() => props.navigation.navigate('Nav')}
-                        >
-                        
-                            <View style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                height: 65,
-                                width: 65,
-                                borderRadius: 50,
-                                backgroundColor: "#E1E1E1"
-                            }}>
-                                <FontAwesomeIcon icon={faAlignLeft} size={25} style={{
-                                    marginTop: 20,
-                                    justifyContent: "center"
-                                }} />
-                            </View>
-                        </TouchableHighlight>
-
-                        <TouchableOpacity
-                            onPress={() => props.navigation.navigate('Account')}
-                        >                
-                            <View style={{
-                                height: 65,
-                                width: 175,
-                                display: "flex",
-                                flexDirection: "row",
-                                borderTopRightRadius: 10,
-                                borderBottomRightRadius: 10,
-                                borderTopLeftRadius: 50,
-                                borderBottomStartRadius: 50,
-                                backgroundColor: "#DDDDDD",
-                            }}>
-                                <View style={{
-                                    height: 65,
-                                    width: 65,
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                }}>
-                                    <Image
-                                        key={Date.now()} 
-
-                                        style={{
-                                            height: 55,
-                                            width: 55,
-                                            borderRadius: 50,
-                                        }}
-
-                                        source={{
-                                            uri: imageUrl,
-                                        }}
-                                    />
-                                </View>
-                                        
-                                <View style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    marginLeft: 2
-                                }}>
-                                    <ActivityIndicator size="small" color="#3497FD" />
-
-                                    <Text style={{
-                                        color: "#3497FD",
-                                        fontSize: 15,
-                                        marginLeft: 3,
-                                        textAlign: "center"
-                                    }}>Chargement</Text>
-
-                                </View>
-                            </View>
-                        </TouchableOpacity>   
-                    </View>
-                </View>
-            </>
-        );
-    }
-
     return (
         <>
             <View style={ 
@@ -268,7 +168,7 @@ const HeaderComponent = (props: IHeader) => {
                         color: '#ffffff'
                     }}>MyHeroes</Text>
                 </View>
-   
+
                 <View style={{
                     display: "flex",
                     flexDirection: "row",
@@ -277,7 +177,7 @@ const HeaderComponent = (props: IHeader) => {
                 }}>
                     <TouchableHighlight
                         style={{
-                            borderRadius: 50
+                            borderRadius: 15
                         }}
 
                         activeOpacity={0.5}
@@ -290,8 +190,8 @@ const HeaderComponent = (props: IHeader) => {
                             alignItems: 'center',
                             height: 65,
                             width: 65,
-                            borderRadius: 50,
-                            backgroundColor: "#E1E1E1"
+                            borderRadius: 15,
+                            backgroundColor: "#ffffff"
                         }}>
                             <FontAwesomeIcon icon={faAlignLeft} size={25} style={{
                                 marginTop: 20,
@@ -300,20 +200,42 @@ const HeaderComponent = (props: IHeader) => {
                         </View>
                     </TouchableHighlight>
 
+
+                    <TouchableHighlight
+                        style={{
+                            borderRadius: 15
+                        }}
+
+                        activeOpacity={0.5}
+                        underlayColor="#bebebe"
+                        onPress={() => { dispatch(setCacheNav('Home')); props.navigation.navigate('General')}}
+                    >
+                        <View style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            height: 65,
+                            width: 65,
+                            borderRadius: 15,
+                            backgroundColor: "#1d1d1d"
+                        }}>
+                            <Text style={{
+                                color: "#ffffff",
+                                fontSize: 20, 
+                                fontWeight: '700'
+                            }}>24H</Text>
+                        </View>
+                    </TouchableHighlight>
+
                     <TouchableOpacity
                         onPress={() => props.navigation.navigate('Account')}
                     >                
-
                         <View style={{
                             height: 65,
-                            width: 175,
+                            width: 65,
                             display: "flex",
                             flexDirection: "row",
-                            borderTopRightRadius: 10,
-                            borderBottomRightRadius: 10,
-                            borderTopLeftRadius: 50,
-                            borderBottomStartRadius: 50,
-                            backgroundColor: "#DDDDDD",
+                            borderRadius: 15,
+                            backgroundColor: "#ffffff",
                         }}>
                             <View style={{
                                 height: 65,
@@ -326,38 +248,15 @@ const HeaderComponent = (props: IHeader) => {
                                     key={Date.now()} 
                                     
                                     style={{
-                                        height: 55,
-                                        width: 55,
-                                        borderRadius: 50,
+                                        height: 65,
+                                        width: 65,
+                                        borderRadius: 15,
                                     }}
 
                                     source={{
                                         uri: imageUrl,
                                     }}
                                 />
-                            </View>
-
-                            <View style={{
-                                display: "flex",
-                                justifyContent: "center",
-
-                                marginLeft: 12
-                            }}>
-                                <Text style={{
-                                    //color: "#3497FD",
-                                    marginBottom: 1,
-                                    fontSize: 16
-                                }}>{name}</Text>
-
-                                <Text style={{
-                                    color: "#778899",
-                                    marginBottom: 3,
-                                    fontSize: 11
-                                }}>{xp} XP</Text>
-
-                                <View>
-                                    {ReturnStars({rate: rate}) }
-                                </View>
                             </View>
                         </View>
                     </TouchableOpacity>   
