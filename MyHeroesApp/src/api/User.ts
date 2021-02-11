@@ -13,7 +13,7 @@ interface IUser {
 }
 
 export let AvisUsers = []
-
+export let InformationsH24 = []
 
 export default abstract class Users {
 
@@ -22,6 +22,19 @@ export default abstract class Users {
             .then((response) => {
                 const data = response.data
                 AvisUsers = data
+            })
+
+            .catch((err) => {
+                console.log("err", err);
+            }
+        )
+    }
+
+    public static GetMessagesH24(latitude: number, longitude: number) {
+        axios.get(`${API_LINK}/list/get`)
+            .then((response) => {
+                const data = response.data;
+                InformationsH24 = data;
             })
 
             .catch((err) => {
