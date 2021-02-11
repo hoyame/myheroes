@@ -131,6 +131,7 @@ export abstract class MyHeroService {
     }
 
     public static sendNotification(title: string, content: string) {
+      /*
       if (Platform.OS == "android") {        
         PushNotification.deleteChannel("myhero");
         
@@ -141,7 +142,7 @@ export abstract class MyHeroService {
           },
           (created) => {       
             PushNotification.localNotification({
-              /* Android Only Properties */          
+              // Android Only Properties          
               channelId: "myhero", // (required) channelId, if the channel doesn't exist, it will be created with options passed above (importance, vibration, sound). Once the channel is created, the channel will not be update. Make sure your channelId is different if you change these options. If you have created a custom channel, it will apply options of the channel.
               vibration: 1000, // vibration length in milliseconds, ignored if vibrate=false, default: 1000      
               alertAction: "view", // (optional) default: view
@@ -156,5 +157,7 @@ export abstract class MyHeroService {
           alertBody: content
         });    
       }
+    */ 
     }
+    
 }
