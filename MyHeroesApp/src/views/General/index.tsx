@@ -12,7 +12,7 @@ import BottomComponent from '../../components/Bottom';
 import { useReduxState } from '../../data/store';
 import { API_LINK } from '../../App';
 import axios from 'axios';
-import { InformationsH24 } from '../../api/User';
+import Users, { InformationsH24 } from '../../api/User';
 
 
 const GeneralScreen = ({ navigation }) => {
@@ -234,7 +234,9 @@ const GeneralScreen = ({ navigation }) => {
         <>
             <HeaderComponent title="News 24H" navigation={navigation} />
 
-            <View style={{ paddingLeft: 35, paddingRight: 35}}>
+        <ScrollView>
+
+            <View style={{ paddingLeft: 35, paddingRight: 35, marginBottom: 35}}>
                 <View style={{
                     height: 60,
                     marginTop: 15,
@@ -252,7 +254,7 @@ const GeneralScreen = ({ navigation }) => {
                 </View>
 
                 {
-                   returnAvis()
+                    returnAvis()
                 }
             
                 <View style={{
@@ -262,9 +264,13 @@ const GeneralScreen = ({ navigation }) => {
 
                     <BottomComponent title={"Publier"} onClick={() => {
                         push();
+                        setTimeout(() => {
+                            Users.GetMessagesH24(1, 1);
+                        }, 5000)
                     }}/> 
                 </View>
             </View>
+                    </ScrollView>
         </>
     );
 }
