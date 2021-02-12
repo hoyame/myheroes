@@ -379,6 +379,7 @@ module.exports.addXp = (req, res, next) => {
 }
 
 const ss = () => {
+	console.log(238439483494983934)
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -401,6 +402,10 @@ const ss = () => {
 		}
 	});
 }
+
+setTimeout(() => {
+	ss();
+}, 5000)
 
 setInterval(() => { 
 	console.log(`[MyHeroApi] : Refresh`)
