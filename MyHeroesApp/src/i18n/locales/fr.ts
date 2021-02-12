@@ -106,6 +106,11 @@ export default {
     gdps8: "Ettoufement adulte",
     gdps9: "Ettoufement Nourisson",
     
+    general1: "Vous retrouverez ci-dessous les information autour de votre localisation actuelle.",
+    general2: "News (durée 24h)",
+    general3: "Lancer votre news"
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Rechercher un pays",

@@ -250,7 +250,7 @@ const GeneralScreen = ({ navigation }) => {
                         textAlign: "center",
                         color: "#ffffff",
                         fontSize: 15      
-                    }}>Vous retrouverez ci-dessous les information autour de votre localisation actuelle.</Text>
+                    }}>{I18n.t("general1")}</Text>
                 </View>
 
                 {
@@ -260,9 +260,9 @@ const GeneralScreen = ({ navigation }) => {
                 <View style={{
                     marginTop: 20
                 }}>
-                    <InputComponent height={65} name={"description"} placeholder={"Information"} value={description} icon={faFileAlt} onChange={(v: string) => setDescription(v)} />
+                    <InputComponent height={65} name={I18n.t("general2")} placeholder={I18n.t("general2")} value={description} icon={faFileAlt} onChange={(v: string) => setDescription(v)} />
 
-                    <BottomComponent title={"Publier"} onClick={() => {
+                    <BottomComponent title={I18n.t("general3")} onClick={() => {
                         push();
                         setTimeout(() => {
                             Users.GetMessagesH24(1, 1);
