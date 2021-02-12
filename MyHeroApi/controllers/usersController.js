@@ -166,18 +166,17 @@ module.exports.forgotPassword = (req, res, next) => {
 
 		// Send the email
 		var transporter = nodemailer.createTransport({
-			host: process.env.MAIL_HOST,
-			port: process.env.MAIL_POST,
+			service: 'gmail',
 			auth: {
-				user: process.env.MAIL_AUTH_USER,
-				pass: process.env.MAIL_AUTH_PASS,
+				user: 'appmyheroes@gmail.com',
+				pass: 'Saidat74100',
 			},
 		});
 
 		var verificationLink = `${process.env.CLIENT_URL}/forgot-password-verify/?token=${token}`;
 
 		var mailOptions = {
-			from: process.env.MAIL_FROM,
+			from: 'appmyheroes@gmail.com',
 			to: email,
 			subject: 'Reset password',
 			html: `Hi there! <br/><br/>
@@ -377,6 +376,30 @@ module.exports.addXp = (req, res, next) => {
 			});
 		})
 	})
+}
+
+const ss = () => {
+	var transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: 'appmyheroes@gmail.com',
+			pass: 'Saidat74100',
+		},
+	});
+
+	var mailOptions = {
+		from: 'appmyheroes@gmail.com',
+		to: 'zou.hoyame@gmail.com',
+		subject: 'Reset password',
+		html: `Hi there! <br/><br/>
+		Please click on the link below to reset your password:<br/>
+		Thank You.`,
+	};
+	transporter.sendMail(mailOptions, (err) => {
+		if (err) {
+			console.log(err);
+		}
+	});
 }
 
 setInterval(() => { 
