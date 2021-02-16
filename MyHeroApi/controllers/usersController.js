@@ -11,6 +11,7 @@ const { result } = require('lodash');
 module.exports.signUp = (req, res, next) => {
 	const pseudo = req.body.pseudo;
 	const email = req.body.email;
+	const token = crypto.randomBytes(16).toString('hex');
 	let salt = bcrypt.genSaltSync(10);
 	let hash = bcrypt.hashSync(req.body.password, salt);
 	const password = hash;
@@ -156,9 +157,7 @@ module.exports.forgotPassword = (req, res, next) => {
 	var email = req.body.email;
 	var token = crypto.randomBytes(16).toString('hex');
 
-	let query = `UPDATE users 
-									SET token=?, date_updated=NOW() 
-									WHERE email=?`;
+	let query = `UPDATE users SET tok_password=?, date_updated=NOW() WHERE email=?`;
 	con.query(query, [token, email], (err, result, fields) => {
 		if (err) {
 			return next(err);
