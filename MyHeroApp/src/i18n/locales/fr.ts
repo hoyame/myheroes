@@ -108,7 +108,7 @@ export default {
     
     general1: "Vous retrouverez ci-dessous les information autour de votre localisation actuelle.",
     general2: "News (durée 24h)",
-    general3: "Lancer votre news"
+    general3: "Lancer votre news",
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
