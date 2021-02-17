@@ -53,22 +53,14 @@ router.post(
 	usersController.changePassword
 );
 
-router.post(
-	'/user/forgot_password',
-	[validationForgotPassword, isEmailRegistered],
-	usersController.forgotPassword
-);
+router.post('/user/forgot_password', usersController.forgotPassword);
 
 router.get(
 	'/user/forgot_password/verify/:token',
 	usersController.forgotPasswordVerify
 ); 
 
-router.post(
-	'/user/reset_password',
-	[validationResetPassword, isResetTokenValid],
-	usersController.resetPassword
-); 
+router.post('/user/reset_password', usersController.resetPassword); 
 
 router.post('/user/add_rate', usersController.addRate); 
 

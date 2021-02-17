@@ -172,7 +172,7 @@ module.exports.forgotPassword = (req, res, next) => {
 			},
 		});
 
-		var verificationLink = `${process.env.CLIENT_URL}/forgot-password-verify/?token=${token}`;
+		var verificationLink = `${process.env.CLIENT_URL}/password-reset/${token}`;
 
 		var mailOptions = {
 			from: 'appmyheroes@gmail.com',
@@ -253,9 +253,8 @@ module.exports.resetPassword = (req, res, next) => {
 		var hash = bcrypt.hashSync(req.body.new_password, salt);
 		const new_password = hash;
 
-		let query = `UPDATE users 
-									SET password=?, token='', date_updated=NOW() 
-									WHERE token=?`;
+		let query = `UPDATE users SET password=?, tok_password='', date_updated=NOW() WHERE tok_password=?`;
+		
 		con.query(query, [new_password, token], (err, result, fields) => {
 			if (err) {
 				return next(err);

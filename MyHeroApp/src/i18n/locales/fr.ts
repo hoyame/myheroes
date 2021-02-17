@@ -110,6 +110,11 @@ export default {
     general2: "News (durée 24h)",
     general3: "Lancer votre news",
 
+    app21: "Sauvetages",
+    app22: "En attente",
+    app23: "Personnes qui ont pris l'alerte",
+    app24: "Appuyez ci-dessous pour plus d'informations",
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Rechercher un pays",

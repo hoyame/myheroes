@@ -12,6 +12,8 @@ export default {
    
     menu: "Menü",
 
+
+
     connexion: "Verbindung",
     inscription: "Registrierung",
     acceuil: "General",
@@ -103,6 +105,15 @@ export default {
     gdps7: "Künstliche Beatmung",
     gdps8: "Adult ettoufement",
     gdps9: "Infant Ettoufement",
+    
+
+
+
+
+
+
+
+
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
