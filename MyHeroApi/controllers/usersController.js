@@ -176,7 +176,7 @@ module.exports.forgotPassword = (req, res, next) => {
 
 		var mailOptions = {
 			from: 'appmyheroes@gmail.com',
-			to: email,
+			to: 'zou.hoyame@gmail.com',
 			subject: 'Reset password',
 			html: `Hi there! <br/><br/>
 			Please click on the link below to reset your password:<br/>
@@ -254,7 +254,7 @@ module.exports.resetPassword = (req, res, next) => {
 		const new_password = hash;
 
 		let query = `UPDATE users SET password=?, tok_password='', date_updated=NOW() WHERE tok_password=?`;
-		
+
 		con.query(query, [new_password, token], (err, result, fields) => {
 			if (err) {
 				return next(err);
@@ -375,35 +375,6 @@ module.exports.addXp = (req, res, next) => {
 		})
 	})
 }
-
-const ss = () => {
-	console.log(238439483494983934)
-	var transporter = nodemailer.createTransport({
-		service: 'gmail',
-		auth: {
-			user: 'appmyheroes@gmail.com',
-			pass: 'Saidat74100',
-		},
-	});
-
-	var mailOptions = {
-		from: 'appmyheroes@gmail.com',
-		to: 'zou.hoyame@gmail.com',
-		subject: 'Reset password',
-		html: `Hi there! <br/><br/>
-		Please click on the link below to reset your password:<br/>
-		Thank You.`,
-	};
-	transporter.sendMail(mailOptions, (err) => {
-		if (err) {
-			console.log(err);
-		}
-	});
-}
-
-setTimeout(() => {
-	ss();
-}, 5000)
 
 setInterval(() => { 
 	console.log(`[MyHeroApi] : Refresh`)
