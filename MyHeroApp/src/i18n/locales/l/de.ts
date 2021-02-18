@@ -9,11 +9,11 @@ export default {
     welcomeMH: "Willkommen bei MyHeroes",
     continuer: "Weiter",
     annuler: "bbrechen",
-    publier: "veröffentlichen",
+   
     menu: "Menü",
-    notDesc: "Keine Beschreibung",
-    maintPourPInfo: "Halten Sie für weitere Informationen",
-    userWarn: "Tippen Sie unten auf, um weitere Informationen zu erhalten.",
+
+
+
     connexion: "Verbindung",
     inscription: "Registrierung",
     acceuil: "General",
@@ -22,7 +22,7 @@ export default {
     avis: "Hinweis",
     parametres: "Parameter",
     account: "Mein Konto",
-    faq: "Fragen",
+    faq: "F.A.Q",
     confidentiality: "Vertraulichkeit",
     apropos: "Über",
     gdps: "Erste-Hilfe-Maßnahmen",
@@ -32,7 +32,7 @@ export default {
     connexionDesc: "Mit Ihrem Konto verbinden",
     connexoinIdentifiant: "Identifier",
     connexoinMDP: "Passwort",
-    connexionVousAvezPasCompte: "Haben sie kein Konto?",
+    connexionVousAvezPasCompte: "Sie haben kein Konto?",
     connexionReg: "Register",
     connexionTES: "Verbinden",
 
@@ -106,15 +106,15 @@ export default {
     gdps8: "Adult ettoufement",
     gdps9: "Infant Ettoufement",
     
-    general1: "Nachfolgend finden Sie Informationen zu Ihrem aktuellen Standort",
-    general2: "News (Dauer 24h)",
-    general3: "Starten Sie Ihre Nachrichten",
 
-    app21: "Rescues",
-    app22: "Ausstehend",
-    app23: "Leute, die den Alarm genommen haben",
-    app24: "Drücken Sie unten für weitere Informationen",
 
+
+
+
+
+
+
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Infant Ettoufement",

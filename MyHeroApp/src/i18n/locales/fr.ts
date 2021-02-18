@@ -22,11 +22,12 @@ export default {
     avis: "Avis",
     parametres: "Paramètres",
     account: "Mon compte",
-    faq: "F.A.Q",
+    faq: "Questions",
     confidentiality: "Confidentialité",
     apropos: "A propos",
     gdps: "Gestes de premier secours",
     ndu: "Numéros d'urgence",
+    mdpOublier: "Mot de passe oubliée",
 
     connexionEC: "Connexion en cours",
     connexionDesc: "Se connecter a son compte",

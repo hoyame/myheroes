@@ -13,8 +13,7 @@ export default {
     menu: "Menu",
     notDesc: "Not a description",
     maintPourPInfo: "Hold for more information",
-
-
+    userWarn: "Tap below for more information.",
     connexion: "Connection",
     inscription: "Registration",
     acceuil: "General",
@@ -23,7 +22,7 @@ export default {
     avis: "View",
     parametres: "Settings",
     account: "My account",
-    faq: "Frequently Asked Questions",
+    faq: "Questions",
     confidentiality: "Confidentiality",
     apropos: "About",
     gdps: "First aid measures",
@@ -77,7 +76,7 @@ export default {
     alertFaible: "Low",
     alertDescGrave: "(Accident, assault, Discomforts ...)",
     alertDescMoyen: "(Broken down, stuck, theft ...)",
-    alertDescFaible: "(Lost, nuisance, other...)",
+    alertDescFaible: "(Lost, lost animal, other...)",
     alertInProgress: "Alert in progress",
     alertInProgressDesc: "Alert page",
     alertT: "Alert",
@@ -107,6 +106,15 @@ export default {
     gdps8: "Adult stifling",
     gdps9: "Infant smother",
     
+    general1: "You will find below the information around your current location.",
+    general2: "News (duration 24h)",
+    general3: "Start your news",
+
+    app21: "Rescues",
+    app22: "Pending",
+    app23: "People who took the alert",
+    app24: "Press below for more information",
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Find a country",

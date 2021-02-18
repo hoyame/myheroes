@@ -9,9 +9,11 @@ export default {
     welcomeMH: "Bienvenido a MyHeroes",
     continuer: "Continuar",
     annuler: "Cancela",
-   
+    publier: "Publicar",
     menu: "Menú",
-
+    notDesc: "Sin descripción",
+    maintPourPInfo: "Mantenga pulsado para obtener más información",
+    userWarn: "Toque a continuación para obtener más información",
     connexion: "Conexión",
     inscription: "Registro",
     acceuil: "General",
@@ -20,7 +22,7 @@ export default {
     avis: "Aviso",
     parametres: "Parámetros",
     account: "Mi cuenta",
-    faq: "F.A.Q",
+    faq: "Preguntas",
     confidentiality: "Confidencialidad",
     apropos: "Acerca de",
     gdps: "Acciones de primeros auxilioss",
@@ -74,7 +76,7 @@ export default {
     alertFaible: "Baja",
     alertDescGrave: "(Accidente, agresión, malestar ...)",
     alertDescMoyen: "(averiado, atascado, robo ...)",
-    alertDescFaible: "(Perdido, molestia, otro ...)",
+    alertDescFaible: "(Perdido, animal perdido, otro ...)",
     alertInProgress: "Alerta en curso",
     alertInProgressDesc: "Página de alerta",
     alertT: "Alerta",
@@ -104,6 +106,15 @@ export default {
     gdps8: "Ettoufement para adultos",
     gdps9: "Ettoufement infantil",
     
+    general1: "A continuación, encontrará la información sobre su ubicación actual.",
+    general2: "Noticias (duración 24h)",
+    general3: "Inicie sus noticias",
+
+    app21: "Rescates",
+    app22: "Pendiente",
+    app23: "Personas que recibieron la alerta",
+    app24: "Presione a continuación para obtener más información",
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     nduSearchPays: "Buscar un país",
