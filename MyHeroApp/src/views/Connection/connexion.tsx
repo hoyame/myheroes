@@ -525,7 +525,7 @@ const ConnexionScreen = ({ navigation }) => {
                                     marginBottom: 15,
                                     flexDirection: 'row'
                                 }}>
-                                    <TouchableOpacity onPress={() => Linking.openURL("http://146.59.227.90:4000/password-reset/new")}>
+                                    <TouchableOpacity onPress={() => Linking.openURL("http://146.59.227.90:5000/password-reset/new")}>
                                         <Text style={{
                                             color: "#3497FD"
                                         }}>{I18n.t("mdpOublier")}</Text>
