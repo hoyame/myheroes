@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Alert, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput, Alert, ScrollView, KeyboardAvoidingView, Platform, Linking } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import InputComponent from '../../components/Input/input';
 import { faArrowAltCircleLeft, faCircle, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -516,6 +516,19 @@ const ConnexionScreen = ({ navigation }) => {
                                         <Text style={{
                                             color: "#3497FD"
                                         }}>{I18n.t("connexionReg")}</Text>
+                                    </TouchableOpacity>
+                                </View>
+
+                                <View style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    marginBottom: 15,
+                                    flexDirection: 'row'
+                                }}>
+                                    <TouchableOpacity onPress={() => Linking.openURL("http://146.59.227.90:4000/password-reset/new")}>
+                                        <Text style={{
+                                            color: "#3497FD"
+                                        }}>"{I18n.t("mdpOublié")}"</Text>
                                     </TouchableOpacity>
                                 </View>
 
