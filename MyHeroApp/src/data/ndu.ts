@@ -42,5 +42,12 @@ export const data = [
         "samu": "117",
         "police": "107",
         "pompiers": "105",
+    },
+    {
+        "p": "United Kingdom",
+        "img": "https://www.countryflags.io/gb/flat/64.png",
+        "samu": "112",
+        "police": "101",
+        "pompiers": "999",
     }
 ]
