@@ -183,7 +183,8 @@ const MapScreen = ({ navigation }) => {
   const HeaderComponent = (props: IHeader) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const map = props.map || false
-    
+    const plateform = Platform.OS;
+
     return (
         <View style={{
             position: "absolute",
@@ -221,41 +222,41 @@ const MapScreen = ({ navigation }) => {
                     </View>
                 </TouchableHighlight>
 
-                <TouchableHighlight
+                { plateform == "android" &&
+                  <TouchableHighlight
                     style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 50
+                      height: 50,
+                      width: 50,
+                      borderRadius: 50
                     }}
-
+                    
                     activeOpacity={0.5}
                     underlayColor="#bebebe"
                     onPress={() => setDark(!dark)}
-                >
-                
-                    <View style={{
+                    >
+                      <View style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: "center",
-
                         height: 50,
                         width: 50,
                         borderRadius: 50,
                         backgroundColor: "#E1E1E1"
-                    }}>
-                        <FontAwesomeIcon icon={dark == false ? faMoon : faSun } size={18} style={{
-                          color: "yellow"
-                        }} />
-                    </View>
-                </TouchableHighlight>
+                      }}>
+                          <FontAwesomeIcon icon={dark == false ? faMoon : faSun } size={18} style={{
+                            color: "yellow"
+                          }} />
+                      </View>
+                  </TouchableHighlight>
 
+                }
                 <TouchableHighlight
-                    style={{
-                        borderRadius: 50
-                    }}
-
-                    activeOpacity={0.5}
-                    underlayColor="#DDDDDD"
+                style={{
+                  borderRadius: 50
+                }}
+                
+                activeOpacity={0.5}
+                underlayColor="#DDDDDD"
                     onPress={() => props.navigation.navigate('Account')}
                 >                
                     <Image

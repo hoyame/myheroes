@@ -1,7 +1,7 @@
 
 import { waitForDebugger } from 'inspector';
 import React from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { View, Text, TouchableHighlight, Image, Platform } from 'react-native';
 import { Dimensions } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faAlignLeft, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
