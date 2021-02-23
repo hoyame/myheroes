@@ -27,7 +27,6 @@ export default {
     apropos: "Sobre",
     gdps: "Ações de primeiros socorros",
     ndu: "Números de emergência",
-    mdpOublier: "Esqueceu sua senha",
 
     connexionEC: "Conexão em andamento",
     connexionDesc: "Conecte-se à sua conta",
