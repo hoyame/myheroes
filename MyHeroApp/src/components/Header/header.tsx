@@ -46,22 +46,27 @@ const HeaderComponent = (props: IHeader) => {
                         <View style={{
                             display: "flex",
                             flexDirection: "row",
+                            marginBottom: 20,
                             alignItems: "center",
-                            marginBottom: 25,
                             justifyContent: "center",
                             height: 40,
-                            width: 150,
+                            width: 170,
                             borderRadius: 10,
                             backgroundColor: '#1d1d1d'
                         }}>
-                            <FontAwesomeIcon icon={faHome} size={20} style={{
-                                marginRight: 8,
-                                color: "#ffffff"
-                            }} />
+                            <Image 
+                                source={{uri: "https://cdn.discordapp.com/attachments/751946061660028978/813893131396317194/myhero.png"}} 
+                                style={{
+                                    height: 28,
+                                    width: 28,
+                                    marginRight: 5
+                                }}
+                            />
 
                             <Text style={{
                                 fontSize: 20,
                                 fontWeight: "700",
+                                textAlign: "center",
                                 color: '#ffffff'
                             }}>MyHeroes</Text>
                         </View>

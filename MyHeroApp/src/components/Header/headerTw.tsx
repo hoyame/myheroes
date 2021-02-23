@@ -153,11 +153,11 @@ const HeaderComponent = (props: IHeader) => {
                     backgroundColor: '#1d1d1d'
                 }}>
                     <Image 
-                        source={{uri: "https://cdn.discordapp.com/attachments/650778484523794456/789992516505305098/Sans_titre_-_1.jpg"}} 
+                        source={{uri: "https://cdn.discordapp.com/attachments/751946061660028978/813893131396317194/myhero.png"}} 
                         style={{
-                            height: 25,
-                            width: 25,
-                            marginRight: 10
+                            height: 28,
+                            width: 28,
+                            marginRight: 5
                         }}
                     />
 
