@@ -214,9 +214,11 @@ const AccountScreen = ({ navigation }) => {
 
     const returnBadgesWithXp = (num: number) => {
             if (num < 100) {
+                setInformation(true)
+
                 return (
                     <>
-                        <FontAwesomeIcon icon={faTimesCircle} size={25} style={{color: "red", marginRight: 7.5}} />
+
                    </>
                 )
             } else if (num >= 100 && num <= 500) {
@@ -360,7 +362,7 @@ const AccountScreen = ({ navigation }) => {
                                     display: "flex",
                                     flexDirection: 'row'
                                 }}>
-                                    {returnBadgesWithXp(xp)}
+                                    { returnBadgesWithXp(xp)}
                                 </View>
                             : 
                                 <View style={{
