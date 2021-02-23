@@ -270,13 +270,13 @@ const HomeScreen = ({ navigation }) => {
                                             justifyContent: "center",
                                         }}>
                                             <Text style={{ 
-                                                fontSize: 25,
+                                                fontSize: 28,
                                                 color: "#000000",
                                                 marginBottom: 5,
                                             }}>{ptitle}</Text>
 
                                             <Text style={{
-                                                fontSize: 15,
+                                                fontSize: 19,
                                                 color: "#000000",
                                             }}>{pdescription}</Text>
                                         </View>
