@@ -114,7 +114,7 @@ const CreateAlertScreen = ({ navigation }) => {
 
                                     <Text style={{
                                         color: "#262626",
-                                        fontSize: 12
+                                        fontSize: 15
                                     }}>{description}</Text>
                                 </View>
 

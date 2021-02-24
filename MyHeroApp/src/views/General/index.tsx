@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions, Alert } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
 import { Langues } from '../../data/langues';
 import I18n from '../../i18n/i18n';
@@ -234,7 +234,7 @@ const GeneralScreen = ({ navigation }) => {
         <>
             <HeaderComponent title="News 24H" navigation={navigation} />
 
-        <ScrollView>
+            <ScrollView>
 
             <View style={{ paddingLeft: 35, paddingRight: 35, marginBottom: 35}}>
                 <View style={{
@@ -253,22 +253,27 @@ const GeneralScreen = ({ navigation }) => {
                     }}>{I18n.t("general1")}</Text>
                 </View>
 
-                {
-                    returnAvis()
-                }
-            
                 <View style={{
-                    marginTop: 20
+                    marginTop: 5,
+                    marginBottom: 20
                 }}>
-                    <InputComponent height={65} name={I18n.t("general2")} placeholder={I18n.t("general2")} value={description} icon={faFileAlt} onChange={(v: string) => setDescription(v)} />
+                    <InputComponent height={65} name={I18n.t("general2")} placeholder={I18n.t("general2") + "                                                  "} value={description} icon={faFileAlt} onChange={(v: string) => setDescription(v)} />
 
                     <BottomComponent title={I18n.t("general3")} onClick={() => {
                         push();
+                        Alert.alert(I18n.t("newsSucceful"));
+                        navigation.navigate("Home")
                         setTimeout(() => {
                             Users.GetMessagesH24(1, 1);
                         }, 5000)
                     }}/> 
                 </View>
+
+                {
+                    returnAvis()
+                }
+            
+     
             </View>
                     </ScrollView>
         </>

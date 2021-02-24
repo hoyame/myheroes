@@ -28,6 +28,7 @@ export default {
     gdps: "Gestes de premier secours",
     ndu: "Numéros d'urgence",
     mdpOublier: "Mot de passe oublié",
+    newsSucceful: "News lancée",
 
     connexionEC: "Connexion en cours",
     connexionDesc: "Se connecter a son compte",

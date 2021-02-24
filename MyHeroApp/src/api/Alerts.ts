@@ -247,11 +247,10 @@ export default abstract class MyHeroAlerts {
     }
 }
 
-
 setInterval(() => {
     if (MyHeroAlerts.ViewerData.status == true) {
         MyHeroAlerts.getUsersCount();
         MyHeroAlerts.getUsersData();
     }
-}, 100000)
+}, 10000)
 
