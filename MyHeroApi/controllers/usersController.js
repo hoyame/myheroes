@@ -183,6 +183,7 @@ module.exports.forgotPassword = (req, res, next) => {
 			<a href="${verificationLink}" target="_blank">${verificationLink}</a><br/><br/>
 			Thank You.`,
 		};
+		
 		transporter.sendMail(mailOptions, (err) => {
 			if (err) {
 				return next(err);

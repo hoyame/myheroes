@@ -50,7 +50,7 @@ module.exports.removeAlert = (req, res, next) => {
     AlertsUsersData[indexOf] = [];
     AlertsData = AlertsData.filter(x => x.identifier != req.body.identifier);
 
-    app.sendAlertsRemove(AlertsData);
+    app.sendAlertsRemove(model);
     res.send(AlertsData);
 }
 
