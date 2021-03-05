@@ -6,7 +6,7 @@ import AlertInformationProps from '../../components/AlertPropsDetails';
 import { useReduxState } from '../../data/store';
 import { setHelpAlertData, setSendAlertData, setViewerCount } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
-import MyHeroAlerts from '../../api/Alerts';
+import MyHeroAlerts, { setAlertStatus } from '../../api/Alerts';
 import I18n from '../../i18n/i18n';
 import CheckBoxComponent from '../../components/Checkbox';
 import BottomComponent from '../../components/Bottom';
@@ -14,6 +14,7 @@ import { faUser, faQuestionCircle, faFileAlt } from '@fortawesome/free-regular-s
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { PulseIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 
@@ -65,14 +66,6 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
             dispatch(setViewerCount(MyHeroAlerts.ViewerData.count))
         }
     }, 5000)
-
-    const _storeData = async () => {
-        try {
-            await AsyncStorage.setItem('@send_alert', 'false')
-        } catch (error) {
-            console.log("error", error)
-        }
-    };
 
     return (
         <>
@@ -232,6 +225,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
     const alerts = useReduxState(state => state.user.help);
     const createAlertLevel = useReduxState(state => state.user.createAlertLevel)
     const alertDataHelp = useReduxState(state => state.user.showAlert);
+    const statusHelp = useReduxState(state => state.user.help.status);
     const dispatch = useDispatch();
 
     const _storeData = async () => {
@@ -246,6 +240,10 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
  
     if (description == "") {
         description = I18n.t("notDesc");
+    } 
+
+    if (statusHelp == false) {
+        navigation.navigate("Home")
     } 
 
     return (
@@ -341,7 +339,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                 <View style={{marginBottom: 10}}></View>
                 
                 <BottomComponent title={I18n.t("alertAbbandoner")} onClick={() => { 
-                    _storeData()
+                    setAlertStatus(false, '')
                     MyHeroAlerts.removeAlert(alertDataHelp.identifier)
                     dispatch(setHelpAlertData({status: false, data: {
                         identifier: "",

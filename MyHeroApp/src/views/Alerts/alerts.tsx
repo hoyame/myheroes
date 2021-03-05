@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import HeaderComponent from '../../components/Header/header';
 import { setCacheShowAlert } from '../../data/actions/user';
 import { useReduxState } from '../../data/store';
+import { setAlertStatus } from '../../api/Alerts';
 
 const AlertScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);

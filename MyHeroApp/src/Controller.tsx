@@ -19,7 +19,7 @@ import { SenderAcceptAlertPage, HelperAcceptAlertPage } from './views/Alerts/acc
 import GDPSPage from './views/GDPS/index';
 import NDUPage from './views/NDU/index'
 import { useReduxState } from './data/store';
-import { setImage, setMail, setName, setRate, setXp } from './data/actions/user';
+import { setHelpAlertData, setImage, setMail, setName, setRate, setXp } from './data/actions/user';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useState } from 'react';
@@ -34,7 +34,7 @@ import I18n, { setLanguage } from './i18n/i18n';
 import FAQScreen from './views/FAQ';
 import GeneralScreen from './views/General';
 import BackgroundTimer from 'react-native-background-timer';
-import MyHeroAlerts, { AlertsData } from './api/Alerts';
+import MyHeroAlerts, { AlertsData, AlertStatusDataView, AlertStatusDataViewReq, AlertStatusView, setAlertStatus } from './api/Alerts';
 import { addAlert, getAlert } from './data/actions/alerts';
 import { API_LINK, API_LINK_CDN } from './App';
 import ViewStream from './views/Alerts/view_stream';
@@ -68,6 +68,8 @@ const Controller = () => {
   const [mailA, setAMail] = useState('');
   const [refreshing, setRefreshing] = useState(false);
   const [languageS, setLanguageS] = useState(false);
+  const alertDataHelp = useReduxState(state => state.user.showAlert);
+  const statusHelp = useReduxState(state => state.user.help.status);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -109,7 +111,30 @@ const Controller = () => {
     }
   }, 1000);
 
-  useEffect(() => {
+  setInterval(() => {
+    if (statusHelp == true) {
+        console.log("AlertStatusDataView", AlertStatusDataView)
+        console.log("AlertStatusDataViewReq", AlertStatusDataViewReq)
+        console.log("AlertStatusView", AlertStatusView)
+        
+        if (AlertStatusDataView === AlertStatusDataViewReq && AlertStatusView == true) {
+          setAlertStatus(false, '')
+          MyHeroAlerts.removeAlert(alertDataHelp.identifier)
+          dispatch(setHelpAlertData({status: false, data: {
+            identifier: "",
+            id: 0,
+            level: 0,
+            source: "",
+            latitude: 0,
+            longitude: 0,    
+            description: "",
+            webrtc: ""
+          }}))              
+        }
+      }
+    }, 5000)
+    
+    useEffect(() => {
     setTimeout(() => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
@@ -196,8 +221,6 @@ const Controller = () => {
       }
     }, 3000)
   });
-
-  
 
   if (initialize == false) {
     return (

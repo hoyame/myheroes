@@ -6,14 +6,26 @@ import { useReduxState } from "../data/store";
 import Users from "./User";
 
 const myHeaders = new Headers();
-//const myLatitude = useReduxState(state => state.location.latitude);
-//const myLongitude = useReduxState(state => state.location.longitude);
 
 const myLatitude = 15;
 const myLongitude = 3;
 
+export let AlertStatusView = false;
+export let AlertStatusDataView = ""; // email de la personne prise en charge
+export let AlertStatusDataViewReq = ""; // email de la personne prise en charge
+
 export let AlertsData = [];
 export let AlertsDataUsers = [];
+
+export function SetStatusDataViewReq(title: string) {
+    AlertStatusDataViewReq = title;
+}
+
+export function setAlertStatus(bool: boolean, data: string) {
+    AlertStatusView = bool;
+    AlertStatusDataView = data;
+    AlertStatusDataViewReq = "";
+}
 
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
     var R = 6371; // Radius of the earth in km

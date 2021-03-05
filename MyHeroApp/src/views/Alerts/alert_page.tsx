@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import { useDispatch } from 'react-redux';
-import MyHeroAlerts from '../../api/Alerts';
+import MyHeroAlerts, { setAlertStatus } from '../../api/Alerts';
 import Users from '../../api/User';
 import AccountStats from '../../components/AccountStats';
 import AlertInformationProps from '../../components/AlertPropsDetails';
@@ -96,6 +96,7 @@ const AlertPageScreen = ({ navigation }) => {
 
                 <BottomComponent title={I18n.t("alertPrendreAlert")} onClick={() => {
                     _storeData();
+                    setAlertStatus(true, alertData.identifier)
                     MyHeroAlerts.takeAlert(alertData.identifier, userMail)
                     dispatch(setHelpAlertData({status: true, data: alertData}))              
                     dispatch(setCacheUser({ status: false, mail: "", name: "", image: "", xp: 0, rate: 0 }));

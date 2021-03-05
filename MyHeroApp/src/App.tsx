@@ -4,7 +4,7 @@ import Controller from './Controller';
 import { Provider } from 'react-redux';
 import { store, persistor } from './data/store';
 import { MyHeroService } from './api/Service';
-import MyHeroAlerts from './api/Alerts';
+import MyHeroAlerts, { SetStatusDataViewReq } from './api/Alerts';
 import BackgroundTimer from 'react-native-background-timer';
 import firebase from '@react-native-firebase/app';
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
@@ -77,25 +77,28 @@ export const API_LINK_CDN = "http://146.59.227.90:3000";
 
 const App = () => {
   useEffect(() => {
-    socket.on('connect', function(data) {
+    socket.on('connect', function(data: any) {
       socket.emit('join', 0);
     });
 
-    socket.on('add_alerts', function(data){
+    socket.on('add_alerts', function(data: any){
       console.log("add_alerts");
       MyHeroService.sendNotification('Alertes', 'Des alertes sont disponibles');
       MyHeroAlerts.GetAlerts(data);
     });
 
-    socket.on('remove_alerts', function(data){
+    socket.on('remove_alerts', function(data: any){
       console.log("remove_alerts");
-      MyHeroAlerts.GetAlerts(data);
+      console.log("remove_data", data[1])
+      SetStatusDataViewReq(data[1].identifier)
+      MyHeroAlerts.GetAlerts(data[0]);
     });
 
     socket.on('get_alerts', function(data: any){
       console.log("get_alerts");
       MyHeroAlerts.GetAlerts(data);
     });
+
   })
   
   useEffect(() => {
