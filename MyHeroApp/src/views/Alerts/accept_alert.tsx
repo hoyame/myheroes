@@ -227,6 +227,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
     const alertDataHelp = useReduxState(state => state.user.showAlert);
     const statusHelp = useReduxState(state => state.user.help.status);
     const dispatch = useDispatch();
+    const [photo, setPhoto] = useState(false);
 
     const _storeData = async () => {
         try {
@@ -280,6 +281,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                                 fontSize: 20
                             }}>{I18n.t("alertInProgress")}</Text>
                         </View>
+                        
                         <View style={{
                             marginLeft: 30
                         }}>
@@ -311,6 +313,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
+
                     <View style={{
                         display: "flex",
                         alignItems: "center",
@@ -333,7 +336,31 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     </View>    
                 </View>  
 
-                <BottomComponent title={I18n.t("alertApercCam")} onClick={() => navigation.navigate('ViewStream')}/>
+                <View style={{
+                    height: 200,
+                    marginTop: 5,
+                    marginBottom: 5,
+                    borderRadius: 15,
+                    padding: 10,
+                    justifyContent: "center",
+                    alignItems: 'center',
+                    backgroundColor: "#ffffff"
+                }}>
+                    { photo ? 
+                        <TouchableOpacity>
+                            <Text style={{
+                                color: "#3497FD",
+                                fontSize: 20
+                            }}>Ajouter une photo</Text>
+                        </TouchableOpacity>
+                    : 
+                        <Image source={{uri: `http://146.59.227.90:3000/api/avatar/alert-${alerts.data.identifier}?time=${new Date()}`}} style={{
+                            height: "99%",
+                            width: "99%",
+                            borderRadius: 10,
+                        }}></Image>
+                    }
+                </View>
                 <View style={{marginBottom: 10}}></View>
                 <BottomComponent title={I18n.t("alertLancerItt")} onClick={() => Linking.openURL(`https://www.google.es/maps?q=${alerts.data.latitude},${alerts.data.longitude}`)}/>
                 <View style={{marginBottom: 10}}></View>
