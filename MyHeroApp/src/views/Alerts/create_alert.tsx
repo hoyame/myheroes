@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
 import { faEnvelope, faExclamationCircle, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import React, { useState } from 'react';
 import { ActivityIndicator, Dimensions, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import { useReduxState } from '../../data/store';
