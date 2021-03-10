@@ -346,14 +346,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     alignItems: 'center',
                     backgroundColor: "#ffffff"
                 }}>
-                    { photo ? 
-                        <TouchableOpacity>
-                            <Text style={{
-                                color: "#3497FD",
-                                fontSize: 20
-                            }}>Ajouter une photo</Text>
-                        </TouchableOpacity>
-                    : 
+                    { photo == false &&
                         <Image source={{uri: `http://146.59.227.90:3000/api/avatar/alert-${alerts.data.identifier}?time=${new Date()}`}} style={{
                             height: "99%",
                             width: "99%",
