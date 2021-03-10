@@ -54,7 +54,7 @@ const InputComponent = (props: IInput) => {
                         fontSize: 17.5
                     }}
                     placeholder={props.placeholder}
-                    placeholderTextColor="#757575"
+                    placeholderTextColor="#2C2C2C"
                     onChangeText={text => props.onChange(text)}
                     value={props.value}
                     secureTextEntry={props.password == true ? true : false }

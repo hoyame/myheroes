@@ -56,6 +56,7 @@ const InputComponent = (props: IInput) => {
                         width: screenWidth - 22,
 
                     }}
+                    placeholderTextColor="#2C2C2C"
                     placeholder={props.placeholder}
                     onChangeText={text => props.onChange(text)}
                     value={props.value}
