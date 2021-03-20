@@ -83,7 +83,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                     width: screenWidth,
                     borderRadius: 15,
                     marginTop: 10,
-                    marginBottom: 7.5,
+                    marginBottom: 15,
                     backgroundColor: returnColor(createAlertLevel)
                 }}>
                     <View style={{
@@ -161,12 +161,7 @@ export const SenderAcceptAlertPage = ({ navigation }) => {
                         }}>Heroes</Text>
                     </View>
                 </View> 
-                                            
-                <View style={styles.checkboxContainer}>
-                    <CheckBoxComponent />
-                    <Text style={styles.label}>{I18n.t("alertActivCam")}</Text>
-                </View>
-
+               
                 <BottomComponent title={I18n.t("alertNotDanger")} onClick={() => {
                     dispatch(setSendAlertData({status: false, data: {
                         identifier: "",
