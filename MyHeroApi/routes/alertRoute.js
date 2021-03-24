@@ -23,7 +23,14 @@ router.get('/alerts/get_data_viewer_users', alertController.getDataViewerUsers);
 
 router.post('/list/add', alertController.addList);
 
+
+router.post('/list/approvate', alertController.approvateList);
+router.post('/list/delete', alertController.removeList);
+
 router.get('/list/get', alertController.returnList);
+
+router.get('/list/get-verif', alertController.returnListValidate);
+
 
 
 module.exports = router;

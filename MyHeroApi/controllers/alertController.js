@@ -2,6 +2,7 @@ let AlertsData = []
 let AlertsUsersData = [];
 
 let InfoData = []
+let InfoDataValidate = []
 
 const app = require('../app');
 
@@ -144,11 +145,52 @@ module.exports.addList = (req, res, next) => {
     
     InfoData.push(model)
     console.log(InfoData);    
+}
+
+module.exports.removeList = (req, res, next) => {
+    const identifier = req.body.identifier;
+    const found = InfoData.find(element => element.identifier == identifier);
+    const indexOf = InfoData.indexOf(found)
+    
+    const model = {
+        name: req.body.name,
+        rate: req.body.rate,
+        description: req.body.description,
+        latitude: req.body.latitude, 
+        longitude: req.body.longitude
+    }
+
+    InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
+
+    res.send(InfoData);
+}
+
+module.exports.approvateList = (req, res, next) => {
+    const identifier = req.body.identifier;
+    const found = InfoData.find(element => element.identifier == identifier);
+    const indexOf = InfoData.indexOf(found)
+    
+    const model = {
+        name: req.body.name,
+        rate: req.body.rate,
+        description: req.body.description,
+        latitude: req.body.latitude, 
+        longitude: req.body.longitude
+    }
+
+    InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
+
+    res.send(InfoData);
+    InfoDataValidate.push(model);
     app.sendListNotif(model);
 }
 
 module.exports.returnList = (req, res, next) => {
     res.send(InfoData);
+}
+
+module.exports.returnListValidate = (req, res, next) => {
+    res.send(InfoDataValidate);
 }
 
 // Karim@gmail.com
