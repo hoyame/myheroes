@@ -31,7 +31,7 @@ export default abstract class Users {
     }
 
     public static GetMessagesH24(latitude: number, longitude: number) {
-        axios.get(`${API_LINK}/list/get`)
+        axios.get(`${API_LINK}/list/get-verif`)
             .then((response) => {
                 const data = response.data;
                 InformationsH24 = data;
