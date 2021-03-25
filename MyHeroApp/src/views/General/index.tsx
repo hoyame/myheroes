@@ -13,6 +13,7 @@ import { useReduxState } from '../../data/store';
 import { API_LINK } from '../../App';
 import axios from 'axios';
 import Users, { InformationsH24 } from '../../api/User';
+import MyHeroAlerts from '../../api/Alerts';
 
 
 const GeneralScreen = ({ navigation }) => {
@@ -206,28 +207,31 @@ const GeneralScreen = ({ navigation }) => {
     }
 
     const push = () => {
-        var params = {
-            name: name,
-            rate: rate,
-            description: description,
-            latitude: latitude, 
-            longitude: longitude
-        }
-    
-        fetch(`${API_LINK}/list/add`, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        })
-
-            .then((res) => res.json)
-
-            .then((data: any) => {
-                console.log("listtt", data.data)
+        MyHeroAlerts.getCityGE(latitude, longitude, (e: any) => {
+            var params = {
+                name: name,
+                rate: rate,
+                description: description,
+                latitude: latitude, 
+                longitude: longitude,
+                city: e
+            }
+        
+            fetch(`${API_LINK}/list/add`, {
+                method: 'POST',
+                headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params),
             })
+
+                .then((res) => res.json)
+
+                .then((data: any) => {
+                    console.log("listtt", data.data)
+                })
+        }
     }
 
     return (

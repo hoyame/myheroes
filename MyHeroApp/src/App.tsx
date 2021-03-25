@@ -116,8 +116,6 @@ const App = () => {
       })
     ;
 
-    firebase.messaging().subscribeToTopic("all");
-
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log(
         'Notification caused app to open from background state:',
@@ -160,6 +158,12 @@ const App = () => {
       }
     }
   })
+
+  setTimeout(() => {
+    MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => {
+      firebase.messaging().subscribeToTopic(e);
+    })
+  }, 2500)
 
   return (
     <Provider store={store}>

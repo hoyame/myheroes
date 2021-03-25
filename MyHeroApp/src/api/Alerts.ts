@@ -73,32 +73,37 @@ export default abstract class MyHeroAlerts {
     }
 
     public static SendAlert(data: IAlert) {
-        var params = {
-            identifier: data.identifier,
-            level: data.level,
-            source: data.source,
-            latitude: data.latitude,
-            longitude: data.longitude,
-            description: data.description,
-            webrtc: data.webrtc
-        }
-    
-        fetch(`${API_LINK}/alerts/add`, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        })
-
+        MyHeroAlerts.getCityGE(data.latitude, data.longitude, (e: any) => {
+            console.log(e)
+            
+            var params = {
+                identifier: data.identifier,
+                level: data.level,
+                source: data.source,
+                latitude: data.latitude,
+                longitude: data.longitude,
+                description: data.description,
+                webrtc: data.webrtc,
+                city: e
+            }
+            
+            fetch(`${API_LINK}/alerts/add`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params),
+            })
+            
             .then((res) => res.json)
-
+            
             .then((data: any) => {
                 console.log("fiobgfe", data.data)
             })
+        })
     }
-
+        
     public static DeleteAlert(data: IAlert) {
         var params = {
             identifier: data.identifier,
@@ -253,6 +258,22 @@ export default abstract class MyHeroAlerts {
             }
         })
 
+        .catch((err) => {
+            console.log("err g", err);
+        })
+    }
+
+    public static getCityGE(lat: number, long: number, cb: any) {
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyArT5OMnkTT_XGsskXjXA70VwBk2ZLSgQ8`)
+
+        .then((response) => {
+            const e = response;
+            const status = e.status
+            const city = response.data.results[0].address_components[2].long_name
+
+            cb(city)
+        })
+      
         .catch((err) => {
             console.log("err g", err);
         })

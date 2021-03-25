@@ -71,6 +71,7 @@ const Controller = () => {
   const alertDataHelp = useReduxState(state => state.user.showAlert);
   const statusHelp = useReduxState(state => state.user.help.status);
 
+  
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
@@ -139,6 +140,7 @@ const Controller = () => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
       }
+
     }, 5000)
 
     setTimeout(async () => {
