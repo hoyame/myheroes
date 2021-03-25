@@ -33,7 +33,7 @@ module.exports.sendListNotif = (tbl) => {
 			title: 'Information',
 			body: 'Une info a été envoyée'
 		},
-		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
+		condition: `'${tbl.city}' in topics`
 	};
 
 	admin.messaging().send(message)
@@ -52,7 +52,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 			title: 'Alertes',
 			body: 'Une alerte est disponibles'
 		},
-		condition: "'all' in topics || 'android' in topics || 'ios' in topics"
+		condition: `'${tbl.city}' in topics`
 	};
 
 	admin.messaging().send(message)
