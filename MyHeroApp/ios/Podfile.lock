@@ -112,21 +112,21 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - Google-Maps-iOS-Utils (3.4.2):
-    - Google-Maps-iOS-Utils/Clustering (= 3.4.2)
-    - Google-Maps-iOS-Utils/Geometry (= 3.4.2)
-    - Google-Maps-iOS-Utils/Heatmap (= 3.4.2)
-    - Google-Maps-iOS-Utils/QuadTree (= 3.4.2)
+  - Google-Maps-iOS-Utils (3.6.0):
+    - Google-Maps-iOS-Utils/Clustering (= 3.6.0)
+    - Google-Maps-iOS-Utils/Geometry (= 3.6.0)
+    - Google-Maps-iOS-Utils/Heatmap (= 3.6.0)
+    - Google-Maps-iOS-Utils/QuadTree (= 3.6.0)
     - GoogleMaps
-  - Google-Maps-iOS-Utils/Clustering (3.4.2):
+  - Google-Maps-iOS-Utils/Clustering (3.6.0):
     - Google-Maps-iOS-Utils/QuadTree
     - GoogleMaps
-  - Google-Maps-iOS-Utils/Geometry (3.4.2):
+  - Google-Maps-iOS-Utils/Geometry (3.6.0):
     - GoogleMaps
-  - Google-Maps-iOS-Utils/Heatmap (3.4.2):
+  - Google-Maps-iOS-Utils/Heatmap (3.6.0):
     - Google-Maps-iOS-Utils/QuadTree
     - GoogleMaps
-  - Google-Maps-iOS-Utils/QuadTree (3.4.2):
+  - Google-Maps-iOS-Utils/QuadTree (3.6.0):
     - GoogleMaps
   - GoogleAppMeasurement (7.4.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
@@ -656,7 +656,7 @@ SPEC CHECKSUMS:
   FlipperKit: ab353d41aea8aae2ea6daaf813e67496642f3d7d
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  Google-Maps-iOS-Utils: e8826ab68a4f81355a8e70678507a93cc6aab06b
+  Google-Maps-iOS-Utils: bb96a3e6580ae633bf53ded8d9f466cd3ab8baf8
   GoogleAppMeasurement: 688d7f00e2894d9e13823ed9a028b13b993bc277
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef

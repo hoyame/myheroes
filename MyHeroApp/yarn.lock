@@ -1183,11 +1183,6 @@
   dependencies:
     invariant "^2.2.4"
 
-"@react-native-firebase/admob@^11.1.2":
-  version "11.1.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/admob/-/admob-11.1.2.tgz#c9b146962ea02a85fd167c2d738d0bceb217fed9"
-  integrity sha512-WMF7vyeKMWEArcJSSuZMOJD/l0zh5Cvs9rJHIxaPUmKAUdW1X9RqqxGXD4XSVlouKVHYkSKtIGCp0p921uELlg==
-
 "@react-native-firebase/analytics@^10.5.1":
   version "10.5.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-10.5.1.tgz#cfe6980d55261e0ea93ae1491654d7a01a8ed8da"

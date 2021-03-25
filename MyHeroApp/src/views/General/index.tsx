@@ -231,7 +231,8 @@ const GeneralScreen = ({ navigation }) => {
                 .then((data: any) => {
                     console.log("listtt", data.data)
                 })
-        }
+            
+        })
     }
 
     return (
