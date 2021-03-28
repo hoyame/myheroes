@@ -23,6 +23,7 @@ const HomeScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const screenHeight = Math.round(Dimensions.get('window').height / 4);
     
+    const userR = useReduxState(state => state.user);
     const alertDataHelp = useReduxState(state => state.user.showAlert);
     const alertDataSend = useReduxState(state => state.user.send);
     const statusHelp = useReduxState(state => state.user.help.status);
@@ -176,7 +177,6 @@ const HomeScreen = ({ navigation }) => {
         description = I18n.t("notDesc");
     } 
 
-
     let ptitle;
     let pdescription;
 
@@ -190,6 +190,8 @@ const HomeScreen = ({ navigation }) => {
         ptitle = I18n.t("alertFaible")
         pdescription = I18n.t("alertDescFaible")
     }
+
+    const [sss, setSSS] = useState(false);
 
     return (
         <View style={{

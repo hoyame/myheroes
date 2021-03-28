@@ -1,4 +1,5 @@
 import { ADD_ALERT, GET_ALERTS, UPDATE_ALERTS, IAlert } from '../types/alerts'
+import { SET_TEMP_LANGAGE, SET_TEMP_LANGAGE_STATUS } from '../types/user';
 
 
 interface IAddAlert {
@@ -31,5 +32,7 @@ export const updateAlert = (data: IAlert) => ({
     type: UPDATE_ALERTS,
     payload: data
 })
+
+
 
 export type IAlertsAction = IAddAlert | IGetAlert | IUpdateAlert;

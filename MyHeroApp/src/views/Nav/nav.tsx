@@ -165,7 +165,6 @@ const NavScreen = ({ navigation }) => {
                         <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Alert')}}  title={I18n.t("alertes")} icon={faBell} color="#E63B25" />
                         <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Avis')}}  title={I18n.t("avis")} icon={faStar} color="#701CFC" />
                         <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Parametres')}}  title={I18n.t("parametres")} icon={faCog} color="#1F7CEB" />
-                        <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('FAQScreen')}}  title={I18n.t("faq")} icon={faComments} color="#d80000" />
                         <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Confidentialite')}}  title={I18n.t("confidentiality")} icon={faLock} color="#B0F50A" />
                         <ButtonComponent onClick={() => { dispatch(setCacheNav('Nav'));  navigation.navigate('Propos')}}  title={I18n.t("apropos")} icon={faInfoCircle} color="#FC9A21" />
                     </View>

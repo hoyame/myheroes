@@ -1,3 +1,4 @@
+import { ActionSheetIOS } from 'react-native';
 import { IUserActions } from '../actions/user';
 import { IAlert } from '../types/alerts';
 import { 
@@ -17,7 +18,9 @@ import {
     IUserSend,
     IUserHelp,
     SET_MAIL,
-    SET_CACHE_NAVIGATION
+    SET_CACHE_NAVIGATION,
+    SET_TEMP_LANGAGE,
+    SET_TEMP_LANGAGE_STATUS
 } from '../types/user';
 
 
@@ -83,6 +86,17 @@ const UserReducer = (state = initialState, action: IUserActions): IUser => {
                 ...state,
                 countViewers: action.payload.count
             }
+        case SET_TEMP_LANGAGE:
+            return {
+                ...state,
+                tempLangage: action.payload.temp
+            }
+        case SET_TEMP_LANGAGE_STATUS:
+            return {
+                ...state,
+                tempLangageStatus: action.payload.tempStatus
+            } 
+        
         default: return state;
     }
 }
@@ -94,6 +108,9 @@ const initialState: IUser = {
     xp: 0,
     language: '',
     countViewers: 0,
+
+    tempLangage: "",
+    tempLangageStatus: false,
 
     statusSend: false,
     statusHelp: false,

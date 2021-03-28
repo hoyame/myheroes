@@ -19,7 +19,7 @@ export default {
     acceuil: "Général",
     carte: "Carte",
     alertes: "Alertes",
-    avis: "Avis",
+    avis: "Suggestions",
     parametres: "Paramètres",
     account: "Mon compte",
     faq: "Questions",
@@ -96,8 +96,8 @@ export default {
     alertIDAlert: "ID de l'alerte",
     alertPrendreAlert: "Prendre l'alerte",
 
-    avisRateApp: "Noter l'application",
-    avisDescApp: "Avis",
+    avisDescApp: "Sauver MyHeroes avec vos suggestions",
+    avisRateApp: "Votre suggestion",
 
     gdps1: "Malaises",
     gdps2: "Position latérale de securité",

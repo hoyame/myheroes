@@ -18,7 +18,9 @@ import {
     IUserSend,
     IUserHelp,
     SET_MAIL,
-    IUserCache
+    IUserCache,
+    SET_TEMP_LANGAGE,
+    SET_TEMP_LANGAGE_STATUS
 } from '../types/user';
 
 ////////////////////////////////////////////////////
@@ -262,6 +264,37 @@ export const setCacheUser = (d: IUserCache) => ({
     }
 })
 
+////
+
+interface ISetTempLangage {
+    type: typeof SET_TEMP_LANGAGE,
+    payload: {
+        temp: boolean
+    }
+}
+
+export const setTempLangage = (bool: string) => ({
+    type: SET_TEMP_LANGAGE,
+    payload: {
+        temp: bool
+    }
+})
+
+
+interface ISetTempLangageStatus {
+    type: typeof SET_TEMP_LANGAGE_STATUS,
+    payload: {
+        tempStatus: boolean
+    }
+}
+
+export const setTempLanguageStatus = (bool: boolean) => ({
+    type: SET_TEMP_LANGAGE_STATUS,
+    payload: {
+        tempStatus: bool
+    }
+})
+
 export type IUserActions = 
     ISetMail |
     ISetName | 
@@ -277,5 +310,7 @@ export type IUserActions =
     ISetCacheCreateAlertLevel |
     ISetCacheShowAlert |
     ISetCacheNav |
-    ISetCacheUser
+    ISetCacheUser |
+    ISetTempLangage |
+    ISetTempLangageStatus
 ;

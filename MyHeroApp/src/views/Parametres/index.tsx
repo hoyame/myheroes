@@ -14,7 +14,7 @@ import { Langues } from '../../data/langues';
 import ButtonComponent from '../../components/Button';
 import FondComponent from '../../components/Fond';
 import TitleComponent from '../../components/Title';
-import { setCacheNav, setImage } from '../../data/actions/user';
+import { setCacheNav, setImage, setTempLangage, setTempLanguageStatus } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -139,6 +139,9 @@ const ParametresScreen = ({ navigation }) => {
         return Langues.map((v, k) => {
             return (
                 <TouchableOpacity key={k} onPress={() => {
+                    dispatch(setTempLangage(v.img));
+                    dispatch(setTempLanguageStatus(true));
+
                     _storeDataLanguage(v.id);
                     setLanguage(v.id);
                     setLanguageS(false);

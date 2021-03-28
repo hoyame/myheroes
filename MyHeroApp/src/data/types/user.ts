@@ -1,3 +1,4 @@
+import { NativeSegmentedControlIOSChangeEvent } from "react-native";
 import { IAlert } from "./alerts";
 
 export const SET_MAIL = "SET_MAIL";
@@ -7,6 +8,9 @@ export const SET_IMAGE = "SET_IMAGE";
 export const SET_XP = "SET_XP";
 export const SET_LANGUAGE = "SET_LANGUAGE";
 export const SET_VIEWER_COUNT = "SET_VIEWER_COUNT";
+
+export const SET_TEMP_LANGAGE = "SET_TEMP_LANGAGE";
+export const SET_TEMP_LANGAGE_STATUS = "SET_TEMP_LANGAGE_STATUS";
 
 export const SET_STATUS_SEND = "SET_STATUS";
 export const SET_STATUS_HELP = "SET_STATUS";
@@ -52,6 +56,9 @@ export interface IUser {
     xp: number;
     language: string;
     countViewers: number;
+
+    tempLangage: any;
+    tempLangageStatus: boolean;
 
     statusSend: boolean;
     statusHelp: boolean;
