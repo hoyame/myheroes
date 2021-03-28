@@ -185,21 +185,17 @@ module.exports.forgotPassword = (req, res, next) => {
 			<a href="${verificationLink}" target="_blank">${verificationLink}</a><br/><br/>
 			Thank You.`,
 		};
-
-		try {
-			transporter.sendMail(mailOptions, (err) => {
-				if (err) {
-					console.log("err", err)
-					return next(err);
-				}
-				return res.json({
-					status: 'success',
-					result: result,
-				});
+		
+		transporter.sendMail(mailOptions, (err) => {
+			if (err) {
+				console.log("err", err)
+				return next(err);
+			}
+			return res.json({
+				status: 'success',
+				result: result,
 			});
-		} catch(err) {
-			console.log("tzesfef", err)
-		}	
+		});
 	});
 };
 
