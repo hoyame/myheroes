@@ -176,7 +176,7 @@ module.exports.forgotPassword = (req, res, next) => {
 
 		var mailOptions = {
 			from: 'appmyheroes@gmail.com',
-			to: mail,
+			to: email,
 			subject: 'Reset password',
 			html: `Hi there! <br/><br/>
 			Please click on the link below to reset your password:<br/>
