@@ -19,6 +19,7 @@ const EndAlertScreen = ({ navigation }) => {
     const [rate, setRate] = useState(0)
     const [data, setData] = useState([])
     const [cache, setCache] = useState("");
+    const [load, setLoad] = useState(false);
     
     const sendXp = () => {
         var params = {
@@ -40,7 +41,31 @@ const EndAlertScreen = ({ navigation }) => {
         if (AlertsDataUsers !== []) {
             setData(AlertsDataUsers);
         }
-    }, 10000)
+    }, 500)
+
+    if (load == true) {
+        return (
+            <>
+                <HeaderComponent title={I18n.t("alertMy")} navigation={navigation} />
+
+                <View style={{
+                    padding: 35,
+                    paddingTop: 0,
+                    marginBottom: 180,
+
+                }}>
+                    <ScrollView>
+                        <Text style={{
+                            marginBottom: 30,
+                            fontSize: 25
+                        }}>
+                            Chargement de votre hero....
+                        </Text>
+                    </ScrollView>
+                </View>
+            </>
+        );
+    }   
 
     const returnUsers = () => {
         return data.map((v, k) => {
