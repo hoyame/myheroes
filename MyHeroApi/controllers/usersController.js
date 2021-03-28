@@ -159,10 +159,9 @@ module.exports.forgotPassword = (req, res, next) => {
 
 	let query = `UPDATE users SET tok_password=?, date_updated=NOW() WHERE email=?`;
 	
-	console.log("emssapfwewf", email)
-
 	con.query(query, [token, email], (err, result, fields) => {
 		if (err) {
+			console.log("err", err)
 			return next(err);
 		}
 
@@ -189,6 +188,7 @@ module.exports.forgotPassword = (req, res, next) => {
 		
 		transporter.sendMail(mailOptions, (err) => {
 			if (err) {
+				console.log("err", err)
 				return next(err);
 			}
 			return res.json({
