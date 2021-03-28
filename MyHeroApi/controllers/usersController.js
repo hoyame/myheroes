@@ -158,6 +158,9 @@ module.exports.forgotPassword = (req, res, next) => {
 	var token = crypto.randomBytes(16).toString('hex');
 
 	let query = `UPDATE users SET tok_password=?, date_updated=NOW() WHERE email=?`;
+	
+	console.log("emssapfwewf", email)
+
 	con.query(query, [token, email], (err, result, fields) => {
 		if (err) {
 			return next(err);
