@@ -178,24 +178,28 @@ module.exports.forgotPassword = (req, res, next) => {
 
 		var mailOptions = {
 			from: 'appmyheroes@gmail.com',
-			to: 'zou.hoyame@gmail.com',
+			to: email,
 			subject: 'Reset password',
 			html: `Hi there! <br/><br/>
 			Please click on the link below to reset your password:<br/>
 			<a href="${verificationLink}" target="_blank">${verificationLink}</a><br/><br/>
 			Thank You.`,
 		};
-		
-		transporter.sendMail(mailOptions, (err) => {
-			if (err) {
-				console.log("err", err)
-				return next(err);
-			}
-			return res.json({
-				status: 'success',
-				result: result,
+
+		try {
+			transporter.sendMail(mailOptions, (err) => {
+				if (err) {
+					console.log("err", err)
+					return next(err);
+				}
+				return res.json({
+					status: 'success',
+					result: result,
+				});
 			});
-		});
+		} catch(err) {
+			console.log("tzesfef", err)
+		}	
 	});
 };
 
