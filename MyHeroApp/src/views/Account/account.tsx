@@ -289,7 +289,7 @@ const AccountScreen = ({ navigation }) => {
 
     return (
         <>
-            <HeaderComponent title='' navigation={navigation} />
+            <HeaderComponent redirect="Home" title='' navigation={navigation} />
 
             <View style={{
                 marginTop: -30,
@@ -331,22 +331,7 @@ const AccountScreen = ({ navigation }) => {
                     }}>{xp} XP</Text>
 
                     <ReturnStars rate={rate} />
-
-                    <View style={{
-                        height: 60,
-                        marginTop: 15,
-                        borderRadius: 15,
-                        padding: 10,
-                        justifyContent: "center",
-                        backgroundColor: "#FC9A21"
-                    }}>
-                        <Text style={{
-                            textAlign: "center",
-                            color: "#fff",
-                            fontSize: 15      
-                        }}>{I18n.t("userWarn")}</Text>
-                    </View>
-
+     
                     <TouchableOpacity onPress={() => setInformation(!information)}>
                         {
                             information == false ?

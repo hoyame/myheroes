@@ -279,8 +279,8 @@ const GeneralScreen = ({ navigation }) => {
                 }
             
      
-            </View>
-                    </ScrollView>
+                </View>
+            </ScrollView>
         </>
     );
 }

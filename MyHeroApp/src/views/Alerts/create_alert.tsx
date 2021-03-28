@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { ActivityIndicator, Dimensions, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/header';
 import { useReduxState } from '../../data/store';
-import InputComponent from './input';
+import InputComponent from '../../components/Input/input';
 import { WaveIndicator } from 'react-native-indicators';
 import { useDispatch } from 'react-redux';
 import { setImage, setSendAlertData } from '../../data/actions/user';
@@ -16,6 +16,7 @@ import { MyHeroService } from '../../api/Service';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from "react-native-image-picker";
 import { Image } from 'react-native-animatable';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 const CreateAlertScreen = ({ navigation }) => {
     const [state, setState] = useState({
@@ -130,15 +131,9 @@ const CreateAlertScreen = ({ navigation }) => {
  
     return (
         <>
-            <HeaderComponent title={I18n.t("alertLaunch")} navigation={navigation} />
+                <KeyboardAwareScrollView>
+                    <HeaderComponent title={I18n.t("alertLaunch")} navigation={navigation} />
 
-            <ScrollView>  
-                <KeyboardAvoidingView 
-                    behavior={Platform.OS == "ios" ? "padding" : "height"}
-                    style={{
-                        flex: 1
-                    }}
-                >
                     <ScrollView>
                         <View style={{
                             padding: 35,
@@ -250,8 +245,7 @@ const CreateAlertScreen = ({ navigation }) => {
                             </View>
                         </View>
                     </ScrollView>
-                </KeyboardAvoidingView>
-            </ScrollView>
+                </KeyboardAwareScrollView>
         </>
     );    
 }
