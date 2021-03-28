@@ -28,7 +28,7 @@ export default {
     gdps: "Gestes de premier secours",
     ndu: "Numéros d'urgence",
     mdpOublier: "Mot de passe oublié",
-    newsSucceful: "News lancée",
+    newsSucceful: "En attente de validation par MyHeroes",
 
     connexionEC: "Connexion en cours",
     connexionDesc: "Se connecter a son compte",
@@ -114,7 +114,7 @@ export default {
 
     app21: "Sauvetages",
     app22: "En attente",
-    app23: "Personnes qui ont pris l'alerte",
+    app23: "Heros qui ont pris l'alerte",
     app24: "Appuyez ci-dessous pour plus d'informations",
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

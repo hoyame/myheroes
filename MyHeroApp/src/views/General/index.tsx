@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions, Alert, RefreshControl } from 'react-native';
 import HeaderComponent from '../../components/Header/header';
 import { Langues } from '../../data/langues';
 import I18n from '../../i18n/i18n';
@@ -15,6 +15,9 @@ import axios from 'axios';
 import Users, { InformationsH24 } from '../../api/User';
 import MyHeroAlerts from '../../api/Alerts';
 
+const wait = (timeout: any) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+}
 
 const GeneralScreen = ({ navigation }) => {
     const name = useReduxState(state => state.user.name);
@@ -27,7 +30,7 @@ const GeneralScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [description, setDescription] = useState("");
 
-    const allMess = InformationsH24;
+    let allMess = InformationsH24;
 
     interface IMessage {
         name?: string;
@@ -235,11 +238,37 @@ const GeneralScreen = ({ navigation }) => {
         })
     }
 
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+
+        Users.GetMessagesH24(0,0, (e: boolean) => {
+            if (e == true) {
+                allMess = InformationsH24;
+                
+                setTimeout(() => {
+                    setRefreshing(false)
+                }, 2000)
+            } else {
+                setRefreshing(true)
+            }
+        })
+    }, []);
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+
     return (
         <>
             <HeaderComponent title="News 24H" navigation={navigation} />
 
-            <ScrollView>
+            <ScrollView
+                    refreshControl={
+                    <RefreshControl
+                      refreshing={refreshing}
+                      onRefresh={onRefresh}
+                    />
+                }
+            >
 
             <View style={{ paddingLeft: 35, paddingRight: 35, marginBottom: 35}}>
                 <View style={{
@@ -269,7 +298,7 @@ const GeneralScreen = ({ navigation }) => {
                         Alert.alert(I18n.t("newsSucceful"));
                         navigation.navigate("Home")
                         setTimeout(() => {
-                            Users.GetMessagesH24(1, 1);
+                            Users.GetMessagesH24(1, 1, null);
                         }, 5000)
                     }}/> 
                 </View>
