@@ -20,13 +20,12 @@ const wait = (timeout: any) => {
 }
 
 const GeneralScreen = ({ navigation }) => {
+    const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const name = useReduxState(state => state.user.name);
     const rate = useReduxState(state => state.user.rate);
-
     const latitude = useReduxState(state => state.location.latitude);
     const longitude = useReduxState(state => state.location.longitude);
 
-    const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const [loading, setLoading] = useState(false);
     const [description, setDescription] = useState("");
 
@@ -298,7 +297,7 @@ const GeneralScreen = ({ navigation }) => {
                         Alert.alert(I18n.t("newsSucceful"));
                         navigation.navigate("Home")
                         setTimeout(() => {
-                            Users.GetMessagesH24(1, 1, null);
+                            Users.GetMessagesH24(1, 1, (c: any) => {});
                         }, 5000)
                     }}/> 
                 </View>

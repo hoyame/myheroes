@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "react-native run-android --verbose",
     "ios": "react-native run-ios",
     "i12": "react-native run-ios --simulator='iPhone 12 Pro Max'",
     "i6": "react-native run-ios --simulator='iPhone 6'",

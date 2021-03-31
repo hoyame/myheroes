@@ -196,7 +196,7 @@ const Controller = () => {
                 setNewUser(false);
                 setInitialize(true);
                 Users.GetRate(AMail);
-                Users.GetMessagesH24(1, 1);
+                Users.GetMessagesH24(1, 1, (e: any) => {});
                 console.log("200");
               } else {
                 setNewUser(true);
