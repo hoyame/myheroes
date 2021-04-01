@@ -137,6 +137,7 @@ module.exports.returnAlertsLenght = (req, res, next) => {
 
 module.exports.addList = (req, res, next) => {
     const model = {
+        identifier: req.body.identifier,
         name: req.body.name,
         rate: req.body.rate,
         description: req.body.description,
@@ -168,12 +169,23 @@ module.exports.removeList = (req, res, next) => {
     res.send(InfoData);
 }
 
+module.exports.removeListApprouved = (req, res, next) => {
+    const identifier = req.body.identifier;
+    const found = InfoDataValidate.find(element => element.identifier == identifier);
+    const indexOf = InfoDataValidate.indexOf(found)
+
+    InfoDataValidate = InfoDataValidate.filter(x => x.identifier != req.body.identifier);
+
+    res.send(InfoDataValidate);
+}
+
 module.exports.approvateList = (req, res, next) => {
     const identifier = req.body.identifier;
     const found = InfoData.find(element => element.identifier == identifier);
     const indexOf = InfoData.indexOf(found)
     
     const model = {
+        identifier: req.body.identifier,
         name: req.body.name,
         rate: req.body.rate,
         description: req.body.description,
