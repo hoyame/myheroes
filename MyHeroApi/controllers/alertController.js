@@ -5,11 +5,14 @@ let InfoData = []
 let InfoDataValidate = []
 
 const app = require('../app');
+var d = new Date();
+var ns = d.getHours();
 
 module.exports.addAlert = (req, res, next) => {
     const identifier = req.body.identifier;
     const found = AlertsData.find(element => element.identifier == identifier);
     const indexOf = AlertsData.indexOf(found)
+
 
     const model = {
         identifier: req.body.identifier,
@@ -21,6 +24,7 @@ module.exports.addAlert = (req, res, next) => {
         description: req.body.description,
         webrtc: req.body.webid,
         city: req.body.city,
+        hour: ns,
         count: 0
     }
     
@@ -143,6 +147,7 @@ module.exports.addList = (req, res, next) => {
         description: req.body.description,
         latitude: req.body.latitude, 
         longitude: req.body.longitude,
+        hour: ns,
         city: req.body.city
     }
     
@@ -156,6 +161,7 @@ module.exports.removeList = (req, res, next) => {
     const indexOf = InfoData.indexOf(found)
     
     const model = {
+        identifier: req.body.identifier,
         name: req.body.name,
         rate: req.body.rate,
         description: req.body.description,
@@ -191,6 +197,7 @@ module.exports.approvateList = (req, res, next) => {
         description: req.body.description,
         latitude: req.body.latitude, 
         longitude: req.body.longitude,
+        hour: ns,
         city: req.body.city
     }
 
