@@ -47,6 +47,8 @@ module.exports.sendListNotif = (tbl) => {
 }
 
 module.exports.sendAlertsAdd = (tbl) => {
+	let d = JSON.stringify(tbl)
+
 	var message = {
 		notification: {
 			title: 'Alertes',
@@ -55,7 +57,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 		condition: `'${tbl.city}' in topics`
 	};
 
-	console.log("fwejbfewiufbewfbiuwb", tbl[9])
+	console.log("fwejbfewiufbewfbiuwb", d.city)
 
 	admin.messaging().send(message)
 		.then((response) => {
