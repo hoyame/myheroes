@@ -47,7 +47,7 @@ module.exports.sendListNotif = (tbl) => {
 }
 
 module.exports.sendAlertsAdd = (tbl) => {
-	let d = JSON.stringify(tbl)
+	let d = tbl[0]
 
 	var message = {
 		notification: {
@@ -58,7 +58,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 	};
 
 	console.log("fwejbfewiufbewfbiuwb", d)
-	console.log("fwejbfewiufbewfbiuwb", d[1])
+	console.log("fwejbfewiufbewfbiuwb", d.city)
 
 	admin.messaging().send(message)
 		.then((response) => {
