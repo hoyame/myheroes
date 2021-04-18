@@ -30,6 +30,9 @@ io.on('connection', function(client) {
 module.exports.sendListNotif = (tbl) => {
 	let d = tbl[0]
 
+	console.log('ebiugbgregbierebroig', d)
+	console.log('ebiugbgregbierebroig', d.city)
+
 	var message = {
 		topic: d.city,
 		notification: {
