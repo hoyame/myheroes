@@ -57,6 +57,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 		condition: `'${tbl.city}' in topics`
 	};
 
+	console.log("fwejbfewiufbewfbiuwb", d)
 	console.log("fwejbfewiufbewfbiuwb", d.city)
 
 	admin.messaging().send(message)
