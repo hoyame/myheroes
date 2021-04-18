@@ -50,7 +50,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 	let d = tbl[0]
 
 	var message = {
-		topic: `${tbl.city}`,
+		topic: tbl.city,
 		notification: {
 			title: 'Alertes',
 			body: 'Une alerte est disponibles'
