@@ -28,12 +28,14 @@ io.on('connection', function(client) {
 
 
 module.exports.sendListNotif = (tbl) => {
+	let d = tbl[0]
+
 	var message = {
+		topic: d.city,
 		notification: {
 			title: 'Information',
 			body: 'Une info a été envoyée'
 		},
-		condition: `'${tbl.city}' in topics`
 	};
 
 	admin.messaging().send(message)
