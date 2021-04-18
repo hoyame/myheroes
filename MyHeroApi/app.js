@@ -58,7 +58,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 	};
 
 	console.log("fwejbfewiufbewfbiuwb", d)
-	console.log("fwejbfewiufbewfbiuwb", d.city)
+	console.log("fwejbfewiufbewfbiuwb", d[0].city)
 
 	admin.messaging().send(message)
 		.then((response) => {
