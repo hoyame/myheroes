@@ -54,7 +54,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 			title: 'Alertes',
 			body: 'Une alerte est disponibles'
 		},
-		condition: `'${tbl.city}' in topics`
+		topic: `${tbl.city}`
 	};
 
 	console.log("fwejbfewiufbewfbiuwb", d)
