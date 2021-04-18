@@ -50,11 +50,11 @@ module.exports.sendAlertsAdd = (tbl) => {
 	let d = tbl[0]
 
 	var message = {
+		topic: `Aix-les-Bains`,
 		notification: {
 			title: 'Alertes',
 			body: 'Une alerte est disponibles'
-		},
-		topic: `${tbl.city}`
+		}
 	};
 
 	console.log("fwejbfewiufbewfbiuwb", d)
