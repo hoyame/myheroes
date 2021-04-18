@@ -20,7 +20,9 @@ import {
     SET_MAIL,
     IUserCache,
     SET_TEMP_LANGAGE,
-    SET_TEMP_LANGAGE_STATUS
+    SET_TEMP_LANGAGE_STATUS,
+    SET_NEWS_STATUS,
+    SET_NEWS_CONTENT
 } from '../types/user';
 
 ////////////////////////////////////////////////////
@@ -280,7 +282,6 @@ export const setTempLangage = (bool: string) => ({
     }
 })
 
-
 interface ISetTempLangageStatus {
     type: typeof SET_TEMP_LANGAGE_STATUS,
     payload: {
@@ -292,6 +293,37 @@ export const setTempLanguageStatus = (bool: boolean) => ({
     type: SET_TEMP_LANGAGE_STATUS,
     payload: {
         tempStatus: bool
+    }
+})
+
+//////////
+
+interface ISetNewsStatus {
+    type: typeof SET_NEWS_STATUS,
+    payload: {
+        statusNews: boolean
+    }
+}
+
+export const setNewsStatus = (bool: boolean) => ({
+    type: SET_NEWS_STATUS,
+    payload: {
+        statusNews: bool
+    }
+})
+
+
+interface ISetNewsContent {
+    type: typeof SET_NEWS_CONTENT,
+    payload: {
+        news: string
+    }
+}
+
+export const setNewsContent = (bool: string) => ({
+    type: SET_NEWS_CONTENT,
+    payload: {
+        news: bool
     }
 })
 
@@ -312,5 +344,7 @@ export type IUserActions =
     ISetCacheNav |
     ISetCacheUser |
     ISetTempLangage |
-    ISetTempLangageStatus
+    ISetTempLangageStatus |
+    ISetNewsStatus |
+    ISetNewsContent
 ;

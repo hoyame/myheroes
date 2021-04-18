@@ -29,6 +29,8 @@ export default {
     ndu: "Numéros d'urgence",
     mdpOublier: "Mot de passe oublié",
     newsSucceful: "En attente de validation par MyHeroes",
+    newsDelete: "Supprimer News",
+    newsDeleteT: "News supprimée avec succes.",
 
     connexionEC: "Connexion en cours",
     connexionDesc: "Se connecter a son compte",

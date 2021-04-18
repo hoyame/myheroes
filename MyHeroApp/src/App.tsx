@@ -160,10 +160,12 @@ const App = () => {
   })
 
   setTimeout(() => {
-    MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => {
-      firebase.messaging().subscribeToTopic(e);
-    })
-  }, 2500)
+    console.log("zufzfizvuibvizvizvzvziuvk")
+        MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => {
+          console.log("efiuebgiubegbeigbeirgbrebgiug", e)
+          firebase.messaging().subscribeToTopic(e.replace(/\s+/g, ''));
+        })
+  }, 10000)
 
   return (
     <Provider store={store}>

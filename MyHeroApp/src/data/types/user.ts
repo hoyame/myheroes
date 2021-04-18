@@ -28,6 +28,9 @@ export const SET_CACHE_SHOW_ALERT = "SET_CACHE_SHOW_ALERT";
 export const SET_CACHE_NAVIGATION = "SET_CACHE_NAVIGATION";
 export const SET_CACHE_USER = "SET_CACHE_USER";
 
+export const SET_NEWS_STATUS = "SET_NEWS_STATUS";
+export const SET_NEWS_CONTENT = "SET_NEWS_CONTENT";
+
 
 export interface IUserSend {
     status: boolean;
@@ -62,9 +65,11 @@ export interface IUser {
 
     statusSend: boolean;
     statusHelp: boolean;
-
-    send: IUserSend,
-    help: IUserHelp,
+    statusNews: boolean;
+    
+    news: string;
+    send: IUserSend;
+    help: IUserHelp;
 
     createAlertLevel: number;
     showAlert: IAlert;

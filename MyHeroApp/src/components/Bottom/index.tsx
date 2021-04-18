@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, Dimensions } from "react-native";
 interface IBottom {
     title: string;
     onClick: any;
+    color?: string; 
 }
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
@@ -17,7 +18,7 @@ const BottomComponent = (props: IBottom) => {
                     borderRadius:15,
                     justifyContent: "center",
                     alignItems: "center",
-                    backgroundColor: '#3497FD'
+                    backgroundColor: props.color || '#3497FD'
                 }}>
                     <Text style={{
                         fontSize: 25,

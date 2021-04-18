@@ -44,6 +44,7 @@ import 'react-native-gesture-handler';
 import { Langues } from './data/langues';
 import SocketIOClient from 'socket.io-client/dist/socket.io.js'
 import io from 'socket.io-client';
+import firebase from '@react-native-firebase/app';
 
 const SOCKET_URL = 'http://146.59.227.90:3333';
 
@@ -139,6 +140,8 @@ const Controller = () => {
     setTimeout(() => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
+      
+
       }
 
     }, 5000)

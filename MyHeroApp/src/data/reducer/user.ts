@@ -20,7 +20,9 @@ import {
     SET_MAIL,
     SET_CACHE_NAVIGATION,
     SET_TEMP_LANGAGE,
-    SET_TEMP_LANGAGE_STATUS
+    SET_TEMP_LANGAGE_STATUS,
+    SET_NEWS_STATUS,
+    SET_NEWS_CONTENT
 } from '../types/user';
 
 
@@ -96,7 +98,16 @@ const UserReducer = (state = initialState, action: IUserActions): IUser => {
                 ...state,
                 tempLangageStatus: action.payload.tempStatus
             } 
-        
+        case SET_NEWS_STATUS:
+            return {
+                ...state,
+                statusNews: action.payload.statusNews
+            } 
+        case SET_NEWS_CONTENT:
+            return {
+                ...state,
+                news: action.payload.news
+        } 
         default: return state;
     }
 }
@@ -114,7 +125,10 @@ const initialState: IUser = {
 
     statusSend: false,
     statusHelp: false,
-    
+    statusNews: false,
+
+    news: "",
+
     send: {
         id: 0,
         status: false,

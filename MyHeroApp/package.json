@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "i12": "react-native run-ios --simulator='iPhone 12 Pro Max'",
     "i6": "react-native run-ios --simulator='iPhone 6'",
+    "idebug": "react-native run-ios --device='Iphone 12'",
     "start": "react-native start",
     "link": "react-native link",
     "test": "jest",

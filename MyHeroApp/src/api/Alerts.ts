@@ -179,7 +179,7 @@ export default abstract class MyHeroAlerts {
         })
 
         .catch((err) => {
-            console.log("err g", err);
+            console.log("err gm", err);
         })
     }
 
@@ -259,11 +259,14 @@ export default abstract class MyHeroAlerts {
         })
 
         .catch((err) => {
-            console.log("err g", err);
+            console.log("err gn", err);
         })
     }
 
     public static getCityGE(lat: number, long: number, cb: any) {
+        console.log(lat, long)
+        console.log(223456785678)
+
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyArT5OMnkTT_XGsskXjXA70VwBk2ZLSgQ8`)
 
         .then((response) => {

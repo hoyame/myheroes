@@ -14,20 +14,30 @@ import { API_LINK } from '../../App';
 import axios from 'axios';
 import Users, { InformationsH24 } from '../../api/User';
 import MyHeroAlerts from '../../api/Alerts';
+import { createDispatchHook, useDispatch } from 'react-redux';
+import { setNewsContent, setNewsStatus } from '../../data/actions/user';
 
 const wait = (timeout: any) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
 const GeneralScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
+
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
+    const mail = useReduxState(state => state.user.mail);
     const name = useReduxState(state => state.user.name);
     const rate = useReduxState(state => state.user.rate);
+    const newsStatus = useReduxState(state => state.user.statusNews);
+    const newsContent = useReduxState(state => state.user.news);
     const latitude = useReduxState(state => state.location.latitude);
     const longitude = useReduxState(state => state.location.longitude);
 
     const [loading, setLoading] = useState(false);
     const [description, setDescription] = useState("");
+
+    console.log("newsStatus", newsStatus)
+    console.log("newsContent", newsContent)
 
     let allMess = InformationsH24;
 
@@ -211,6 +221,7 @@ const GeneralScreen = ({ navigation }) => {
     const push = () => {
         MyHeroAlerts.getCityGE(latitude, longitude, (e: any) => {
             var params = {
+                identifier: mail,
                 name: name,
                 rate: rate,
                 description: description,
@@ -231,11 +242,53 @@ const GeneralScreen = ({ navigation }) => {
                 .then((res) => res.json)
 
                 .then((data: any) => {
-                    console.log("listtt", data.data)
+                    console.log("listtt", data.data);
+                    dispatch(setNewsStatus(true))
+                    dispatch(setNewsContent(description))
                 })
             
         })
     }
+
+    const deleteNews = () => {
+        var params = {
+            identifier: mail
+        }
+        
+        fetch(`${API_LINK}/list/deleteApprovate`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params),
+        })
+
+            .then((res) => res.json)
+
+            .then((data: any) => {
+    
+            });
+
+            //
+
+            fetch(`${API_LINK}/list/delete`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params),
+            })
+    
+                .then((res) => res.json)
+    
+                .then((data: any) => {
+                
+                });
+    }
+
+
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
@@ -269,44 +322,61 @@ const GeneralScreen = ({ navigation }) => {
                 }
             >
 
-            <View style={{ paddingLeft: 35, paddingRight: 35, marginBottom: 35}}>
-                <View style={{
-                    height: 60,
-                    marginTop: 15,
-                    marginBottom: 15,
-                    borderRadius: 15,
-                    padding: 10, 
-                    justifyContent: "center",
-                    backgroundColor: "#FC9A21"
-                }}>
-                    <Text style={{
-                        textAlign: "center",
-                        color: "#ffffff",
-                        fontSize: 15      
-                    }}>{I18n.t("general1")}</Text>
-                </View>
+                <View style={{ paddingLeft: 35, paddingRight: 35, marginBottom: 35}}>
+                    {
+                        newsStatus && 
 
-                <View style={{
-                    marginTop: 5,
-                    marginBottom: 20
-                }}>
-                    <InputComponent height={65} name={I18n.t("general2")} placeholder={I18n.t("general2") + "                                                  "} value={description} icon={faFileAlt} onChange={(v: string) => setDescription(v)} />
+                        <>
+                            <View style={{
 
-                    <BottomComponent title={I18n.t("general3")} onClick={() => {
-                        push();
-                        Alert.alert(I18n.t("newsSucceful"));
-                        navigation.navigate("Home")
-                        setTimeout(() => {
-                            Users.GetMessagesH24(1, 1, (c: any) => {});
-                        }, 5000)
-                    }}/> 
-                </View>
+                            }}>
+                                <BottomComponent color="#d80000" title={I18n.t("newsDelete")} onClick={() => {
+                                    deleteNews();
+                                    dispatch(setNewsStatus(false))
+                                    dispatch(setNewsContent(""))
+                                    Alert.alert(I18n.t("newsDeleteT"));
+                                    navigation.navigate("Home")
+                                   
+                                }}/> 
+                            </View>
+                        </>
+                    }
 
-                {
-                    returnAvis()
-                }
-            
-     
+                    <View style={{
+                        height: 60,
+                        marginTop: 15,
+                        marginBottom: 15,
+                        borderRadius: 15,
+                        padding: 10, 
+                        justifyContent: "center",
+                        backgroundColor: "#FC9A21"
+                    }}>
+                        <Text style={{
+                            textAlign: "center",
+                            color: "#ffffff",
+                            fontSize: 15      
+                        }}>{I18n.t("general1")}</Text>
+                    </View>
+
+                    <View style={{
+                        marginTop: 5,
+                        marginBottom: 20
+                    }}>
+                        <InputComponent height={65} name={I18n.t("general2")} placeholder={I18n.t("general2") + "                                                  "} value={description} icon={faFileAlt} onChange={(v: string) => setDescription(v)} />
+
+                        <BottomComponent title={I18n.t("general3")} onClick={() => {
+                            push();
+                            Alert.alert(I18n.t("newsSucceful"));
+                            navigation.navigate("Home")
+                            setTimeout(() => {
+                                Users.GetMessagesH24(1, 1, (c: any) => {});
+                            }, 5000)
+                        }}/> 
+                    </View>
+
+                    {
+                        returnAvis()
+                    }
                 </View>
             </ScrollView>
         </>
