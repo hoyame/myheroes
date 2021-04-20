@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "990257045964",
+    "project_id": "inlaid-chiller-308723",
+    "storage_bucket": "inlaid-chiller-308723.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990257045964:android:03409ac3be4df43b12bd69",
+        "android_client_info": {
+          "package_name": "com.myheroes.myhero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990257045964-ma5p48s33e8kcdp9kg040dh492l8tkmc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY5RDuxQ4i28sgAqrFmAbFjj0vUFm2lIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990257045964-ma5p48s33e8kcdp9kg040dh492l8tkmc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "990257045964-ok4752hr40qedgcpuk42s7d3psoe38fp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.myheroes.myhero"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
