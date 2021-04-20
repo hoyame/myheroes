@@ -49,7 +49,7 @@ export default {
 
     inscriptionPseudo: "Pseudo",
     inscriptionIdentifiant: "Identifiant",
-    inscriptionDescIdentifiant: "Mail ou Téléphone",
+    inscriptionDescIdentifiant: "Mail",
     inscriptionMDP: "Mot de passe",
     inscriptionCMDP: "Confirmer son mot de passe",
     inscriptionVAC: "Vous avez un compte ? ",

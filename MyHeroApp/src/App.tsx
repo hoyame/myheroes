@@ -161,10 +161,31 @@ const App = () => {
 
   setTimeout(() => {
     console.log("zufzfizvuibvizvizvzvziuvk")
-        MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => {
-          console.log("efiuebgiubegbeigbeirgbrebgiug", e)
-          firebase.messaging().subscribeToTopic(e.replace(/\s+/g, ''));
+    firebase.messaging().unsubscribeFromTopic('all')
+
+    MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => {
+      console.log("efiuebgiubegbeigbeirgbrebgiug", e)
+
+      const messaging = firebase.messaging();
+      messaging
+        .requestPermission()
+        .then(() => {
+          return messaging.getToken();
         })
+        .then(token => {
+          messaging
+            .subscribeToTopic(e.replace(/\s+/g, ''))
+            .then((response) => {
+              console.log("2353526626236", response);
+            })
+            .catch(function(error) {
+              console.log('Error subscribing to topic:', error);
+            });
+        })
+        .catch(err => {
+          console.log('Unable to get permission to notify.', err);
+        });
+    })
   }, 10000)
 
   return (

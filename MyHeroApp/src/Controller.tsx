@@ -104,7 +104,8 @@ const Controller = () => {
             source: v.source, 
             level: v.level, 
             description: v.description,
-            webrtc: v.webrtc 
+            webrtc: v.webrtc,
+            hour: v.hour,
           }))
         })
         

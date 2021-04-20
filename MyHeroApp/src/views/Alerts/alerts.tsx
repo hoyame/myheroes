@@ -21,6 +21,7 @@ const AlertScreen = ({ navigation }) => {
         longitude: number;
         description: string;
         onClick: any;
+        hour?: string;
     }
 
     const AlertProps: React.FC<IAlert> = (props: IAlert) => {
@@ -47,7 +48,7 @@ const AlertScreen = ({ navigation }) => {
                 onPress={props.onClick}
             >
                 <View style={{
-                    height: 70,
+                    height: 90,
                     width: screenWidth - 8,
                     backgroundColor: color,
                     borderRadius: 15,
@@ -74,6 +75,13 @@ const AlertScreen = ({ navigation }) => {
                             marginLeft: 10,
                             color: "#ffffff"
                         }}>{I18n.t("par")} {props.source}</Text>
+
+                        <Text style={{
+                            fontSize: 15,
+                            marginTop: 0,
+                            marginLeft: 10,
+                            color: "#ffffff"
+                        }}>A {props.hour}h</Text>
                     </View>
 
                     <View style={{
