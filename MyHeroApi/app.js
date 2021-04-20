@@ -11,7 +11,7 @@ const helmet = require('helmet');
 const alertController = require('./controllers/alertController');
 const admin = require('firebase-admin');
 
-var serviceAccount = require("./myhero-291513-firebase-adminsdk-4hd76-ae7d7ea163.json");
+var serviceAccount = require("./inlaid-chiller-308723-firebase-adminsdk-qunjm-507156978d.json");
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
