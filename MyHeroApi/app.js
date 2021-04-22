@@ -34,7 +34,7 @@ module.exports.sendListNotif = (tbl) => {
 	console.log('ebiugbgregbierebroig', d.city)
 
 	var message = {
-		topic: d.city,
+		topic: d.city.replace(/\s+/g, ''),
 		notification: {
 			title: 'Information',
 			body: 'Une info a été envoyée'
@@ -55,7 +55,7 @@ module.exports.sendAlertsAdd = (tbl) => {
 	let d = tbl[0]
 
 	var message = {
-		topic: d.city,
+		topic: d.city.replace(/\s+/g, ''),
 		notification: {
 			title: 'Alertes',
 			body: 'Une alerte est disponibles'
