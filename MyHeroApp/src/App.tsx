@@ -16,13 +16,13 @@ import messaging from '@react-native-firebase/messaging';
 const SOCKET_URL = 'http://146.59.227.90:3333';
 
 const credentials = {
-  clientId: '911354456695-uteuqkfb2vq4s32s73su4ho6eo90g6te.apps.googleusercontent.com',
-  appId: '1:911354456695:ios:296e5119c945f0013d3472',
-  apiKey: 'AIzaSyBKzpbK2HMO47R822icS8cV77dwhyIjHiQ',
-  databaseURL: 'https://myhero-291513.firebaseio.com',
-  storageBucket: 'myhero-291513.appspot.com',
-  messagingSenderId: '911354456695',
-  projectId: 'myhero-291513',
+  clientId: '990257045964-ok4752hr40qedgcpuk42s7d3psoe38fp.apps.googleusercontent.com',
+  appId: '1:990257045964:ios:c901b4cc34a2a63512bd69',
+  apiKey: 'AIzaSyBO_SCkI6qYiI-WjgQaPduqmYt-Rw9x8_M',
+  databaseURL: '',
+  storageBucket: 'inlaid-chiller-308723.appspot.com',
+  messagingSenderId: '990257045964',
+  projectId: 'inlaid-chiller-308723',
 };
 
 const config = {

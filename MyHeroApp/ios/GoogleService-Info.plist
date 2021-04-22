@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>911354456695-uteuqkfb2vq4s32s73su4ho6eo90g6te.apps.googleusercontent.com</string>
+	<string>990257045964-ok4752hr40qedgcpuk42s7d3psoe38fp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.911354456695-uteuqkfb2vq4s32s73su4ho6eo90g6te</string>
+	<string>com.googleusercontent.apps.990257045964-ok4752hr40qedgcpuk42s7d3psoe38fp</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBKzpbK2HMO47R822icS8cV77dwhyIjHiQ</string>
+	<string>AIzaSyBO_SCkI6qYiI-WjgQaPduqmYt-Rw9x8_M</string>
 	<key>GCM_SENDER_ID</key>
-	<string>911354456695</string>
+	<string>990257045964</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.myheroes.myhero</string>
 	<key>PROJECT_ID</key>
-	<string>myhero-291513</string>
+	<string>inlaid-chiller-308723</string>
 	<key>STORAGE_BUCKET</key>
-	<string>myhero-291513.appspot.com</string>
+	<string>inlaid-chiller-308723.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:911354456695:ios:296e5119c945f0013d3472</string>
-	<key>DATABASE_URL</key>
-	<string>https://myhero-291513.firebaseio.com</string>
+	<string>1:990257045964:ios:c901b4cc34a2a63512bd69</string>
 </dict>
 </plist>
