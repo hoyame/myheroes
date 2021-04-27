@@ -24,6 +24,7 @@ module.exports.addAlert = (req, res, next) => {
         description: req.body.description,
         webrtc: req.body.webid,
         city: req.body.city,
+        departement: req.body.departement,
         hour: ns,
         count: 0
     }
@@ -50,6 +51,8 @@ module.exports.removeAlert = (req, res, next) => {
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         description: req.body.description,
+        departement: req.body.departement,
+        city: req.body.city,
         webrtc: req.body.webid
     }
 
@@ -148,7 +151,8 @@ module.exports.addList = (req, res, next) => {
         latitude: req.body.latitude, 
         longitude: req.body.longitude,
         hour: ns,
-        city: req.body.city
+        city: req.body.city,
+        departement: req.body.departement
     }
     
     InfoData.push(model)
@@ -167,7 +171,8 @@ module.exports.removeList = (req, res, next) => {
         description: req.body.description,
         latitude: req.body.latitude, 
         longitude: req.body.longitude,
-        city: req.body.city
+        city: req.body.city,
+        departement: req.body.departement
     }
 
     InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
@@ -198,7 +203,8 @@ module.exports.approvateList = (req, res, next) => {
         latitude: req.body.latitude, 
         longitude: req.body.longitude,
         hour: ns,
-        city: req.body.city
+        city: req.body.city,
+        departement: req.body.departement
     }
 
     InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
