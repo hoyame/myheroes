@@ -30,14 +30,11 @@ io.on('connection', function(client) {
 module.exports.sendListNotif = (tbl) => {
 	let d = tbl[0]
 
-	console.log('ebiugbgregbierebroig', d)
-	console.log('ebiugbgregbierebroig', d.city)
-
 	var message = {
-		topic: d.city.replace(/\s+/g, ''),
+		topic: d.departement.replace(/\s+/g, ''),
 		notification: {
 			title: 'Information',
-			body: 'Une info a été envoyée'
+			body: 'Une info a été envoyée de' + d.city
 		},
 	};
 
@@ -55,15 +52,12 @@ module.exports.sendAlertsAdd = (tbl) => {
 	let d = tbl[0]
 
 	var message = {
-		topic: d.city.replace(/\s+/g, ''),
+		topic: d.departement.replace(/\s+/g, ''),
 		notification: {
 			title: 'Alertes',
-			body: 'Une alerte est disponibles'
+			body: 'Une alerte a été lancée de ' + d.city
 		}
 	};
-
-	console.log("fwejbfewiufbewfbiuwb", d)
-	console.log("fwejbfewiufbewfbiuwb", d.city)
 
 	admin.messaging().send(message)
 		.then((response) => {
