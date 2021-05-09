@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Platform, StyleSheet } from 'react-native';;
+import { Alert, Platform, StyleSheet } from 'react-native';;
 import Controller from './Controller';
 import { Provider } from 'react-redux';
 import { store, persistor } from './data/store';
@@ -12,6 +12,7 @@ import PushNotification from "react-native-push-notification";
 import { PersistGate } from 'redux-persist/integration/react';
 import io from 'socket.io-client';
 import messaging from '@react-native-firebase/messaging';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const SOCKET_URL = 'http://146.59.227.90:3333';
 
@@ -76,6 +77,9 @@ export const API_LINK = "http://146.59.227.90:3333";
 export const API_LINK_CDN = "http://146.59.227.90:3000";
 
 const App = () => {
+
+
+
   useEffect(() => {
     socket.on('connect', function(data: any) {
       socket.emit('join', 0);
@@ -98,7 +102,6 @@ const App = () => {
       console.log("get_alerts");
       MyHeroAlerts.GetAlerts(data);
     });
-
   })
   
   useEffect(() => {
@@ -122,7 +125,7 @@ const App = () => {
         remoteMessage.notification,
         );
         
-      });
+    });
       
       // Check whether an initial notification is available
       messaging()
@@ -159,35 +162,6 @@ const App = () => {
     }
   })
 
-  setTimeout(() => {
-    console.log("zufzfizvuibvizvizvzvziuvk")
-    firebase.messaging().unsubscribeFromTopic('all')
-
-    MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => {
-      console.log("efiuebgiubegbeigbeirgbrebgiug", e)
-
-      const messaging = firebase.messaging();
-      messaging
-        .requestPermission()
-        .then(() => {
-          return messaging.getToken();
-        })
-        .then(token => {
-          messaging
-            .subscribeToTopic(e.replace(/\s+/g, ''))
-            .then((response) => {
-              console.log("2353526626236", response);
-            })
-            .catch(function(error) {
-              console.log('Error subscribing to topic:', error);
-            });
-        })
-        .catch(err => {
-          console.log('Unable to get permission to notify.', err);
-        });
-    })
-  }, 10000)
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -201,6 +175,41 @@ BackgroundTimer.runBackgroundTimer(() => {
   //MyHeroAlerts.GetAlerts();
 }, 200000);
 
+const unsubscribeFromTopic = async () => {
+    const AOldNotif = await AsyncStorage.getItem('@old_notif') || '';
+    messaging().unsubscribeFromTopic(AOldNotif)
+}
 
+const _storeData = async (e: string) => {
+  try {
+    await AsyncStorage.setItem('@old_notif', e)
+  } catch (error) {
+    console.log("old_notif_error", error)
+  }
+}
+  
+setTimeout(() => {
+  console.log("zufzfizvuibvizvizvzvziuvk")
+
+  MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (ed: any) => null, (e: any) => {
+    console.log("efiuebgiubegbeigbeirgbrebgiug")
+
+    setTimeout(() => {
+      unsubscribeFromTopic()
+      messaging().subscribeToTopic(e.replace(/\s+/g, ''))
+        .then(() => {
+          console.log("scrubcrite a: ", e.replace(/\s+/g, ''));
+          Alert.alert('scrubcrite a: ', e.replace(/\s+/g, ''));
+        })
+            
+        .catch((e) => {
+          console.log("errrr scrubcrite", e);
+          Alert.alert('errr scrubcrite', e);
+        });
+
+      _storeData(e.replace(/\s+/g, ''));
+    }, 1500) 
+  })
+}, 10000)
 
 export default App;

@@ -219,16 +219,21 @@ const GeneralScreen = ({ navigation }) => {
     }
 
     const push = () => {
-        MyHeroAlerts.getCityGE(latitude, longitude, (e: any) => {
-            var params = {
+        MyHeroAlerts.getCityGE(latitude, longitude, (e: any) => null, (e: any) => {
+            MyHeroAlerts.getCityGE(latitude, longitude, (es: any) => {
+                var params = {
                 identifier: mail,
                 name: name,
                 rate: rate,
                 description: description,
                 latitude: latitude, 
                 longitude: longitude,
-                city: e
+                city: es,
+                departement: e 
             }
+                
+            console.log("ccccccc city", es)
+            console.log("ccccccc departement", e)
         
             fetch(`${API_LINK}/list/add`, {
                 method: 'POST',
@@ -246,7 +251,7 @@ const GeneralScreen = ({ navigation }) => {
                     dispatch(setNewsStatus(true))
                     dispatch(setNewsContent(description))
                 })
-            
+            }, (e: any) => null)
         })
     }
 

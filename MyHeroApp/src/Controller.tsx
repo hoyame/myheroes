@@ -141,8 +141,6 @@ const Controller = () => {
     setTimeout(() => {
       if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
         dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
-      
-
       }
 
     }, 5000)
@@ -235,18 +233,10 @@ const Controller = () => {
             display: "flex",
             flex: 1,
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            backgroundColor: "#272526"
         }}>
-            <ImageBackground     
-                resizeMode="repeat"
-                source={{uri: "https://cdn.discordapp.com/attachments/785109841416683520/805510989868040242/1.png"}} 
-                style={{      
-                  position: 'absolute',
-                  height: screenHeight,
-                  width: screenWidth,
-                }
-            }>
-            </ImageBackground>
+
 
             <Image 
               source={{uri: "https://cdn.discordapp.com/attachments/785109841416683520/805546399299141662/myhero.png"}}

@@ -73,34 +73,38 @@ export default abstract class MyHeroAlerts {
     }
 
     public static SendAlert(data: IAlert) {
-        MyHeroAlerts.getCityGE(data.latitude, data.longitude, (e: any) => {
-            console.log(e)
-            
-            var params = {
-                identifier: data.identifier,
-                level: data.level,
-                source: data.source,
-                latitude: data.latitude,
-                longitude: data.longitude,
-                description: data.description,
-                webrtc: data.webrtc,
-                city: e
-            }
-            
-            fetch(`${API_LINK}/alerts/add`, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(params),
-            })
-            
-            .then((res) => res.json)
-            
-            .then((data: any) => {
-                console.log("fiobgfe", data.data)
-            })
+        MyHeroAlerts.getCityGE(data.latitude, data.longitude, (nn: any) => null, (e: any) => {
+            MyHeroAlerts.getCityGE(data.latitude, data.longitude, (es: any) => {
+                var params = {
+                    identifier: data.identifier,
+                    level: data.level,
+                    source: data.source,
+                    latitude: data.latitude,
+                    longitude: data.longitude,
+                    description: data.description,
+                    webrtc: data.webrtc,
+                    city: es,
+                    departement: e
+                }
+
+                console.log("city", es)
+                console.log("departement", e)
+                
+                fetch(`${API_LINK}/alerts/add`, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(params),
+                })
+                
+                .then((res) => res.json)
+                
+                .then((data: any) => {
+                    console.log("fiobgfe", data.data)
+                })
+            }, (e: any) =>  null)
         })
     }
         
@@ -242,7 +246,7 @@ export default abstract class MyHeroAlerts {
                 const nb = e.data || 0;
                 console.log(nb)
 
-                nb.map((v, k) => {
+                nb.map((v: string, k: any) => {
                     Users.GetData(v, (e: any) => {
                         const data = JSON.stringify(e.data[0])
                         const status: number = e.status
@@ -263,23 +267,35 @@ export default abstract class MyHeroAlerts {
         })
     }
 
-    public static getCityGE(lat: number, long: number, cb: any) {
-        console.log(lat, long)
-        console.log(223456785678)
-
+    public static getCityGE(lat: number, long: number, citys: any, deps: any) {
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyArT5OMnkTT_XGsskXjXA70VwBk2ZLSgQ8`)
 
         .then((response) => {
             const e = response;
-            const status = e.status
-            const city = response.data.results[0].address_components[2].long_name
+            const city = response.data.results[0].address_components || [];
+            let dat: { dep?: any; city?: any; }[] = [];
+            let citye;
 
-            cb(city)
+            city.map((v: any, k: any) => {
+                if (v.types[0] === "administrative_area_level_2") {
+                    console.log("fsefefef", v.short_name);
+                    deps(v.short_name)
+                }
+
+                if (v.types[0] === "locality") {
+                    console.log("zffzfzfzf", v.short_name);
+                    citys(v.short_name)
+                }
+            });
+
+            
         })
-      
+
         .catch((err) => {
             console.log("err g", err);
-        })
+        });
+        
+        //cb(city)
     }
 }
 
