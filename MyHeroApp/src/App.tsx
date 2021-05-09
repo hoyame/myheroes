@@ -76,6 +76,19 @@ PushNotification.configure({
 export const API_LINK = "http://146.59.227.90:3333";
 export const API_LINK_CDN = "http://146.59.227.90:3000";
 
+const unsubscribeFromTopic = async () => {
+    const AOldNotif = await AsyncStorage.getItem('@old_notif') || '';
+    messaging().unsubscribeFromTopic(AOldNotif)
+}
+
+const _storeData = async (e: string) => {
+  try {
+    await AsyncStorage.setItem('@old_notif', e)
+  } catch (error) {
+    console.log("old_notif_error", error)
+  }
+}
+
 const App = () => {
 
 
@@ -162,6 +175,41 @@ const App = () => {
     }
   })
 
+  setTimeout(() => {
+    console.log("zufzfizvuibvizvizvzvziuvk")
+    firebase.messaging().unsubscribeFromTopic('all')
+
+    MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (e: any) => null, (e: any) => {
+      console.log("efiuebgiubegbeigbeirgbrebgiug", e)
+      unsubscribeFromTopic();
+
+      setTimeout(() => {
+        const messaging = firebase.messaging();
+        messaging
+          .requestPermission()
+          .then(() => {
+            return messaging.getToken();
+          })
+          .then(token => {
+            messaging
+              .subscribeToTopic(e.replace(/\s+/g, ''))
+              .then((response) => {
+                Alert.alert('scrubcried a: ', e.replace(/\s+/g, ''));
+                _storeData(e.replace(/\s+/g, ''));
+                console.log("2353526626236", response);
+              })
+              .catch(function(error) {
+                Alert.alert('errr scrubcried', e);
+                console.log('Error subscribing to topic:', error);
+              });
+          })
+          .catch(err => {
+            console.log('Unable to get permission to notify.', err);
+          });
+      }, 2500)
+    })
+  }, 10000)
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -175,19 +223,8 @@ BackgroundTimer.runBackgroundTimer(() => {
   //MyHeroAlerts.GetAlerts();
 }, 200000);
 
-const unsubscribeFromTopic = async () => {
-    const AOldNotif = await AsyncStorage.getItem('@old_notif') || '';
-    messaging().unsubscribeFromTopic(AOldNotif)
-}
 
-const _storeData = async (e: string) => {
-  try {
-    await AsyncStorage.setItem('@old_notif', e)
-  } catch (error) {
-    console.log("old_notif_error", error)
-  }
-}
-  
+/*
 setTimeout(() => {
   console.log("zufzfizvuibvizvizvzvziuvk")
 
@@ -211,5 +248,5 @@ setTimeout(() => {
     }, 1500) 
   })
 }, 10000)
-
+*/
 export default App;
