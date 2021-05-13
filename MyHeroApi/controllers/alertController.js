@@ -207,6 +207,8 @@ module.exports.approvateList = (req, res, next) => {
         departement: req.body.departement
     }
 
+    console.log("approvate  ", model)
+
     InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
 
     res.send(InfoData);
