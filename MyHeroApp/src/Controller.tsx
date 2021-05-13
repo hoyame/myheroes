@@ -53,6 +53,7 @@ export const socket = io.connect(SOCKET_URL, {
   reconnectionAttempts: 15 //Nombre de fois qu'il doit réessayer de se connecter
 });
 
+
 const Controller = () => {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height);
@@ -71,8 +72,8 @@ const Controller = () => {
   const [languageS, setLanguageS] = useState(false);
   const alertDataHelp = useReduxState(state => state.user.showAlert);
   const statusHelp = useReduxState(state => state.user.help.status);
-
   
+
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
@@ -138,24 +139,34 @@ const Controller = () => {
     }, 5000)
     
     useEffect(() => {
-    setTimeout(() => {
-      if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
-        dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
-      }
+  
 
-    }, 5000)
+      setTimeout(async () => {
+        if (initialize == false) {
+          let AMail = await AsyncStorage.getItem('@mail') || '';
+          let ALanguage = await AsyncStorage.getItem('@language') || '';
 
-    setTimeout(async () => {
-      if (initialize == false) {
-        let AMail = await AsyncStorage.getItem('@mail') || '';
-        let ALanguage = await AsyncStorage.getItem('@language') || '';
+          try {
+            if (ALanguage !== "") {
+              setLanguage(ALanguage);
+              onRefresh();
+            } else {
+              console.log("err lang")
+              const locales = RNLocalize.getLocales();
 
-        try {
-          if (ALanguage !== "") {
-            setLanguage(ALanguage);
-            onRefresh();
-          } else {
+              if (Array.isArray(locales)) {
+                setLanguage(locales[0].languageTag);
+                onRefresh();
+              }
+            }
+
+            if (ALanguage == "") {
+              setLanguageS(true);
+            }
+
+          } catch {
             console.log("err lang")
+
             const locales = RNLocalize.getLocales();
 
             if (Array.isArray(locales)) {
@@ -164,66 +175,51 @@ const Controller = () => {
             }
           }
 
-          if (ALanguage == "") {
-            setLanguageS(true);
-          }
+          try {
+            if (AMail !== "") {
+              Users.GetData(AMail, (e: any) => {
+                const data = JSON.stringify(e.data[0])
+                const status: number = e.status
+                const pseudo = e.data[0].pseudo
+                const rate = parseFloat(JSON.stringify(e.data[0].rate))
+                const xp = parseFloat(JSON.stringify(e.data[0].xp))
+                const img = e.data[0].img
 
-        } catch {
-          console.log("err lang")
-
-          const locales = RNLocalize.getLocales();
-
-          if (Array.isArray(locales)) {
-            setLanguage(locales[0].languageTag);
-            onRefresh();
-          }
-        }
-
-        try {
-          if (AMail !== "") {
-            Users.GetData(AMail, (e: any) => {
-              const data = JSON.stringify(e.data[0])
-              const status: number = e.status
-              const pseudo = e.data[0].pseudo
-              const rate = parseFloat(JSON.stringify(e.data[0].rate))
-              const xp = parseFloat(JSON.stringify(e.data[0].xp))
-              const img = e.data[0].img
-
-              if (status == 200) {
-                dispatch(setMail(AMail));
-                dispatch(setName(pseudo));
-                dispatch(setRate(rate));
-                dispatch(setXp(xp));
-                dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${pseudo}?time=${new Date()}`));
-                setNewUser(false);
-                setInitialize(true);
-                Users.GetRate(AMail);
-                Users.GetMessagesH24(1, 1, (e: any) => {});
-                console.log("200");
-              } else {
-                setNewUser(true);
-                setInitialize(true);
-                console.log("else200")
-              }
-            }, (error: number) => {
-              if (error == 500) {
-                setNewUser(true);
-                setInitialize(true);
-                console.log("e500")
-              } else if (error == 0) {
-                Alert.alert(I18n.t("errorServMH"));
-              }
-            })
-          } else {
+                if (status == 200) {
+                  dispatch(setMail(AMail));
+                  dispatch(setName(pseudo));
+                  dispatch(setRate(rate));
+                  dispatch(setXp(xp));
+                  dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${pseudo}?time=${new Date()}`));
+                  setNewUser(false);
+                  setInitialize(true);
+                  Users.GetRate(AMail);
+                  Users.GetMessagesH24(1, 1, (e: any) => {});
+                  console.log("200");
+                } else {
+                  setNewUser(true);
+                  setInitialize(true);
+                  console.log("else200")
+                }
+              }, (error: number) => {
+                if (error == 500) {
+                  setNewUser(true);
+                  setInitialize(true);
+                  console.log("e500")
+                } else if (error == 0) {
+                  Alert.alert(I18n.t("errorServMH"));
+                }
+              })
+            } else {
+              setNewUser(true);
+              setInitialize(true);
+            }  
+          } catch (error) {
             setNewUser(true);
             setInitialize(true);
-          }  
-        } catch (error) {
-          setNewUser(true);
-          setInitialize(true);
+          }
         }
-      }
-    }, 3000)
+      }, 3000)
   });
 
   if (initialize == false) {
@@ -329,6 +325,13 @@ const Controller = () => {
   );
   }
 
+  if (MyHeroService.latitude === 0 || MyHeroService.longitude === 0) {
+    return (
+      <>
+        <Text>Loading...</Text>
+      </>
+    )
+  }
 
   return (
     <>
