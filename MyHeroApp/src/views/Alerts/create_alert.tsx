@@ -34,8 +34,8 @@ const CreateAlertScreen = ({ navigation }) => {
     const alertLevelSe = useReduxState(state => state.user.createAlertLevel);
     const nameSe = useReduxState(state => state.user.name);
     const identifierSe = useReduxState(state => state.user.mail);
-    const latitude = useReduxState(state => state.location.latitude);
-    const longitude = useReduxState(state => state.location.longitude);
+    const latitude = MyHeroService.latitude;
+    const longitude = MyHeroService.longitude;
     const dispatch = useDispatch();
     const [photo, setPhoto] = useState(true);
 

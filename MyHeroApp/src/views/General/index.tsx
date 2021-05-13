@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions, Alert, Ref
 import HeaderComponent from '../../components/Header/header';
 import { Langues } from '../../data/langues';
 import I18n from '../../i18n/i18n';
-
+import { MyHeroService } from "../../api/Service";
 import { faStar as Zei } from '@fortawesome/free-solid-svg-icons';
 import { faFileAlt, faStar as Zeo } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -30,8 +30,8 @@ const GeneralScreen = ({ navigation }) => {
     const rate = useReduxState(state => state.user.rate);
     const newsStatus = useReduxState(state => state.user.statusNews);
     const newsContent = useReduxState(state => state.user.news);
-    const latitude = useReduxState(state => state.location.latitude);
-    const longitude = useReduxState(state => state.location.longitude);
+    const latitude = MyHeroService.latitude;
+    const longitude = MyHeroService.longitude;
 
     const [loading, setLoading] = useState(false);
     const [description, setDescription] = useState("");
@@ -65,7 +65,7 @@ const GeneralScreen = ({ navigation }) => {
     if (loading) {
         return (
             <>
-                <p>wfionwf</p>
+                <p>Loading</p>
             </>
         );
     }

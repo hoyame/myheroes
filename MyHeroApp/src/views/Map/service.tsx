@@ -17,8 +17,8 @@ interface IMap {
 }
 
 const MapComponent = (props: IMap) => {
-  const latitude = useReduxState(state => state.location.latitude);
-  const longitude = useReduxState(state => state.location.longitude);
+  const latitude = MyHeroService.latitude;
+  const longitude = MyHeroService.longitude;
   const state = useReduxState(state => state.location.state);
   const alerts = useReduxState(state => state.alerts.list);
   const dispatch = useDispatch();
@@ -33,16 +33,7 @@ const MapComponent = (props: IMap) => {
     longitudeS = longitude;
   }
 
-  if (state == false) {
-    setTimeout(() => {
-      if (MyHeroService.latitude !== 0 && MyHeroService.longitude !== 0) {
-          dispatch(setLocalisation({ latitude: MyHeroService.latitude, longitude: MyHeroService.longitude, localisation: true, state: true }))
-      }
-  }, 5500)
-
-  }
-
-  if (state == false) {
+  if (MyHeroService.latitude === 0 || MyHeroService.longitude === 0) {
     return (
       <View style={{
         height: props.height,
@@ -108,8 +99,8 @@ const MapComponent = (props: IMap) => {
           }}
 
           region={{
-              latitude: latitudeS,
-              longitude: longitudeS,
+              latitude: latitude,
+              longitude: longitude,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
           }}
