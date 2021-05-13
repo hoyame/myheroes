@@ -24,6 +24,8 @@ export abstract class MyHeroService {
     public static instance: AxiosInstance;
     public static latitude: number = 0;
     public static longitude: number = 0;
+    public static city: string = "";
+    public static departement: string = "";
 
     public static initialize() {
       if (this.notInitialized == false) return;

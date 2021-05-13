@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
 import HeaderComponent from '../../components/Header/headerTw';
 import { faExclamationCircle, faMapSigns, faSmile, faPhoneAlt, faPlus, faFirstAid, faBell, faCircle, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +14,7 @@ import BlurView from 'react-native-blur';
 import { color } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import MyHeroAlerts from '../../api/Alerts';
+import { MyHeroService } from '../../api/Service';
 
 //import SosSVG from '../../assets/sos.svg'
 
@@ -192,6 +193,7 @@ const HomeScreen = ({ navigation }) => {
     }
 
     const [sss, setSSS] = useState(false);
+    useEffect(() => setSSS(true))
 
     return (
         <View style={{
@@ -511,8 +513,8 @@ const HomeScreen = ({ navigation }) => {
                                         </View>
                                     </View> 
                                 </TouchableOpacity>
-                            }
-            
+                        }
+                                    
                         <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
                             <View style={{
                                 height: Dimensions.get('window').height > 695 ? 170: 135,
@@ -522,7 +524,27 @@ const HomeScreen = ({ navigation }) => {
                                 backgroundColor: '#ffffff',
                             }}>
                                 <MapComponent nav={navigation} height={Dimensions.get('window').height > 695 ? 170 : 135} width={screenWidth} />
-                                <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map')}}>
+                                <View style={{
+                                    position: 'absolute',
+                                    top: 10,
+                                    left: 20,
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    height: 30,
+                                    alignItems: 'center',
+                                    borderRadius: 50,
+                                }}>
+                                    <View style={{
+                                        height: 10,
+                                        width: 10,
+                                        borderRadius: 50,
+                                        backgroundColor: 'green',
+                                        marginRight: 6
+                                    }}></View>
+                                    <Text>{MyHeroService.departement == "" ? "" : MyHeroService.departement} - {MyHeroService.city == "" ? "" : MyHeroService.city}</Text>
+                                </View>
+                                
+                                <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map') }}>
                                     <View style={{
                                         position: "absolute",
                                         top: Dimensions.get('window').height > 695 ? -160 : -120,

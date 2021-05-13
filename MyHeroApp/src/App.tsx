@@ -199,32 +199,38 @@ const App = () => {
       const e = departement.sansAccent()
       
       console.log("efiuebgiubegbeigbeirgbrebgiug", e)
-      unsubscribeFromTopic();
 
-      setTimeout(() => {
-        const messaging = firebase.messaging();
-        messaging
+      MyHeroAlerts.getCityGE(MyHeroService.latitude, MyHeroService.longitude, (city: any) => {
+        MyHeroService.city = city;
+        
+        MyHeroService.departement = e;
+        
+        console.log("appp ", MyHeroService.departement, MyHeroService.city)
+        unsubscribeFromTopic();
+        
+        setTimeout(() => {
+          const messaging = firebase.messaging();
+          messaging
           .requestPermission()
           .then(() => {
             return messaging.getToken();
           })
           .then(token => {
             messaging
-              .subscribeToTopic(e.replace(/\s+/g, ''))
-              .then((response) => {
-                Alert.alert('scrubcried a: ', e.replace(/\s+/g, ''));
-                _storeData(e.replace(/\s+/g, ''));
-                console.log("2353526626236", response);
-              })
-              .catch(function(error) {
-                Alert.alert('errr scrubcried', e);
-                console.log('Error subscribing to topic:', error);
-              });
+            .subscribeToTopic(e.replace(/\s+/g, ''))
+            .then((response) => {
+              _storeData(e.replace(/\s+/g, ''));
+              console.log("2353526626236", response);
+            })
+            .catch(function(error) {
+              console.log('Error subscribing to topic:', error);
+            });
           })
           .catch(err => {
             console.log('Unable to get permission to notify.', err);
           });
-      }, 2500)
+        }, 2500)
+      }, (e: any) => null)
     })
   }, 10000)
 
