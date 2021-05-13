@@ -28,13 +28,14 @@ io.on('connection', function(client) {
 
 
 module.exports.sendListNotif = (tbl) => {
-	let d = tbl[0]
+	let d = tbl
 
+	console.log("sendlistnotif", tbl)
 	var message = {
 		topic: d.departement.replace(/\s+/g, ''),
 		notification: {
 			title: 'Information',
-			body: 'Une info a été envoyée de' + d.city
+			body: 'Une info a été envoyée de ' + d.city
 		},
 	};
 
