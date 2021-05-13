@@ -209,10 +209,8 @@ module.exports.approvateList = (req, res, next) => {
 
     console.log("approvate  ", model)
 
-    InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
-
-    res.send(InfoData);
     InfoDataValidate.push(model);
+    InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
     app.sendListNotif(model);
 }
 
