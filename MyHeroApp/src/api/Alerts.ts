@@ -73,8 +73,8 @@ export default abstract class MyHeroAlerts {
     }
 
     public static SendAlert(data: IAlert) {
-        MyHeroAlerts.getCityGE(data.latitude, data.longitude, (nn: any) => null, (e: any) => {
-            MyHeroAlerts.getCityGE(data.latitude, data.longitude, (es: any) => {
+        MyHeroAlerts.getCityGE(data.latitude, data.longitude, (nn: any) => null, (departement: any) => {
+            MyHeroAlerts.getCityGE(data.latitude, data.longitude, (city: any) => {
                 var params = {
                     identifier: data.identifier,
                     level: data.level,
@@ -83,12 +83,12 @@ export default abstract class MyHeroAlerts {
                     longitude: data.longitude,
                     description: data.description,
                     webrtc: data.webrtc,
-                    city: es,
-                    departement: e
+                    city: city,
+                    departement: departement
                 }
 
-                console.log("city", es)
-                console.log("departement", e)
+                console.log("city", city)
+                console.log("departement", departement)
                 
                 fetch(`${API_LINK}/alerts/add`, {
                     method: 'POST',
