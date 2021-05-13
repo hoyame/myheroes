@@ -328,7 +328,30 @@ const Controller = () => {
   if (MyHeroService.latitude === 0 || MyHeroService.longitude === 0) {
     return (
       <>
-        <Text>Loading...</Text>
+        <View style={{
+            width: screenWidth,
+            display: "flex",
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#272526"
+        }}>
+          <Image 
+            source={{uri: "https://cdn.discordapp.com/attachments/785109841416683520/805546399299141662/myhero.png"}}
+            style={{
+              marginTop: -90,
+              height: 300,
+              width: 300
+            }}
+          ></Image>
+          
+          <Text style={{
+            color: "#fff",
+            fontSize: 30,
+            fontWeight: "100",
+            textAlign: "center"
+          }}>Loading ...</Text>
+        </View>
       </>
     )
   }
