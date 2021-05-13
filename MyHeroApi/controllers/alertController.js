@@ -176,7 +176,6 @@ module.exports.removeList = (req, res, next) => {
     }
 
     InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
-
     res.send(InfoData);
 }
 
@@ -210,9 +209,11 @@ module.exports.approvateList = (req, res, next) => {
     console.log("approvate  ", model)
 
     InfoDataValidate.push(model);
-    InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
     app.sendListNotif(model);
+    InfoData = InfoData.filter(x => x.identifier != req.body.identifier);
+    console.log('list afeter update', InfoData)
 }
+
 
 module.exports.returnList = (req, res, next) => {
     res.send(InfoData);
