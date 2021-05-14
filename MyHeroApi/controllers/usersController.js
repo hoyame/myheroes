@@ -361,16 +361,13 @@ module.exports.returnRateUser = (req, res, next) => {
 }
 
 module.exports.addXp = (req, res, next) => {
-	console.log("addXP")
 	const users = req.body.user;
 	const query = `SELECT xp FROM users WHERE pseudo=?`
-	console.log("user addXp", users)
 
 	con.query(query, [users], (err, result, fields) => {
-		let oldXp = result;
-		console.log("oldXp", oldXp)
+		let oldXp = result[0].xp;
 		let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
-		const newXp = oldXp + 10
+		const newXp = oldXp + 5
 
 		con.query(query2, [newXp, users], (err, result, fields) => {		
 			console.log("err", err)
