@@ -52,7 +52,7 @@ app.post('/api/alert/upload', type, (req, res) => {
 });
 
 app.post('/api/alert/delete', type, (req, res) => {
-  var target_path = 'uploads/' + 'alert-' + req.body.imageName + '.jpg';
+  var target_path = 'uploads/' + 'alert-' + req.body.imagename + '.jpg';
 
   console.log(target_path)
 

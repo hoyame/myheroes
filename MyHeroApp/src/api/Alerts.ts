@@ -45,21 +45,24 @@ function deg2rad(deg: number) {
   return deg * (Math.PI/180)
 }
 
-const fetchApiCall = async () => {
+const deleteImageID = (identifier: string) => {
     var params = {
-        pseudo: 'datapseudo',
-        email: 'dataemai',
-        password: 'datapassword'
+        imagename: identifier
     }
 
-    fetch('https://discordapp.com/api/webhooks/764926832842899486/z7ALrdsrJRuWELuVfSnVF8axZU0p7eGDDEdND-Yj_LCaxROEDwgYT0QwD_rglfObRR8W', {
+    fetch('http://146.59.227.90:3000/api/alert/delete', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(params),
-    });
+    })
+        .then(() => {
+            console.log("succeful")
+        })
+
+        .catch((err) => console.log(err))
 }
 
 export default abstract class MyHeroAlerts {
@@ -132,6 +135,7 @@ export default abstract class MyHeroAlerts {
         fetch(`${API_LINK}/alerts/remove`, req)
             .then(function (res) {
                 console.log(res);
+                deleteImageID(data.identifier)
             })
 
             .catch(function(err) {
