@@ -353,7 +353,7 @@ module.exports.updatePseudo = (req, res, next) => {
 
 module.exports.returnRateUser = (req, res, next) => {
 	const user = req.query.user;
-	const query = `SELECT * FROM users_data WHERE source=?`
+	const query = `SELECT * FROM users_data WHERE user=?`
 
 	con.query(query, [user], (err, result, fields) => {
 		res.status(200).json(result);
@@ -369,9 +369,7 @@ module.exports.addXp = (req, res, next) => {
 		let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
 		const newXp = oldXp + 5
 
-		con.query(query2, [newXp, users], (err, result, fields) => {		
-			console.log("err", err)
-			
+		con.query(query2, [newXp, users], (err, result, fields) => {					
 			return res.json({
 				status: 'success',
 				result: result,
