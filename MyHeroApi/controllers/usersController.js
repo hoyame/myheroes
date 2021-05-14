@@ -363,6 +363,8 @@ module.exports.returnRateUser = (req, res, next) => {
 module.exports.addXp = (req, res, next) => {
 	const users = req.query.users;
 
+	console.log("ananaskim", users)
+
 	users.map((v, k) => {
 		console.logU("add xp", v)
 		const query = `SELECT xp FROM users WHERE pseudo=?`
