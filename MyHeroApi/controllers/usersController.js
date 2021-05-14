@@ -353,7 +353,7 @@ module.exports.updatePseudo = (req, res, next) => {
 
 module.exports.returnRateUser = (req, res, next) => {
 	const user = req.query.user;
-	const query = `SELECT * FROM users_data WHERE user=?`
+	const query = `SELECT * FROM users_data WHERE source=?`
 
 	con.query(query, [user], (err, result, fields) => {
 		res.status(200).json(result);
@@ -361,26 +361,21 @@ module.exports.returnRateUser = (req, res, next) => {
 }
 
 module.exports.addXp = (req, res, next) => {
-	const users = req.query.users;
+	const users = req.query.user;
+	const query = `SELECT xp FROM users WHERE pseudo=?`
 
-	console.log("ananaskim", users)
+	con.query(query, [users], (err, result, fields) => {
+		let oldXp = result;
+		let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
 
-	users.map((v, k) => {
-		console.logU("add xp", v)
-		const query = `SELECT xp FROM users WHERE pseudo=?`
-
-		con.query(query, [v], (err, result, fields) => {
-			let oldXp = result;
-			let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
-
-			con.query(query2, [oldXp + 10, v], (err, result, fields) => {		
-				return res.json({
-					status: 'success',
-					result: result,
-				});
+		con.query(query2, [oldXp + 10, v], (err, result, fields) => {		
+			return res.json({
+				status: 'success',
+				result: result,
 			});
-		})
+		});
 	})
+	
 }
 
 setInterval(() => { 
