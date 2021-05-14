@@ -49,20 +49,21 @@ const deleteImageID = (identifier: string) => {
     var params = {
         imagename: identifier
     }
-
-    fetch('http://146.59.227.90:3000/api/alert/delete', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(params),
-    })
-        .then(() => {
-            console.log("succeful")
+    
+    fetch(`http://146.59.227.90:3000/api/alert/delete/?image=${identifier}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
         })
+            .then(function(res) {
+                console.log(res);
+            })
 
-        .catch((err) => console.log(err))
+            .catch(function(err) {
+                console.log("errror", err)
+            })
 }
 
 export default abstract class MyHeroAlerts {
@@ -179,7 +180,6 @@ export default abstract class MyHeroAlerts {
 
             if (status === 200) {
                 const nb = e.data || 0;
-
                 console.log(nb)
 
                 setTimeout(() => {
