@@ -370,8 +370,9 @@ module.exports.addXp = (req, res, next) => {
 		let oldXp = result;
 		console.log("oldXp", oldXp)
 		let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
+		const newXp = oldXp + 10
 
-		con.query(query2, [oldXp + 10, users], (err, result, fields) => {		
+		con.query(query2, [newXp, users], (err, result, fields) => {		
 			console.log("err", err)
 			
 			return res.json({
