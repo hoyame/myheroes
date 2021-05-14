@@ -45,13 +45,30 @@ app.post('/api/alert/upload', type, (req, res) => {
   var src = fs.createReadStream(tmp_path);
   var dest = fs.createWriteStream(target_path);
   src.pipe(dest);
-  //src.on('end', function() { res.render('complete'); });
-  //src.on('error', function(err) { res.render('error'); });
 
   res.status(200).json({
     message: 'success!',
   });
 });
+
+app.post('/api/alert/delete', type, (req, res) => {
+  var target_path = 'uploads/' + 'alert-' + req.body.imageName + '.jpg';
+
+  console.log(target_path)
+
+  fs.stat(target_path, (err, stats) => {
+    console.log(stats);
+
+    if (err) {
+      return console.error(err);
+    }
+
+    fs.unlink(target_path, (err) => {
+      if (err) return console.log(err)
+      console.log('file deleted succeful')
+    })
+  })
+})
 
 app.listen(3000, () => {
   console.log('App running on http://localhost:3000');
