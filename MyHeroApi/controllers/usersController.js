@@ -364,6 +364,7 @@ module.exports.addXp = (req, res, next) => {
 	const users = req.query.users;
 
 	users.map((v, k) => {
+		console.logU("add xp", v)
 		const query = `SELECT xp FROM users WHERE pseudo=?`
 
 		con.query(query, [v], (err, result, fields) => {
