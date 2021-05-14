@@ -192,8 +192,13 @@ const HomeScreen = ({ navigation }) => {
         pdescription = I18n.t("alertDescFaible")
     }
 
-    const [sss, setSSS] = useState(false);
-    useEffect(() => setSSS(true))
+    const [departement, setDepartement] = useState("");
+    const [city, setCity] = useState("");
+    setTimeout(() => {
+        setDepartement(MyHeroService.departement)
+        setCity(MyHeroService.city)
+    }, 5500)
+    
 
     return (
         <View style={{
@@ -541,7 +546,7 @@ const HomeScreen = ({ navigation }) => {
                                         backgroundColor: 'green',
                                         marginRight: 6
                                     }}></View>
-                                    <Text>{MyHeroService.departement == "" ? "" : MyHeroService.departement} - {MyHeroService.city == "" ? "" : MyHeroService.city}</Text>
+                                    <Text>{departement} - {city}</Text>
                                 </View>
                                 
                                 <TouchableOpacity onPress={() => { dispatch(setCacheNav('Home')); navigation.navigate('Map') }}>

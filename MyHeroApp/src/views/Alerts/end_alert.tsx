@@ -21,12 +21,12 @@ const EndAlertScreen = ({ navigation }) => {
     const [cache, setCache] = useState("");
     const [load, setLoad] = useState(false);
     
-    const sendXp = () => {
+    const sendXp = (user: string) => {
         var params = {
-            users: AlertsDataUsers,
+            user: user,
         }
     
-        fetch(`${API_LINK}/app/add_xp`, {
+        fetch(`${API_LINK}/user/add_xp`, {
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -37,7 +37,10 @@ const EndAlertScreen = ({ navigation }) => {
     }
 
     setTimeout(() => {
-        sendXp();
+        AlertsDataUsers.map((v, k) => {
+            sendXp(v);
+        })
+
         if (AlertsDataUsers !== []) {
             setData(AlertsDataUsers);
         }
@@ -145,8 +148,8 @@ const EndAlertScreen = ({ navigation }) => {
                             placeholder={I18n.t("alertDescHero")} 
                             onClick={() => {
                                 Users.AddRate(mailSource, cache, description, rate, () => {
-                                    navigation.navigation("Home");
                                 })
+                                navigation.navigate("Home");
                             }} 
                             rate={rate}
                             setRate={setRate}

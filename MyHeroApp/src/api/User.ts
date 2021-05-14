@@ -18,10 +18,12 @@ export let InformationsH24 = []
 export default abstract class Users {
 
     public static GetRate(user: string) {
+        console.log(user);
         axios.get(`${API_LINK}/user/get_rate/?user=${user}`)
             .then((response) => {
                 const data = response.data
                 AvisUsers = data
+                console.log("data ", data)
             })
 
             .catch((err) => {

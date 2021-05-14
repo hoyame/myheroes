@@ -193,7 +193,7 @@ const Controller = () => {
                   dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${pseudo}?time=${new Date()}`));
                   setNewUser(false);
                   setInitialize(true);
-                  Users.GetRate(AMail);
+                  Users.GetRate(pseudo);
                   Users.GetMessagesH24(1, 1, (e: any) => {});
                   console.log("200");
                 } else {

@@ -103,6 +103,8 @@ export default abstract class MyHeroAlerts {
                 
                 .then((data: any) => {
                     console.log("fiobgfe", data.data)
+                    AlertsDataUsers = []
+
                 })
             }, (e: any) =>  null)
         })
@@ -128,7 +130,7 @@ export default abstract class MyHeroAlerts {
         }
     
         fetch(`${API_LINK}/alerts/remove`, req)
-            .then(function(res) {
+            .then(function (res) {
                 console.log(res);
             })
 
