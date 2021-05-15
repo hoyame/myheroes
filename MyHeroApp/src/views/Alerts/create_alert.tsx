@@ -154,12 +154,12 @@ const CreateAlertScreen = ({ navigation }) => {
                                         justifyContent: "center",
                                     }}>
                                         <Text style={{
-                                            fontSize: 23
+                                            fontSize: 20
                                         }}>{I18n.t("alertT")} {name}</Text>
 
                                         <Text style={{
                                             color: "#262626",
-                                            fontSize: 13
+                                            fontSize: 10
                                         }}>{description}</Text>
                                     </View>
 
