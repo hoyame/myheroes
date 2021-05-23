@@ -194,6 +194,7 @@ const Controller = () => {
                   setNewUser(false);
                   setInitialize(true);
                   Users.GetRate(pseudo);
+                  Users.GetUsers();
                   Users.GetMessagesH24(1, 1, (e: any) => {});
                   console.log("200");
                 } else {

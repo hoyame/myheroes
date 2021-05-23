@@ -205,10 +205,11 @@ module.exports.addRate = (req, res, next) => {
 	const user = req.body.user;
 	const rate = req.body.rate;
 	const description = req.body.description;
+	const sourceName = req.body.nameSource;
 	
-	let sql = `INSERT INTO users_data(source, user, rate, description) VALUES(?, ?, ?, ?)`;
+	let sql = `INSERT INTO users_data(source, sourceName, user, rate, description) VALUES(?, ?, ?, ?)`;
 
-	con.query(sql, [source, user, rate, description], function (err, result) {
+	con.query(sql, [source, sourceName, user, rate, description], function (err, result) {
 		return res.json({
 			status: 'success',
 			result: {
@@ -353,7 +354,7 @@ module.exports.updatePseudo = (req, res, next) => {
 
 module.exports.returnRateUser = (req, res, next) => {
 	const user = req.query.user;
-	const query = `SELECT * FROM users_data WHERE user=?`
+	const query = `SELECT * FROM users_data WHERE source=?`
 
 	con.query(query, [user], (err, result, fields) => {
 		res.status(200).json(result);
@@ -362,12 +363,13 @@ module.exports.returnRateUser = (req, res, next) => {
 
 module.exports.addXp = (req, res, next) => {
 	const users = req.body.user;
+	const xpAdd = req.body.xp;
 	const query = `SELECT xp FROM users WHERE pseudo=?`
 
 	con.query(query, [users], (err, result, fields) => {
 		let oldXp = result[0].xp;
 		let query2 = `UPDATE users SET xp=? WHERE pseudo=?`;
-		const newXp = oldXp + 5
+		const newXp = oldXp + xpAdd
 
 		con.query(query2, [newXp, users], (err, result, fields) => {					
 			return res.json({

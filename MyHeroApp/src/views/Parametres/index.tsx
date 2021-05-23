@@ -101,7 +101,7 @@ const ParametresScreen = ({ navigation }) => {
         uploadData.append('file', { 
             type: 'image/jpg', 
             uri: image_uri, 
-            name: `${name}.jpg`
+            name: `${mail}.jpg`
         })
 
         fetch(base_url, {
@@ -111,8 +111,8 @@ const ParametresScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${name}?time=${new Date()}`});
-            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${name}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${mail}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${mail}?time=${new Date()}`));
 
         })
         .catch((error) => {

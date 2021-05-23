@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -13,6 +13,8 @@ import I18n from '../../i18n/i18n';
 
 const EndAlertScreen = ({ navigation }) => {
     const mailSource = useReduxState(state => state.user.mail);
+    const nameSource = useReduxState(state => state.user.name);
+    const enddLvl = useReduxState(state => state.user.createAlertLevel);
 
     const [s, SS] = useState(false);
     const [description, setDescription] = useState("");
@@ -21,9 +23,10 @@ const EndAlertScreen = ({ navigation }) => {
     const [cache, setCache] = useState("");
     const [load, setLoad] = useState(false);
     
-    const sendXp = (user: string) => {
+    const sendXp = (user: string, xp: number) => {
         var params = {
             user: user,
+            xp: xp
         }
     
         fetch(`${API_LINK}/user/add_xp`, {
@@ -36,15 +39,22 @@ const EndAlertScreen = ({ navigation }) => {
         })
     }
 
-    setTimeout(() => {
+    useEffect(() => {
+        console.log(12333324532525)
         AlertsDataUsers.map((v, k) => {
-            sendXp(v);
+            if (enddLvl == 1) {
+                sendXp(v, 10);
+            } else if (enddLvl == 2) {
+                sendXp(v, 20);
+            } else if (enddLvl == 3) {
+                sendXp(v, 50);
+            }
         })
 
         if (AlertsDataUsers !== []) {
             setData(AlertsDataUsers);
         }
-    }, 500)
+    }, [])
 
     if (load == true) {
         return (
@@ -147,7 +157,7 @@ const EndAlertScreen = ({ navigation }) => {
                             title={I18n.t("alertAvisHero")} 
                             placeholder={I18n.t("alertDescHero")} 
                             onClick={() => {
-                                Users.AddRate(mailSource, cache, description, rate, () => {
+                                Users.AddRate(mailSource, nameSource, cache, description, rate, () => {
                                 })
                                 navigation.navigate("Home");
                             }} 

@@ -52,7 +52,7 @@ const ConnexionScreen = ({ navigation }) => {
         uploadData.append('file', { 
             type: 'image/jpg', 
             uri: image_uri, 
-            name: `${name}.jpg`
+            name: `${state.mail}.jpg`
         })
 
         fetch(base_url, {
@@ -62,8 +62,8 @@ const ConnexionScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${name}?time=${new Date()}`});
-            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${name}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${state.mail}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${state.mail}?time=${new Date()}`));
         })
         .catch((error) => {
             console.log('upload error', error);
@@ -553,7 +553,7 @@ const ConnexionScreen = ({ navigation }) => {
                                                         dispatch(setRate(e.rate));
                                                         dispatch(setXp(e.xp));
                                                         dispatch(setImage(e.image));
-                                                        dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${e.pseudo}?time=${new Date()}`));
+                                                        dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${e.mail}?time=${new Date()}`));
                                                         
                                                         navigation.navigate('Home');
                                                     }, () => {
