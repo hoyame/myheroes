@@ -45,7 +45,7 @@ const CreateAlertScreen = ({ navigation }) => {
     })
 
     const uploadImage = (image_uri: string) => {
-        let base_url = 'http://146.59.227.90:3000/api/alert/upload';
+        let base_url = 'http://176.31.230.112:3000/api/alert/upload';
         let uploadData = new FormData();
          
         uploadData.append('sumbit', 'ok');
@@ -62,7 +62,7 @@ const CreateAlertScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/alert-${identifierSe}?time=${new Date()}`});
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/alert-${identifierSe}?time=${new Date()}`});
 
         })
         .catch((error) => {

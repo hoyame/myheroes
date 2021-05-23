@@ -421,7 +421,7 @@ const HomeScreen = ({ navigation }) => {
                                                 }}
                                             
                                                 source={{
-                                                    uri: `http://146.59.227.90:3000/api/avatar/${alertDataHelp.source}?time=${new Date()}`,
+                                                    uri: `http://176.31.230.112:3000/api/avatar/${alertDataHelp.source}?time=${new Date()}`,
                                                 }}
                                             />
                                         </View>    

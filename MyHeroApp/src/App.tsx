@@ -14,7 +14,7 @@ import io from 'socket.io-client';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-community/async-storage';
 
-const SOCKET_URL = 'http://146.59.227.90:3333';
+const SOCKET_URL = 'http://176.31.230.112:3333';
 
 const credentials = {
   clientId: '990257045964-ok4752hr40qedgcpuk42s7d3psoe38fp.apps.googleusercontent.com',
@@ -92,8 +92,8 @@ PushNotification.configure({
   requestPermissions: true,
 });
 
-export const API_LINK = "http://146.59.227.90:3333";
-export const API_LINK_CDN = "http://146.59.227.90:3000";
+export const API_LINK = "http://176.31.230.112:3333";
+export const API_LINK_CDN = "http://176.31.230.112:3000";
 
 const unsubscribeFromTopic = async () => {
     const AOldNotif = await AsyncStorage.getItem('@old_notif') || '';

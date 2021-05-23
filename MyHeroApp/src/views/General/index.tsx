@@ -187,7 +187,7 @@ const GeneralScreen = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: `http://146.59.227.90:3000/api/avatar/${props.name}?time=${new Date()}`,
+                                uri: `http://176.31.230.112:3000/api/avatar/${props.name}?time=${new Date()}`,
                             }}
                         />
                     </View>

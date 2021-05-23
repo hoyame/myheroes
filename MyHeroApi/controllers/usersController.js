@@ -375,8 +375,15 @@ module.exports.addXp = (req, res, next) => {
 				result: result,
 			});
 		});
-	})
-	
+	})	
+}
+
+module.exports.getUsers = (req, res, next) => {
+	const query = `SELECT * FROM users`
+
+	con.query(query, [], (err, result, fields) => {					
+		res.status(200).json(result);
+	});
 }
 
 setInterval(() => { 

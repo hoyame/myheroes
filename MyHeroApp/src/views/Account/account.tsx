@@ -1,4 +1,4 @@
-import { faBaby, faBed, faBiking, faBlind, faBold, faCut, faHome, faJedi, faKhanda, faMedal, faMeteor, faShieldAlt, faTimesCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faBaby, faBed, faBiking, faBlind, faBold, faCut, faExclamationCircle, faHome, faInfoCircle, faJedi, faKhanda, faMedal, faMeteor, faShieldAlt, faTimesCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { StyleSheet, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, View, TextInput } from "react-native";
@@ -37,6 +37,7 @@ const AccountScreen = ({ navigation }) => {
     const img = useReduxState(state => state.user.image);
     const xp = useReduxState(state => state.user.xp);
     const [information, setInformation] = useState(false);
+    const [page, setPage] = useState(1);
 
     const [state, setState] = useState({
         name: '',
@@ -152,7 +153,7 @@ const AccountScreen = ({ navigation }) => {
                 marginBottom: 10,
                 borderRadius: 15,
                 padding: 13,
-                backgroundColor: '#353A50'
+                backgroundColor: '#fff'
             }}>
                 <View style={{
                     display: "flex",
@@ -175,7 +176,7 @@ const AccountScreen = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: `http://146.59.227.90:3000/api/avatar/${props.user}?time=${new Date()}`,
+                                uri: `http://176.31.230.112:3000/api/avatar/${props.user}?time=${new Date()}`,
                             }}
                         />
                     </View>
@@ -187,7 +188,7 @@ const AccountScreen = ({ navigation }) => {
                         <Text style={{
                             fontSize: 16,
                             marginBottom: 3,
-                            color: "white"
+                            color: "black"
                         }}>{props.user}</Text>
 
                         <ReturnStars size={15} rate={props.rate} />
@@ -199,7 +200,7 @@ const AccountScreen = ({ navigation }) => {
                         fontSize: 12,
                         width: screenWidth - 20,
                         marginTop: 4,
-                        color: "rgba(255, 255, 255, 0.75)"
+                        color: "black"
                     }}>{props.description}</Text>
                 </View>
             </View>
@@ -221,20 +222,20 @@ const AccountScreen = ({ navigation }) => {
 
                    </>
                 )
-            } else if (num >= 100 && num <= 500) {
+            } else if (num >= 500 && num <= 2500) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
                    </>
                 )
-            } else if (num >= 500 && num <= 1000) {
+            } else if (num >= 2500 && num <= 5000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
                         <FontAwesomeIcon icon={faMeteor} size={25} style={{color: "#FCCA1C", marginRight: 7.5}} />
                     </>
                 )
-            } else if (num >= 1000 && num <= 5000) {
+            } else if (num >= 5000 && num <= 25000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -242,7 +243,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faMedal} size={25} style={{color: "#1F7CEB", marginRight: 7.5}} />
                     </>
                 )
-            } else if (num >= 5000 && num <= 10000) {
+            } else if (num >= 25000 && num <= 50000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -251,7 +252,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faTrophy} size={25} style={{color: "#B0F50A", marginRight: 7.5}} />
                     </>
                 )
-            } else if (num >= 10000 && num < 100000) {
+            } else if (num >= 50000 && num < 500000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -261,7 +262,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faShieldAlt} size={25} style={{color: "#E63B25", marginRight: 7.5}} />
                     </>
                 )
-            } else if (num >= 100000 && num <= 1000000) {
+            } else if (num >= 500000 && num <= 5000000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -272,7 +273,7 @@ const AccountScreen = ({ navigation }) => {
                         <FontAwesomeIcon icon={faKhanda} size={25} style={{color: "#FC9A21", marginRight: 7.5}} />
                     </>
                 )
-            } else if (num >= 1000000) {
+            } else if (num >= 5000000) {
                 return (
                     <>
                         <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
@@ -286,6 +287,178 @@ const AccountScreen = ({ navigation }) => {
                 )
             }
     }
+
+    const returnZebi = () => {
+        switch (page) {
+            case 0:
+                return (
+                    <>
+                        <Text>0</Text>
+                    </>
+                )
+            case 1:
+                return (
+                    <>
+                             <View style={{
+                                    height: 130,
+                                    borderRadius: 15,
+                                    marginBottom: 12.5,
+                                    width: screenWidth,
+                                    backgroundColor: "#ffffff",
+                                    alignItems: 'center',
+                                    justifyContent: "center",
+                                    display: "flex",
+                                    flexDirection: 'column'
+                                }}>
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faExclamationCircle} size={25} style={{color: "#d80000", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>{I18n.t("alertFaible")} : 10 XP</Text>
+                            </View>
+                            
+                                                 <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faExclamationCircle} size={25} style={{color: "#ff9600", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>{I18n.t("alertMoyen")} : 20 XP</Text>
+                            </View>
+                            
+                                                 <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faExclamationCircle} size={25} style={{color: "#ffd100", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                }}>{I18n.t("alertGrave")} : 50 XP</Text>
+                                    </View>
+                            
+
+                              
+                                                            
+                        </View>
+                        
+                        <View style={{
+                                    height: 310,
+                                    borderRadius: 15,
+                                    marginBottom: 12.5,
+                                    marginTop: 12.5,
+                                    width: screenWidth,
+                                    backgroundColor: "#ffffff",
+                                    alignItems: 'center',
+                                    justifyContent: "center",
+                                    display: "flex",
+                                    flexDirection: 'column'
+                                }}>
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>500 XP</Text>
+                                    </View>
+                                    
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faMeteor} size={25} style={{color: "#FCCA1C", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>2500 XP</Text>
+                                    </View>
+
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faMedal} size={25} style={{color: "#1F7CEB", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>5000 XP</Text>
+                                    </View>
+
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faTrophy} size={25} style={{color: "#B0F50A", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>25000 XP</Text>
+                                    </View>
+                                    
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faShieldAlt} size={25} style={{color: "#E63B25", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>50000 XP</Text>
+                                    </View> 
+                                    
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faKhanda} size={25} style={{color: "#FC9A21", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>500000 XP</Text>
+                                    </View> 
+
+                                    <View style={{
+                                        height: 35,
+                                        display: 'flex',
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }}>
+                                        <FontAwesomeIcon icon={faJedi} size={25} style={{color: "#008B00", marginRight: 7.5}} />
+                                        <Text style={{
+                                            fontSize: 17.5
+                                        }}>5000000 XP</Text>
+                                    </View>
+                                                            
+                                </View>
+                    </>
+                )
+            case 2:
+                return (
+                    <>
+                        {returnAvis()}
+                    </>
+                )
+            default: return <>53</>
+        }
+    } 
 
     return (
         <>
@@ -332,127 +505,64 @@ const AccountScreen = ({ navigation }) => {
 
                     <ReturnStars rate={rate} />
      
-                    <TouchableOpacity onPress={() => setInformation(!information)}>
-                        {
-                            information == false ?
+                    
+                        <View style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            marginTop: 15,
+                            marginBottom: 30
+                        }}>
+                            <TouchableOpacity onPress={() => setPage(0)}>
                                 <View style={{
-                                    height: 60,
-                                    borderRadius: 15,
-                                    marginBottom: 12.5,
-                                    marginTop: 12.5,
-                                    width: screenWidth,
-                                    backgroundColor: "#ffffff",
+                                    display: 'flex',
                                     alignItems: 'center',
-                                    justifyContent: "center",
-                                    display: "flex",
-                                    flexDirection: 'row'
+                                    justifyContent: 'center',
+                                    marginTop: 20,
+                                    height: 80,
+                                    width: 80,
+                                    marginRight: 25,
+                                    borderRadius: 10,
+                                    backgroundColor: page == 0 ? "#1d1d1d" : "#fff"
                                 }}>
-                                    { returnBadgesWithXp(xp)}
+                                    <FontAwesomeIcon icon={faMedal} size={35} style={{color: page == 0 ? "#fff" : "#E63B25"}} />
                                 </View>
-                            : 
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => setPage(1)}>
                                 <View style={{
-                                    height: 310,
-                                    borderRadius: 15,
-                                    marginBottom: 12.5,
-                                    marginTop: 12.5,
-                                    width: screenWidth,
-                                    backgroundColor: "#ffffff",
+                                   display: 'flex',
                                     alignItems: 'center',
-                                    justifyContent: "center",
-                                    display: "flex",
-                                    flexDirection: 'column'
+                                justifyContent: 'center',
+                                marginTop: 20,
+                                height: 80,
+                                width: 80,
+                                marginRight: 25,
+                                borderRadius: 10,
+                                    backgroundColor: page == 1 ? "#1d1d1d" : "#fff"
                                 }}>
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faStar} size={25} style={{color: "#008B00", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>10 Sauvetages</Text>
-                                    </View>
-                                    
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faMeteor} size={25} style={{color: "#FCCA1C", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>50 Sauvetages</Text>
-                                    </View>
-
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faMedal} size={25} style={{color: "#1F7CEB", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>100 Sauvetages</Text>
-                                    </View>
-
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faTrophy} size={25} style={{color: "#B0F50A", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>500 Sauvetages</Text>
-                                    </View>
-                                    
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faShieldAlt} size={25} style={{color: "#E63B25", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>1000 Sauvetages</Text>
-                                    </View> 
-                                    
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faKhanda} size={25} style={{color: "#FC9A21", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>10000 Sauvetages</Text>
-                                    </View> 
-
-                                    <View style={{
-                                        height: 35,
-                                        display: 'flex',
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }}>
-                                        <FontAwesomeIcon icon={faJedi} size={25} style={{color: "#008B00", marginRight: 7.5}} />
-                                        <Text style={{
-                                            fontSize: 17.5
-                                        }}>100000 Sauvetages</Text>
-                                    </View>
-                                                                
+                                    <FontAwesomeIcon icon={faInfoCircle} size={40} style={{color: page == 1 ? "#fff" : "#FC9A21"}} />
                                 </View>
-                        }
-                    </TouchableOpacity>
+                            </TouchableOpacity>
 
-                    {returnAvis()}
-                </View>
-                    </ScrollView>
+                            <TouchableOpacity onPress={() => setPage(2)}>
+                                <View style={{
+                                   display: 'flex',
+                                    alignItems: 'center',
+                                justifyContent: 'center',
+                                marginTop: 20,
+                                height: 80,
+                                width: 80,
+                                borderRadius: 10,
+                                    backgroundColor: page == 2 ? "#1d1d1d" : "#fff"
+                                }}>
+                                    <FontAwesomeIcon icon={Zei} size={40} style={{color: page == 2 ? "#fff" : "#FCCA1C"}} />
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                                
+                        {returnZebi()}
+                    </View>
+                </ScrollView>
 
             </View>
         </>

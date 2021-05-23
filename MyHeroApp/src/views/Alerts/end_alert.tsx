@@ -102,7 +102,7 @@ const EndAlertScreen = ({ navigation }) => {
                                     borderRadius: 50,
                                 }}  
                                 source={{
-                                    uri: `http://146.59.227.90:3000/api/avatar/${v}?time=${new Date()}`,
+                                    uri: `http://176.31.230.112:3000/api/avatar/${v}?time=${new Date()}`,
                                 }}
                             />
                         </View>

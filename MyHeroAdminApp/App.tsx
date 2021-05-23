@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import Page from './Page';
 
-const SOCKET_URL = 'http://146.59.227.90:3333';
+const SOCKET_URL = 'http://176.31.230.112:3333';
 
 export const socket = io.connect(SOCKET_URL, {
   transports: ['websocket'],

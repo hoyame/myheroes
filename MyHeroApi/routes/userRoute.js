@@ -76,5 +76,6 @@ router.get('/user/get_rate', usersController.returnRateUser);
 
 router.post('/user/add_xp', usersController.addXp);
 
+router.get('/user/get_users', usersController.getUsers);
 
 module.exports = router;

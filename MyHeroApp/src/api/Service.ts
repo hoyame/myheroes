@@ -5,11 +5,11 @@ import axios, { AxiosInstance } from 'axios';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from "react-native-push-notification";
 
-export const TURN_SERVER_URL = '146.59.227.90:3478';
+export const TURN_SERVER_URL = '176.31.230.112:3478';
 export const TURN_SERVER_USERNAME = 'username';
 export const TURN_SERVER_CREDENTIAL = 'password';
 
-const apiLink = 'http://146.59.227.90:3333/';
+const apiLink = 'http://176.31.230.112:3333/';
 axios.defaults.baseURL = apiLink;
 axios.defaults.timeout = 1000 * 60 * 5;
 
