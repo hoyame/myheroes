@@ -211,11 +211,7 @@ module.exports.addRate = (req, res, next) => {
 
 	con.query(sql, [source, sourceName, user, rate, description], function (err, result) {
 		return res.json({
-			status: 'success',
-			result: {
-				affectedRows: result.affectedRows,
-				insertId: result.insertId,
-			},
+			status: 'success'
 		});
 	});
 };
