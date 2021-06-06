@@ -106,6 +106,7 @@ export default {
     gdps7: "Ventilazione artificiale",
     gdps8: "Adult ettoufement",
     gdps9: "Infant Ettoufement",
+    gdps10: "Posizione di attesa",
     
     general1: "Di seguito troverai le informazioni sulla tua posizione attuale.",
     general2: "News (durata 24h)",

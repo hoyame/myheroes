@@ -106,6 +106,7 @@ export default {
     gdps7: "Ventilação artificial",
     gdps8: "Asfixia adulto",
     gdps9: "Asfixia criança",
+    gdps10: "Utrzymanie pozycji",
     
     general1: "Você encontrará abaixo as informações sobre sua localização atual.",
     general2: "Notícias (duração 24h)",

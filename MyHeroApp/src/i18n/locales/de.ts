@@ -106,6 +106,7 @@ export default {
     gdps7: "Künstliche Beatmung",
     gdps8: "Adult ettoufement",
     gdps9: "Infant Ettoufement",
+    gdps10: "Warteposition",
     
     general1: "Nachfolgend finden Sie Informationen zu Ihrem aktuellen Standort",
     general2: "News (Dauer 24h)",

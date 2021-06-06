@@ -109,6 +109,7 @@ export default {
     gdps7: "Ventilation artificielle",
     gdps8: "Ettoufement adulte",
     gdps9: "Ettoufement Nourisson",
+    gdps10: "Position d'attente",
     
     general1: "Vous retrouverez ci-dessous les news autour de votre localisation actuelle.",
     general2: "News (durée 24h)",

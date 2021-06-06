@@ -106,6 +106,7 @@ export default {
     gdps7: "Artificial ventilation",
     gdps8: "Adult stifling",
     gdps9: "Infant smother",
+    gdps10: "Waiting position",
     
     general1: "You will find below the information around your current location.",
     general2: "News (duration 24h)",
