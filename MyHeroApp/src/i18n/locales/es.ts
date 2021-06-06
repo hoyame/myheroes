@@ -120,7 +120,7 @@ export default {
 
     nduSearchPays: "Buscar un país",
     nduSearch: "Buscar",
-    nduAmbulance: "Ambulance/Samu",
+    nduAmbulance: "Ambulancia",
     nduPolice: "Policía",
     nduPompiers: "Bomberos",
     
@@ -193,5 +193,9 @@ export default {
 
     cgu23: "Mentions légales",
     cgu023: "L'application Myheroes est éditée par Saidat wahib Particulier, et dont le siège social est sis au 2 impasse des dahlias, 74100 Vetraz monthoux. Directeur de la publication : Wahib SAIDAT, President de Saidat wahib Particulier, joignable au 0673335274 ou à l'adresse Wsaidat@wanadoo.fr. Les informations concernant la collecte et le traitement des données personnelles (politique et déclaration) sont fournies dans la charte de données personnelles de l'application.",
+    alertAddPhoto: "Añadir imagen",
+    accountXPSel:"Información XP",
+    accountClassementSel:"Ranking de héroes",
+    accountAvisSel:"opinión"
 
 };
