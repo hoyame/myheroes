@@ -183,163 +183,12 @@ const GDPSPage = ({ navigation }) => {
                                         key={Date.now()} 
                                         style={{height: '80%', width: '100%', }} 
                                         source={require(`../../assets/gdps/${langue}/ettoufement_nourisson.jpg`)} 
-                                    >
-                                    
-                                    </Image>
+                                    ></Image>
                                 </View>
                             </>
                         );  
-                    default: return (
-                        <>
-                            <Text>Erreur 800</Text>
-                        </>
-                    )
-                }
-                
-            } else {
-                let langue = "en";
 
-                switch (page) {
-                    case 1: // malaises
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps1")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/malaises.jpg`)} 
-                                    >
-                                    </Image>
-                                </View>
-                            </>
-                        );    
-                    case 2: // pls
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps2")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/pls.jpg`)} 
-                                    >
-                        
-                                    </Image>
-                                </View>
-                            </>
-                        );    
-                    case 3: // hemoragie
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps3")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/hemoragie.jpg`)} 
-                                    >
-                                    
-                                    </Image>
-                                </View>
-                            </>
-                        );    
-                    case 4: // traumatismes
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps4")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/traumatismes.jpg`)} 
-                                    >
-                                    
-                                    </Image>
-                                </View>
-                            </>
-                        );  
-                    case 5: // brulures
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps5")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/brulures.jpg`)} 
-                                    >
-                                    
-                                    </Image>
-                                </View>
-                            </>
-                        ); 
-                    case 7: // ventilation artificielle
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps7")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/ventilation-artificielle.jpg`)} 
-                                    >
-                                    
-                                    </Image>
-                                </View>
-                            </>
-                        );     
-                    case 8: // ettoufement adulte
-                        return (
-                            <>
-                                <HeaderComponent title={I18n.t("gdps8")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
-         
-                                <View style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: 20                    
-                                }}>
-                                    <Image 
-                                        key={Date.now()} 
-                                        style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/ettoufement_adulte.jpg`)} 
-                                    >
-                                    
-                                    </Image>
-                                </View>
-                            </>
-                        );  
-                    case 9: // ettoufement nourisson
+                    case 10: // paa
                         return (
                             <>
                                 <HeaderComponent title={I18n.t("gdps9")} navigation={navigation} redirect="GDPS" onBackClick={() => setState(false)}/>
@@ -352,10 +201,8 @@ const GDPSPage = ({ navigation }) => {
                                     <Image 
                                         key={Date.now()} 
                                         style={{height: '80%', width: '100%', }} 
-                                        source={require(`../../assets/gdps/${langue}/ettoufement_nourisson.jpg`)} 
-                                    >
-                                    
-                                    </Image>
+                                        source={require(`../../assets/gdps/${langue}/paa.jpg`)} 
+                                    ></Image>
                                 </View>
                             </>
                         );  
@@ -389,6 +236,7 @@ const GDPSPage = ({ navigation }) => {
                     <ButtonComponent onClick={() => {setState(true); setPage(7)}} title={I18n.t("gdps7")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => {setState(true); setPage(8)}} title={I18n.t("gdps8")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => {setState(true); setPage(9)}} title={I18n.t("gdps9")} icon={faFirstAid} color="#008b00" />
+                    <ButtonComponent onClick={() => {setState(true); setPage(10)}} title={'paaa'} icon={faFirstAid} color="#008b00" />
                 </ScrollView>
             </View>
         </> 
