@@ -207,7 +207,7 @@ module.exports.addRate = (req, res, next) => {
 	const description = req.body.description;
 	const sourceName = req.body.nameSource;
 	
-	let sql = `INSERT INTO users_data(source, sourceName, user, rate, description) VALUES(?, ?, ?, ?)`;
+	let sql = `INSERT INTO users_data(source, sourceName, user, rate, description) VALUES(?, ?, ?, ?, ?)`;
 
 	con.query(sql, [source, sourceName, user, rate, description], function (err, result) {
 		return res.json({
