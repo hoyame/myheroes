@@ -210,6 +210,10 @@ module.exports.addRate = (req, res, next) => {
 	let sql = `INSERT INTO users_data(source, sourceName, user, rate, description) VALUES(?, ?, ?, ?, ?)`;
 
 	con.query(sql, [source, sourceName, user, rate, description], function (err, result) {
+		if (err) {
+			console.log(err)
+		}
+
 		return res.json({
 			status: 'success'
 		});
