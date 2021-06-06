@@ -58,7 +58,7 @@ const AlertPageScreen = ({ navigation }) => {
                     <View style={{
                         marginBottom: 15,
                     }}>
-                        <AccountStats name={alertData.source} xp={userCache.xp} rate={userCache.rate} img={`http://146.59.227.90:3000/api/avatar/${alertData.source}?time=${new Date()}`} />
+                        <AccountStats name={alertData.source} xp={userCache.xp} rate={userCache.rate} img={`http://176.31.230.112:3000/api/avatar/${alertData.source}?time=${new Date()}`} />
                     </View>
                     
                     <View style={{
@@ -77,7 +77,7 @@ const AlertPageScreen = ({ navigation }) => {
                         backgroundColor: "#ffffff"
                     }}>
                         { photo == false &&
-                            <Image source={{uri: `http://146.59.227.90:3000/api/avatar/alert-${alertData.identifier}?time=${new Date()}`}} style={{
+                            <Image source={{uri: `http://176.31.230.112:3000/api/avatar/alert-${alertData.identifier}?time=${new Date()}`}} style={{
                                 height: "99%",
                                 width: "99%",
                                 borderRadius: 10,

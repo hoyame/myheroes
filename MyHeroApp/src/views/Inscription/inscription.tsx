@@ -55,7 +55,7 @@ const InscriptionScreen = ({ navigation }) => {
     })
 
     const uploadImage = (image_uri: string) => {
-        let base_url = 'http://146.59.227.90:3000/api/upload/';
+        let base_url = 'http://176.31.230.112:3000/api/upload/';
         let uploadData = new FormData();
          
         uploadData.append('sumbit', 'ok');
@@ -72,8 +72,8 @@ const InscriptionScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`});
-            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${name}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${name}?time=${new Date()}`));
 
         })
         .catch((error) => {

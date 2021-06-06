@@ -101,7 +101,7 @@ const AlertScreen = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: `http://146.59.227.90:3000/api/avatar/${props.source}?time=${new Date()}`,
+                                uri: `http://176.31.230.112:3000/api/avatar/${props.source}?time=${new Date()}`,
                             }}
                         />
                     </View>

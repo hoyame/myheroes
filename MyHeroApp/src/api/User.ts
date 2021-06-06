@@ -14,6 +14,7 @@ interface IUser {
 
 export let AvisUsers = []
 export let InformationsH24 = []
+export let UsersClass = []
 
 export default abstract class Users {
 
@@ -23,7 +24,27 @@ export default abstract class Users {
             .then((response) => {
                 const data = response.data
                 AvisUsers = data
-                console.log("data ", data)
+            })
+
+            .catch((err) => {
+                console.log("err", err);
+            }
+        )
+    }
+
+    public static GetUsers() {
+        axios.get(`${API_LINK}/user/get_users/`)
+            .then((response) => {
+                const data = response.data
+                UsersClass = data
+
+                UsersClass.sort(function compare(a, b) {
+                    if (a.xp > b.xp)
+                        return -1;
+                    if (a.xp < b.xp )
+                        return 1;
+                    return 0;
+                });
             })
 
             .catch((err) => {
@@ -228,9 +249,10 @@ export default abstract class Users {
         ;
     }
 
-    public static AddRate(source: any, user: any, description: any, rate: any, cb: any) {
+    public static AddRate(source: any, nameSource: any, user: any, description: any, rate: any, cb: any) {
         var params = {
             source: source,
+            nameSource: nameSource,
             user: user,
             description: description,
             rate: rate

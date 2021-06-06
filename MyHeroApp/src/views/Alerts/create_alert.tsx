@@ -45,7 +45,7 @@ const CreateAlertScreen = ({ navigation }) => {
     })
 
     const uploadImage = (image_uri: string) => {
-        let base_url = 'http://146.59.227.90:3000/api/alert/upload';
+        let base_url = 'http://176.31.230.112:3000/api/alert/upload';
         let uploadData = new FormData();
          
         uploadData.append('sumbit', 'ok');
@@ -62,7 +62,7 @@ const CreateAlertScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/alert-${identifierSe}?time=${new Date()}`});
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/alert-${identifierSe}?time=${new Date()}`});
 
         })
         .catch((error) => {
@@ -154,12 +154,12 @@ const CreateAlertScreen = ({ navigation }) => {
                                         justifyContent: "center",
                                     }}>
                                         <Text style={{
-                                            fontSize: 23
+                                            fontSize: 20
                                         }}>{I18n.t("alertT")} {name}</Text>
 
                                         <Text style={{
                                             color: "#262626",
-                                            fontSize: 13
+                                            fontSize: 10
                                         }}>{description}</Text>
                                     </View>
 
@@ -204,7 +204,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                             <Text style={{
                                                 color: "#3497FD",
                                                 fontSize: 20
-                                            }}>Ajouter une photo</Text>
+                                            }}>{I18n.t("alertAddPhoto")}</Text>
                                         </TouchableOpacity>
                                     : 
                                         <Image source={{uri: img.uri}} style={{

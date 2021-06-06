@@ -421,7 +421,7 @@ const HomeScreen = ({ navigation }) => {
                                                 }}
                                             
                                                 source={{
-                                                    uri: `http://146.59.227.90:3000/api/avatar/${alertDataHelp.source}?time=${new Date()}`,
+                                                    uri: `http://176.31.230.112:3000/api/avatar/${alertDataHelp.source}?time=${new Date()}`,
                                                 }}
                                             />
                                         </View>    
@@ -574,7 +574,7 @@ const HomeScreen = ({ navigation }) => {
                             <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('NDU')}} fontAwesome={faPhoneAlt} color="#d80000" title={I18n.t("ndu")} />
                 
                             { Dimensions.get('window').height > 695 &&
-                                <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('Alert')}} fontAwesome={faBell} color="#1f7ceb" title="Listes des alertes" />
+                                <AlertComponent onClick={() => { dispatch(setCacheNav('Home')); navigation.navigate('Alert')}} fontAwesome={faBell} color="#1f7ceb" title={I18n.t("descalertes")} />
                             }
                         </View>
         

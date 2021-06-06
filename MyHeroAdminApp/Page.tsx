@@ -80,7 +80,7 @@ const Page = () => {
                 body: JSON.stringify(params),
               };
 
-              fetch('http://146.59.227.90:3333/alerts/remove', req)
+              fetch('http://176.31.230.112:3333/alerts/remove', req)
                 .then(function (res) {
                   console.log(res);
                 })
@@ -153,7 +153,7 @@ const Page = () => {
                 body: JSON.stringify(params),
               };
 
-              fetch('http://146.59.227.90:3333/list/approvate', req)
+              fetch('http://176.31.230.112:3333/list/approvate', req)
                 .then(function (res) {
                   console.log(res);
                 })
@@ -200,7 +200,7 @@ const Page = () => {
                 body: JSON.stringify(params),
               };
 
-              fetch('http://146.59.227.90:3333/list/delete', req)
+              fetch('http://176.31.230.112:3333/list/delete', req)
                 .then(function (res) {
                   console.log(res);
                 })
@@ -273,7 +273,7 @@ const Page = () => {
                 body: JSON.stringify(params),
               };
 
-              fetch('http://146.59.227.90:3333/list/deleteApprovate', req)
+              fetch('http://176.31.230.112:3333/list/deleteApprovate', req)
                 .then(function (res) {
                   console.log(res);
                 })

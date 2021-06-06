@@ -45,14 +45,14 @@ const ConnexionScreen = ({ navigation }) => {
     })
 
     const uploadImage = (image_uri: string) => {
-        let base_url = 'http://146.59.227.90:3000/api/upload/';
+        let base_url = 'http://176.31.230.112:3000/api/upload/';
         let uploadData = new FormData();
          
         uploadData.append('sumbit', 'ok');
         uploadData.append('file', { 
             type: 'image/jpg', 
             uri: image_uri, 
-            name: `${name}.jpg`
+            name: `${state.mail}.jpg`
         })
 
         fetch(base_url, {
@@ -62,8 +62,8 @@ const ConnexionScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`});
-            dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${name}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${state.mail}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${state.mail}?time=${new Date()}`));
         })
         .catch((error) => {
             console.log('upload error', error);
@@ -525,7 +525,7 @@ const ConnexionScreen = ({ navigation }) => {
                                     marginBottom: 15,
                                     flexDirection: 'row'
                                 }}>
-                                    <TouchableOpacity onPress={() => Linking.openURL("http://146.59.227.90:5000/password-reset/new")}>
+                                    <TouchableOpacity onPress={() => Linking.openURL("http://176.31.230.112:5000/password-reset/new")}>
                                         <Text style={{
                                             color: "#3497FD"
                                         }}>{I18n.t("mdpOublier")}</Text>
@@ -553,7 +553,7 @@ const ConnexionScreen = ({ navigation }) => {
                                                         dispatch(setRate(e.rate));
                                                         dispatch(setXp(e.xp));
                                                         dispatch(setImage(e.image));
-                                                        dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${e.pseudo}?time=${new Date()}`));
+                                                        dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${e.mail}?time=${new Date()}`));
                                                         
                                                         navigation.navigate('Home');
                                                     }, () => {

@@ -46,7 +46,7 @@ import SocketIOClient from 'socket.io-client/dist/socket.io.js'
 import io from 'socket.io-client';
 import firebase from '@react-native-firebase/app';
 
-const SOCKET_URL = 'http://146.59.227.90:3333';
+const SOCKET_URL = 'http://176.31.230.112:3333';
 
 export const socket = io.connect(SOCKET_URL, {
   transports: ['websocket'],
@@ -190,10 +190,11 @@ const Controller = () => {
                   dispatch(setName(pseudo));
                   dispatch(setRate(rate));
                   dispatch(setXp(xp));
-                  dispatch(setImage(`http://146.59.227.90:3000/api/avatar/${pseudo}?time=${new Date()}`));
+                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${mailA}?time=${new Date()}`));
                   setNewUser(false);
                   setInitialize(true);
                   Users.GetRate(pseudo);
+                  Users.GetUsers();
                   Users.GetMessagesH24(1, 1, (e: any) => {});
                   console.log("200");
                 } else {
