@@ -81,7 +81,7 @@ const AlertScreen = ({ navigation }) => {
                             marginTop: 0,
                             marginLeft: 10,
                             color: "#ffffff"
-                        }}>A {props.hour}h</Text>
+                        }}>A {props.hour}</Text>
                     </View>
 
                     <View style={{

@@ -12,5 +12,6 @@ export interface IAlert {
     latitude: number;
     longitude: number;
     description: string;
+    hour: string;
     webrtc: any;
 }

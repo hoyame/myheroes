@@ -159,7 +159,7 @@ const CreateAlertScreen = ({ navigation }) => {
 
                                         <Text style={{
                                             color: "#262626",
-                                            fontSize: 10
+                                            fontSize: 13
                                         }}>{description}</Text>
                                     </View>
 
@@ -220,6 +220,13 @@ const CreateAlertScreen = ({ navigation }) => {
                                 </View>
 
                                 <BottomComponent title={I18n.t("alertLaunch")} onClick={() => {
+                                    const h = new Date().getHours();
+                                    const m = new Date().getMinutes();
+                                    const s = new Date().getSeconds();
+                            
+                                    const t = h.toString() + 'h' + m.toString();
+                                    console.log('efgegeg', t.toString())
+                                
                                     _storeData();
                                     MyHeroAlerts.setViewerDataStatus(identifierSe, true)
                                     MyHeroAlerts.SendAlert({
@@ -229,6 +236,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                         latitude: latitude,
                                         longitude: longitude,    
                                         description: state.description,
+                                        hour: t,
                                         webrtc: MyHeroService.initConnexionStream()
                                     })
                                     navigation.navigate('SenderAcceptAlertPage') 
@@ -239,6 +247,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                         latitude: latitude,
                                         longitude: longitude,    
                                         description: state.description,
+                                        hour: t,
                                         webrtc: MyHeroService.initConnexionStream()
                                     } })) 
                                 }}/>

@@ -7,7 +7,7 @@ import Users from '../../api/User';
 import { WaveIndicator } from 'react-native-indicators';
 import AsyncStorage from '@react-native-community/async-storage';
 import I18n from '../../i18n/i18n';
-import { setMail, setName, setRate, setXp, setImage } from '../../data/actions/user';
+import { setMail, setName, setRate, setXp, setImage, setCacheNav } from '../../data/actions/user';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import * as Animatable from 'react-native-animatable';
@@ -16,6 +16,7 @@ import TitleComponent from '../../components/Title';
 import ImagePicker from "react-native-image-picker";
 import { useReduxState } from '../../data/store';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import CheckBoxComponent from '../../components/Checkbox';
 
 const screenWidth = Math.round(Dimensions.get('window').width - 70);
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -32,6 +33,7 @@ const ConnexionScreen = ({ navigation }) => {
     const [pictureS, setPictureS] = useState(false);
     const [errorM, setErrorM] = useState(false)
     const [errorU, setErrorU] = useState(false)
+    const [cgu, setCgu] = useState(false)
     const [img, setImg] = useState({
         uri: 'https://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
         type: ''
@@ -326,6 +328,24 @@ const ConnexionScreen = ({ navigation }) => {
                         <InputComponent password={true} name={I18n.t("inscriptionMDP")} placeholder={I18n.t("inscriptionMDP") + "                                                  "} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
                         <InputComponent password={true} name={I18n.t("inscriptionCMDP")} placeholder={I18n.t("inscriptionCMDP") + "                                                  "} value={state.cPassword} icon={faLock} onChange={(v: string) => setState({...state, cPassword: v})} />
                     
+                        <View style={{marginTop: 5, marginBottom: 5, display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                            <CheckBoxComponent cb={(e: any) => {
+                                setCgu(e)
+                                console.log(e)
+                            }}></CheckBoxComponent>
+                                
+                                <Text style={{
+                                    marginLeft: 10
+                                }}>I accept</Text>
+                                
+                                <Text onPress={() => {
+                                    dispatch(setCacheNav('Connexion')); navigation.navigate('Confidentialite')
+                                }} style={{    
+                                    marginLeft: 4,
+                                    color: '#3497FD'
+                                }}>T.O.S / C.G.U</Text>
+                        </View>
+                        
                         <View style={{
                             marginTop: 5,
                             display: "flex",
@@ -350,6 +370,7 @@ const ConnexionScreen = ({ navigation }) => {
                             {errorU && <Text style={{color: 'red', textAlign: "center", marginBottom: 7.5}}>{I18n.t("inscriprionERR3")}</Text>}
 
                             <TouchableOpacity onPress={() => {
+                                if (cgu == false) return;
                                 setStatus(true);
                                 
                                 if (state.password !== "" && state.cPassword !== "" && state.name !== "" && state.mail !== "") {
@@ -499,7 +520,7 @@ const ConnexionScreen = ({ navigation }) => {
 
                             <InputComponent name={I18n.t("inscriptionIdentifiant")} placeholder={I18n.t("inscriptionDescIdentifiant") + "                                                  "} value={state.mail} icon={faEnvelope} onChange={(v: string) => setState({...state, mail: v})} />
                             <InputComponent password={true} name={I18n.t("connexoinMDP")} placeholder={I18n.t("connexoinMDP") + "                                                  "} value={state.password} icon={faLock} onChange={(v: string) => setState({...state, password: v})} />
-                    
+
                             <View style={{
                                 marginTop: 15,
                                 display: "flex",

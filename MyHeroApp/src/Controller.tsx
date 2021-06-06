@@ -139,8 +139,6 @@ const Controller = () => {
     }, 5000)
     
     useEffect(() => {
-  
-
       setTimeout(async () => {
         if (initialize == false) {
           let AMail = await AsyncStorage.getItem('@mail') || '';
@@ -190,13 +188,13 @@ const Controller = () => {
                   dispatch(setName(pseudo));
                   dispatch(setRate(rate));
                   dispatch(setXp(xp));
-                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${mailA}?time=${new Date()}`));
+                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${e.data[0].email}?time=${new Date()}`));
                   setNewUser(false);
                   setInitialize(true);
                   Users.GetRate(pseudo);
                   Users.GetUsers();
                   Users.GetMessagesH24(1, 1, (e: any) => {});
-                  console.log("200");
+                  console.log("200");                  
                 } else {
                   setNewUser(true);
                   setInitialize(true);

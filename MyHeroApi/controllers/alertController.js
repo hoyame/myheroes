@@ -25,7 +25,7 @@ module.exports.addAlert = (req, res, next) => {
         webrtc: req.body.webid,
         city: req.body.city,
         departement: req.body.departement,
-        hour: ns,
+        hour: req.body.hour,
         count: 0
     }
     

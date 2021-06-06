@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
+interface ICheckbox {
+    cb: any
+}
 
-const CheckBoxComponent = () => {
-    const [state, setState] = useState(true)
+const CheckBoxComponent = (p: ICheckbox) => {
+    const [state, setState] = useState(false)
  
     return (
-        <TouchableOpacity onPress={() => setState(!state)}>
+        <TouchableOpacity onPress={() => {
+            setState(!state)
+            p.cb(!state)
+        }}>
             <View style={{
-                height: 30,
-                width: 30,
+                height: 20,
+                width: 20,
                 
                 alignItems: "center",
                 justifyContent: "center",
@@ -19,8 +25,8 @@ const CheckBoxComponent = () => {
             }}>
                 { state &&
                     <View style={{
-                        height: 22,
-                        width: 22,
+                        height: 15,
+                        width: 15,
                         
                         borderRadius: 50,
                         backgroundColor: "#353A50",
