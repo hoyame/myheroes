@@ -204,7 +204,7 @@ const CreateAlertScreen = ({ navigation }) => {
                                             <Text style={{
                                                 color: "#3497FD",
                                                 fontSize: 20
-                                            }}>Ajouter une photo</Text>
+                                            }}>{I18n.t("alertAddPhoto")}</Text>
                                         </TouchableOpacity>
                                     : 
                                         <Image source={{uri: img.uri}} style={{

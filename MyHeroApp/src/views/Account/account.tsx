@@ -563,7 +563,7 @@ const AccountScreen = ({ navigation }) => {
                         color: "#454F63"
                         }}>{name}</Text>
                         
-                        {returnBadgesWithXp(50000000)}
+                        {returnBadgesWithXp(xp)}
 
                     </View>
                     <Text style={{

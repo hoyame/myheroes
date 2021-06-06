@@ -190,7 +190,7 @@ const Controller = () => {
                   dispatch(setName(pseudo));
                   dispatch(setRate(rate));
                   dispatch(setXp(xp));
-                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${pseudo}?time=${new Date()}`));
+                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${mailA}?time=${new Date()}`));
                   setNewUser(false);
                   setInitialize(true);
                   Users.GetRate(pseudo);
