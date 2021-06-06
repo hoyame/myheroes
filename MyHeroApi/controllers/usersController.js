@@ -354,7 +354,7 @@ module.exports.updatePseudo = (req, res, next) => {
 
 module.exports.returnRateUser = (req, res, next) => {
 	const user = req.query.user;
-	const query = `SELECT * FROM users_data WHERE source=?`
+	const query = `SELECT * FROM users_data WHERE user=?`
 
 	con.query(query, [user], (err, result, fields) => {
 		res.status(200).json(result);
