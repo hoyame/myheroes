@@ -28,7 +28,7 @@ I18n.translations = {
   pt
 };
 
-export const returnLanguage = () => {
+export const returnLanguage = (): string => {
   return language;
 }
 

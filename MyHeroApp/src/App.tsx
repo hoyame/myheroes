@@ -131,11 +131,11 @@ const App = () => {
       console.log("get_alerts");
       MyHeroAlerts.GetAlerts(data);
     });
-  })
+  }, [])
   
   useEffect(() => {
     firebase.initializeApp(credentials);
-  })
+  }, [])
 
   setTimeout(() => {
     firebase.messaging().getToken()
@@ -189,7 +189,7 @@ const App = () => {
         return
       }
     }
-  })
+  }, [])
 
   setTimeout(() => {
     console.log("zufzfizvuibvizvizvzvziuvk")

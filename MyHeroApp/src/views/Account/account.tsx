@@ -217,7 +217,6 @@ const AccountScreen = ({ navigation }) => {
 
     const returnBadgesWithXp = (num: number) => {
             if (num < 100) {
-                setInformation(true)
 
                 return (
                     <>
@@ -279,6 +278,11 @@ const AccountScreen = ({ navigation }) => {
             case 0:
                 return (
                     <>
+                        <Text style={{
+                            fontSize: 25,
+                            marginBottom: 20
+                        }}>{I18n.t('accountClassementSel')}</Text>
+
                         {  UsersClass.map((v, k) => {
                             return (
                                 <View style={{
@@ -338,6 +342,11 @@ const AccountScreen = ({ navigation }) => {
             case 1:
                 return (
                     <>
+                        <Text style={{
+                            fontSize: 25,
+                            marginBottom: 20
+                        }}>{I18n.t('accountXPSel')}</Text>
+
                              <View style={{
                                     height: 130,
                                     borderRadius: 15,
@@ -512,6 +521,11 @@ const AccountScreen = ({ navigation }) => {
             case 2:
                 return (
                     <>
+                        <Text style={{
+                            fontSize: 25,
+                            marginBottom: 20
+                        }}>{I18n.t('accountAvisSel')}</Text>
+
                         {returnAvis()}
                     </>
                 )

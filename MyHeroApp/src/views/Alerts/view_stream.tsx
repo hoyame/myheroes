@@ -49,7 +49,7 @@ const ViewStream = ({ navigation }) => {
         setState({...state, remoteStreamURL: alertDataHelp.webrtc});
         load = true
       }
-    })
+    }, [])
 
     if (alertDataHelp.webrtc == "") {
       return (

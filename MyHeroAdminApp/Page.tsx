@@ -311,7 +311,7 @@ const Page = () => {
       }, 3000);
       loading = true;
     }
-  });
+  }, []);
 
   setTimeout(() => {
     setAlertList(d1);

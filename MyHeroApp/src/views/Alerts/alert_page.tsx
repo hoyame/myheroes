@@ -35,7 +35,7 @@ const AlertPageScreen = ({ navigation }) => {
                 dispatch(setCacheUser({ status: true,mail: "", name: "", image: "", xp: xp, rate: rate }));
             }, () => null)
         }
-    })
+    }, [])
 
     const _storeData = async () => {
         try {

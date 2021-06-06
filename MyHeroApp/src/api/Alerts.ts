@@ -89,6 +89,7 @@ export default abstract class MyHeroAlerts {
                     longitude: data.longitude,
                     description: data.description,
                     webrtc: data.webrtc,
+                    hour: data.hour,
                     city: city,
                     departement: departement
                 }
