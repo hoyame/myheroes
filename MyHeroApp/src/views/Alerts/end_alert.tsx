@@ -112,14 +112,14 @@ const EndAlertScreen = ({ navigation }) => {
                                     borderRadius: 50,
                                 }}  
                                 source={{
-                                    uri: `http://176.31.230.112:3000/api/avatar/${v}?time=${new Date()}`,
+                                    uri: `http://176.31.230.112:3000/api/avatar/${v[1].toLowerCase()}?time=${new Date()}`,
                                 }}
                             />
                         </View>
 
                         <Text style={{
                             fontSize: 25
-                        }}>{v}</Text>
+                        }}>{v[0]}</Text>
                     </View>
                 </TouchableOpacity>
             );

@@ -54,7 +54,7 @@ const ConnexionScreen = ({ navigation }) => {
         uploadData.append('file', { 
             type: 'image/jpg', 
             uri: image_uri, 
-            name: `${state.mail}.jpg`
+            name: `${state.mail.toLowerCase()}.jpg`
         })
 
         fetch(base_url, {
@@ -64,8 +64,8 @@ const ConnexionScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${state.mail}?time=${new Date()}`});
-            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${state.mail}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${state.mail.toLowerCase()}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${state.mail.toLowerCase()}?time=${new Date()}`));
         })
         .catch((error) => {
             console.log('upload error', error);

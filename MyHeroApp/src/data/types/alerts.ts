@@ -6,6 +6,7 @@ export const UPDATE_ALERTS = "UPDATE_ALERTS";
 
 export interface IAlert {
     identifier: string;
+    onClick?: any;
     id?: number;
     level: number;
     source: string;

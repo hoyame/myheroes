@@ -181,6 +181,7 @@ const Controller = () => {
                 const pseudo = e.data[0].pseudo
                 const rate = parseFloat(JSON.stringify(e.data[0].rate))
                 const xp = parseFloat(JSON.stringify(e.data[0].xp))
+                const email = JSON.stringify(e.data[0].email)
                 const img = e.data[0].img
 
                 if (status == 200) {
@@ -188,7 +189,7 @@ const Controller = () => {
                   dispatch(setName(pseudo));
                   dispatch(setRate(rate));
                   dispatch(setXp(xp));
-                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${e.data[0].email}?time=${new Date()}`));
+                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${email.toLowerCase()}?time=${new Date()}`));
                   setNewUser(false);
                   setInitialize(true);
                   Users.GetRate(pseudo);

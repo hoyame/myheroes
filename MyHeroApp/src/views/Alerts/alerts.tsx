@@ -8,21 +8,12 @@ import HeaderComponent from '../../components/Header/header';
 import { setCacheShowAlert } from '../../data/actions/user';
 import { useReduxState } from '../../data/store';
 import { setAlertStatus } from '../../api/Alerts';
+import { IAlert } from '../../data/types/alerts';
 
 const AlertScreen = ({ navigation }) => {
     const screenWidth = Math.round(Dimensions.get('window').width - 70);
     const alerts = useReduxState(state => state.alerts.list);
 
-    interface IAlert {
-        id?: number;
-        level: number;
-        source: string;
-        latitude: number;
-        longitude: number;
-        description: string;
-        onClick: any;
-        hour?: string;
-    }
 
     const AlertProps: React.FC<IAlert> = (props: IAlert) => {
         let color = "#ffd100";
@@ -101,7 +92,7 @@ const AlertScreen = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: `http://176.31.230.112:3000/api/avatar/${props.source}?time=${new Date()}`,
+                                uri: `http://176.31.230.112:3000/api/avatar/${props.identifier.toLowerCase()}?time=${new Date()}`,
                             }}
                         />
                     </View>
