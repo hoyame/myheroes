@@ -186,9 +186,7 @@ const EndAlertScreen = ({ navigation }) => {
                     <Text style={{
                         marginBottom: 30,
                         fontSize: 25
-                    }}>
-                        Personnes qui ont pris l'alerte
-                    </Text>
+                    }}>{I18n.t("accountAvisSel1")}</Text>
 
                     {returnUsers()}
                 </ScrollView>

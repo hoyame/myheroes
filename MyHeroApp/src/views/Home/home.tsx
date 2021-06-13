@@ -474,7 +474,7 @@ const HomeScreen = ({ navigation }) => {
                                                     <Text style={{
                                                         color: 'white',
                                                         marginLeft: 5
-                                                    }}>En attente</Text>
+                                                    }}>{I18n.t("accountAvisSel3")}</Text>
                                                 </View>
                                                 <View style={{
                                                     width: screenWidth - 80,

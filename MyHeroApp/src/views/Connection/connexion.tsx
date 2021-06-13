@@ -163,7 +163,7 @@ const ConnexionScreen = ({ navigation }) => {
                         backgroundColor: '#3497FD',
                         justifyContent: 'center'           
                     }}>
-                        <Text style={{textAlign: "center", color: "#ffffff"}}>La photo de profil est utilisée pour vous reconnaitre</Text>
+                        <Text style={{textAlign: "center", color: "#ffffff"}}>{I18n.t("accountAvisSel2")}</Text>
                     </View>
                 </TouchableOpacity>
 

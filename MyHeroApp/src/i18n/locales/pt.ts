@@ -197,5 +197,8 @@ export default {
     alertAddPhoto: "Adicionar uma foto",
     accountXPSel:"Informação XP",
     accountClassementSel:"Classificação de heróis",
-    accountAvisSel:"Perceber"
+    accountAvisSel:"Perceber",
+    accountAvisSel1: "Heróis que pegaram o alerta",
+    accountAvisSel2: "É melhor colocar sua foto real para que possamos reconhecê-lo no caso de um alerta",
+    accountAvisSel3: "Pendente",
 };

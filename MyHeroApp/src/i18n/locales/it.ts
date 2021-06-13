@@ -197,5 +197,8 @@ export default {
     alertAddPhoto: "Aggiungi un'immagine",
     accountXPSel:"Informazioni su XP",
     accountClassementSel:"Classifica degli eroi",
-    accountAvisSel:"Avviso"
+    accountAvisSel:"Avviso",
+    accountAvisSel1: "Eroi che hanno preso l'allarme",
+    accountAvisSel2: "È meglio mettere la tua foto reale in modo che possiamo riconoscerti in caso di avviso",
+    accountAvisSel3: "In attesa",
 };

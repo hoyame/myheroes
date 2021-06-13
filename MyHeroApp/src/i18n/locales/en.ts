@@ -197,5 +197,8 @@ export default {
     alertAddPhoto: "Add a picture",
     accountXPSel:"XP Information",
     accountClassementSel:"Heroes Ranking",
-    accountAvisSel:"Opinion"
+    accountAvisSel:"Opinion",
+    accountAvisSel1: "Person who took the alert",
+    accountAvisSel2: "It is better to put your real photo so that we can recognize you in the event of an alert",
+    accountAvisSel3: "Pending",
 };

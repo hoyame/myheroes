@@ -197,5 +197,8 @@ export default {
     alertAddPhoto: "Bild hinzufügen",
     accountXPSel:"XP-Informationen",
     accountClassementSel:"Helden-Rangliste",
-    accountAvisSel:"Beachten"
+    accountAvisSel:"Beachten",
+    accountAvisSel1: "Person, die die Warnung angenommen hat",
+    accountAvisSel2: "Es ist besser, Ihr echtes Foto einzustellen, damit wir Sie im Falle einer Warnung erkennen können",
+    accountAvisSel3: "Ausstehend"
 };

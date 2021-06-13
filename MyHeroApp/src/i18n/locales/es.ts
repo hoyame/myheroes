@@ -12,7 +12,7 @@ export default {
     publier: "Publicar",
     menu: "Menú",
     notDesc: "Sin descripción",
-    maintPourPInfo: "Mantenga pulsado para obtener más información",
+    maintPourPInfo: "pulsar para obtener más información",
     userWarn: "Toque a continuación para obtener más información",
     connexion: "Conexión",
     inscription: "Registro",
@@ -197,6 +197,8 @@ export default {
     alertAddPhoto: "Añadir imagen",
     accountXPSel:"Información XP",
     accountClassementSel:"Ranking de héroes",
-    accountAvisSel:"opinión"
-
+    accountAvisSel:"opinión",
+    accountAvisSel1: "Héroes que tomaron la alerta",
+    accountAvisSel2: "Es mejor poner tu foto real para que podamos reconocerte en caso de alerta",
+    accountAvisSel3: "Pendiente"
 };

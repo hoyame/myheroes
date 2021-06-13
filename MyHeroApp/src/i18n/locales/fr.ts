@@ -107,8 +107,8 @@ export default {
     gdps4: "Traumatismes",
     gdps5: "Brûlures",
     gdps7: "Ventilation artificielle",
-    gdps8: "Etouffement adulte",
-    gdps9: "Etouffement Nourisson",
+    gdps8: "Ettoufement adulte",
+    gdps9: "Ettoufement Nourisson",
     gdps10: "Position d'attente",
     
     general1: "Vous retrouverez ci-dessous les news autour de votre localisation actuelle.",
@@ -200,5 +200,8 @@ export default {
     alertAddPhoto: "Ajouter une photo",
     accountXPSel:"Information XP",
     accountClassementSel:"Classement Heroes",
-    accountAvisSel:"Avis"
-};
+    accountAvisSel:"Avis",
+    accountAvisSel1:"Heroes qui ont pris l'alerte",
+    accountAvisSel2:"Il est préférable de mettre votre vraie photo pour que l'on puisse vous reconnaître en cas d'alerte",
+    accountAvisSel3:"En attente",
+}
