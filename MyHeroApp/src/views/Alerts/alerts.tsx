@@ -92,7 +92,7 @@ const AlertScreen = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: `http://176.31.230.112:3000/api/avatar/${props.identifier.toLowerCase()}?time=${new Date()}`,
+                                uri: `http://176.31.230.112:3000/api/avatar/${props.identifier.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`,
                             }}
                         />
                     </View>

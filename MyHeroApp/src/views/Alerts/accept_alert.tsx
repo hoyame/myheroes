@@ -325,7 +325,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                             }}
                         
                             source={{
-                                uri: `http://176.31.230.112:3000/api/avatar/${alertDataHelp.source.toLowerCase()}?time=${new Date()}`,
+                                uri: `http://176.31.230.112:3000/api/avatar/${alertDataHelp.source.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`,
                             }}
                         />
                     </View>    
@@ -342,7 +342,7 @@ export const HelperAcceptAlertPage = ({ navigation }) => {
                     backgroundColor: "#ffffff"
                 }}>
                     { photo == false &&
-                        <Image source={{uri: `http://176.31.230.112:3000/api/avatar/alert-${alerts.data.identifier.toLowerCase()}?time=${new Date()}`}} style={{
+                        <Image source={{uri: `http://176.31.230.112:3000/api/avatar/alert-${alerts.data.identifier.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`}} style={{
                             height: "99%",
                             width: "99%",
                             borderRadius: 10,

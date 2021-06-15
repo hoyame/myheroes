@@ -185,11 +185,11 @@ const Controller = () => {
                 const img = e.data[0].img
 
                 if (status == 200) {
-                  dispatch(setMail(AMail));
+                  dispatch(setMail(AMail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')));
                   dispatch(setName(pseudo));
                   dispatch(setRate(rate));
                   dispatch(setXp(xp));
-                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${email.toLowerCase()}?time=${new Date()}`));
+                  dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${email.toLowerCase().replace(/^"(.+(?="$))"$/, '$1').replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`));
                   setNewUser(false);
                   setInitialize(true);
                   Users.GetRate(pseudo);

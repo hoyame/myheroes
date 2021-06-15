@@ -43,11 +43,11 @@ const EndAlertScreen = ({ navigation }) => {
         console.log(12333324532525)
         AlertsDataUsers.map((v, k) => {
             if (enddLvl == 1) {
-                sendXp(v, 10);
+                sendXp(v[0], 10);
             } else if (enddLvl == 2) {
-                sendXp(v, 20);
+                sendXp(v[0], 20);
             } else if (enddLvl == 3) {
-                sendXp(v, 50);
+                sendXp(v[0], 50);
             }
         })
 
@@ -84,7 +84,7 @@ const EndAlertScreen = ({ navigation }) => {
         return data.map((v, k) => {
             return (
                 <TouchableOpacity key={k} onPress={() => {
-                    setCache(v)
+                    setCache(v[0])
                     SS(true)
                 }}>
                     <View style={{
@@ -112,7 +112,7 @@ const EndAlertScreen = ({ navigation }) => {
                                     borderRadius: 50,
                                 }}  
                                 source={{
-                                    uri: `http://176.31.230.112:3000/api/avatar/${v[1].toLowerCase()}?time=${new Date()}`,
+                                    uri: `http://176.31.230.112:3000/api/avatar/${v[1].toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`,
                                 }}
                             />
                         </View>

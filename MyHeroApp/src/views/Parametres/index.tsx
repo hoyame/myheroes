@@ -111,8 +111,8 @@ const ParametresScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${mail.toLowerCase()}?time=${new Date()}`});
-            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${mail.toLowerCase()}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`));
 
         })
         .catch((error) => {

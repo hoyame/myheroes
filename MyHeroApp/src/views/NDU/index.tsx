@@ -57,9 +57,9 @@ const NDUPage = ({ navigation }) => {
     }
 
     var filterUsers = function(){
-        const keyword = search.toLowerCase();
+        const keyword = search.toLowerCase().replace(/^"(.+(?="$))"$/, '$1');
         const filtered_users = s.p.filter(function(user: string){
-            user = user.toLowerCase();
+            user = user.toLowerCase().replace(/^"(.+(?="$))"$/, '$1');
             return user.indexOf(keyword) > -1; 
         });
         

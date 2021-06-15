@@ -260,12 +260,11 @@ export default abstract class MyHeroAlerts {
                         const data = JSON.stringify(e.data[0])
                         const status: number = e.status
                         const pseudo = e.data[0].pseudo
-                        const mail = e.data[0].email
                     
                         if (status == 200) {
-                            AlertsDataUsers.push([pseudo, mail])
+                            AlertsDataUsers.push([pseudo, v.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')])
                         } else {
-                            AlertsDataUsers.push(v);
+                            AlertsDataUsers.push(v.toLowerCase().replace(/^"(.+(?="$))"$/, '$1'));
                         }
                     }, () => {})
                 })

@@ -58,7 +58,7 @@ const AlertPageScreen = ({ navigation }) => {
                     <View style={{
                         marginBottom: 15,
                     }}>
-                        <AccountStats name={alertData.source} xp={userCache.xp} rate={userCache.rate} img={`http://176.31.230.112:3000/api/avatar/${alertData.identifier.toLowerCase()}?time=${new Date()}`} />
+                        <AccountStats name={alertData.source} xp={userCache.xp} rate={userCache.rate} img={`http://176.31.230.112:3000/api/avatar/${alertData.identifier.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`} />
                     </View>
                     
                     <View style={{

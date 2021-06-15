@@ -54,7 +54,7 @@ const ConnexionScreen = ({ navigation }) => {
         uploadData.append('file', { 
             type: 'image/jpg', 
             uri: image_uri, 
-            name: `${state.mail.toLowerCase()}.jpg`
+            name: `${state.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}.jpg`
         })
 
         fetch(base_url, {
@@ -64,8 +64,8 @@ const ConnexionScreen = ({ navigation }) => {
 
         .then((res: any) => {
             console.log('upload succes', res);
-            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${state.mail.toLowerCase()}?time=${new Date()}`});
-            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${state.mail.toLowerCase()}?time=${new Date()}`));
+            setImg({...img, uri: `http://176.31.230.112:3000/api/avatar/${state.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`});
+            dispatch(setImage(`http://176.31.230.112:3000/api/avatar/${state.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')}?time=${new Date()}`));
         })
         .catch((error) => {
             console.log('upload error', error);
@@ -89,7 +89,7 @@ const ConnexionScreen = ({ navigation }) => {
 
     const _storeData = async () => {
         try {
-            await AsyncStorage.setItem('@mail', state.mail)
+            await AsyncStorage.setItem('@mail', state.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1'))
         } catch (error) {
             console.log("error", error)
         }
@@ -377,7 +377,7 @@ const ConnexionScreen = ({ navigation }) => {
                                     if (state.password === state.cPassword) {
                                         Users.Register({
                                             pseudo: state.name,
-                                            email: state.mail,
+                                            email: state.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1'),
                                             password: state.password
                                         }, (res: any) => {
                                             if (res == 200) {
@@ -560,7 +560,7 @@ const ConnexionScreen = ({ navigation }) => {
                                     
                                     Users.Login({
                                         pseudo: state.mail,
-                                        email: state.mail,
+                                        email: state.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1'),
                                         password: state.password,
                                     }, (res: any) => {
                                         if (res == 200) {
@@ -569,7 +569,7 @@ const ConnexionScreen = ({ navigation }) => {
                                                 
                                                 setTimeout(() => {
                                                     Users.Load((e: any) => {
-                                                        dispatch(setMail(e.mail));
+                                                        dispatch(setMail(e.mail.toLowerCase().replace(/^"(.+(?="$))"$/, '$1')));
                                                         dispatch(setName(e.pseudo));
                                                         dispatch(setRate(e.rate));
                                                         dispatch(setXp(e.xp));
