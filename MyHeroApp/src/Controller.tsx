@@ -220,7 +220,7 @@ const Controller = () => {
           }
         }
       }, 3000)
-  });
+    });
 
   if (initialize == false) {
     return (
@@ -322,10 +322,16 @@ const Controller = () => {
               </View>
           </ScrollView>
       </>
-  );
+    );
   }
 
   if (MyHeroService.latitude === 0 || MyHeroService.longitude === 0) {
+    console.log("vzguguzvuvzuvvzuvuzvuzvzuvuvuzuzv")
+    MyHeroService.requestLocationPermission();
+    //Alert.alert("Activate the location service for the use of MyHeroes");
+    
+
+    
     return (
       <>
         <View style={{
@@ -350,10 +356,11 @@ const Controller = () => {
             fontSize: 30,
             fontWeight: "100",
             textAlign: "center"
-          }}>Loading ...</Text>
+          }}> Enable Location Services...</Text>
         </View>
       </>
     )
+    
   }
 
   return (

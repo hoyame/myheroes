@@ -78,6 +78,8 @@ export abstract class MyHeroService {
 
     public static async requestLocationPermission() {
       if (Platform.OS == 'android') {
+        console.log("reqif")
+
         try {
           const granted = await PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -93,6 +95,7 @@ export abstract class MyHeroService {
           console.warn(err)
         }
       } else {
+        console.log("reqelse")
         Geolocation.requestAuthorization()
         setTimeout(() => {
           this.getLocalisation();
