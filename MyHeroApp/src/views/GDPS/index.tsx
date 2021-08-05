@@ -1157,11 +1157,6 @@ const GDPSPage = ({ navigation }) => {
                 paddingBottom: 0,
                 marginBottom: 200   
             }}>
-                <Text onPress={() => Linking.openURL("https://www.croix-rouge.fr/Je-me-forme/Particuliers/Les-6-gestes-de-base")} style={{
-                    fontSize: 20,
-                    marginLeft: 8,
-                    marginBottom: 15,
-                }}>Source: Croix rouge (https://www.croix-rouge.fr/Je-me-forme/Particuliers/Les-6-gestes-de-base)</Text>
                 <ScrollView>
                     <ButtonComponent onClick={() => {setState(true); setPage(1)}} title={I18n.t("gdps1")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => {setState(true); setPage(2)}} title={I18n.t("gdps2")} icon={faFirstAid} color="#008b00" />
@@ -1172,6 +1167,13 @@ const GDPSPage = ({ navigation }) => {
                     <ButtonComponent onClick={() => {setState(true); setPage(8)}} title={I18n.t("gdps8")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => {setState(true); setPage(9)}} title={I18n.t("gdps9")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => {setState(true); setPage(10)}} title={I18n.t("gdps10")} icon={faFirstAid} color="#008b00" />
+                
+                    <Text onPress={() => Linking.openURL("https://www.croix-rouge.fr/Je-me-forme/Particuliers/Les-6-gestes-de-base")} style={{
+                        fontSize: 15,
+                        marginLeft: 8,
+                        marginBottom: 15,
+                        color: 'green'
+                    }}>Source: Croix rouge (https://www.croix-rouge.fr/Je-me-forme/Particuliers/Les-6-gestes-de-base)</Text>
                 </ScrollView>
             </View>
         </> 
