@@ -2,7 +2,7 @@ import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { faFirstAid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Dimensions, Image, Linking } from 'react-native';
 import ButtonComponent from '../../components/Button';
 import HeaderComponent from '../../components/Header/header';
 import I18n, { returnLanguage } from '../../i18n/i18n';
@@ -1157,6 +1157,11 @@ const GDPSPage = ({ navigation }) => {
                 paddingBottom: 0,
                 marginBottom: 200   
             }}>
+                <Text onPress={() => Linking.openURL("https://www.croix-rouge.fr/Je-me-forme/Particuliers/Les-6-gestes-de-base")} style={{
+                    fontSize: 20,
+                    marginLeft: 8,
+                    marginBottom: 15,
+                }}>Source: Croix rouge (https://www.croix-rouge.fr/Je-me-forme/Particuliers/Les-6-gestes-de-base)</Text>
                 <ScrollView>
                     <ButtonComponent onClick={() => {setState(true); setPage(1)}} title={I18n.t("gdps1")} icon={faFirstAid} color="#008b00" />
                     <ButtonComponent onClick={() => {setState(true); setPage(2)}} title={I18n.t("gdps2")} icon={faFirstAid} color="#008b00" />
