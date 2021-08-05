@@ -9,4 +9,5 @@ I did the complete development of this app, the commits with the other name is w
 
 in the future if I have time, I will make a new version of the application with better coding, as my coding skills have improved
 
-# Available on the app store: https://apps.apple.com/fr/app/myheroes/id1544800641
+# Available on the app store: 
+https://apps.apple.com/fr/app/myheroes/id1544800641
