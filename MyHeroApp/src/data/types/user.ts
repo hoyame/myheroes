@@ -31,49 +31,48 @@ export const SET_CACHE_USER = "SET_CACHE_USER";
 export const SET_NEWS_STATUS = "SET_NEWS_STATUS";
 export const SET_NEWS_CONTENT = "SET_NEWS_CONTENT";
 
-
 export interface IUserSend {
-    status: boolean;
-    data: IAlert
+	status: boolean;
+	data: IAlert;
 }
 
 export interface IUserHelp {
-    status: boolean;
-    data: IAlert
+	status: boolean;
+	data: IAlert;
 }
 
 export interface IUserCache {
-    status: boolean;
-    mail: string;
-    name: string;
-    rate: number;
-    image: string;
-    xp: number;
+	status: boolean;
+	mail: string;
+	name: string;
+	rate: number;
+	image: string;
+	xp: number;
 }
 
 export interface IUser {
-    mail?: string;
-    name: string;
-    rate: number;
-    image: string;
-    xp: number;
-    language: string;
-    countViewers: number;
+	mail?: string;
+	name: string;
+	rate: number;
+	image: string;
+	xp: number;
+	language: string;
+	countViewers: number;
 
-    tempLangage: any;
-    tempLangageStatus: boolean;
+	tempLangage: any;
+	tempLangageStatus: boolean;
 
-    statusSend: boolean;
-    statusHelp: boolean;
-    statusNews: boolean;
-    
-    news: string;
-    send: IUserSend;
-    help: IUserHelp;
+	statusSend: boolean;
+	statusHelp: boolean;
+	statusNews: boolean;
 
-    createAlertLevel: number;
-    showAlert: IAlert;
-    navCache: string;
+	news: string;
+	send: IUserSend;
+	help: IUserHelp;
 
-    userCache: IUserCache;
+	createAlertLevel: number;
+	showAlert: IAlert;
+	navCache: string;
+
+	userCache: IUserCache;
 }

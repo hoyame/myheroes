@@ -12,6 +12,7 @@
     "link": "react-native link",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint-prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,html,css,scss,md}\"",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/MyHeroApp/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
     "postinstall": "./node_modules/react-native-maps/enable-google-maps 'ios/MyHeroApp/GoogleMaps/**'"
   },
