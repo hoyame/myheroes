@@ -108,7 +108,7 @@ const AvisScreen = ({ navigation }) => {
                         height: 60, 
                         width: 180,
                         borderRadius:15,
-                        marginTop: 5,
+                        marginTop: 35,
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: '#3497FD'      
