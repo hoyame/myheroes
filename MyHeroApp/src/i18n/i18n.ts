@@ -11,25 +11,24 @@ import pt from "./locales/pt";
 let language = "fr";
 
 export const setLanguage = (l: string) => {
-  let le = l.substr(0, 2);
-  language = le;
-  I18n.locale = language;
-}
-
+	let le = l.substr(0, 2);
+	language = le;
+	I18n.locale = language;
+};
 
 I18n.locale = language;
 I18n.fallbacks = true;
 I18n.translations = {
-  en,
-  fr,
-  es,
-  de,
-  it,
-  pt
+	en,
+	fr,
+	es,
+	de,
+	it,
+	pt,
 };
 
 export const returnLanguage = (): string => {
-  return language;
-}
+	return language;
+};
 
 export default I18n;

@@ -1,295 +1,290 @@
 import { MyHeroService } from "./Service";
-import axios from 'axios';
+import axios from "axios";
 import AsyncStorage from "@react-native-community/async-storage";
 import { API_LINK } from "../App";
 
 interface IUser {
-    id?: number | undefined;
-    pseudo: string | undefined;
-    email: string | undefined;
-    password: string | undefined;
-    star?: number | undefined;
-    xp?: number | undefined;
+	id?: number | undefined;
+	pseudo: string | undefined;
+	email: string | undefined;
+	password: string | undefined;
+	star?: number | undefined;
+	xp?: number | undefined;
 }
 
-export let AvisUsers = []
-export let InformationsH24 = []
-export let UsersClass = []
+export let AvisUsers = [];
+export let InformationsH24 = [];
+export let UsersClass = [];
 
 export default abstract class Users {
+	public static GetRate(user: string) {
+		console.log(user);
+		axios
+			.get(`${API_LINK}/user/get_rate/?user=${user}`)
+			.then(response => {
+				const data = response.data;
+				AvisUsers = data;
+			})
 
-    public static GetRate(user: string) {
-        console.log(user);
-        axios.get(`${API_LINK}/user/get_rate/?user=${user}`)
-            .then((response) => {
-                const data = response.data
-                AvisUsers = data
-            })
+			.catch(err => {
+				console.log("err", err);
+			});
+	}
 
-            .catch((err) => {
-                console.log("err", err);
-            }
-        )
-    }
+	public static GetUsers() {
+		axios
+			.get(`${API_LINK}/user/get_users/`)
+			.then(response => {
+				const data = response.data;
+				UsersClass = data;
 
-    public static GetUsers() {
-        axios.get(`${API_LINK}/user/get_users/`)
-            .then((response) => {
-                const data = response.data
-                UsersClass = data
+				UsersClass.sort(function compare(a, b) {
+					if (a.xp > b.xp) return -1;
+					if (a.xp < b.xp) return 1;
+					return 0;
+				});
+			})
 
-                UsersClass.sort(function compare(a, b) {
-                    if (a.xp > b.xp)
-                        return -1;
-                    if (a.xp < b.xp )
-                        return 1;
-                    return 0;
-                });
-            })
+			.catch(err => {
+				console.log("err", err);
+			});
+	}
 
-            .catch((err) => {
-                console.log("err", err);
-            }
-        )
-    }
+	public static GetMessagesH24(latitude: number, longitude: number, cb: any) {
+		axios
+			.get(`${API_LINK}/list/get-verif`)
+			.then(response => {
+				const data = response.data;
+				InformationsH24 = data;
+				cb(true);
+			})
 
-    public static GetMessagesH24(latitude: number, longitude: number, cb: any) {
-        axios.get(`${API_LINK}/list/get-verif`)
-            .then((response) => {
-                const data = response.data;
-                InformationsH24 = data;
-                cb(true);
-            })
+			.catch(err => {
+				cb(false);
+				console.log("err", err);
+			});
+	}
 
-            .catch((err) => {
-                cb(false);
-                console.log("err", err);
-            }
-        )
-    }
+	public static async Load(succes: any, errorFunc: any, newUser: any) {
+		let AMail = (await AsyncStorage.getItem("@mail")) || "";
+		console.log(typeof AMail);
 
-    public static async Load(succes: any, errorFunc: any, newUser: any) {
-        let AMail = await AsyncStorage.getItem('@mail') || '';
-        console.log(typeof AMail)
+		try {
+			if (AMail !== "") {
+				this.GetData(
+					AMail,
+					(e: any) => {
+						const data = JSON.stringify(e.data[0]);
+						const status: number = e.status;
+						const pseudo = e.data[0].pseudo;
+						const rate = parseFloat(JSON.stringify(e.data[0].rate));
+						const xp = parseFloat(JSON.stringify(e.data[0].xp));
+						const img = e.data[0].img;
 
-        try {
-            if (AMail !== "") {
-                this.GetData(AMail, (e: any) => {
-                    const data = JSON.stringify(e.data[0])
-                    const status: number = e.status
-                    const pseudo = e.data[0].pseudo
-                    const rate = parseFloat(JSON.stringify(e.data[0].rate))
-                    const xp = parseFloat(JSON.stringify(e.data[0].xp))
-                    const img = e.data[0].img
+						if (status == 200) {
+							let d = {
+								mail: AMail,
+								data: data,
+								pseudo: pseudo,
+								rate: rate,
+								xp: xp,
+								img: img,
+							};
 
-                    if (status == 200) {
-                        let d = {
-                            mail: AMail,
-                            data: data,
-                            pseudo: pseudo,
-                            rate: rate,
-                            xp: xp,
-                            img: img
-                        }
+							this.GetRate(pseudo);
+							succes(d);
+							console.log("200");
+						} else {
+							newUser();
+							console.log("else200");
+						}
+					},
+					(error: number) => {
+						if (error == 500) {
+							newUser();
+							console.log("e500");
+						} else if (error == 0) {
+							errorFunc();
+						}
+					}
+				);
+			} else {
+				newUser();
+			}
+		} catch (error) {
+			newUser();
+		}
+	}
 
-                        this.GetRate(pseudo)
-                        succes(d);
-                        console.log("200")
-                    } else {
-                        newUser()
-                        console.log("else200")
-                    }
-                }, (error: number) => {
-                    if (error == 500) {
-                        newUser()
-                        console.log("e500")
-                    } else if (error == 0) {
-                        errorFunc()
-                    }
-                })
-            } else {
-              newUser();
-            }  
-        } catch (error) {
-            newUser();
-        }
-    }
+	public static Register(data: IUser, cb: any) {
+		var params = {
+			pseudo: data.pseudo,
+			email: data.email,
+			password: data.password,
+		};
 
-    public static Register(data: IUser, cb: any) {
-        var params = {
-            pseudo: data.pseudo,
-            email: data.email,
-            password: data.password
-        }
+		let req = {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
 
-        let req = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        }
-    
-        fetch(`${API_LINK}/user/signup`, req)
-            .then(function(res) {
-                console.log(res);
+		fetch(`${API_LINK}/user/signup`, req)
+			.then(function (res) {
+				console.log(res);
 
-                cb(res.status);
-            })
+				cb(res.status);
+			})
 
-            .catch(function(err) {
-                console.log("errror", err)
-            })
-        ;
-    }
+			.catch(function (err) {
+				console.log("errror", err);
+			});
+	}
 
-    public static Login(data: IUser, cb: any) {
-        let params = {
-            pseudo: data.pseudo,
-            email: data.email,
-            password: data.password,
-        }
+	public static Login(data: IUser, cb: any) {
+		let params = {
+			pseudo: data.pseudo,
+			email: data.email,
+			password: data.password,
+		};
 
-        let req = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        }
-    
-        fetch(`${API_LINK}/user/login`, req)
-            .then(function(res) {
-                console.log(res.status)
+		let req = {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
 
-                cb(res.status);
-            })
+		fetch(`${API_LINK}/user/login`, req)
+			.then(function (res) {
+				console.log(res.status);
 
-            .catch(function(err) {
-                console.log("errror", err)
-            })
-        ;        
-    }
+				cb(res.status);
+			})
 
-    public static GetData(data: string, cb: any, error: any) {
-        axios.get(`${API_LINK}/user/get?mail=${data}`)
-            .then((response) => {
-                cb(response)
-            })
+			.catch(function (err) {
+				console.log("errror", err);
+			});
+	}
 
-            .catch((err) => {
-                console.log("err", err);
+	public static GetData(data: string, cb: any, error: any) {
+		axios
+			.get(`${API_LINK}/user/get?mail=${data}`)
+			.then(response => {
+				cb(response);
+			})
 
-                if (err = "[Error: timeout of 300000ms exceeded]") {
-                    error(0);
-                }
+			.catch(err => {
+				console.log("err", err);
 
-                if (err = "[Error: Request failed with status code 500]") {
-                   error(500);
-                }
-            }
-        )
-    } 
+				if ((err = "[Error: timeout of 300000ms exceeded]")) {
+					error(0);
+				}
 
-    public static UpdatePassword(data: { email: string, password: string }, cb: any) {
-        var params = {
-            email: data.email,
-            password: data.password
-        }
+				if ((err = "[Error: Request failed with status code 500]")) {
+					error(500);
+				}
+			});
+	}
 
-        let req = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        }
-    
-        fetch(`${API_LINK}/user/update_password`, req)
-            .then(function(res) {
-                console.log(res);
+	public static UpdatePassword(data: { email: string; password: string }, cb: any) {
+		var params = {
+			email: data.email,
+			password: data.password,
+		};
 
-                cb(res.status);
-            })
+		let req = {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
 
-            .catch(function(err) {
-                console.log("errror", err)
-            })
-        ;
-    }
+		fetch(`${API_LINK}/user/update_password`, req)
+			.then(function (res) {
+				console.log(res);
 
-    public static UpdatePseudo(data: { email: any; pseudo: any; }, cb: any) {
-        var params = {
-            email: data.email,
-            pseudo: data.pseudo
-        }
-        
-        let req = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        }
+				cb(res.status);
+			})
 
-        fetch(`${API_LINK}/user/update_pseudo`, req)
-            .then(function(res) {
-                console.log(res);
+			.catch(function (err) {
+				console.log("errror", err);
+			});
+	}
 
-                cb(res.status);
-            })
+	public static UpdatePseudo(data: { email: any; pseudo: any }, cb: any) {
+		var params = {
+			email: data.email,
+			pseudo: data.pseudo,
+		};
 
-            .catch(function(err) {
-                console.log("errror", err)
-            })
-        ;
-    }
+		let req = {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
 
-    public static AddRate(source: any, nameSource: any, user: any, description: any, rate: any, cb: any) {
-        var params = {
-            source: source,
-            nameSource: nameSource,
-            user: user,
-            description: description,
-            rate: rate
-        }
-        
-        let req = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        }
+		fetch(`${API_LINK}/user/update_pseudo`, req)
+			.then(function (res) {
+				console.log(res);
 
-        fetch(`${API_LINK}/user/add_rate`, req)
-            .then(function(res) {
-                console.log(res);
+				cb(res.status);
+			})
 
-                cb(res.status);
-            })
+			.catch(function (err) {
+				console.log("errror", err);
+			});
+	}
 
-            .catch(function(err) {
-                console.log("errror", err)
-            })
-        ;
-    }    
+	public static AddRate(source: any, nameSource: any, user: any, description: any, rate: any, cb: any) {
+		var params = {
+			source: source,
+			nameSource: nameSource,
+			user: user,
+			description: description,
+			rate: rate,
+		};
 
-    public static Disconnect() {
-        const _storeData = async () => {
-            try {
-                await AsyncStorage.removeItem('@mail')
-            } catch (error) {
-                console.log("error", error)
-            }
-        };
+		let req = {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
 
-        _storeData();
-    }
+		fetch(`${API_LINK}/user/add_rate`, req)
+			.then(function (res) {
+				console.log(res);
+
+				cb(res.status);
+			})
+
+			.catch(function (err) {
+				console.log("errror", err);
+			});
+	}
+
+	public static Disconnect() {
+		const _storeData = async () => {
+			try {
+				await AsyncStorage.removeItem("@mail");
+			} catch (error) {
+				console.log("error", error);
+			}
+		};
+
+		_storeData();
+	}
 }
-
