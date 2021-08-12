@@ -205,12 +205,14 @@ const CreateAlertScreen = ({ navigation }) => {
 									borderRadius: 15,
 									padding: 10,
 									justifyContent: "center",
+									alignItems: 'center',
 									backgroundColor: "#FC9A21",
 								}}>
 								<Text
 									style={{
 										textAlign: "center",
 										color: "#fff",
+										width: 200,
 										fontSize: 15,
 									}}>
 									{I18n.t("alertWarn")}
