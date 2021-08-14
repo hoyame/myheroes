@@ -12,4 +12,4 @@ in the future if I have time, I will make a new version of the application with 
 # Available on the app store: 
 https://apps.apple.com/fr/app/myheroes/id1544800641
 
-# Ⓒ MyHeroes
+# Ⓒ Hoyame Zouhari
