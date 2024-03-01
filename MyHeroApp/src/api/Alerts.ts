@@ -48,8 +48,6 @@ const deleteImageID = (identifier: string) => {
 		imagename: identifier,
 	};
 
-	// Joyame@gmail.com
-	// lol73100
 	fetch(`http://176.31.230.112:3000/api/alert/delete/?image=${identifier}`, {
 		method: "POST",
 		headers: {
