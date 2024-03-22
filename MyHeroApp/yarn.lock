@@ -5398,7 +5398,7 @@ node-fetch@2.6.1, node-fetch@^2.2.0, node-fetch@^2.6.0:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
-node-fetch@^1.0.1, node-fetch@^1.7.3:
+node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   integrity sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
@@ -7248,12 +7248,10 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-translate@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/translate/-/translate-1.1.2.tgz#719665e7f324cfc28619726fc1d97f5a633c37e3"
-  integrity sha512-3RlVAzzcNuZ7dDfYk2qsQTxJLSeIQ06bMrYYkBneLHtewV0JGaKSP0GjTKHJn/vYwr18bvHEgdmjfg8B0DFuWw==
-  dependencies:
-    node-fetch "^1.7.3"
+translate@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/translate/-/translate-3.0.0.tgz#20da9b9383a9db99d827d00d0010352ee14e2158"
+  integrity sha512-cGKtG5QuV6ZR3IP9FMlqWMGtYz1f7vMqgPsh441PbvHa11WaN8urLI4Up/UtvIsu2tg3h3f5kHUFJDWKHa4S6w==
 
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
